@@ -25,3 +25,8 @@ window/stretch/aspect="keep_height"
 [dotnet]
 
 project/assembly_name="WJ-A23-Godot"
+
+[gui]
+
+theme/custom="res://theming/game_theme.tres"
+theme/custom_font="res://theming/NotoSans-Regular.ttf"
