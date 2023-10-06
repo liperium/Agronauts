@@ -4,4 +4,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>WJA23Godot</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="singletons\" />
+  </ItemGroup>
 </Project>

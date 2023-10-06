@@ -11,9 +11,16 @@ config_version=5
 [application]
 
 config/name="WJ-A23-Godot"
-run/main_scene="res://menu.tscn"
+run/main_scene="res://game_scenes/menu/menu.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://theming/icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
 
 [dotnet]
 
