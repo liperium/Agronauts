@@ -1,7 +1,6 @@
 using Godot;
 using System;
 using System.IO;
-using System.Text.Json.Serialization;
 using TinyJson;
 using FileAccess = System.IO.FileAccess;
 
@@ -27,9 +26,10 @@ public partial class GameState
 		set => _instance = value;
 	}
 
-	const string filePath = "Save.sav";
-
+	private const string filePath = "Save.sav";
 	public int randomSeed = 0xBADF00D;
+
+	public IdleNumberContainer numbers;
 	
 	public void SaveToFile()
 	{

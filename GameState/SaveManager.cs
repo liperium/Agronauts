@@ -10,4 +10,6 @@ public partial class SaveManager : Node
         GameState state = GameState.instance;
         state.SaveToFile();
     }
+    
+    
 }
