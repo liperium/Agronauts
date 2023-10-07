@@ -1,22 +1,21 @@
 using Godot;
 using System;
 
-public partial class UpgradeInfoContainer : HBoxContainer
+public partial class UpgradeInfoContainer : Node
 {
     [Export] public TextureRect upgradeImage;
     [Export] public RichTextLabel upgradeTitle;
     [Export] public RichTextLabel upgradeDescription;
     [Export] public RichTextLabel buyButtonText;
 
-    public void SetUpgrade(BuyableUpgrade<IdleModifier> upgrade)
+    public void SetUpgrade(InfoUpgrade info, long cost, ref Action<long> onCostChanged)
     {
-        InfoUpgrade info = upgrade.GetInfo();
         if (upgradeImage != null && info.GetImagePath() != "") upgradeImage.Texture = ResourceLoader.Load<CompressedTexture2D>(info.GetImagePath());
         if (upgradeTitle != null) upgradeTitle.Text = info.GetName();
         if (upgradeTitle != null) upgradeDescription.Text = info.GetDescription();
-        UpdateCostText(upgrade.GetCost());
+        UpdateCostText(cost);
 
-        upgrade.OnCostChanged += UpdateCostText;
+        onCostChanged += UpdateCostText;
     }
 
     private void UpdateCostText(long newCost)
