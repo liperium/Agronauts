@@ -36,6 +36,7 @@ public partial class FarmLand : Area2D
 
 	private TextureButton button;
 	private Timer growthTimer;
+	private ProgressBar progressBar;
 	private LandState currState = LandState.Wild;
 
 	public LandState CurrState => currState;
@@ -50,13 +51,16 @@ public partial class FarmLand : Area2D
 		growthTimer.OneShot = true;
 
 		//TODO link with global timer
-		growthTimer.WaitTime = 3.0;
+
 		growthTimer.Timeout += Grown;
+
+		progressBar = GetNode<ProgressBar>("ProgressBar");
+		UpdateProgressBarStats(3.0f);
 	}
 
 	public void Clicked()
 	{
-		GD.Print("State "+currState);
+		//GD.Print("State "+currState);
 		switch (currState)
 		{
 			case LandState.Wild:
@@ -91,6 +95,7 @@ public partial class FarmLand : Area2D
 	public void Plant()
 	{
 		growthTimer.Start();
+		progressBar.Visible = true;
 		button.TextureNormal = PlantedTexture;
 		currState = LandState.Planted;
 	}
@@ -102,7 +107,23 @@ public partial class FarmLand : Area2D
 
 	public void Grown()
 	{
+		progressBar.Visible = false;
 		button.TextureNormal = ReadyTexture;
 		currState = LandState.Ready;
+	}
+
+	public void UpdateProgressBarStats(float newProgressTime)
+	{
+		growthTimer.WaitTime = newProgressTime;
+		progressBar.MaxValue = newProgressTime;
+	}
+
+	public override void _Process(double delta)
+	{
+		base._Process(delta);
+		if (!growthTimer.IsStopped())
+		{
+			progressBar.Value = growthTimer.WaitTime - growthTimer.TimeLeft;
+		}
 	}
 }
