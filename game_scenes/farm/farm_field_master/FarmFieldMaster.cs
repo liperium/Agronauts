@@ -21,12 +21,12 @@ public partial class FarmFieldMaster : Node2D
 		SpawnField(centerPos, centerPos, true);
 	}
 
-	public void SpawnField(int x, int y, bool first = false)
+	public void SpawnField(int x, int y, bool origin = false)
 	{
 		isTaken[x, y] = true;
 		FarmField newChild = FarmField.Instantiate() as FarmField;
 		newChild.positionRelative = new Vector2(x, y);
-		newChild.first = true;
+		newChild.first = origin;
 		newChild.Position = new Vector2((16 - x)*TILE_SIZE*TILE_PER_FF,(16 - y)*TILE_SIZE*TILE_PER_FF);
 		AddChild(newChild);
 		GameState.instance.numbers.numberOfTilesUnlocked.IncreaseValue(1);
