@@ -16,7 +16,7 @@ public partial class GameState
 		{
 			if (_instance == null)
 			{
-				if (LoadGame())
+				if (SAVE_ENABLED && LoadGame())
 				{
 					return _instance;
 				}
@@ -31,8 +31,26 @@ public partial class GameState
 	private const string filePath = "Save.sav";
 	public int randomSeed = 0xBADF00D;
 
-	public IdleNumberContainer numbers = new();
-	public IdleUpgradeContainer upgrades = new();
+	public IdleNumberContainer numbers;
+	public IdleUpgradeContainer upgrades;
+
+	public void Init()
+	{
+		numbers = new IdleNumberContainer();
+		numbers.Init();
+		upgrades = new IdleUpgradeContainer();
+		upgrades.Init();
+		
+		OnLoad();
+	}
+
+	protected void OnLoad()
+	{
+		numbers.OnLoad();
+		upgrades.OnLoad();
+		
+		if (GameState.SAVE_ENABLED == false) GameState.instance.numbers.potatoCount.SetValue(100);
+	}
 	
 	public void SaveToFile()
 	{
@@ -56,6 +74,8 @@ public partial class GameState
 				GameState newState;
 				newState = sr.ReadToEnd().FromJson<GameState>();
 				instance = newState;
+				
+				newState.OnLoad();
 
 				return true;
 			}
@@ -78,6 +98,7 @@ public partial class GameState
 
 		instance = newInstance;
 		
+		newInstance.Init();
 		return newInstance;
 	}
 }

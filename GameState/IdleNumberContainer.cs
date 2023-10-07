@@ -3,11 +3,31 @@
 [Serializable]
 public class IdleNumberContainer
 {
-    public IdleNumber potatoCount = new();
-    public IdleNumber potatoYield = new();
+    public IdleNumber potatoCount;
+    public IdleNumber potatoYield;
 
-    public IdleNumber cookedPotatoCount = new();
-    public IdleNumber cookedPotatoYield = new();
+    public IdleNumber cookedPotatoCount;
+    public IdleNumber cookedPotatoYield;
     
-    public IdleNumber potatoTemp = new();
+    public IdleNumber potatoTemp;
+
+    public IdleNumber numberOfTilesUnlocked;
+
+    public void Init()
+    {
+        potatoCount = new IdleNumber();
+        potatoYield = new IdleNumber();
+
+        cookedPotatoCount = new IdleNumber();
+        cookedPotatoYield = new IdleNumber();
+
+        potatoTemp = new IdleNumber();
+
+        numberOfTilesUnlocked = new IdleNumber();
+    }
+
+    public void OnLoad()
+    {
+        
+    }
 }

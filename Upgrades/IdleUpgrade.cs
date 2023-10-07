@@ -3,38 +3,47 @@ using System;
 [Serializable]
 public partial class IdleUpgrade <TModifier> where TModifier : IdleModifier, new()
 {
-	protected TModifier modifier = new TModifier();
+	protected TModifier modifier;
 	protected IdleNumber affectedNumber;
-	protected InfoUpgrade info = new();
+	protected InfoUpgrade info;
 
-	bool acquired;
-
-
-	public IdleUpgrade()
-	{
-		InnitInfo();
-	}
-
+	public bool acquired;
 
 	public virtual void Apply()
 	{
-		if(affectedNumber == null)
-		{
-			affectedNumber = GameState.instance.numbers.potatoYield;
-			modifier.SetOwner(affectedNumber);
-		}
 		affectedNumber.AddModifier(modifier);
 	}
 
-	public virtual void SetAffectedNumber()
+	protected void SetAffectedNumber()
 	{
+		if(affectedNumber == null)
+		{
+			affectedNumber = GetAffectedNumber();
+			modifier.SetOwner(affectedNumber);
+		}
+	}
 
+	public virtual IdleNumber GetAffectedNumber()
+	{
+		return GameState.instance.numbers.potatoCount;
+	}
+
+	public InfoUpgrade GetInfo()
+	{
+		return info;
 	}
 
 	public virtual void InnitInfo()
 	{
+		info = new InfoUpgrade();
 		info.SetName("ERROR");
 		info.SetDescription("ERROR NOT SET");
 		info.SetImagePath("res://theming/icon.svg");
     }
+
+	public virtual void OnLoad()
+	{
+		modifier = new TModifier();
+		InnitInfo();
+	}
 }

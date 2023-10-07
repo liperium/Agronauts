@@ -7,7 +7,7 @@ public partial class YieldNumber : Label
 	public override void _Ready()
 	{
 		GameState.instance.numbers.potatoYield.SetOnValueChanged(UpdateYield);
-        GameState.instance.numbers.potatoYield.SetValue(100);
+        if (GameState.SAVE_ENABLED == false) GameState.instance.numbers.potatoYield.SetValue(100);
 	}
 
 	public void UpdateYield(long number)

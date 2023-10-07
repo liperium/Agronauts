@@ -5,10 +5,13 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 {
 	protected long cost;
 	
-	protected bool unlocked;
-
-	public BuyableUpgrade()
+	public bool unlocked;
+    
+	public Action<long> OnCostChanged;
+	
+	public override void OnLoad()
 	{
+		base.OnLoad();
 		UpdateCost();
 	}
 
@@ -20,13 +23,22 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 	{
 		if (CanBuy())
 		{
+			SetAffectedNumber();
 			Pay();
 			OnBuy();
+
+			long tempCost = cost;
+			
 			UpdateCost();
+
+			if (cost != tempCost && OnCostChanged != null)
+			{
+				OnCostChanged(cost);
+			}
 		}
 	}
     public virtual void OnBuy() {
-        affectedNumber.UpdateValue();
+	    affectedNumber.UpdateValue();
     }
     public virtual void Pay()
     {
