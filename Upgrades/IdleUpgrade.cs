@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public partial class IdleUpgrade
+public partial class IdleUpgrade <TModifier> where TModifier : IdleModifier
 {
-	IdleModifier modifier;
+	protected TModifier modifier;
 	IdleNumber affectedNumber;
 
 	bool acquired;

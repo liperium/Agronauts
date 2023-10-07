@@ -1,13 +1,14 @@
 using Godot;
 using System;
 
-public partial class TotalPotatoYieldUpgrade : TieredUpgrade
+public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier>
 {
 	public override void Buy()
 	{
 		if (CanBuy())
 		{
-
+			//Pay cost
+			modifier.multiplier += 0.05f;
 		}
 	}
 
