@@ -3,14 +3,13 @@ using System;
 
 public partial class UpgradeFarmYieldButton : Button
 {
-
 	TotalPotatoYieldUpgrade potatoYieldUpgrade;
 
 	public override void _Ready()
 	{
         potatoYieldUpgrade = GameState.instance.upgrades.totalPotatoYieldUpgrade;
 		this.Text = "Upgrade Farm Yield (" + potatoYieldUpgrade.GetCost() + ")";
-		GameState.instance.numbers.potatoCount.OnValueChanged = UpdateEnabled;
+		GameState.instance.numbers.potatoCount.SetOnValueChanged(UpdateEnabled);
         GameState.instance.numbers.potatoCount.SetValue(100);
 
     }

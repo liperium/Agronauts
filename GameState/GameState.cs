@@ -21,7 +21,7 @@ public partial class GameState
 				
 				return NewGame();
 			}
-			return NewGame();
+			return _instance;
 		}
 		set => _instance = value;
 	}
@@ -74,7 +74,7 @@ public partial class GameState
 		Random random = new Random();
 		newInstance.randomSeed = random.Next();
 
-		GameState.instance = newInstance;
+		instance = newInstance;
 		
 		return newInstance;
 	}
