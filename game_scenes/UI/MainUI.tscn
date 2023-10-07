@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://y1unomfdmkif"]
+[gd_scene load_steps=23 format=3 uid="uid://y1unomfdmkif"]
 
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="2_hrn0e"]
 [ext_resource type="Script" path="res://UI/PotatoCountLabel.cs" id="3_4xs5e"]
@@ -12,14 +12,48 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mr71e"]
 size = Vector2(32, 64)
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_powse"]
+animation = &"MenuOpen"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x44sc"]
+animation = &"MenuIdle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_euima"]
+animation = &"MenuClose"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6ttsg"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"close"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5x8y7"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1i7ou"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_palwj"]
+advance_mode = 2
+advance_condition = &"open"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ocv6h"]
-graph_offset = Vector2(-100, -59)
+states/MenuClose/node = SubResource("AnimationNodeAnimation_powse")
+states/MenuClose/position = Vector2(347, 182)
+states/MenuIdle/node = SubResource("AnimationNodeAnimation_x44sc")
+states/MenuIdle/position = Vector2(560, 53)
+states/MenuOpen/node = SubResource("AnimationNodeAnimation_euima")
+states/MenuOpen/position = Vector2(560, 211)
+states/Start/position = Vector2(334, 84)
+transitions = ["MenuOpen", "MenuClose", SubResource("AnimationNodeStateMachineTransition_6ttsg"), "MenuClose", "MenuOpen", SubResource("AnimationNodeStateMachineTransition_5x8y7"), "Start", "MenuIdle", SubResource("AnimationNodeStateMachineTransition_1i7ou"), "MenuIdle", "MenuOpen", SubResource("AnimationNodeStateMachineTransition_palwj")]
+graph_offset = Vector2(46, -35)
 
 [sub_resource type="Animation" id="Animation_plwxq"]
 resource_name = "MenuOpen"
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("TabContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -32,18 +66,50 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BtnShowHideMenu:position")
+tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.189465, 0.189465),
 "update": 0,
-"values": [Vector2(553, 339), Vector2(-2, 339)]
+"values": [Vector2(0, 0), Vector2(-555, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_apb47"]
+resource_name = "MenuClose"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.189465, 0.189465),
+"update": 0,
+"values": [Vector2(-555, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4llfa"]
+resource_name = "MenuIdle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-555, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w5t5i"]
 _data = {
+"MenuClose": SubResource("Animation_apb47"),
+"MenuIdle": SubResource("Animation_4llfa"),
 "MenuOpen": SubResource("Animation_plwxq")
 }
 
@@ -54,11 +120,9 @@ size = Vector2(256, 256)
 
 [node name="UpgradeMenu" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = -727.0
-grow_horizontal = 2
+offset_right = 553.0
 grow_vertical = 2
 
 [node name="TabContainer" type="TabContainer" parent="UpgradeMenu"]
@@ -88,26 +152,28 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("7_f25uh")
 
-[node name="BtnShowHideMenu" type="TextureButton" parent="UpgradeMenu"]
+[node name="BtnShowHideMenu" type="TextureButton" parent="UpgradeMenu" node_paths=PackedStringArray("animTree")]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -553.0
-offset_top = -360.0
-offset_right = -521.0
-offset_bottom = -296.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
 grow_horizontal = 0
 grow_vertical = 2
 texture_normal = SubResource("PlaceholderTexture2D_mr71e")
 script = ExtResource("3_crgan")
+animTree = NodePath("../AnimationTree")
 
 [node name="AnimationTree" type="AnimationTree" parent="UpgradeMenu"]
 tree_root = SubResource("AnimationNodeStateMachine_ocv6h")
 anim_player = NodePath("../AnimationPlayer")
 active = true
+parameters/conditions/close = false
+parameters/conditions/open = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UpgradeMenu"]
 libraries = {
