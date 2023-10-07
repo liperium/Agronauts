@@ -8,7 +8,7 @@ public partial class TemperatureLabel : Node2D
     {
         base._Ready();
 
-        number = GameState.instance.numbers.potatoTemp;
+        number = GameState.instance.numbers.potatoTemperature;
         
         number.SetOnValueChanged(ValueChanged);
         
