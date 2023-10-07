@@ -1,80 +1,284 @@
-[gd_scene load_steps=7 format=3 uid="uid://y1unomfdmkif"]
+[gd_scene load_steps=23 format=3 uid="uid://y1unomfdmkif"]
 
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="2_hrn0e"]
 [ext_resource type="Script" path="res://UI/PotatoCountLabel.cs" id="3_4xs5e"]
+[ext_resource type="Script" path="res://game_scenes/UI/BtnShowHideMenu.cs" id="3_crgan"]
 [ext_resource type="Script" path="res://UI/CookedPotatoCountLabel.cs" id="4_ta1m5"]
 [ext_resource type="Script" path="res://UI/SaveButton.cs" id="5_i545w"]
 [ext_resource type="PackedScene" uid="uid://ehn8ld0iouai" path="res://UI/Base_Upgrade_Btn.tscn" id="6_1fuc1"]
+[ext_resource type="Script" path="res://UI/TemperatureLabel.cs" id="6_ya5yg"]
 [ext_resource type="Script" path="res://game_scenes/UI/PotatoYieldUpgradeUI.cs" id="7_f25uh"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mr71e"]
+size = Vector2(32, 64)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_powse"]
+animation = &"MenuOpen"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x44sc"]
+animation = &"MenuIdle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_euima"]
+animation = &"MenuClose"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6ttsg"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"close"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5x8y7"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1i7ou"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_palwj"]
+advance_mode = 2
+advance_condition = &"open"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ocv6h"]
+states/MenuClose/node = SubResource("AnimationNodeAnimation_powse")
+states/MenuClose/position = Vector2(347, 182)
+states/MenuIdle/node = SubResource("AnimationNodeAnimation_x44sc")
+states/MenuIdle/position = Vector2(560, 53)
+states/MenuOpen/node = SubResource("AnimationNodeAnimation_euima")
+states/MenuOpen/position = Vector2(560, 211)
+states/Start/position = Vector2(334, 84)
+transitions = ["MenuOpen", "MenuClose", SubResource("AnimationNodeStateMachineTransition_6ttsg"), "MenuClose", "MenuOpen", SubResource("AnimationNodeStateMachineTransition_5x8y7"), "Start", "MenuIdle", SubResource("AnimationNodeStateMachineTransition_1i7ou"), "MenuIdle", "MenuOpen", SubResource("AnimationNodeStateMachineTransition_palwj")]
+graph_offset = Vector2(46, -35)
+
+[sub_resource type="Animation" id="Animation_plwxq"]
+resource_name = "MenuOpen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("TabContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.189465, 0.189465),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-555, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.189465, 0.189465),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-555, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_apb47"]
+resource_name = "MenuClose"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.189465, 0.189465),
+"update": 0,
+"values": [Vector2(-555, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4llfa"]
+resource_name = "MenuIdle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-555, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w5t5i"]
+_data = {
+"MenuClose": SubResource("Animation_apb47"),
+"MenuIdle": SubResource("Animation_4llfa"),
+"MenuOpen": SubResource("Animation_plwxq")
+}
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m0dlh"]
+size = Vector2(256, 256)
 
 [node name="UI" type="CanvasLayer"]
 
-[node name="potatoesDisplay" type="HBoxContainer" parent="."]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 8.0
-offset_top = -344.0
-offset_right = 259.0
-offset_bottom = -299.0
+[node name="UpgradeMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 553.0
 grow_vertical = 2
-alignment = 1
 
-[node name="potatoesNb" type="RichTextLabel" parent="potatoesDisplay"]
+[node name="TabContainer" type="TabContainer" parent="UpgradeMenu"]
+layout_mode = 0
+offset_right = 553.0
+offset_bottom = 720.0
+tab_alignment = 1
+
+[node name="FarmUpgrades" type="Control" parent="UpgradeMenu/TabContainer"]
 layout_mode = 2
-text = "dsefsf"
-fit_content = true
-autowrap_mode = 0
-script = ExtResource("2_hrn0e")
 
-[node name="potatoCountLabel" type="Node2D" parent="potatoesDisplay/potatoesNb"]
-position = Vector2(-555, 0)
-script = ExtResource("3_4xs5e")
+[node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu/TabContainer/FarmUpgrades"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="kpotatoes" type="Label" parent="potatoesDisplay"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenu/TabContainer/FarmUpgrades/ScrollContainer"]
 layout_mode = 2
-text = "KPOTATOES"
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="potatoesDisplay2" type="HBoxContainer" parent="."]
-offset_left = 13.0
-offset_top = 78.0
-offset_right = 264.0
-offset_bottom = 123.0
-alignment = 1
-
-[node name="cookedPotatoesNb" type="RichTextLabel" parent="potatoesDisplay2"]
+[node name="PotatoYieldUpgrade" parent="UpgradeMenu/TabContainer/FarmUpgrades/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
 layout_mode = 2
-text = "dsefsf"
-fit_content = true
-autowrap_mode = 0
-script = ExtResource("2_hrn0e")
+size_flags_horizontal = 3
+script = ExtResource("7_f25uh")
 
-[node name="cookedPotatoCountLabel" type="Node2D" parent="potatoesDisplay2/cookedPotatoesNb"]
-position = Vector2(-555, 0)
-script = ExtResource("4_ta1m5")
+[node name="BtnShowHideMenu" type="TextureButton" parent="UpgradeMenu" node_paths=PackedStringArray("animTree")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = SubResource("PlaceholderTexture2D_mr71e")
+script = ExtResource("3_crgan")
+animTree = NodePath("../AnimationTree")
 
-[node name="kpotatoes" type="Label" parent="potatoesDisplay2"]
-layout_mode = 2
-text = "KCOOKEDPOTATOES"
+[node name="AnimationTree" type="AnimationTree" parent="UpgradeMenu"]
+tree_root = SubResource("AnimationNodeStateMachine_ocv6h")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/conditions/close = false
+parameters/conditions/open = false
 
-[node name="LblUpgrades" type="RichTextLabel" parent="."]
-offset_left = 13.0
-offset_top = 133.0
-offset_right = 238.0
-offset_bottom = 187.0
-text = "KUPGRADES"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UpgradeMenu"]
+libraries = {
+"": SubResource("AnimationLibrary_w5t5i")
+}
 
-[node name="Button" type="Button" parent="."]
-offset_left = 13.0
-offset_top = 610.0
-offset_right = 289.0
-offset_bottom = 713.0
+[node name="SaveButton" type="Button" parent="."]
+offset_left = 1107.0
+offset_top = 648.0
+offset_right = 1270.0
+offset_bottom = 711.0
 text = "Save"
 script = ExtResource("5_i545w")
 
-[node name="HBoxContainer" parent="." instance=ExtResource("6_1fuc1")]
-offset_left = 13.0
-offset_top = 257.0
-offset_right = -942.0
-offset_bottom = -342.0
-script = ExtResource("7_f25uh")
+[node name="StatsBar" type="TextureRect" parent="."]
+offset_left = 941.0
+offset_right = 1279.0
+offset_bottom = 170.0
+scale = Vector2(1.00271, 1)
+texture = SubResource("PlaceholderTexture2D_m0dlh")
+expand_mode = 1
+
+[node name="potatoesDisplay" type="HBoxContainer" parent="StatsBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 71.8057
+offset_top = -77.0
+offset_right = 322.806
+offset_bottom = -27.0
+grow_vertical = 2
+alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="StatsBar/potatoesDisplay"]
+layout_mode = 2
+
+[node name="potatoesNb" type="RichTextLabel" parent="StatsBar/potatoesDisplay/CenterContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "dsefsf"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("2_hrn0e")
+
+[node name="potatoCountLabel" type="Node2D" parent="StatsBar/potatoesDisplay/CenterContainer/potatoesNb"]
+position = Vector2(-555, 0)
+script = ExtResource("3_4xs5e")
+
+[node name="kpotatoes" type="RichTextLabel" parent="StatsBar/potatoesDisplay"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[img=50xz50]res://Icons/Potato.png[/img]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="cookedPotatoDisplay" type="HBoxContainer" parent="StatsBar"]
+layout_mode = 0
+offset_left = 191.482
+offset_top = 58.5
+offset_right = 328.482
+offset_bottom = 108.5
+alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="StatsBar/cookedPotatoDisplay"]
+layout_mode = 2
+
+[node name="potatoesNb" type="RichTextLabel" parent="StatsBar/cookedPotatoDisplay/CenterContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "dsefsf"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("2_hrn0e")
+
+[node name="cookedPotatoCountLabel" type="Node2D" parent="StatsBar/cookedPotatoDisplay/CenterContainer/potatoesNb"]
+position = Vector2(-555, 0)
+script = ExtResource("4_ta1m5")
+
+[node name="kpotatoes" type="RichTextLabel" parent="StatsBar/cookedPotatoDisplay"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[img=50xz50]res://Icons/Potato.png[/img]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="temperatureDisplay" type="HBoxContainer" parent="StatsBar"]
+layout_mode = 0
+offset_left = -42.8839
+offset_top = 112.5
+offset_right = 329.116
+offset_bottom = 157.5
+alignment = 2
+
+[node name="cookedPotatoesNb" type="RichTextLabel" parent="StatsBar/temperatureDisplay"]
+layout_mode = 2
+text = "dsefsf"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("2_hrn0e")
+
+[node name="cookedPotatoCountLabel" type="Node2D" parent="StatsBar/temperatureDisplay/cookedPotatoesNb"]
+position = Vector2(-555, 0)
+script = ExtResource("6_ya5yg")
+
+[node name="kpotatoes" type="Label" parent="StatsBar/temperatureDisplay"]
+layout_mode = 2
+text = "°C"
