@@ -30,6 +30,7 @@ public partial class GameState
 	public int randomSeed = 0xBADF00D;
 
 	public IdleNumberContainer numbers;
+	public IdleUpgradeContainer upgrades;
 	
 	public void SaveToFile()
 	{
