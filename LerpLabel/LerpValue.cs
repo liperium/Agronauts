@@ -1,25 +1,24 @@
 using Godot;
 using System;
 
-public partial class LerpValue : Label
+public partial class LerpValue : RichTextLabel
 {
     private long displayValue;
 
     private long targetValue;
 
-    private bool shouldUpdate = false;
+    private bool shouldUpdate;
 
     [Export] 
     public float lerpSpeed = 1.0f;
 
     private long displayDelta;
 
-    public override void _Ready()
+    public void Init(long initialValue)
     {
-        base._Ready();
-        
-        //test
-        SetNewValue(350);
+        displayValue = initialValue;
+        targetValue = initialValue;
+        Text = initialValue.FormattedNumber();
     }
 
     public void SetNewValue(long value)
