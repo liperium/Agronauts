@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://y1unomfdmkif"]
+[gd_scene load_steps=9 format=3 uid="uid://y1unomfdmkif"]
 
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="2_hrn0e"]
 [ext_resource type="Script" path="res://UI/PotatoCountLabel.cs" id="3_4xs5e"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://ehn8ld0iouai" path="res://UI/Base_Upgrade_Btn.tscn" id="6_1fuc1"]
 [ext_resource type="Script" path="res://UI/TemperatureLabel.cs" id="6_ya5yg"]
 [ext_resource type="Script" path="res://game_scenes/UI/PotatoYieldUpgradeUI.cs" id="7_f25uh"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m0dlh"]
+size = Vector2(256, 256)
 
 [node name="UI" type="CanvasLayer"]
 
@@ -36,80 +39,103 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("7_f25uh")
 
-[node name="potatoesDisplay" type="HBoxContainer" parent="."]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 1008.0
-offset_top = -337.0
-offset_right = 1259.0
-offset_bottom = -292.0
-grow_vertical = 2
-alignment = 1
-
-[node name="potatoesNb" type="RichTextLabel" parent="potatoesDisplay"]
-layout_mode = 2
-text = "dsefsf"
-fit_content = true
-autowrap_mode = 0
-script = ExtResource("2_hrn0e")
-
-[node name="potatoCountLabel" type="Node2D" parent="potatoesDisplay/potatoesNb"]
-position = Vector2(-555, 0)
-script = ExtResource("3_4xs5e")
-
-[node name="kpotatoes" type="Label" parent="potatoesDisplay"]
-layout_mode = 2
-text = "KPOTATOES"
-
-[node name="cookedPotatoDisplay" type="HBoxContainer" parent="."]
-offset_left = 983.0
-offset_top = 78.0
-offset_right = 1355.0
-offset_bottom = 123.0
-alignment = 1
-
-[node name="cookedPotatoesNb" type="RichTextLabel" parent="cookedPotatoDisplay"]
-layout_mode = 2
-text = "dsefsf"
-fit_content = true
-autowrap_mode = 0
-script = ExtResource("2_hrn0e")
-
-[node name="cookedPotatoCountLabel" type="Node2D" parent="cookedPotatoDisplay/cookedPotatoesNb"]
-position = Vector2(-555, 0)
-script = ExtResource("4_ta1m5")
-
-[node name="kpotatoes" type="Label" parent="cookedPotatoDisplay"]
-layout_mode = 2
-text = "KCOOKEDPOTATOES"
-
-[node name="temperatureDisplay" type="HBoxContainer" parent="."]
-offset_left = 983.0
-offset_top = 140.0
-offset_right = 1355.0
-offset_bottom = 185.0
-alignment = 1
-
-[node name="cookedPotatoesNb" type="RichTextLabel" parent="temperatureDisplay"]
-layout_mode = 2
-text = "dsefsf"
-fit_content = true
-autowrap_mode = 0
-script = ExtResource("2_hrn0e")
-
-[node name="cookedPotatoCountLabel" type="Node2D" parent="temperatureDisplay/cookedPotatoesNb"]
-position = Vector2(-555, 0)
-script = ExtResource("6_ya5yg")
-
-[node name="kpotatoes" type="Label" parent="temperatureDisplay"]
-layout_mode = 2
-text = "°C"
-
-[node name="Button" type="Button" parent="."]
+[node name="SaveButton" type="Button" parent="."]
 offset_left = 1107.0
 offset_top = 648.0
 offset_right = 1270.0
 offset_bottom = 711.0
 text = "Save"
 script = ExtResource("5_i545w")
+
+[node name="StatsBar" type="TextureRect" parent="."]
+offset_left = 941.0
+offset_right = 1279.0
+offset_bottom = 170.0
+scale = Vector2(1.00271, 1)
+texture = SubResource("PlaceholderTexture2D_m0dlh")
+expand_mode = 1
+
+[node name="potatoesDisplay" type="HBoxContainer" parent="StatsBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 71.8057
+offset_top = -77.0
+offset_right = 322.806
+offset_bottom = -27.0
+grow_vertical = 2
+alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="StatsBar/potatoesDisplay"]
+layout_mode = 2
+
+[node name="potatoesNb" type="RichTextLabel" parent="StatsBar/potatoesDisplay/CenterContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "dsefsf"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("2_hrn0e")
+
+[node name="potatoCountLabel" type="Node2D" parent="StatsBar/potatoesDisplay/CenterContainer/potatoesNb"]
+position = Vector2(-555, 0)
+script = ExtResource("3_4xs5e")
+
+[node name="kpotatoes" type="RichTextLabel" parent="StatsBar/potatoesDisplay"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[img=50xz50]res://Icons/Potato.png[/img]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="cookedPotatoDisplay" type="HBoxContainer" parent="StatsBar"]
+offset_left = 191.482
+offset_top = 58.5
+offset_right = 328.482
+offset_bottom = 108.5
+alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="StatsBar/cookedPotatoDisplay"]
+layout_mode = 2
+
+[node name="potatoesNb" type="RichTextLabel" parent="StatsBar/cookedPotatoDisplay/CenterContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "dsefsf"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("2_hrn0e")
+
+[node name="cookedPotatoCountLabel" type="Node2D" parent="StatsBar/cookedPotatoDisplay/CenterContainer/potatoesNb"]
+position = Vector2(-555, 0)
+script = ExtResource("4_ta1m5")
+
+[node name="kpotatoes" type="RichTextLabel" parent="StatsBar/cookedPotatoDisplay"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[img=50xz50]res://Icons/Potato.png[/img]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="temperatureDisplay" type="HBoxContainer" parent="StatsBar"]
+offset_left = -42.8839
+offset_top = 112.5
+offset_right = 329.116
+offset_bottom = 157.5
+alignment = 2
+
+[node name="cookedPotatoesNb" type="RichTextLabel" parent="StatsBar/temperatureDisplay"]
+layout_mode = 2
+text = "dsefsf"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("2_hrn0e")
+
+[node name="cookedPotatoCountLabel" type="Node2D" parent="StatsBar/temperatureDisplay/cookedPotatoesNb"]
+position = Vector2(-555, 0)
+script = ExtResource("6_ya5yg")
+
+[node name="kpotatoes" type="Label" parent="StatsBar/temperatureDisplay"]
+layout_mode = 2
+text = "°C"
