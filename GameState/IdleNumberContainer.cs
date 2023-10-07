@@ -1,11 +1,13 @@
-﻿
+﻿using System;
+
+[Serializable]
 public class IdleNumberContainer
 {
-    public IdleNumber potatoCount;
-    public IdleNumber potatoYield;
+    public IdleNumber potatoCount = new();
+    public IdleNumber potatoYield = new();
 
-    public IdleNumber cookedPotatoCount;
-    public IdleNumber cookedPotatoYield;
+    public IdleNumber cookedPotatoCount = new();
+    public IdleNumber cookedPotatoYield = new();
     
-    public IdleNumber potatoTemp;
+    public IdleNumber potatoTemp = new();
 }
