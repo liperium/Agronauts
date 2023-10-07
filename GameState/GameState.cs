@@ -7,7 +7,7 @@ using FileAccess = System.IO.FileAccess;
 [Serializable]
 public partial class GameState
 {
-	public const bool SAVE_ENABLED = true;
+	public const bool SAVE_ENABLED = false;
 	
 	private static GameState _instance;
 	public static GameState instance
