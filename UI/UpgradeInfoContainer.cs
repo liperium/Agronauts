@@ -20,6 +20,9 @@ public partial class UpgradeInfoContainer : Node
 
     private void UpdateCostText(long newCost)
     {
-        if (buyButtonText != null) buyButtonText.Text = $"{Tr("KBUY")} ({newCost} {Tr("KPOTATOES")})";
+        if (buyButtonText != null)
+        {
+            buyButtonText.Text = $"{Tr("KBUY")} ({newCost.FormattedNumber()} {Tr("KPOTATOES")})";
+        }
     }
 }
