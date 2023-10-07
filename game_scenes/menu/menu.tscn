@@ -93,31 +93,36 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_4l5n3")
 text = "Give Up"
 script = ExtResource("2_b0yyy")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Control"]
-position = Vector2(3317.37, 1035.93)
+[node name="AllShips" type="Node2D" parent="Control"]
+scale = Vector2(2.99401, 2.99401)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control/AllShips"]
+position = Vector2(1108, 346)
+scale = Vector2(0.334, 0.334)
 texture = ExtResource("6_krmyu")
 flip_h = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Control"]
-position = Vector2(2308.38, 928.144)
+[node name="Sprite2D" type="Sprite2D" parent="Control/AllShips"]
+position = Vector2(771, 310)
+scale = Vector2(0.334, 0.334)
 texture = ExtResource("6_krmyu")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Control"]
-position = Vector2(2754.49, 859.281)
-scale = Vector2(1.08217, 1.08217)
+[node name="Sprite2D3" type="Sprite2D" parent="Control/AllShips"]
+position = Vector2(920, 287)
+scale = Vector2(0.361444, 0.361444)
 texture = ExtResource("7_wqfvf")
 
-[node name="Sprite2D4" type="Sprite2D" parent="Control"]
-position = Vector2(2568.86, 1218.56)
-scale = Vector2(1.08217, 1.08217)
+[node name="Sprite2D4" type="Sprite2D" parent="Control/AllShips"]
+position = Vector2(858, 407)
+scale = Vector2(0.361444, 0.361444)
 texture = ExtResource("7_wqfvf")
 
-[node name="Sprite2D5" type="Sprite2D" parent="Control"]
-position = Vector2(2790.42, 1107.78)
-scale = Vector2(1.08217, 1.08217)
+[node name="Sprite2D5" type="Sprite2D" parent="Control/AllShips"]
+position = Vector2(932, 370)
+scale = Vector2(0.361444, 0.361444)
 texture = ExtResource("7_wqfvf")
 
-[node name="Sprite2D6" type="Sprite2D" parent="Control"]
-position = Vector2(2901.2, 994.012)
-scale = Vector2(1.08217, 1.08217)
+[node name="Sprite2D6" type="Sprite2D" parent="Control/AllShips"]
+position = Vector2(969, 332)
+scale = Vector2(0.361444, 0.361444)
 texture = ExtResource("7_wqfvf")
