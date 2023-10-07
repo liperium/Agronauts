@@ -38,7 +38,8 @@ public partial class FarmLand : Area2D
 	private Timer growthTimer;
 	private ProgressBar progressBar;
 	private LandState currState = LandState.Wild;
-
+	private Label priceLabel;
+	public long cost = 0;
 	public LandState CurrState => currState;
 
 	// Called when the node enters the scene tree for the first time.
@@ -47,16 +48,30 @@ public partial class FarmLand : Area2D
 		button = GetNode<TextureButton>("TextureButton");
 		button.Pressed += Clicked;
 		button.TextureNormal = WildTexture;
+
 		growthTimer = GetNode<Timer>("Timer");
 		growthTimer.OneShot = true;
+
+		priceLabel = GetNode<Label>("PriceLabel");
+
 
 		//TODO link with global timer
 
 		growthTimer.Timeout += Grown;
+		MouseEntered += Hovered;
+		MouseExited += UnHovered;
 
 		progressBar = GetNode<ProgressBar>("ProgressBar");
 		UpdateProgressBarStats(3.0f);
 	}
+
+	public void ChangeCost(long newCost)
+	{
+		cost = newCost;
+		priceLabel.Text = cost.FormattedNumber();
+	}
+
+
 
 	public void Clicked()
 	{
@@ -79,10 +94,23 @@ public partial class FarmLand : Area2D
 				break;
 		}
 	}
+
+	public void Hovered()
+	{
+		priceLabel.Visible = true;
+
+	}
+	private void UnHovered()
+	{
+		priceLabel.Visible = false;
+	}
 	public void Bought()
 	{
 		button.TextureNormal = BaseTexture;
 		currState = LandState.Base;
+		priceLabel.QueueFree();
+		MouseEntered -= Hovered;
+		MouseExited -= UnHovered;
 
 		// Check if it can expand
 		GetParent<FarmField>().Expand(position);
