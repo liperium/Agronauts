@@ -9,6 +9,8 @@
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 offset = Vector2(640, 360)
+position_smoothing_enabled = true
+position_smoothing_speed = 75.0
 script = ExtResource("1_ou2to")
 
 [node name="UI" parent="." instance=ExtResource("2_grc08")]
