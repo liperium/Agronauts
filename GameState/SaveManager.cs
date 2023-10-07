@@ -8,7 +8,7 @@ public partial class SaveManager : Node
         base._Ready();
         
         GameState state = GameState.instance;
-        state.SaveToFile();
+        if (GameState.SAVE_ENABLED) state.SaveToFile();
     }
     
     
