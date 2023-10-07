@@ -8,3 +8,5 @@ KUPFARMYIELD,upgrade farm yield ({0}),augmenter le rendement ({0})
 KBUY,buy,acheter
 KDEFEND,Defend,Defendre
 KGIVEUP,Give up,Abandonner
+KPOTATOYIELDUPGRADE,Better technique,Meilleure technique
+KPOTATOYIELDUPGRADEDESC,Increases your potato yield by 100%,Augmente la récolte de patates de 100%

@@ -11,6 +11,8 @@ public class IdleNumberContainer
     
     public IdleNumber potatoTemp;
 
+    public IdleNumber furnaceBatchCount;
+
     public IdleNumber numberOfTilesUnlocked;
 
     public void Init()
@@ -21,8 +23,12 @@ public class IdleNumberContainer
 
         cookedPotatoCount = new IdleNumber();
         cookedPotatoYield = new IdleNumber();
+        cookedPotatoYield.SetValue(1);
 
         potatoTemp = new IdleNumber();
+
+        furnaceBatchCount = new IdleNumber();
+        furnaceBatchCount.SetValue(1);
 
         numberOfTilesUnlocked = new IdleNumber();
     }
