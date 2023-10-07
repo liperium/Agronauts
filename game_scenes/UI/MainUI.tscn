@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://y1unomfdmkif"]
+[gd_scene load_steps=14 format=3 uid="uid://y1unomfdmkif"]
 
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="2_hrn0e"]
 [ext_resource type="Script" path="res://UI/PotatoCountLabel.cs" id="3_4xs5e"]
@@ -12,6 +12,41 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mr71e"]
 size = Vector2(32, 64)
 
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ocv6h"]
+graph_offset = Vector2(-100, -59)
+
+[sub_resource type="Animation" id="Animation_plwxq"]
+resource_name = "MenuOpen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TabContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.189465, 0.189465),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-555, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BtnShowHideMenu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.189465, 0.189465),
+"update": 0,
+"values": [Vector2(553, 339), Vector2(-2, 339)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w5t5i"]
+_data = {
+"MenuOpen": SubResource("Animation_plwxq")
+}
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m0dlh"]
 size = Vector2(256, 256)
 
@@ -19,11 +54,15 @@ size = Vector2(256, 256)
 
 [node name="UpgradeMenu" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -727.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TabContainer" type="TabContainer" parent="UpgradeMenu"]
+layout_mode = 0
 offset_right = 553.0
 offset_bottom = 720.0
 tab_alignment = 1
@@ -50,13 +89,30 @@ size_flags_horizontal = 3
 script = ExtResource("7_f25uh")
 
 [node name="BtnShowHideMenu" type="TextureButton" parent="UpgradeMenu"]
-layout_mode = 0
-offset_left = 553.0
-offset_top = 339.0
-offset_right = 585.0
-offset_bottom = 403.0
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -553.0
+offset_top = -360.0
+offset_right = -521.0
+offset_bottom = -296.0
+grow_horizontal = 0
+grow_vertical = 2
 texture_normal = SubResource("PlaceholderTexture2D_mr71e")
 script = ExtResource("3_crgan")
+
+[node name="AnimationTree" type="AnimationTree" parent="UpgradeMenu"]
+tree_root = SubResource("AnimationNodeStateMachine_ocv6h")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UpgradeMenu"]
+libraries = {
+"": SubResource("AnimationLibrary_w5t5i")
+}
 
 [node name="SaveButton" type="Button" parent="."]
 offset_left = 1107.0
@@ -109,6 +165,7 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="cookedPotatoDisplay" type="HBoxContainer" parent="StatsBar"]
+layout_mode = 0
 offset_left = 191.482
 offset_top = 58.5
 offset_right = 328.482
@@ -138,6 +195,7 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="temperatureDisplay" type="HBoxContainer" parent="StatsBar"]
+layout_mode = 0
 offset_left = -42.8839
 offset_top = 112.5
 offset_right = 329.116
