@@ -42,6 +42,8 @@ public partial class FarmField : Node2D
 		}
 	}
 
+	
+
 	public void Expand(Pos2D pos)
 	{
 		FarmFieldMaster ffm = GetParent<FarmFieldMaster>();

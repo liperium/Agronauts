@@ -9,7 +9,7 @@ public partial class FarmFieldMaster : Node2D
 		ResourceLoader.Load<PackedScene>("res://game_scenes/farm/farm_field/farm_field.tscn");
 
     public static int TILE_SIZE = 32;
-	private const int TILE_PER_FF = 5;
+    public static int TILE_PER_FF = 5;
 	const int MAX_SIZE = 33; // HAS TO BE IMPAIR
 	public static int centerPos = (MAX_SIZE - 1) / 2;
 	public static Vector2 originFarmLand;
