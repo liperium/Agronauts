@@ -10,6 +10,7 @@ public partial class FarmField : Node2D
 	private int yCount = 0;
 	const int CELL_SIZE = 32;
 	public Vector2 positionRelative = Vector2.Zero;
+	public bool first = false;
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -20,7 +21,9 @@ public partial class FarmField : Node2D
 			if (node is FarmLand farmLand)
 			{
 				farmLand.Position = new Vector2(xCount*CELL_SIZE, yCount*CELL_SIZE);
+				if (xCount == 2 && yCount == 2 && first) FarmFieldMaster.originFarmLand = farmLand.Position;
 				farmLand.position = new Pos2D(xCount, yCount);
+				farmLand.cost = (int)farmLand.Position.DistanceTo(FarmFieldMaster.originFarmLand);
 				xCount++;
 				if (xCount > squareSize - 1)
 				{

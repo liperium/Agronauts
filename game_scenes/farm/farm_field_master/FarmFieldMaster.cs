@@ -12,19 +12,21 @@ public partial class FarmFieldMaster : Node2D
 	private const int TILE_PER_FF = 5;
 	const int MAX_SIZE = 33; // HAS TO BE IMPAIR
 	public static int centerPos = (MAX_SIZE - 1) / 2;
+	public static Vector2 originFarmLand;
     private bool[,] isTaken = new bool[MAX_SIZE,MAX_SIZE];
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		SpawnField(centerPos, centerPos);
+		SpawnField(centerPos, centerPos, true);
 	}
 
-	public void SpawnField(int x, int y)
+	public void SpawnField(int x, int y, bool first = false)
 	{
 		isTaken[x, y] = true;
 		FarmField newChild = FarmField.Instantiate() as FarmField;
 		newChild.positionRelative = new Vector2(x, y);
+		newChild.first = true;
 		newChild.Position = new Vector2((16 - x)*TILE_SIZE*TILE_PER_FF,(16 - y)*TILE_SIZE*TILE_PER_FF);
 		AddChild(newChild);
 		GameState.instance.numbers.numberOfTilesUnlocked.IncreaseValue(1);

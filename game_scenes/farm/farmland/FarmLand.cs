@@ -38,7 +38,7 @@ public partial class FarmLand : Area2D
 	private Timer growthTimer;
 	private ProgressBar progressBar;
 	private LandState currState = LandState.Wild;
-
+	public int cost = 0;
 	public LandState CurrState => currState;
 
 	// Called when the node enters the scene tree for the first time.
