@@ -34,6 +34,7 @@ public partial class FarmLand : Area2D
 		button = GetNode<TextureButton>("TextureButton");
 		button.Pressed += Clicked;
 		growthTimer = GetNode<Timer>("Timer");
+		growthTimer.OneShot = true;
 
 		//TODO link with global timer
 		growthTimer.WaitTime = 3.0;
