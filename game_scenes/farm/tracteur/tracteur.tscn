@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c6p0e44pj7nfd"]
 
-[ext_resource type="Script" path="res://game_scenes/farm/Tracteur.cs" id="1_1nndq"]
+[ext_resource type="Script" path="res://game_scenes/farm/tracteur/Tracteur.cs" id="1_1nndq"]
 [ext_resource type="Texture2D" uid="uid://fw3cwgvoyeff" path="res://game_scenes/farm/farmland/tracteur/tracteur1.png" id="2_no11t"]
-[ext_resource type="Script" path="res://game_scenes/farm/Arracheuse.cs" id="3_f0hjl"]
+[ext_resource type="Script" path="res://game_scenes/farm/tracteur/Arracheuse.cs" id="3_f0hjl"]
 [ext_resource type="Texture2D" uid="uid://bsmgax1fvj57k" path="res://game_scenes/farm/farmland/tracteur/arracheuse.png" id="4_vgkj2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttysw"]
