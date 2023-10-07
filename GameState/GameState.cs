@@ -7,7 +7,7 @@ using FileAccess = System.IO.FileAccess;
 [Serializable]
 public partial class GameState
 {
-	public const bool SAVE_ENABLED = false;
+	public const bool SAVE_ENABLED = true;
 	
 	private static GameState _instance;
 	public static GameState instance
@@ -16,7 +16,7 @@ public partial class GameState
 		{
 			if (_instance == null)
 			{
-				if (LoadGame())
+				if (SAVE_ENABLED && LoadGame())
 				{
 					return _instance;
 				}
@@ -31,8 +31,24 @@ public partial class GameState
 	private const string filePath = "Save.sav";
 	public int randomSeed = 0xBADF00D;
 
-	public IdleNumberContainer numbers = new();
-	public IdleUpgradeContainer upgrades = new();
+	public IdleNumberContainer numbers;
+	public IdleUpgradeContainer upgrades;
+
+	public void Init()
+	{
+		numbers = new IdleNumberContainer();
+		numbers.Init();
+		upgrades = new IdleUpgradeContainer();
+		upgrades.Init();
+		
+		OnLoad();
+	}
+
+	protected void OnLoad()
+	{
+		numbers.OnLoad();
+		upgrades.OnLoad();
+	}
 	
 	public void SaveToFile()
 	{
@@ -56,6 +72,8 @@ public partial class GameState
 				GameState newState;
 				newState = sr.ReadToEnd().FromJson<GameState>();
 				instance = newState;
+				
+				newState.OnLoad();
 
 				return true;
 			}
@@ -72,6 +90,7 @@ public partial class GameState
 	public static GameState NewGame()
 	{
 		GameState newInstance = new GameState();
+		newInstance.Init();
 		
 		Random random = new Random();
 		newInstance.randomSeed = random.Next();

@@ -15,9 +15,9 @@ public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier
 		cost = (long)(5 + Mathf.Pow(1.1, tier) + tier);
 	}
 
-	public override void SetAffectedNumber()
+	public override IdleNumber GetAffectedNumber()
 	{
-		affectedNumber = GameState.instance.numbers.potatoYield;
+		return GameState.instance.numbers.potatoYield;
 	}
 
 	public override void InnitInfo()
