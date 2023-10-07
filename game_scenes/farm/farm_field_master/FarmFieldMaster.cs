@@ -28,6 +28,7 @@ public partial class FarmFieldMaster : Node2D
 		newChild.positionRelative = new Vector2(x, y);
 		newChild.Position = new Vector2((16 - x)*TILE_SIZE*TILE_PER_FF,(16 - y)*TILE_SIZE*TILE_PER_FF);
 		AddChild(newChild);
+		GameState.instance.numbers.numberOfTilesUnlocked.IncreaseValue(1);
 	}
 
 	public enum Cardinality

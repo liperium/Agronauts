@@ -16,9 +16,10 @@ public partial class UpgradeFarmYieldButton : Button
     }
     public override void _Pressed()
 	{
-		potatoYieldUpgrade.Buy();
-		this.Text = string.Format(Tr("KUPFARMYIELD"), potatoYieldUpgrade.GetCost().FormattedNumber());
+		//potatoYieldUpgrade.Buy();
+		//this.Text = string.Format(Tr("KUPFARMYIELD"), potatoYieldUpgrade.GetCost().FormattedNumber());
 		//this.Text = "Upgrade Farm Yield (" + potatoYieldUpgrade.GetCost().ToString("#,#").Replace(',',' ') + ")";
+		//GameState.instance.upgrades.firstTractorUpgrade.Buy();
 	}
 
 	public void UpdateEnabled(long number)

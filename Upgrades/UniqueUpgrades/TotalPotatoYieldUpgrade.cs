@@ -23,7 +23,12 @@ public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier
 	public override void InnitInfo()
 	{
 		base.InnitInfo();
+	}
 
+	public override void OnLoad()
+	{
+		base.OnLoad();
+		unlocked = true;
 	}
 
 

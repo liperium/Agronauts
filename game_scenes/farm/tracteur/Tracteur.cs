@@ -19,6 +19,11 @@ public partial class Tracteur : CharacterBody2D
 	{
 
 	}
+
+	public void Spawn()
+	{
+		GetTree().CurrentScene.AddChild(this);
+	}
 	public override void _PhysicsProcess(double delta)
 	{
 		if (Input.IsActionPressed("tracteur_front") || Input.IsActionPressed("tracteur_back"))
