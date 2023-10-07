@@ -1,9 +1,9 @@
 using Godot;
 using System;
-
+[Serializable]
 public partial class TieredUpgrade<TModifier> : BuyableUpgrade<TModifier> where TModifier : IdleModifier , new()
 {
-	protected int tier;
+	public int tier;
 
 	public override void Buy()
 	{

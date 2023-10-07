@@ -1,13 +1,13 @@
-using Godot;
+﻿using Godot;
 
-public partial class PotatoCountLabel : Node
+public partial class CookedPotatoCountLabel : Node
 {
     private IdleNumber number;
     public override void _Ready()
     {
         base._Ready();
 
-        number = GameState.instance.numbers.potatoCount;
+        number = GameState.instance.numbers.cookedPotatoCount;
         
         number.SetOnValueChanged(ValueChanged);
         
