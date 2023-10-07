@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d01k5w5elf3mu"
-path="res://.godot/imported/terre_owned.png-cb2d0a80f5d0d32c9572e5ea10d38592.ctex"
+uid="uid://cgqut3ecfcknl"
+path="res://.godot/imported/etoile4.png-dea695143b5d59225f7ee53b8ff9aefb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scenes/farm/farmland/tiles/terre_owned.png"
-dest_files=["res://.godot/imported/terre_owned.png-cb2d0a80f5d0d32c9572e5ea10d38592.ctex"]
+source_file="res://game_scenes/farm/farmland/tiles/etoile4.png"
+dest_files=["res://.godot/imported/etoile4.png-dea695143b5d59225f7ee53b8ff9aefb.ctex"]
 
 [params]
 

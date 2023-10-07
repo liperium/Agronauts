@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drlhns1w1ufxa"
-path="res://.godot/imported/Terre_Prêt2.png-c5565cdc46fc60d9cb714f25aaa814b4.ctex"
+uid="uid://catx6tggu7btv"
+path="res://.godot/imported/etoile1.png-6beefc85f9883aecdb43a6af1452eed7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scenes/farm/farmland/tiles/Terre_Prêt2.png"
-dest_files=["res://.godot/imported/Terre_Prêt2.png-c5565cdc46fc60d9cb714f25aaa814b4.ctex"]
+source_file="res://game_scenes/farm/farmland/tiles/etoile1.png"
+dest_files=["res://.godot/imported/etoile1.png-6beefc85f9883aecdb43a6af1452eed7.ctex"]
 
 [params]
 
