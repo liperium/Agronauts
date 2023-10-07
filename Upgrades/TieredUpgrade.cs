@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class TieredUpgrade<TModifier> : BuyableUpgrade<TModifier> where TModifier : IdleModifier 
+public partial class TieredUpgrade<TModifier> : BuyableUpgrade<TModifier> where TModifier : IdleModifier , new()
 {
 	protected int tier;
 

@@ -7,18 +7,18 @@ public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier
 	{
 		if (CanBuy())
 		{
-			//Pay cost
 			modifier.multiplier += 0.05f;
+			tier++;
 		}
 	}
 
 	public override bool CanBuy()
 	{
-		return base.CanBuy();
+		return true;
 	}
 
 	public long GetCost()
 	{
-		return (long)(5 + Mathf.Pow(1.1,tier));
+		return (long)(5 + Mathf.Pow(1.1,tier) + tier);
 	}
 }
