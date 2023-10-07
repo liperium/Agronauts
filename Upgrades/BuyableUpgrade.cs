@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+[Serializable]
 public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyable where TModifier : IdleModifier, new()
 {
 	protected long cost;

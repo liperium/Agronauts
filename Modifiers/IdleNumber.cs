@@ -1,7 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-
+[Serializable]
 public partial class IdleNumber
 {
 	public long value;

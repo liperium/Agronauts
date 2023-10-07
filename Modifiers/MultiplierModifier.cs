@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+[Serializable]
 public partial class MultiplierModifier : IdleModifier
 {
     public float multiplier = 1.0f;

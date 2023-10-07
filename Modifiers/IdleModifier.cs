@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+[Serializable]
 public partial class IdleModifier
 {
 	protected IdleNumber owner;

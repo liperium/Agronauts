@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://y1unomfdmkif"]
+[gd_scene load_steps=6 format=3 uid="uid://y1unomfdmkif"]
 
 [ext_resource type="Script" path="res://game_scenes/farm/UpgradeFarmYieldButton.cs" id="1_36plo"]
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="2_hrn0e"]
 [ext_resource type="Script" path="res://UI/PotatoCountLabel.cs" id="3_4xs5e"]
 [ext_resource type="Script" path="res://UI/CookedPotatoCountLabel.cs" id="4_ta1m5"]
+[ext_resource type="Script" path="res://UI/SaveButton.cs" id="5_i545w"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -72,3 +73,11 @@ offset_bottom = 237.0
 layout_mode = 2
 text = "KUPFARMYIELD"
 script = ExtResource("1_36plo")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 13.0
+offset_top = 610.0
+offset_right = 289.0
+offset_bottom = 713.0
+text = "Save"
+script = ExtResource("5_i545w")
