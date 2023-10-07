@@ -81,3 +81,7 @@ tracteur_back={
 [internationalization]
 
 locale/translations=PackedStringArray("res://Localization/translation.en.translation", "res://Localization/translation.fr.translation")
+
+[rendering]
+
+anti_aliasing/quality/use_taa=true
