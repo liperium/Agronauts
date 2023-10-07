@@ -4,8 +4,8 @@ using System.Data;
 
 public partial class Tracteur : CharacterBody2D
 {
-	private float speed = 140.0f;
-	private float rotationSpeed = 4.0f;
+	private float speed = 1000f;
+
 	private Vector2 velocity = Vector2.Zero;
 
 	private float rotationForce = 0.0f;
@@ -18,6 +18,8 @@ public partial class Tracteur : CharacterBody2D
     private int directionV = 1;
     private int row = 0;
     private AutoState state = AutoState.MOVE_VERTICAL;
+
+    public float RotationSpeed { get => speed / 30f; }
 
     public enum AutoState
     {
@@ -53,16 +55,13 @@ public partial class Tracteur : CharacterBody2D
     public void AutoProcess(double delta)
     {
         if (step == -1) step = Mathf.Abs((bottomRightBound.X - topLeftBound.X)/FarmFieldMaster.TILE_PER_FF);
-
         switch (state)
         {
             case AutoState.SPIN_CHANGE_ROW:
-                rotationForce =  directionV*directionH * rotationSpeed * (float)delta;
+                rotationForce =  directionV*directionH * RotationSpeed * (float)delta;
                 Rotate(rotationForce);
-                if(Mathf.Abs((Mathf.Abs(RotationDegrees) % 180) - 90) < 1f )
+                if(Mathf.Abs((Mathf.Abs(RotationDegrees) % 180) - 90) < 1f * speed / 40f)
                 {
-                   // RotationDegrees = 90 * directionV;
-                    
                     row += directionH;
                     state = AutoState.CHANGE_ROW;
                 }
@@ -88,10 +87,10 @@ public partial class Tracteur : CharacterBody2D
                 }
                 break;
             case AutoState.SPIN_BACK_VERTICAL:
-                rotationForce = directionV * directionH * rotationSpeed * (float)delta;
+                rotationForce = directionV * directionH * RotationSpeed * (float)delta;
                 Rotate(rotationForce);
-
-                if (Mathf.Abs((Mathf.Abs(RotationDegrees) % 180)) < 1f)
+                
+                if (Mathf.Abs((Mathf.Abs(RotationDegrees) % 180)) < 1f * speed / 40f)
                 {
                     state = AutoState.MOVE_VERTICAL;
                 }
@@ -126,7 +125,7 @@ public partial class Tracteur : CharacterBody2D
         {
             float front_back = Input.GetActionStrength("tracteur_front") - Input.GetActionStrength("tracteur_back");
             velocity = front_back * speed * Transform.Y * (float)delta;
-            rotationForce = (Input.GetActionStrength("tracteur_right") - Input.GetActionStrength("tracteur_left")) * rotationSpeed * (float)delta;
+            rotationForce = (Input.GetActionStrength("tracteur_right") - Input.GetActionStrength("tracteur_left")) * RotationSpeed * (float)delta;
             if (front_back > 0)
             {
                 Rotate(rotationForce);
