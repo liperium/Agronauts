@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://5f2d2u2r7mwr"]
+[gd_scene load_steps=5 format=3 uid="uid://5f2d2u2r7mwr"]
 
-[ext_resource type="Script" path="res://game_scenes/farm/UpgradeFarmYieldButton.cs" id="1_32gmq"]
 [ext_resource type="PackedScene" uid="uid://uiuqf4qonh2y" path="res://game_scenes/farm/farmland/farm_land.tscn" id="1_g2vjc"]
 [ext_resource type="Script" path="res://game_scenes/farm/PlayerCamera.cs" id="1_ou2to"]
-[ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="2_tttdh"]
-[ext_resource type="PackedScene" path="res://game_scenes/farm/tracteur.tscn" id="4_mymk5"]
+[ext_resource type="PackedScene" uid="uid://y1unomfdmkif" path="res://game_scenes/UI/MainUI.tscn" id="2_grc08"]
+[ext_resource type="PackedScene" uid="uid://c6p0e44pj7nfd" path="res://game_scenes/farm/tracteur.tscn" id="4_mymk5"]
 
 [node name="farm" type="Node2D"]
 
@@ -12,43 +11,7 @@
 offset = Vector2(640, 360)
 script = ExtResource("1_ou2to")
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Button" type="Button" parent="UI"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -143.5
-offset_top = -50.0
-offset_right = 143.5
-grow_horizontal = 2
-grow_vertical = 0
-text = "Upgrade Farm Yield"
-script = ExtResource("1_32gmq")
-
-[node name="Label" type="Label" parent="UI"]
-offset_right = 116.0
-offset_bottom = 26.0
-text = "This is some UI"
-
-[node name="Label2" type="Label" parent="UI"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -99.5
-offset_top = -39.0
-offset_right = 99.5
-offset_bottom = 39.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "0
-"
-script = ExtResource("2_tttdh")
-lerpSpeed = 0.5
+[node name="UI" parent="." instance=ExtResource("2_grc08")]
 
 [node name="FarmField" type="Node2D" parent="."]
 position = Vector2(444, 247)
