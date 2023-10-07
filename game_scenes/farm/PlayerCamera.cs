@@ -52,7 +52,6 @@ public partial class PlayerCamera : Camera2D
 		{
 			cameraTransformMouse = false;
 		}
-
 	}
 
 
