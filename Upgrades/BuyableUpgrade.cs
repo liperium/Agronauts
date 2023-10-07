@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class BuyableUpgrade : IBuyable
+public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyable where TModifier : IdleModifier
 {
 	protected bool unlocked;
 
