@@ -5,12 +5,24 @@ public partial class FarmLand : Area2D
 {
 	public enum LandState
 	{
+		Wild,
 		Base,
+		Laboure,
 		Planted,
 		Ready
 	}
 
+	public Pos2D position = new Pos2D(0,0);
+
+	public static CompressedTexture2D WildTexture =
+		ResourceLoader.Load<CompressedTexture2D>(
+			"res://game_scenes/farm/farmland/tiles/terre_wild.png");
+
 	public static CompressedTexture2D BaseTexture =
+		ResourceLoader.Load<CompressedTexture2D>(
+			"res://game_scenes/farm/farmland/tiles/terre_owned.png");
+
+	public static CompressedTexture2D LaboureTexture =
 		ResourceLoader.Load<CompressedTexture2D>(
 			"res://game_scenes/farm/farmland/tiles/terre_laboure.png");
 
@@ -24,7 +36,7 @@ public partial class FarmLand : Area2D
 
 	private TextureButton button;
 	private Timer growthTimer;
-	private LandState currState = LandState.Base;
+	private LandState currState = LandState.Wild;
 
 	public LandState CurrState => currState;
 
@@ -33,6 +45,7 @@ public partial class FarmLand : Area2D
 	{
 		button = GetNode<TextureButton>("TextureButton");
 		button.Pressed += Clicked;
+		button.TextureNormal = WildTexture;
 		growthTimer = GetNode<Timer>("Timer");
 		growthTimer.OneShot = true;
 
@@ -46,7 +59,14 @@ public partial class FarmLand : Area2D
 		GD.Print("State "+currState);
 		switch (currState)
 		{
+			case LandState.Wild:
+				Bought();
+				Laboure();
+				break;
 			case LandState.Base:
+				Laboure();//TODO What to do with base?
+				break;
+			case LandState.Laboure:
 				Plant();
 				break;
 			case LandState.Planted: break;
@@ -55,7 +75,19 @@ public partial class FarmLand : Area2D
 				break;
 		}
 	}
+	public void Bought()
+	{
+		button.TextureNormal = BaseTexture;
+		currState = LandState.Base;
 
+		// Check if it can expand
+		GetParent<FarmField>().Expand(position);
+	}
+	public void Laboure()
+	{
+		button.TextureNormal = LaboureTexture;
+		currState = LandState.Laboure;
+	}
 	public void Plant()
 	{
 		growthTimer.Start();
@@ -64,7 +96,7 @@ public partial class FarmLand : Area2D
 	}
 	public void Harvest()
 	{
-		button.TextureNormal = BaseTexture;
+		button.TextureNormal = LaboureTexture;
 		currState = LandState.Base;
 	}
 

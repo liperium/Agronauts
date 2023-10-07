@@ -1,11 +1,82 @@
-[gd_scene load_steps=2 format=3 uid="uid://pwmr1ben0d4o"]
+[gd_scene load_steps=3 format=3 uid="uid://pwmr1ben0d4o"]
 
+[ext_resource type="Script" path="res://game_scenes/farm/farm_field/FarmField.cs" id="1_5ayoe"]
 [ext_resource type="PackedScene" uid="uid://uiuqf4qonh2y" path="res://game_scenes/farm/farmland/farm_land.tscn" id="1_ys5h7"]
 
 [node name="FarmField" type="Node2D"]
-position = Vector2(444, 247)
+position = Vector2(-64, -64)
+script = ExtResource("1_5ayoe")
+
+[node name="FarmLand" parent="." instance=ExtResource("1_ys5h7")]
 
 [node name="FarmLand2" parent="." instance=ExtResource("1_ys5h7")]
 position = Vector2(32, 0)
 
-[node name="FarmLand" parent="." instance=ExtResource("1_ys5h7")]
+[node name="FarmLand3" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(64, 0)
+
+[node name="FarmLand4" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(96, 0)
+
+[node name="FarmLand5" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(128, 0)
+
+[node name="FarmLand6" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(0, 32)
+
+[node name="FarmLand7" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(32, 32)
+
+[node name="FarmLand8" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(64, 32)
+
+[node name="FarmLand9" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(96, 32)
+
+[node name="FarmLand10" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(128, 32)
+
+[node name="FarmLand11" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(32, 0)
+
+[node name="FarmLand12" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(32, 0)
+
+[node name="FarmLand13" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(32, 0)
+
+[node name="FarmLand14" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(32, 0)
+
+[node name="FarmLand15" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(32, 0)
+
+[node name="FarmLand16" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(32, 0)
+
+[node name="FarmLand17" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(32, 0)
+
+[node name="FarmLand18" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(32, 0)
+
+[node name="FarmLand19" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(32, 0)
+
+[node name="FarmLand20" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(32, 0)
+
+[node name="FarmLand21" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(32, 0)
+
+[node name="FarmLand22" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(32, 0)
+
+[node name="FarmLand23" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(32, 0)
+
+[node name="FarmLand24" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(32, 0)
+
+[node name="FarmLand25" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(32, 0)
