@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://uiuqf4qonh2y" path="res://game_scenes/farm/farmland/farm_land.tscn" id="1_g2vjc"]
 [ext_resource type="Script" path="res://game_scenes/farm/PlayerCamera.cs" id="1_ou2to"]
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="2_tttdh"]
-[ext_resource type="PackedScene" uid="uid://c6p0e44pj7nfd" path="res://game_scenes/farm/tracteur.tscn" id="4_mymk5"]
+[ext_resource type="PackedScene" path="res://game_scenes/farm/tracteur.tscn" id="4_mymk5"]
 
 [node name="farm" type="Node2D"]
 

@@ -7,24 +7,27 @@ public partial class IdleNumber
 	public long value;
 	public float multiplier = 1.0f;
 
-	public List<IdleModifier> modifiers;
+	public List<IdleModifier> modifiers = new List<IdleModifier>();
 
 	private Action<long> OnValueChanged;
 
 	public void AddModifier(IdleModifier modifier)
 	{
-
+		modifiers.Add(modifier);
 	}
 
 	public void RemoveModifier(IdleModifier modifier)
 	{
-
+		modifiers.Remove(modifier);
 	}
 
 	public void UpdateValue()
 	{
-		//TODO code d'update ici
-		
+		multiplier = 1.0f;
+		foreach(IdleModifier im in modifiers)
+		{
+			im.Apply();
+		}
 		if (OnValueChanged != null) OnValueChanged(value);
 	}
 
