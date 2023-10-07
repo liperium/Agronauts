@@ -1,45 +1,74 @@
-[gd_scene load_steps=4 format=3 uid="uid://y1unomfdmkif"]
+[gd_scene load_steps=5 format=3 uid="uid://y1unomfdmkif"]
 
 [ext_resource type="Script" path="res://game_scenes/farm/UpgradeFarmYieldButton.cs" id="1_36plo"]
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="2_hrn0e"]
 [ext_resource type="Script" path="res://UI/PotatoCountLabel.cs" id="3_4xs5e"]
+[ext_resource type="Script" path="res://UI/CookedPotatoCountLabel.cs" id="4_ta1m5"]
 
 [node name="UI" type="CanvasLayer"]
 
-[node name="Button" type="Button" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -143.5
-offset_top = -50.0
-offset_right = 143.5
-grow_horizontal = 2
-grow_vertical = 0
-text = "Upgrade Farm Yield"
-script = ExtResource("1_36plo")
+[node name="potatoesDisplay" type="HBoxContainer" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -344.0
+offset_right = 259.0
+offset_bottom = -299.0
+grow_vertical = 2
+alignment = 1
 
-[node name="Label" type="Label" parent="."]
-offset_right = 116.0
-offset_bottom = 26.0
-text = "This is some UI"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 405.0
-offset_top = 241.0
-offset_right = 808.0
-offset_bottom = 332.0
-text = "jai 34 patap
-"
+[node name="potatoesNb" type="RichTextLabel" parent="potatoesDisplay"]
+layout_mode = 2
+text = "dsefsf"
+fit_content = true
+autowrap_mode = 0
 script = ExtResource("2_hrn0e")
 
-[node name="Node2D" type="Node2D" parent="RichTextLabel"]
+[node name="potatoCountLabel" type="Node2D" parent="potatoesDisplay/potatoesNb"]
+position = Vector2(-555, 0)
 script = ExtResource("3_4xs5e")
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 106.0
-offset_top = 356.0
-offset_right = 146.0
-offset_bottom = 398.0
-text = "KHELLO"
+[node name="kpotatoes" type="Label" parent="potatoesDisplay"]
+layout_mode = 2
+text = "KPOTATOES"
+
+[node name="potatoesDisplay2" type="HBoxContainer" parent="."]
+offset_left = 13.0
+offset_top = 78.0
+offset_right = 264.0
+offset_bottom = 123.0
+alignment = 1
+
+[node name="cookedPotatoesNb" type="RichTextLabel" parent="potatoesDisplay2"]
+layout_mode = 2
+text = "dsefsf"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("2_hrn0e")
+
+[node name="cookedPotatoCountLabel" type="Node2D" parent="potatoesDisplay2/cookedPotatoesNb"]
+position = Vector2(-555, 0)
+script = ExtResource("4_ta1m5")
+
+[node name="kpotatoes" type="Label" parent="potatoesDisplay2"]
+layout_mode = 2
+text = "KCOOKEDPOTATOES"
+
+[node name="LblUpgrades" type="RichTextLabel" parent="."]
+offset_left = 13.0
+offset_top = 133.0
+offset_right = 238.0
+offset_bottom = 187.0
+text = "KUPGRADES"
+
+[node name="UpgradesList" type="VBoxContainer" parent="."]
+offset_left = 2.0
+offset_top = 187.0
+offset_right = 289.0
+offset_bottom = 237.0
+
+[node name="Button" type="Button" parent="UpgradesList"]
+layout_mode = 2
+text = "KUPFARMYIELD"
+script = ExtResource("1_36plo")
