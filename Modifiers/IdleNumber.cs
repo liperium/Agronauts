@@ -9,6 +9,8 @@ public partial class IdleNumber
 
 	List<IdleModifier> modifiers;
 
+	public Action<long> OnValueChanged;
+
 	public void AddModifier(IdleModifier modifier)
 	{
 
@@ -21,7 +23,9 @@ public partial class IdleNumber
 
 	public void UpdateValue()
 	{
-
+		//TODO code d'update ici
+		
+		OnValueChanged(value);
 	}
 
 	public long GetValue()
