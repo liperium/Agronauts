@@ -48,6 +48,8 @@ public partial class GameState
 	{
 		numbers.OnLoad();
 		upgrades.OnLoad();
+		
+		if (GameState.SAVE_ENABLED == false) GameState.instance.numbers.potatoCount.SetValue(100);
 	}
 	
 	public void SaveToFile()
