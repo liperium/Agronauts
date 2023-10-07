@@ -3,7 +3,7 @@ using System;
 
 public partial class TieredUpgrade : BuyableUpgrade
 {
-	int tier;
+	protected int tier;
 
 	public override void Buy()
 	{
