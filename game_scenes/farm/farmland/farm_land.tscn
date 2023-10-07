@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgui53jtc0qch"]
+[gd_scene load_steps=5 format=3 uid="uid://uiuqf4qonh2y"]
 
 [ext_resource type="Script" path="res://game_scenes/farm/farmland/FarmLand.cs" id="1_b6x40"]
 [ext_resource type="Texture2D" uid="uid://dm5a3no2spvvm" path="res://game_scenes/farm/farmland/tiles/terre_laboure.png" id="2_sbsca"]

@@ -7,7 +7,12 @@ public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
     public override void OnBuy()
     {
         Tracteur tractor = ResourceLoader.Load<PackedScene>("res://game_scenes/farm/tracteur/tracteur.tscn").Instantiate() as Tracteur;
-        ObjectSpawner.Spawn(tractor, new Vector2(FarmFieldMaster.centerPos,FarmFieldMaster.centerPos)*FarmFieldMaster.TILE_SIZE);
+        ObjectSpawner.Spawn(tractor, new Vector2(640,360));
+        tractor.automatic = true;
+        tractor.topLeftBound = tractor.Position;
+        tractor.bottomRightBound = new Vector2(tractor.Position.X + FarmFieldMaster.TILE_PER_FF * FarmFieldMaster.TILE_SIZE, tractor.Position.Y + FarmFieldMaster.TILE_PER_FF * FarmFieldMaster.TILE_SIZE);
+        GD.Print(tractor.topLeftBound);
+        GD.Print(tractor.bottomRightBound);
         base.OnBuy();
     }
 

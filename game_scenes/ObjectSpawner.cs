@@ -18,6 +18,6 @@ public partial class ObjectSpawner : Node2D
 	public static void Spawn(Node2D node, Vector2 position)
 	{
 		currSpawner.GetTree().CurrentScene.AddChild(node);
-		node.Position = position;	
+		node.GlobalPosition = position;	
 	}
 }

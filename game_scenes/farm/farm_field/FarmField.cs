@@ -32,7 +32,10 @@ public partial class FarmField : Node2D
 				}
 			}
 		}
+		GD.Print(GlobalPosition);
 	}
+
+	
 
 	public void Expand(Pos2D pos)
 	{
