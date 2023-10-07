@@ -3,7 +3,6 @@ using System;
 
 public partial class FarmLand : Node2D
 {
-	//TODO Input
 	enum LandState
 	{
 		Base,
@@ -11,25 +10,31 @@ public partial class FarmLand : Node2D
 		Ready
 	}
 
-	private CompressedTexture2D baseTexture =
+	public static CompressedTexture2D BaseTexture =
 		ResourceLoader.Load<CompressedTexture2D>(
-			"res://game_scenes/farm/farmland/tiles/Terre_Labouree.png");
+			"res://game_scenes/farm/farmland/tiles/terre_laboure.png");
 
-	private CompressedTexture2D plantedTexture =
+	public static CompressedTexture2D PlantedTexture =
 		ResourceLoader.Load<CompressedTexture2D>(
-			"res://game_scenes/farm/farmland/tiles/Terre_Plante1.png");
+			"res://game_scenes/farm/farmland/tiles/terre_plante1.png");
 
-	private CompressedTexture2D readyTexture =
+	public static CompressedTexture2D ReadyTexture =
 		ResourceLoader.Load<CompressedTexture2D>(
-			"res://game_scenes/farm/farmland/tiles/Terre_Pret1.png");
+			"res://game_scenes/farm/farmland/tiles/terre_pret1.png");
 
 	private TextureButton button;
+	private Timer growthTimer;
 	private LandState currState = LandState.Base;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		button = GetNode<TextureButton>("TextureButton");
 		button.Pressed += Clicked;
+		growthTimer = GetNode<Timer>("Timer");
+
+		//TODO link with global timer
+		growthTimer.WaitTime = 3.0;
+		growthTimer.Timeout += Grown;
 	}
 
 	public void Clicked()
@@ -49,18 +54,19 @@ public partial class FarmLand : Node2D
 
 	public void Plant()
 	{
-		button.TextureNormal = plantedTexture;
+		growthTimer.Start();
+		button.TextureNormal = PlantedTexture;
 		currState = LandState.Planted;
 	}
 	public void Harvest()
 	{
-		button.TextureNormal = baseTexture;
+		button.TextureNormal = BaseTexture;
 		currState = LandState.Base;
 	}
 
 	public void Grown()
 	{
-		button.TextureNormal = readyTexture;
+		button.TextureNormal = ReadyTexture;
 		currState = LandState.Ready;
 	}
 }

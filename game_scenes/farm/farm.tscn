@@ -1,16 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://5f2d2u2r7mwr"]
+[gd_scene load_steps=3 format=3 uid="uid://5f2d2u2r7mwr"]
 
 [ext_resource type="PackedScene" uid="uid://uiuqf4qonh2y" path="res://game_scenes/farm/farmland/farm_land.tscn" id="1_g2vjc"]
+[ext_resource type="Script" path="res://game_scenes/farm/PlayerCamera.cs" id="1_ou2to"]
 
 [node name="farm" type="Node2D"]
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 offset = Vector2(640, 360)
+position_smoothing_enabled = true
+script = ExtResource("1_ou2to")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="PlayerCamera"]
+unique_name_in_owner = true
 follow_viewport_enabled = true
 
-[node name="Label" type="Label" parent="UI"]
+[node name="Label" type="Label" parent="PlayerCamera/UI"]
 offset_right = 116.0
 offset_bottom = 26.0
 text = "This is some UI"
