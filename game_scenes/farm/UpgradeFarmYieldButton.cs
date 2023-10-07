@@ -10,10 +10,18 @@ public partial class UpgradeFarmYieldButton : Button
 	{
         potatoYieldUpgrade = GameState.instance.upgrades.totalPotatoYieldUpgrade;
 		this.Text = "Upgrade Farm Yield (" + potatoYieldUpgrade.GetCost() + ")";
-	}
-	public override void _Pressed()
+		GameState.instance.numbers.potatoCount.OnValueChanged = UpdateEnabled;
+        GameState.instance.numbers.potatoCount.SetValue(100);
+
+    }
+    public override void _Pressed()
 	{
 		potatoYieldUpgrade.Buy();
         this.Text = "Upgrade Farm Yield (" + potatoYieldUpgrade.GetCost().ToString("#,#").Replace(',',' ') + ")";
+	}
+
+	public void UpdateEnabled(long number)
+	{
+		this.Disabled = !potatoYieldUpgrade.CanBuy();
 	}
 }

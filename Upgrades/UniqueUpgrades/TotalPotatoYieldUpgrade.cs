@@ -5,7 +5,9 @@ public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier
 {
 	public override void Buy()
 	{
-		if (CanBuy())
+		
+
+        if (CanBuy())
 		{
 			modifier.multiplier += 0.05f;
 			tier++;
@@ -14,7 +16,8 @@ public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier
 
 	public override bool CanBuy()
 	{
-		return true;
+		GD.Print(GameState.instance.numbers.potatoCount.GetValue());
+		return GameState.instance.numbers.potatoCount.GetValue() >= GetCost();
 	}
 
 	public long GetCost()
