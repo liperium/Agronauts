@@ -29,8 +29,8 @@ public partial class GameState
 	private const string filePath = "Save.sav";
 	public int randomSeed = 0xBADF00D;
 
-	public IdleNumberContainer numbers;
-	public IdleUpgradeContainer upgrades;
+	public IdleNumberContainer numbers = new();
+	public IdleUpgradeContainer upgrades = new();
 	
 	public void SaveToFile()
 	{
