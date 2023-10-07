@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "WJ-A23-Godot": {
+      "commandName": "Project"
+    },
+    "Profile 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\ProgramData\\chocolatey\\bin\\Godot_v4.1.1-stable_mono_win64_console.exe",
+      "workingDirectory": ".",
+      "nativeDebugging": true
+    }
+  }
+}

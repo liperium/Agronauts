@@ -14,4 +14,11 @@ public partial class TieredUpgrade<TModifier> : BuyableUpgrade<TModifier> where 
 	{
 		return base.CanBuy();
 	}
+
+	public override void OnBuy()
+	{
+		base.OnBuy();
+        tier++;
+        if (tier == 1) Apply();
+    }
 }
