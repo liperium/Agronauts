@@ -37,11 +37,17 @@ public partial class LerpValue : Label
 
         if (shouldUpdate)
         {
+            int direction = Math.Sign(displayDelta);
+            
             long toAdd = (long)(displayDelta * delta * lerpSpeed);
-            toAdd = Math.Max(1, toAdd);
+            if (toAdd == 0) toAdd = direction;
             
             displayValue += toAdd;
-            displayValue = Math.Min(displayValue, targetValue);
+
+            if (Math.Sign(targetValue - displayValue) * direction == -1)
+            {
+                displayValue = targetValue;
+            }
 
             shouldUpdate = displayValue != targetValue;
 
