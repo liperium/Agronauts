@@ -52,6 +52,7 @@ grow_vertical = 2
 scale = Vector2(0.125, 0.125)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+action_mode = 0
 texture_normal = ExtResource("2_sbsca")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

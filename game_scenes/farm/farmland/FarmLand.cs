@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Threading;
+using Timer = Godot.Timer;
 
 public partial class FarmLand : Area2D
 {
@@ -132,17 +134,17 @@ public partial class FarmLand : Area2D
 	}
 	public void Plant()
 	{
-		growthTimer.Start();
-		progressBar.Visible = true;
 		button.TextureNormal = PlantedTexture;
 		currState = LandState.Planted;
+		growthTimer.Start();
+		progressBar.Visible = true;
 	}
 	public void Harvest()
 	{
 		button.TextureNormal = LaboureTexture;
-		currState = LandState.Base;
-		
-		//give potats
+		currState = LandState.Laboure;
+		progressBar.Visible = false;
+
 		GameState.instance.numbers.potatoCount.IncreaseValue(GameState.instance.numbers.potatoYield.GetValue());
 	}
 
