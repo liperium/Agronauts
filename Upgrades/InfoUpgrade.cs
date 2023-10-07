@@ -22,7 +22,7 @@ public partial class InfoUpgrade
 		this.description = description;
 	}
 
-    public string SetDescription()
+    public string GetDescription()
     {
         return this.description;
     }
@@ -32,7 +32,7 @@ public partial class InfoUpgrade
 		this.imagePath = imagePath;
 	}
 
-    public string SetImagePath()
+    public string GetImagePath()
     {
         return this.imagePath;
     }
