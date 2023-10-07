@@ -17,6 +17,7 @@ public class IdleNumberContainer
     {
         potatoCount = new IdleNumber();
         potatoYield = new IdleNumber();
+        potatoYield.SetValue(1);
 
         cookedPotatoCount = new IdleNumber();
         cookedPotatoYield = new IdleNumber();

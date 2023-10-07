@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://y1unomfdmkif"]
+[gd_scene load_steps=24 format=3 uid="uid://y1unomfdmkif"]
 
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="2_hrn0e"]
 [ext_resource type="Script" path="res://UI/PotatoCountLabel.cs" id="3_4xs5e"]
 [ext_resource type="Script" path="res://game_scenes/UI/BtnShowHideMenu.cs" id="3_crgan"]
+[ext_resource type="PackedScene" uid="uid://dc4wna03ta38b" path="res://game_scenes/four/four.tscn" id="3_tw2g8"]
 [ext_resource type="Script" path="res://UI/CookedPotatoCountLabel.cs" id="4_ta1m5"]
 [ext_resource type="Script" path="res://UI/SaveButton.cs" id="5_i545w"]
 [ext_resource type="PackedScene" uid="uid://ehn8ld0iouai" path="res://UI/Base_Upgrade_Btn.tscn" id="6_1fuc1"]
@@ -49,33 +50,6 @@ states/Start/position = Vector2(334, 84)
 transitions = ["MenuOpen", "MenuClose", SubResource("AnimationNodeStateMachineTransition_6ttsg"), "MenuClose", "MenuOpen", SubResource("AnimationNodeStateMachineTransition_5x8y7"), "Start", "MenuIdle", SubResource("AnimationNodeStateMachineTransition_1i7ou"), "MenuIdle", "MenuOpen", SubResource("AnimationNodeStateMachineTransition_palwj")]
 graph_offset = Vector2(46, -35)
 
-[sub_resource type="Animation" id="Animation_plwxq"]
-resource_name = "MenuOpen"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("TabContainer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.189465, 0.189465),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-555, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.189465, 0.189465),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-555, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_apb47"]
 resource_name = "MenuClose"
 tracks/0/type = "value"
@@ -106,6 +80,33 @@ tracks/0/keys = {
 "values": [Vector2(-555, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_plwxq"]
+resource_name = "MenuOpen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("TabContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.189465, 0.189465),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-555, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.189465, 0.189465),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-555, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w5t5i"]
 _data = {
 "MenuClose": SubResource("Animation_apb47"),
@@ -122,7 +123,8 @@ size = Vector2(256, 256)
 layout_mode = 3
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 553.0
+offset_left = -555.0
+offset_right = -2.0
 grow_vertical = 2
 
 [node name="TabContainer" type="TabContainer" parent="UpgradeMenu"]
@@ -132,6 +134,7 @@ offset_bottom = 720.0
 tab_alignment = 1
 
 [node name="FarmUpgrades" type="Control" parent="UpgradeMenu/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu/TabContainer/FarmUpgrades"]
@@ -151,6 +154,26 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("7_f25uh")
+
+[node name="FourTab" type="Control" parent="UpgradeMenu/TabContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu/TabContainer/FourTab"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Four" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("3_tw2g8")]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="BtnShowHideMenu" type="TextureButton" parent="UpgradeMenu" node_paths=PackedStringArray("animTree")]
 layout_mode = 1

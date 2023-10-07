@@ -66,4 +66,9 @@ public partial class IdleNumber
 			OnValueChanged += action;
 		}
 	}
+
+    public void ResetOnValueChanged(Action<long> action)
+    {
+	    OnValueChanged -= action;
+    }
 }

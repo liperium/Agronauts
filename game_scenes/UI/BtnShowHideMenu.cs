@@ -8,11 +8,14 @@ public partial class BtnShowHideMenu : TextureButton
     public override void _Ready()
     {
         base._Ready();
-        
-        animTree.AnimationFinished += name =>
+
+        if (GameState.instance.numbers.potatoCount.GetValue() == 0)
         {
-            Disabled = false;
-        };
+            Disabled = true;
+            Visible = false;   
+        }
+
+        GameState.instance.numbers.potatoCount.SetOnValueChanged(OnGetPotato);
     }
 
     public override void _Pressed()
@@ -25,8 +28,16 @@ public partial class BtnShowHideMenu : TextureButton
         
         animTree.Set("parameters/conditions/open", opened);
         animTree.Set("parameters/conditions/close", !opened);
-        
-        //this.Disabled = true;
+    }
 
+    private void OnGetPotato(long newValue)
+    {
+        if (newValue > 0)
+        {
+            Visible = true;
+            Disabled = false;
+            
+            GameState.instance.numbers.potatoCount.ResetOnValueChanged(OnGetPotato);
+        }
     }
 }
