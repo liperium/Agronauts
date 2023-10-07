@@ -1,20 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://5f2d2u2r7mwr"]
+[gd_scene load_steps=5 format=3 uid="uid://5f2d2u2r7mwr"]
 
 [ext_resource type="PackedScene" uid="uid://uiuqf4qonh2y" path="res://game_scenes/farm/farmland/farm_land.tscn" id="1_g2vjc"]
 [ext_resource type="Script" path="res://game_scenes/farm/PlayerCamera.cs" id="1_ou2to"]
+[ext_resource type="Script" path="res://game_scenes/farm/Arracheuse.cs" id="3_kdm46"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ssg0x"]
 
 [node name="farm" type="Node2D"]
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 offset = Vector2(640, 360)
-position_smoothing_enabled = true
+position_smoothing_speed = 20.0
 script = ExtResource("1_ou2to")
 
-[node name="UI" type="CanvasLayer" parent="PlayerCamera"]
+[node name="UI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-follow_viewport_enabled = true
 
-[node name="Label" type="Label" parent="PlayerCamera/UI"]
+[node name="Label" type="Label" parent="UI"]
 offset_right = 116.0
 offset_bottom = 26.0
 text = "This is some UI"
@@ -26,3 +28,23 @@ position = Vector2(444, 247)
 position = Vector2(32, 0)
 
 [node name="FarmLand" parent="FarmField" instance=ExtResource("1_g2vjc")]
+
+[node name="Tracteur" type="Node2D" parent="."]
+position = Vector2(388, 245)
+rotation = 1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="Tracteur"]
+
+[node name="Area2D" type="Area2D" parent="Tracteur"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tracteur/Area2D"]
+shape = SubResource("CapsuleShape2D_ssg0x")
+
+[node name="Arracheuse" type="Area2D" parent="Tracteur"]
+position = Vector2(0, 27)
+script = ExtResource("3_kdm46")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tracteur/Arracheuse"]
+shape = SubResource("CapsuleShape2D_ssg0x")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tracteur/Arracheuse"]

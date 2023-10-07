@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public partial class FarmLand : Node2D
+public partial class FarmLand : Area2D
 {
-	enum LandState
+	public enum LandState
 	{
 		Base,
 		Planted,
@@ -25,6 +25,9 @@ public partial class FarmLand : Node2D
 	private TextureButton button;
 	private Timer growthTimer;
 	private LandState currState = LandState.Base;
+
+	public LandState CurrState => currState;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
