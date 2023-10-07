@@ -28,6 +28,11 @@ public partial class IdleUpgrade <TModifier> where TModifier : IdleModifier, new
 		return GameState.instance.numbers.potatoCount;
 	}
 
+	public InfoUpgrade GetInfo()
+	{
+		return info;
+	}
+
 	public virtual void InnitInfo()
 	{
 		info = new InfoUpgrade();

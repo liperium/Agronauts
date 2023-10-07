@@ -19,6 +19,7 @@ public partial class Tracteur : CharacterBody2D
 	{
 
 	}
+
 	public override void _PhysicsProcess(double delta)
 	{
 		if (Input.IsActionPressed("tracteur_front") || Input.IsActionPressed("tracteur_back"))
