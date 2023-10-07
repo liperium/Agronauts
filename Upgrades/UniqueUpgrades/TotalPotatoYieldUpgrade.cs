@@ -3,25 +3,14 @@ using System;
 
 public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier>
 {
-	public override void Buy()
+	public override void OnBuy()
 	{
-		
-
-        if (CanBuy())
-		{
-			modifier.multiplier += 0.05f;
-			tier++;
-		}
+		modifier.multiplier += 0.05f;
+		tier++;
 	}
 
-	public override bool CanBuy()
+	public override void UpdateCost()
 	{
-		GD.Print(GameState.instance.numbers.potatoCount.GetValue());
-		return GameState.instance.numbers.potatoCount.GetValue() >= GetCost();
-	}
-
-	public long GetCost()
-	{
-		return (long)(5 + Mathf.Pow(1.1,tier) + tier);
+		cost = (long)(5 + Mathf.Pow(1.1, tier) + tier);
 	}
 }
