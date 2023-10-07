@@ -25,7 +25,9 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 			UpdateCost();
 		}
 	}
-    public virtual void OnBuy() {}
+    public virtual void OnBuy() {
+        affectedNumber.UpdateValue();
+    }
     public virtual void Pay()
     {
 	    GameState.instance.numbers.potatoCount.DecreaseValue(cost);
