@@ -79,8 +79,11 @@ public partial class FarmLand : Area2D
 		switch (currState)
 		{
 			case LandState.Wild:
-				Bought();
-				Laboure();
+				if (CanBuy())
+				{
+					Bought();
+					Laboure();	
+				}
 				break;
 			case LandState.Base:
 				Laboure();//TODO What to do with base?
@@ -95,6 +98,11 @@ public partial class FarmLand : Area2D
 		}
 	}
 
+	private bool CanBuy()
+	{
+		return GameState.instance.numbers.potatoCount.GetValue() >= cost;
+	}
+
 	public void Hovered()
 	{
 		priceLabel.Visible = true;
@@ -106,12 +114,14 @@ public partial class FarmLand : Area2D
 	}
 	public void Bought()
 	{
+		GameState.instance.numbers.potatoCount.DecreaseValue(cost);
+		
 		button.TextureNormal = BaseTexture;
 		currState = LandState.Base;
 		priceLabel.QueueFree();
 		MouseEntered -= Hovered;
 		MouseExited -= UnHovered;
-
+		
 		// Check if it can expand
 		GetParent<FarmField>().Expand(position);
 	}
@@ -131,6 +141,9 @@ public partial class FarmLand : Area2D
 	{
 		button.TextureNormal = LaboureTexture;
 		currState = LandState.Base;
+		
+		//give potats
+		GameState.instance.numbers.potatoCount.IncreaseValue(GameState.instance.numbers.potatoYield.GetValue());
 	}
 
 	public void Grown()
