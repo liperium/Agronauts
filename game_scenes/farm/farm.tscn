@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://5f2d2u2r7mwr"]
 
-[ext_resource type="PackedScene" uid="uid://uiuqf4qonh2y" path="res://game_scenes/farm/farmland/farm_land.tscn" id="1_g2vjc"]
 [ext_resource type="Script" path="res://game_scenes/farm/PlayerCamera.cs" id="1_ou2to"]
 [ext_resource type="PackedScene" uid="uid://y1unomfdmkif" path="res://game_scenes/UI/MainUI.tscn" id="2_grc08"]
-[ext_resource type="PackedScene" path="res://game_scenes/farm/tracteur.tscn" id="4_mymk5"]
+[ext_resource type="PackedScene" uid="uid://pwmr1ben0d4o" path="res://game_scenes/farm/farm_field/farm_field.tscn" id="3_ufq0d"]
+[ext_resource type="PackedScene" uid="uid://c6p0e44pj7nfd" path="res://game_scenes/farm/tracteur/tracteur.tscn" id="4_mymk5"]
 
 [node name="farm" type="Node2D"]
 
@@ -13,12 +13,6 @@ script = ExtResource("1_ou2to")
 
 [node name="UI" parent="." instance=ExtResource("2_grc08")]
 
-[node name="FarmField" type="Node2D" parent="."]
-position = Vector2(444, 247)
-
-[node name="FarmLand2" parent="FarmField" instance=ExtResource("1_g2vjc")]
-position = Vector2(32, 0)
-
-[node name="FarmLand" parent="FarmField" instance=ExtResource("1_g2vjc")]
+[node name="FarmField" parent="." instance=ExtResource("3_ufq0d")]
 
 [node name="Tracteur" parent="." instance=ExtResource("4_mymk5")]

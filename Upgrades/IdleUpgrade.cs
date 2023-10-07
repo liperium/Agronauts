@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+[Serializable]
 public partial class IdleUpgrade <TModifier> where TModifier : IdleModifier, new()
 {
 	protected TModifier modifier = new TModifier();
