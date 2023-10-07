@@ -13,6 +13,7 @@ public partial class UpgradeFarmYieldButton : Button
 	}
 	public override void _Pressed()
 	{
-		
+		potatoYieldUpgrade.Buy();
+        this.Text = "Upgrade Farm Yield (" + potatoYieldUpgrade.GetCost().ToString("#,#").Replace(',',' ') + ")";
 	}
 }
