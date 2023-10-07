@@ -85,6 +85,6 @@ script = ExtResource("5_i545w")
 
 [node name="HBoxContainer" parent="." instance=ExtResource("6_1fuc1")]
 offset_left = 13.0
-offset_top = 358.0
-offset_right = -937.0
-offset_bottom = -241.0
+offset_top = 257.0
+offset_right = -942.0
+offset_bottom = -342.0
