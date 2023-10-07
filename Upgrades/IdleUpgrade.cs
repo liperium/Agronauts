@@ -10,7 +10,6 @@ public partial class IdleUpgrade <TModifier> where TModifier : IdleModifier
 
 	public virtual void Apply()
 	{
-
+		
 	}
-	
 }
