@@ -11,6 +11,8 @@ public class IdleNumberContainer
     
     public IdleNumber potatoTemp;
 
+    public IdleNumber numberOfTilesUnlocked;
+
     public void Init()
     {
         potatoCount = new IdleNumber();
@@ -20,6 +22,8 @@ public class IdleNumberContainer
         cookedPotatoYield = new IdleNumber();
 
         potatoTemp = new IdleNumber();
+
+        numberOfTilesUnlocked = new IdleNumber();
     }
 
     public void OnLoad()

@@ -5,8 +5,8 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 {
 	protected long cost;
 	
-	protected bool unlocked;
-
+	public bool unlocked;
+    
 	public Action<long> OnCostChanged;
 	
 	public override void OnLoad()
