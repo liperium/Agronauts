@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://pwmr1ben0d4o"]
+
+[ext_resource type="PackedScene" uid="uid://uiuqf4qonh2y" path="res://game_scenes/farm/farmland/farm_land.tscn" id="1_ys5h7"]
+
+[node name="FarmField" type="Node2D"]
+position = Vector2(444, 247)
+
+[node name="FarmLand2" parent="." instance=ExtResource("1_ys5h7")]
+position = Vector2(32, 0)
+
+[node name="FarmLand" parent="." instance=ExtResource("1_ys5h7")]
