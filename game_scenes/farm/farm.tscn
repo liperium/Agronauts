@@ -1,17 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://5f2d2u2r7mwr"]
+[gd_scene load_steps=4 format=3 uid="uid://5f2d2u2r7mwr"]
 
 [ext_resource type="PackedScene" uid="uid://uiuqf4qonh2y" path="res://game_scenes/farm/farmland/farm_land.tscn" id="1_g2vjc"]
 [ext_resource type="Script" path="res://game_scenes/farm/PlayerCamera.cs" id="1_ou2to"]
-[ext_resource type="Script" path="res://game_scenes/farm/Arracheuse.cs" id="3_kdm46"]
-[ext_resource type="Script" path="res://game_scenes/farm/Tracteur.cs" id="3_u4vwm"]
-[ext_resource type="Texture2D" uid="uid://fw3cwgvoyeff" path="res://game_scenes/farm/farmland/tracteur/tracteur1.png" id="4_urjkg"]
-[ext_resource type="Texture2D" uid="uid://bsmgax1fvj57k" path="res://game_scenes/farm/farmland/tracteur/arracheuse.png" id="6_h5fro"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttysw"]
-size = Vector2(16, 28)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3lx4"]
-size = Vector2(19, 25)
+[ext_resource type="PackedScene" uid="uid://bp4rcylquskxd" path="res://game_scenes/farm/tracteur.tscn" id="3_4pv4n"]
 
 [node name="farm" type="Node2D"]
 
@@ -36,29 +27,4 @@ position = Vector2(32, 0)
 
 [node name="FarmLand" parent="FarmField" instance=ExtResource("1_g2vjc")]
 
-[node name="Tracteur" type="CharacterBody2D" parent="."]
-position = Vector2(388, 245)
-rotation = 1.5708
-motion_mode = 1
-script = ExtResource("3_u4vwm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Tracteur"]
-position = Vector2(0, 4.25)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("4_urjkg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tracteur"]
-position = Vector2(0.5, 6.5)
-shape = SubResource("RectangleShape2D_ttysw")
-
-[node name="Arracheuse" type="Area2D" parent="Tracteur"]
-position = Vector2(0, -24.75)
-script = ExtResource("3_kdm46")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tracteur/Arracheuse"]
-position = Vector2(0.5, -1.75)
-shape = SubResource("RectangleShape2D_f3lx4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Tracteur/Arracheuse"]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("6_h5fro")
+[node name="Tracteur" parent="." instance=ExtResource("3_4pv4n")]
