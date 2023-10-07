@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://jmi5sx8v8cpg"]
+[gd_scene load_steps=9 format=3 uid="uid://jmi5sx8v8cpg"]
 
 [ext_resource type="Script" path="res://game_scenes/menu/StartGame.cs" id="1_1ljay"]
 [ext_resource type="Texture2D" uid="uid://bmlpuorrvkd81" path="res://game_scenes/menu/background/base.png" id="1_3y7u8"]
 [ext_resource type="Texture2D" uid="uid://cqfnx2cgc8oci" path="res://game_scenes/menu/background/panneau.png" id="2_3tae2"]
 [ext_resource type="Script" path="res://game_scenes/menu/Quit.cs" id="2_b0yyy"]
 [ext_resource type="FontFile" uid="uid://dimlytvy78tyd" path="res://game_scenes/menu/background/Under Station.ttf" id="3_8e064"]
+[ext_resource type="Texture2D" uid="uid://w58bxt3imsq7" path="res://game_scenes/menu/background/vaisseau.png" id="6_krmyu"]
+[ext_resource type="Texture2D" uid="uid://d2xgmql4xvasy" path="res://game_scenes/menu/background/drone.png" id="7_wqfvf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4l5n3"]
 
@@ -90,3 +92,32 @@ theme_override_font_sizes/font_size = 160
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4l5n3")
 text = "Give Up"
 script = ExtResource("2_b0yyy")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control"]
+position = Vector2(3317.37, 1035.93)
+texture = ExtResource("6_krmyu")
+flip_h = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+position = Vector2(2308.38, 928.144)
+texture = ExtResource("6_krmyu")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Control"]
+position = Vector2(2754.49, 859.281)
+scale = Vector2(1.08217, 1.08217)
+texture = ExtResource("7_wqfvf")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Control"]
+position = Vector2(2568.86, 1218.56)
+scale = Vector2(1.08217, 1.08217)
+texture = ExtResource("7_wqfvf")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Control"]
+position = Vector2(2790.42, 1107.78)
+scale = Vector2(1.08217, 1.08217)
+texture = ExtResource("7_wqfvf")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Control"]
+position = Vector2(2901.2, 994.012)
+scale = Vector2(1.08217, 1.08217)
+texture = ExtResource("7_wqfvf")
