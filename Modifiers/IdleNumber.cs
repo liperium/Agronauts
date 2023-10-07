@@ -32,4 +32,11 @@ public partial class IdleNumber
 	{
 		return (long)(value * multiplier);
 	}
+
+	public void SetValue(long value)
+	{
+		this.value = value;
+		GD.Print("THIS IS NOT SUPPOSED TO BE CALL FOR OTHER REASON THAN TESTING");
+		UpdateValue();
+	}
 }

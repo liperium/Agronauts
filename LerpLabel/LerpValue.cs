@@ -11,6 +11,15 @@ public partial class LerpValue : Label
 
     [Export] 
     public float lerpSpeed = 1.0f;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        
+        //test
+        SetNewValue(350);
+    }
+
     public void SetNewValue(long value)
     {
         targetValue = value;
@@ -24,9 +33,13 @@ public partial class LerpValue : Label
 
         if (shouldUpdate)
         {
-            
+            long toAdd = (long)(delta * lerpSpeed);
+            toAdd = Math.Min(1, toAdd);
+            displayValue += toAdd;
             
             shouldUpdate = displayValue != targetValue;
+
+            Text = displayValue.FormattedNumber();
         }
     }
 }
