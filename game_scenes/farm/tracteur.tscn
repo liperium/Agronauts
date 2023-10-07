@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bp4rcylquskxd"]
+[gd_scene load_steps=7 format=3 uid="uid://c6p0e44pj7nfd"]
 
 [ext_resource type="Script" path="res://game_scenes/farm/Tracteur.cs" id="1_1nndq"]
 [ext_resource type="Texture2D" uid="uid://fw3cwgvoyeff" path="res://game_scenes/farm/farmland/tracteur/tracteur1.png" id="2_no11t"]
@@ -12,7 +12,6 @@ size = Vector2(16, 28)
 size = Vector2(19, 25)
 
 [node name="Tracteur" type="CharacterBody2D"]
-position = Vector2(388, 245)
 rotation = 1.5708
 motion_mode = 1
 script = ExtResource("1_1nndq")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://5f2d2u2r7mwr"]
+[gd_scene load_steps=5 format=3 uid="uid://5f2d2u2r7mwr"]
 
 [ext_resource type="Script" path="res://game_scenes/farm/UpgradeFarmYieldButton.cs" id="1_32gmq"]
 [ext_resource type="PackedScene" uid="uid://uiuqf4qonh2y" path="res://game_scenes/farm/farmland/farm_land.tscn" id="1_g2vjc"]
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="2_tttdh"]
+[ext_resource type="PackedScene" uid="uid://c6p0e44pj7nfd" path="res://game_scenes/farm/tracteur.tscn" id="4_mymk5"]
 
 [node name="farm" type="Node2D"]
 
@@ -55,3 +56,5 @@ position = Vector2(444, 247)
 position = Vector2(32, 0)
 
 [node name="FarmLand" parent="FarmField" instance=ExtResource("1_g2vjc")]
+
+[node name="Tracteur" parent="." instance=ExtResource("4_mymk5")]
