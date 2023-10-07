@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://y1unomfdmkif"]
+[gd_scene load_steps=25 format=3 uid="uid://y1unomfdmkif"]
 
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="2_hrn0e"]
 [ext_resource type="Script" path="res://UI/PotatoCountLabel.cs" id="3_4xs5e"]
 [ext_resource type="Script" path="res://game_scenes/UI/BtnShowHideMenu.cs" id="3_crgan"]
+[ext_resource type="Script" path="res://game_scenes/UI/PotatoSpeedUpgradeUI.cs" id="3_eexby"]
 [ext_resource type="PackedScene" uid="uid://dc4wna03ta38b" path="res://game_scenes/four/four.tscn" id="3_tw2g8"]
 [ext_resource type="Script" path="res://UI/CookedPotatoCountLabel.cs" id="4_ta1m5"]
 [ext_resource type="Script" path="res://UI/SaveButton.cs" id="5_i545w"]
@@ -153,6 +154,11 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("7_f25uh")
+
+[node name="PotatoYieldUpgrade2" parent="UpgradeMenu/TabContainer/FarmUpgrades/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("3_eexby")
 
 [node name="FourTab" type="Control" parent="UpgradeMenu/TabContainer"]
 visible = false
