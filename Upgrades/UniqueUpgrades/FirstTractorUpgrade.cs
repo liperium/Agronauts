@@ -7,7 +7,7 @@ public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
     public override void OnBuy()
     {
         Tracteur tractor = ResourceLoader.Load<PackedScene>("res://game_scenes/farm/tracteur/tracteur.tscn").Instantiate() as Tracteur;
-        tractor.Spawn();
+        ObjectSpawner.Spawn(tractor, new Vector2(FarmFieldMaster.centerPos,FarmFieldMaster.centerPos)*FarmFieldMaster.TILE_SIZE);
         base.OnBuy();
     }
 
@@ -36,12 +36,12 @@ public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
         base.OnLoad();
         if(GameState.instance.numbers.numberOfTilesUnlocked.GetValue() >= 10)
         {
-            //unlocked = true;
+            unlocked = true;
         }
-        //else
-        //{
-           // GameState.instance.numbers.numberOfTilesUnlocked.SetOnValueChanged(CheckUnlock);
-        //}
+        else
+        {
+            GameState.instance.numbers.numberOfTilesUnlocked.SetOnValueChanged(CheckUnlock);
+        }
     }
 
     public void CheckUnlock(long tiles)

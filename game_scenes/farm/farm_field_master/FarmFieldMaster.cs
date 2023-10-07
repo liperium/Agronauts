@@ -8,16 +8,15 @@ public partial class FarmFieldMaster : Node2D
 	private PackedScene FarmField =
 		ResourceLoader.Load<PackedScene>("res://game_scenes/farm/farm_field/farm_field.tscn");
 
-	private const int TILE_SIZE = 32;
+    public static int TILE_SIZE = 32;
 	private const int TILE_PER_FF = 5;
-
 	const int MAX_SIZE = 33; // HAS TO BE IMPAIR
-	private bool[,] isTaken = new bool[MAX_SIZE,MAX_SIZE];
+	public static int centerPos = (MAX_SIZE - 1) / 2;
+    private bool[,] isTaken = new bool[MAX_SIZE,MAX_SIZE];
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		int centerPos = (MAX_SIZE - 1) / 2;
 		SpawnField(centerPos, centerPos);
 	}
 
