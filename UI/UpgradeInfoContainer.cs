@@ -22,7 +22,7 @@ public partial class UpgradeInfoContainer : Node
     {
         if (buyButtonText != null)
         {
-            buyButtonText.Text = $"{Tr("KBUY")} ({newCost.FormattedNumber()} {Tr("KPOTATOES")})";
+            buyButtonText.Text = $"[center]{Tr("KBUY")}\n\n{newCost.FormattedNumber()}[img=20xz20]res://Icons/Potato.png[/img][/center]";
         }
     }
 }

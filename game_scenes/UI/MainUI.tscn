@@ -49,33 +49,6 @@ states/Start/position = Vector2(334, 84)
 transitions = ["MenuOpen", "MenuClose", SubResource("AnimationNodeStateMachineTransition_6ttsg"), "MenuClose", "MenuOpen", SubResource("AnimationNodeStateMachineTransition_5x8y7"), "Start", "MenuIdle", SubResource("AnimationNodeStateMachineTransition_1i7ou"), "MenuIdle", "MenuOpen", SubResource("AnimationNodeStateMachineTransition_palwj")]
 graph_offset = Vector2(46, -35)
 
-[sub_resource type="Animation" id="Animation_plwxq"]
-resource_name = "MenuOpen"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("TabContainer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.189465, 0.189465),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-555, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.189465, 0.189465),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-555, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_apb47"]
 resource_name = "MenuClose"
 tracks/0/type = "value"
@@ -106,6 +79,33 @@ tracks/0/keys = {
 "values": [Vector2(-555, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_plwxq"]
+resource_name = "MenuOpen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("TabContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.189465, 0.189465),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-555, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.189465, 0.189465),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-555, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w5t5i"]
 _data = {
 "MenuClose": SubResource("Animation_apb47"),
@@ -122,7 +122,8 @@ size = Vector2(256, 256)
 layout_mode = 3
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 553.0
+offset_left = -555.0
+offset_right = -2.0
 grow_vertical = 2
 
 [node name="TabContainer" type="TabContainer" parent="UpgradeMenu"]
