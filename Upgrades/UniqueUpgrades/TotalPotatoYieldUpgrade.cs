@@ -6,9 +6,8 @@ public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier
 
 	public override void OnBuy()
 	{
-        base.OnBuy();
         modifier.multiplier += 0.05f;
-		affectedNumber.UpdateValue();
+        base.OnBuy();
     }
 
     public override void UpdateCost()
