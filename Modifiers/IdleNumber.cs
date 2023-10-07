@@ -49,7 +49,13 @@ public partial class IdleNumber
 		if (value < 0) GD.Print("ON EST DANS LE NEGATIF DEFCON 5");
 	}
 
-	public void SetOnValueChanged(Action<long> action)
+    public void IncreaseValue(long value)
+    {
+        SetValue(this.value + value);
+        if (value < 0) GD.Print("ON EST DANS LE NEGATIF DEFCON 5");
+    }
+
+    public void SetOnValueChanged(Action<long> action)
 	{
 		if (action == null)
 		{

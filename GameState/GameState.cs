@@ -90,13 +90,13 @@ public partial class GameState
 	public static GameState NewGame()
 	{
 		GameState newInstance = new GameState();
-		newInstance.Init();
 		
 		Random random = new Random();
 		newInstance.randomSeed = random.Next();
 
 		instance = newInstance;
 		
+		newInstance.Init();
 		return newInstance;
 	}
 }
