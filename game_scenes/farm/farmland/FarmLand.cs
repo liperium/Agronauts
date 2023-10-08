@@ -59,13 +59,14 @@ public partial class FarmLand : Area2D
 		growthTimer.OneShot = true;
 
 		priceLabel = GetNode<Label>("PriceLabel");
+		priceLabel.Visible = true;
 
 
 		//TODO link with global timer
 
 		growthTimer.Timeout += Grown;
-		MouseEntered += Hovered;
-		MouseExited += UnHovered;
+		//MouseEntered += Hovered;
+		//MouseExited += UnHovered;
 
 		progressBar = GetNode<ProgressBar>("ProgressBar");
 		
