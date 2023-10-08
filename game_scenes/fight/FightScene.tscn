@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://byj332cof46ix"]
 
 [ext_resource type="Script" path="res://game_scenes/fight/FightManager.cs" id="1_7r1cq"]
-[ext_resource type="PackedScene" uid="uid://do4brtumlcxqx" path="res://game_scenes/alien.tscn" id="2_qvy1s"]
+[ext_resource type="PackedScene" path="res://game_scenes/alien.tscn" id="2_qvy1s"]
 [ext_resource type="Script" path="res://game_scenes/fight/ShootManager.cs" id="3_y82am"]
 [ext_resource type="Script" path="res://game_scenes/ObjectSpawner.cs" id="4_pklq1"]
 [ext_resource type="PackedScene" uid="uid://b110sqwjds46s" path="res://game_scenes/fight/potato_bullet.tscn" id="5_y1n8u"]
@@ -25,10 +25,10 @@ texture = SubResource("PlaceholderTexture2D_vrfsj")
 [node name="FightManager" type="Node2D" parent="." node_paths=PackedStringArray("spawnPositions", "spawnTimer")]
 script = ExtResource("1_7r1cq")
 spawnPositions = [NodePath("../SpawnPositions/spawn1"), NodePath("../SpawnPositions/spawn2"), NodePath("../SpawnPositions/spawn3"), NodePath("../SpawnPositions/spawn4"), NodePath("../SpawnPositions/spawn5"), NodePath("../SpawnPositions/spawn6"), NodePath("../SpawnPositions/spawn7"), NodePath("../SpawnPositions/spawn8"), NodePath("../SpawnPositions/spawn9")]
-spawnTimer = NodePath("../SpawnTimer")
+spawnTimer = NodePath("SpawnTimer")
 alienPrefab = ExtResource("2_qvy1s")
 
-[node name="SpawnTimer" type="Timer" parent="."]
+[node name="SpawnTimer" type="Timer" parent="FightManager"]
 
 [node name="SpawnPositions" type="Node2D" parent="."]
 

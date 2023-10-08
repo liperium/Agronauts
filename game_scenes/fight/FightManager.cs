@@ -77,6 +77,12 @@ public partial class FightManager : Node
             GD.PrintErr("NO ALIEN PREFAB SET!!!!");
             return;
         }
+
+        if (spawnPositions.Length == 0)
+        {
+            GD.PrintErr("NO SPAWN POSITIONS!! PLEASE SET THEM IN DATA");
+            return;
+        }
         
         int spawnIndex = rd.Next() % spawnPositions.Length;
 
