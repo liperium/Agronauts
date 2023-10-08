@@ -12,12 +12,18 @@ public partial class AutoCookLevel2UpgradeUI : HBoxContainer
         autoCookLevel2Upgrade = GameState.instance.upgrades.autoCookLevel2Upgrade;
         buyButton = GetNode<TextureButton>("BuyButton");
 
+        if (autoCookLevel2Upgrade.acquired)
+        {
+            QueueFree();
+            return;
+        }
+        
         Visible = autoCookLevel2Upgrade.IsUnlocked();
-        autoCookLevel2Upgrade.OnUnlock += OnUnlock;
+        autoCookLevel2Upgrade.SetOnUnlock(OnUnlock);
 
-        GetNode<UpgradeInfoContainer>("UpgradeInfoContainer").SetUpgrade(autoCookLevel2Upgrade.GetInfo(),
-            autoCookLevel2Upgrade.GetCost(),
-            ref autoCookLevel2Upgrade.OnCostChanged);
+        UpgradeInfoContainer infoContainer = GetNode<UpgradeInfoContainer>("UpgradeInfoContainer");
+        infoContainer.SetUpgrade(autoCookLevel2Upgrade.GetInfo(),
+            autoCookLevel2Upgrade.GetCost());
 
         buyButton.Pressed += PressBuy;
     }
@@ -27,7 +33,7 @@ public partial class AutoCookLevel2UpgradeUI : HBoxContainer
         if (!autoCookLevel2Upgrade.CanBuy()) return;
         autoCookLevel2Upgrade.Buy();
 
-        autoCookLevel2Upgrade.OnUnlock -= OnUnlock;
+        autoCookLevel2Upgrade.ResetOnUnlock(OnUnlock);
         buyButton.Pressed -= PressBuy;
 
         QueueFree();

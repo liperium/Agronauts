@@ -1,13 +1,17 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using TinyJson;
 using FileAccess = System.IO.FileAccess;
+using Newtonsoft.Json;
 
 [Serializable]
 public partial class GameState
 {
 	public const bool SAVE_ENABLED = false;
+	
+	static JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
 	
 	private static GameState _instance;
 	public static GameState instance
@@ -34,6 +38,8 @@ public partial class GameState
 	public IdleNumberContainer numbers;
 	public IdleUpgradeContainer upgrades;
 
+	[NonSerialized] public static Dictionary<int, IdleModifier> allModifiers = new Dictionary<int, IdleModifier>();
+
 	public void Init()
 	{
 		numbers = new IdleNumberContainer();
@@ -48,13 +54,19 @@ public partial class GameState
 	{
 		numbers.OnLoad();
 		upgrades.OnLoad();
-		
-		if (GameState.SAVE_ENABLED == false) GameState.instance.numbers.potatoCount.SetValue(100000);
+
+		//debug with no save
+		if (GameState.SAVE_ENABLED == false)
+		{
+			GameState.instance.numbers.potatoCount.SetValue(100000);
+			GameState.instance.numbers.cookedPotatoCount.SetValue(10000);
+		}
+
 	}
 	
 	public void SaveToFile()
 	{
-		string saveData = this.ToJson();
+		string saveData = JsonConvert.SerializeObject(this, settings);
 		
 		// Write the string array to a new file named "WriteLines.txt".
 		using (StreamWriter outputFile = new StreamWriter(filePath, new FileStreamOptions{ Mode = FileMode.Create, Access = FileAccess.Write}))
@@ -76,8 +88,15 @@ public partial class GameState
 			{
 				// Read the stream as a string, and write the string to the console.
 				GameState newState;
-				newState = sr.ReadToEnd().FromJson<GameState>();
+				newState = JsonConvert.DeserializeObject<GameState>(sr.ReadToEnd(), settings);
+				//newState = sr.ReadToEnd().FromJson<GameState>();
 				instance = newState;
+
+				if (newState == null)
+				{
+					GD.PrintErr("AFTER LOADING STATE IS STILL NULL!");
+					return false;
+				}
 				
 				newState.OnLoad();
 
