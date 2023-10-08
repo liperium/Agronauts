@@ -34,6 +34,7 @@ public class IdleNumberContainer
         potatoGrowSpeed.SetValue(1);
 
         cookedPotatoCount = new IdleNumber();
+        cookedPotatoCount.SetValue(10000);
         cookedPotatoYield = new IdleNumber();
         cookedPotatoYield.SetValue(1);
 

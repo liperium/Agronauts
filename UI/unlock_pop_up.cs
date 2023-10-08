@@ -95,4 +95,7 @@ public partial class unlock_pop_up : TextureRect
 	{
 		techThumbnail.Texture = ImageTexture.CreateFromImage(image);
 	}
+    public void ChangeImage(string path)
+    {
+    }
 }

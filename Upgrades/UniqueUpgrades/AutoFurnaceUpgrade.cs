@@ -6,6 +6,9 @@ public partial class AutoFurnaceUpgrade : BuyableUpgrade<MultiplierModifier>
     public override void OnBuy()
     {      
         base.OnBuy();
+        unlock_pop_up.instance.ChangeText("KCONGRATULATIONS", "KCOOKUNLOCKTIP");
+        unlock_pop_up.instance.ChangeImage("res://Upgrades/UpgradeImages/Cuisinier.png");
+        unlock_pop_up.instance.Animation();
     }
 
     public override void UpdateCost()
@@ -21,9 +24,9 @@ public partial class AutoFurnaceUpgrade : BuyableUpgrade<MultiplierModifier>
     public override void InnitInfo()
     {
         base.InnitInfo();
-        info.SetName("KFIRSTTRACTORUPGRADE");
-        info.SetDescription("KFIRSTTRACTORUPGRADEDESC");
-        info.SetImagePath("res://Icons/Potato.png");
+        info.SetName("KAUTOCOOKUPGRADE");
+        info.SetDescription("KAUTOCOOKUPGRADEDESC");
+        info.SetImagePath("res://Upgrades/UpgradeImages/Cuisinier.png");
     }
 
     public override void OnLoad()
@@ -42,6 +45,7 @@ public partial class AutoFurnaceUpgrade : BuyableUpgrade<MultiplierModifier>
         {
             Unlock();
             GameState.instance.numbers.cookedPotatoCount.ResetOnValueChanged(CheckUnlock);
+
         }
     }
 }
