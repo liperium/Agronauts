@@ -8,6 +8,7 @@ public partial class FightManager : Node
     [Export] public Timer spawnTimer;
 
     [Export] public PackedScene alienPrefab;
+    [Export] public PackedScene farmScene;
 
     public static Action OnEnemyKill;
 
@@ -38,8 +39,8 @@ public partial class FightManager : Node
     private void EndFight()
     {
         OnEnemyKill = null;
-        
-        //TODO load back to farm scene
+
+        GetTree().ChangeSceneToPacked(farmScene);
         GD.Print("FIGHT END!");
         
     }
