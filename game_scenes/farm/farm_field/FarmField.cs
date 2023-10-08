@@ -53,9 +53,20 @@ public partial class FarmField : Node2D
 
 
 
-    public void LandBought(Pos2D pos2D)
+    public void LandBought(Pos2D pos2D, bool addToHistory = true)
     {
 	    isBought[pos2D.X, pos2D.Y] = true;
+	    
+	    //add to saved history
+	    if (addToHistory)
+	    {
+		    GameState.instance.savedFields.AddBoughtFieldToHistory(new SavedField()
+		    {
+			    field = positionRelative,
+			    tile = pos2D
+		    });   
+	    }
+
 	    // Show all other sides
 	    // Inside first
 	    Pos2D[] variations = { new (0, 1), new (1, 0), new (-1, 0), new (0, -1) };

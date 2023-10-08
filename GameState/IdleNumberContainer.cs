@@ -62,6 +62,7 @@ public class IdleNumberContainer
         cookedPotatoYield.SetValue(1);
 
         potatoTemperature = new IdleNumber();
+        potatoTemperature.SetValue(10);
 
         furnaceAutoBakeSpeed = new IdleNumber();
         furnaceAutoBakeSpeed.SetValue(100);

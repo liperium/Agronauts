@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 [Serializable]
 public partial class GameState
 {
-	public const bool SAVE_ENABLED = false;
+	public const bool SAVE_ENABLED = true;
 	
 	static JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
 	
@@ -37,6 +37,7 @@ public partial class GameState
 
 	public IdleNumberContainer numbers;
 	public IdleUpgradeContainer upgrades;
+	public SavedFieldContainer savedFields;
 
 	[NonSerialized] public static Dictionary<int, IdleModifier> allModifiers = new Dictionary<int, IdleModifier>();
 
@@ -46,6 +47,9 @@ public partial class GameState
 		numbers.Init();
 		upgrades = new IdleUpgradeContainer();
 		upgrades.Init();
+
+		savedFields = new SavedFieldContainer();
+		savedFields.Init();
 		
 		OnLoad();
 	}

@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://byj332cof46ix"]
+[gd_scene load_steps=7 format=3 uid="uid://byj332cof46ix"]
 
 [ext_resource type="Script" path="res://game_scenes/fight/FightManager.cs" id="1_7r1cq"]
 [ext_resource type="PackedScene" path="res://game_scenes/alien.tscn" id="2_qvy1s"]
 [ext_resource type="Script" path="res://game_scenes/fight/ShootManager.cs" id="3_y82am"]
-[ext_resource type="Script" path="res://game_scenes/ObjectSpawner.cs" id="4_pklq1"]
 [ext_resource type="PackedScene" uid="uid://b110sqwjds46s" path="res://game_scenes/fight/potato_bullet.tscn" id="5_y1n8u"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vrfsj"]
@@ -13,9 +12,6 @@ size = Vector2(1920, 1080)
 size = Vector2(1302, 742)
 
 [node name="FightScene" type="Node2D"]
-
-[node name="Node2D" type="Node2D" parent="."]
-script = ExtResource("4_pklq1")
 
 [node name="BG" type="Sprite2D" parent="."]
 visible = false
