@@ -12,7 +12,7 @@ public partial class UpgradeInfoContainer : Node
     {
         if (upgradeImage != null && info.GetImagePath() != "") upgradeImage.Texture = ResourceLoader.Load<CompressedTexture2D>(info.GetImagePath());
         if (upgradeTitle != null) upgradeTitle.Text = Tr(info.GetName()) +" "+ effect;
-        if (upgradeTitle != null) upgradeDescription.Text = info.GetDescription();
+        if (upgradeDescription != null) upgradeDescription.Text = info.GetDescription();
         UpdateCostText(cost);
     }
 
