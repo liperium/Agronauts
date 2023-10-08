@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://do4brtumlcxqx"]
+
+[ext_resource type="Script" path="res://game_scenes/fight/Alien.cs" id="1_7b474"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_v7qw5"]
+size = Vector2(30, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7nqd"]
+size = Vector2(30, 60)
+
+[node name="Alien" type="Area2D"]
+script = ExtResource("1_7b474")
+
+[node name="AlienSprite" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_v7qw5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p7nqd")
