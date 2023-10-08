@@ -23,7 +23,6 @@ public partial class TractorSpeedArtifactUI : HBoxContainer
         infoContainer.SetUpgrade(tractorSpeedArtifact.GetInfo(),
             tractorSpeedArtifact.GetCost());
 
-
     }
 
 

@@ -68,9 +68,4 @@ public partial class IdleUpgrade <TModifier> where TModifier : IdleModifier, new
 		}
 		InnitInfo();
 	}
-
-	public virtual string GetEffectText()
-	{
-		return "";
-	}
 }

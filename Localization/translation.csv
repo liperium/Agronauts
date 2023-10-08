@@ -43,7 +43,3 @@ KFURNACESPEEDARTIFACT,Interstellar fuel,Carburant interstellaire
 KFURNACESPEEDARTIFACTDESC,Double the cooking speed,Cuit deux fois plus vite
 KFURNACETEMP,Temperature,Température
 KFURNACETEMPDESC,Hotter means more damage. The current potato temperature gets 20% hotter, Plus chaud signifie plus de dommages. La température des patates devient 20% plus chaude.
-KWARNING,Warning!,Attention!
-KWARNINGDESC,Aliens are invading! You have 60 seconds to prepare yourself! Hot potatos are your only weapon.,Les extraterrestres envahissent ! Vous avez 60 secondes pour vous préparer ! Les patates chaudes sont votre seule arme.
-KALIENFERTILIZER,Alien fertilizer,Engrais extraterrestre
-KALIENFERTILIZERDESC,Alien corpses make for great fertilizer. Double the potato yield.,Les cadavres d'extraterrestres font un bon engrais. Double le rendement de patates.
