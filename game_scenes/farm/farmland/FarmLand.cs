@@ -71,6 +71,8 @@ public partial class FarmLand : Area2D
 		
 		FarmFieldMaster.OnFarmTimeChange += UpdateProgressBarStats;
 		UpdateProgressBarStats();
+
+		Hide();
 	}
 
 	public CompressedTexture2D GetRandomTexture(CompressedTexture2D[] choices)
@@ -92,6 +94,18 @@ public partial class FarmLand : Area2D
 		priceLabel.Text = cost.FormattedNumber();
 	}
 
+	public void Show()
+	{
+		Visible = true;
+		GetNode<AnimationTree>("AnimationTree").Active = true;
+		button.MouseFilter = Control.MouseFilterEnum.Stop;
+	}
+
+	public void Hide()
+	{
+		Visible = false;
+		button.MouseFilter = Control.MouseFilterEnum.Ignore;
+	}
 
 
 	public void Clicked()
@@ -145,7 +159,7 @@ public partial class FarmLand : Area2D
 		MouseExited -= UnHovered;
 		
 		// Check if it can expand
-		GetParent<FarmField>().Expand(position);
+		GetParent<FarmField>().LandBought(new Pos2D(position.X,position.Y));
 	}
 	public void Laboure()
 	{

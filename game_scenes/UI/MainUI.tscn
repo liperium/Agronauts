@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://UI/CookedPotatoCountLabel.cs" id="4_ta1m5"]
 [ext_resource type="Script" path="res://UI/SaveButton.cs" id="5_i545w"]
 [ext_resource type="Script" path="res://UI/AddAutoTractorUpgradeUI.cs" id="5_kqpvt"]
-[ext_resource type="PackedScene" path="res://UI/Base_Upgrade_Btn.tscn" id="6_1fuc1"]
+[ext_resource type="PackedScene" uid="uid://ehn8ld0iouai" path="res://UI/Base_Upgrade_Btn.tscn" id="6_1fuc1"]
 [ext_resource type="Script" path="res://UI/TractorSpeedUpgradeUI.cs" id="6_7mv0j"]
 [ext_resource type="Script" path="res://UI/TemperatureLabel.cs" id="6_ya5yg"]
 [ext_resource type="Script" path="res://game_scenes/UI/PotatoYieldUpgradeUI.cs" id="7_f25uh"]
@@ -144,7 +144,6 @@ offset_right = 553.0
 offset_bottom = 720.0
 
 [node name="Farm" type="Control" parent="UpgradeMenu/TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu/TabContainer/Farm"]
@@ -186,6 +185,7 @@ size_flags_horizontal = 3
 script = ExtResource("5_kqpvt")
 
 [node name="FourTab" type="Control" parent="UpgradeMenu/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu/TabContainer/FourTab"]
