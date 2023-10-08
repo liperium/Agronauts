@@ -4,7 +4,7 @@ using Godot;
 
 public partial class FightManager : Node
 {
-    [Export] public PackedScene farmScene;
+    private PackedScene farmScene;
     [Export] public Node2D[] spawnPositions;
     [Export] public Timer spawnTimer;
 
@@ -21,6 +21,8 @@ public partial class FightManager : Node
     public override void _Ready()
     {
         base._Ready();
+
+        farmScene = ResourceLoader.Load<PackedScene>("res://game_scenes/farm/farm.tscn");
 
         rd = new Random();
 
