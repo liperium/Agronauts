@@ -7,3 +7,4 @@ script = ExtResource("1_cxk1l")
 waveTimer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true

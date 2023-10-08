@@ -4,6 +4,7 @@ using System;
 public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
 {
 
+    
     public override void OnBuy()
     {
         Tracteur tractor = ResourceLoader.Load<PackedScene>("res://game_scenes/farm/tracteur/tracteur.tscn").Instantiate() as Tracteur;
@@ -11,6 +12,7 @@ public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
         tractor.automatic = true;
         tractor.topLeftBound = tractor.Position;
         tractor.bottomRightBound = new Vector2(tractor.Position.X + FarmFieldMaster.TILE_PER_FF * FarmFieldMaster.TILE_SIZE, tractor.Position.Y + FarmFieldMaster.TILE_PER_FF * FarmFieldMaster.TILE_SIZE);
+        
         base.OnBuy();
     }
 
