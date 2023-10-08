@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsmgax1fvj57k"
-path="res://.godot/imported/arracheuse.png-f3912ef8392b59a1e6459b288da00034.ctex"
+uid="uid://bwxru3otuu7gf"
+path="res://.godot/imported/epandeur.png-6538ff6ab03714b8b213444fbdc78b9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scenes/farm/farmland/tracteur/arracheuse.png"
-dest_files=["res://.godot/imported/arracheuse.png-f3912ef8392b59a1e6459b288da00034.ctex"]
+source_file="res://game_scenes/farm/tracteur/sprites/epandeur.png"
+dest_files=["res://.godot/imported/epandeur.png-6538ff6ab03714b8b213444fbdc78b9c.ctex"]
 
 [params]
 
