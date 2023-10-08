@@ -25,7 +25,7 @@ public class PotatoSpeedUpgrade : TieredUpgrade<MultiplierModifier>
 		
         info.SetName("KPOTATOSPEEDUPGRADE");
         info.SetDescription("KPOTATOSPEEDUPGRADEDESC");
-        info.SetImagePath("res://Icons/Potato.png");
+        info.SetImagePath("res://Upgrades/UpgradeImages/EngraisNaturel.png");
     }
 
     public override void OnLoad()
