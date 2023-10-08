@@ -42,7 +42,10 @@ public partial class FarmField : Node2D
 		{
 			if (node is FarmLand farmLand)
 			{
-				farmLand.ChangeCost((int)farmLand.GlobalPosition.DistanceTo(FarmFieldMaster.originFarmLand));
+				farmLand.ChangeCost(
+					(long)Math.Pow((float)farmLand.GlobalPosition.DistanceTo(FarmFieldMaster.originFarmLand)/12f,3
+						)
+					);
 			}
 		}
 

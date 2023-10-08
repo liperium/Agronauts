@@ -37,7 +37,7 @@
 [ext_resource type="Script" path="res://UI/FurnaceSpeedUpgradeUI.cs" id="24_w6q4b"]
 [ext_resource type="Script" path="res://UI/FurnaceBatchSizeUpgradeUI.cs" id="25_jmdy8"]
 [ext_resource type="Texture2D" uid="uid://bcbblpddy6qv5" path="res://UI/sprites/fleche_bouton.png" id="25_sidry"]
-[ext_resource type="PackedScene" path="res://ArtifactUI.tscn" id="26_5o042"]
+[ext_resource type="PackedScene" uid="uid://cwujkiyeg8tkw" path="res://ArtifactUI.tscn" id="26_5o042"]
 [ext_resource type="Texture2D" uid="uid://cb6xbrmh0dvso" path="res://UI/sprites/renfourer_bouton.png" id="27_dykfa"]
 [ext_resource type="Script" path="res://UI/FurnaceSpeedArtifactUI.cs" id="31_iqoi4"]
 [ext_resource type="Script" path="res://UI/TractorSpeedArtifactUI.cs" id="32_lx2ep"]
