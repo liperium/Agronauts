@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Threading;
+using Timer = Godot.Timer;
 
 public partial class FarmLand : Area2D
 {
@@ -14,25 +16,27 @@ public partial class FarmLand : Area2D
 
 	public Pos2D position = new Pos2D(0,0);
 
-	public static CompressedTexture2D WildTexture =
-		ResourceLoader.Load<CompressedTexture2D>(
-			"res://game_scenes/farm/farmland/tiles/terre_wild.png");
-
-	public static CompressedTexture2D BaseTexture =
-		ResourceLoader.Load<CompressedTexture2D>(
-			"res://game_scenes/farm/farmland/tiles/terre_owned.png");
-
-	public static CompressedTexture2D LaboureTexture =
-		ResourceLoader.Load<CompressedTexture2D>(
-			"res://game_scenes/farm/farmland/tiles/terre_laboure.png");
-
-	public static CompressedTexture2D PlantedTexture =
-		ResourceLoader.Load<CompressedTexture2D>(
-			"res://game_scenes/farm/farmland/tiles/terre_plante1.png");
-
-	public static CompressedTexture2D ReadyTexture =
-		ResourceLoader.Load<CompressedTexture2D>(
-			"res://game_scenes/farm/farmland/tiles/terre_pret1.png");
+	private static string baseFolder = "res://game_scenes/farm/farmland/tiles/";
+	public static CompressedTexture2D[] WildTextures =
+	{
+		ResourceLoader.Load<CompressedTexture2D>(baseFolder+"terre_wild.png"),
+	};
+	public static CompressedTexture2D[] BoughtTextures = {
+		ResourceLoader.Load<CompressedTexture2D>(baseFolder+"terre_achete.png"),
+	};
+	public static CompressedTexture2D[] LaboureTextures = {
+		ResourceLoader.Load<CompressedTexture2D>(baseFolder+"terre_laboure.png"),
+	};
+	public static CompressedTexture2D[] PlantedTextures = {
+		ResourceLoader.Load<CompressedTexture2D>(baseFolder+"terre_plante1.png"),
+		ResourceLoader.Load<CompressedTexture2D>(baseFolder+"terre_plante2.png"),
+		ResourceLoader.Load<CompressedTexture2D>(baseFolder+"terre_plante3.png"),
+	};
+	public static CompressedTexture2D[] ReadyTextures = {
+		ResourceLoader.Load<CompressedTexture2D>(baseFolder+"terre_pret1.png"),
+		ResourceLoader.Load<CompressedTexture2D>(baseFolder+"terre_pret2.png"),
+		ResourceLoader.Load<CompressedTexture2D>(baseFolder+"terre_pret3.png"),
+	};
 
 	private TextureButton button;
 	private Timer growthTimer;
@@ -42,12 +46,14 @@ public partial class FarmLand : Area2D
 	public long cost = 0;
 	public LandState CurrState => currState;
 
+	private static Random random = new Random();
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		button = GetNode<TextureButton>("TextureButton");
 		button.Pressed += Clicked;
-		button.TextureNormal = WildTexture;
+		button.TextureNormal = GetRandomTexture(WildTextures);
 
 		growthTimer = GetNode<Timer>("Timer");
 		growthTimer.OneShot = true;
@@ -65,6 +71,19 @@ public partial class FarmLand : Area2D
 		
 		FarmFieldMaster.OnFarmTimeChange += UpdateProgressBarStats;
 		UpdateProgressBarStats();
+	}
+
+	public CompressedTexture2D GetRandomTexture(CompressedTexture2D[] choices)
+	{
+		if (choices.Length == 1)
+		{
+			return choices[0];
+		}
+		else
+		{
+			return choices[random.Next(0, choices.Length)];
+		}
+
 	}
 
 	public void ChangeCost(long newCost)
@@ -119,7 +138,7 @@ public partial class FarmLand : Area2D
 		GameState.instance.numbers.potatoCount.DecreaseValue(cost);
 		GameState.instance.numbers.numberOfTilesUnlocked.IncreaseValue(1);
 		
-		button.TextureNormal = BaseTexture;
+		button.TextureNormal = GetRandomTexture(BoughtTextures);
 		currState = LandState.Base;
 		priceLabel.QueueFree();
 		MouseEntered -= Hovered;
@@ -130,29 +149,29 @@ public partial class FarmLand : Area2D
 	}
 	public void Laboure()
 	{
-		button.TextureNormal = LaboureTexture;
+		button.TextureNormal = GetRandomTexture(LaboureTextures);
 		currState = LandState.Laboure;
 	}
 	public void Plant()
 	{
+		button.TextureNormal = GetRandomTexture(PlantedTextures);
+		currState = LandState.Planted;
 		growthTimer.Start();
 		progressBar.Visible = true;
-		button.TextureNormal = PlantedTexture;
-		currState = LandState.Planted;
 	}
 	public void Harvest()
 	{
-		button.TextureNormal = LaboureTexture;
-		currState = LandState.Base;
-		
-		//give potats
+		button.TextureNormal = GetRandomTexture(LaboureTextures);
+		currState = LandState.Laboure;
+		progressBar.Visible = false;
+
 		GameState.instance.numbers.potatoCount.IncreaseValue(GameState.instance.numbers.potatoYield.GetValue());
 	}
 
 	public void Grown()
 	{
 		progressBar.Visible = false;
-		button.TextureNormal = ReadyTexture;
+		button.TextureNormal = GetRandomTexture(ReadyTextures);
 		currState = LandState.Ready;
 	}
 
