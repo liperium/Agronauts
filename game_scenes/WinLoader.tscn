@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0x25wngghpp4"]
+
+[ext_resource type="Script" path="res://game_scenes/WinLoader.cs" id="1_i2k3s"]
+
+[node name="WinLoader" type="Node2D"]
+script = ExtResource("1_i2k3s")

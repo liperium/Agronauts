@@ -142,7 +142,7 @@ layout_mode = 0
 offset_left = 124.0
 offset_right = 551.0
 offset_bottom = 720.563
-texture = ExtResource("6_joar3")
+texture = ExtResource("4_y7gcn")
 expand_mode = 5
 
 [node name="TabFarm" type="TextureButton" parent="UpgradeMenu" node_paths=PackedStringArray("tabContainer", "bg")]
