@@ -1,66 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://byj332cof46ix"]
+[gd_scene load_steps=7 format=3 uid="uid://byj332cof46ix"]
 
 [ext_resource type="Script" path="res://game_scenes/fight/FightManager.cs" id="1_7r1cq"]
-[ext_resource type="Texture2D" uid="uid://cm5yj1in3doru" path="res://game_scenes/fight/sprites/BackGround.png" id="1_c7niu"]
-[ext_resource type="Texture2D" uid="uid://1q15a0ctdmja" path="res://game_scenes/fight/sprites/fenetre.png" id="2_lka11"]
+[ext_resource type="PackedScene" uid="uid://bcp68obaiwjnr" path="res://game_scenes/fight/allbackground.tscn" id="1_cpv22"]
 [ext_resource type="PackedScene" path="res://game_scenes/alien.tscn" id="2_qvy1s"]
-[ext_resource type="Texture2D" uid="uid://dc7yy3dauluty" path="res://game_scenes/fight/sprites/plant1.png" id="3_iuqht"]
 [ext_resource type="Script" path="res://game_scenes/fight/ShootManager.cs" id="3_y82am"]
-[ext_resource type="Texture2D" uid="uid://eva302twfawu" path="res://game_scenes/fight/sprites/cloture.png" id="4_hjcrb"]
-[ext_resource type="Texture2D" uid="uid://beafx8e6l3pdb" path="res://game_scenes/fight/sprites/engrais.png" id="5_ucl0g"]
 [ext_resource type="PackedScene" uid="uid://b110sqwjds46s" path="res://game_scenes/fight/potato_bullet.tscn" id="5_y1n8u"]
-[ext_resource type="Texture2D" uid="uid://bg18raqtdjd57" path="res://game_scenes/fight/sprites/roche.png" id="6_pedlr"]
-[ext_resource type="Texture2D" uid="uid://7sjdqo8l12jk" path="res://game_scenes/fight/sprites/trousol.png" id="7_f73s6"]
-[ext_resource type="Texture2D" uid="uid://d2pjghq7v8nb5" path="res://game_scenes/fight/sprites/trousoldevant.png" id="8_e2mn0"]
-[ext_resource type="Texture2D" uid="uid://xpavfa866hs7" path="res://game_scenes/fight/sprites/vaisseau.png" id="9_b2vuv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t34w0"]
 size = Vector2(1302, 742)
 
 [node name="FightScene" type="Node2D"]
 
-[node name="ALLSPRITES" type="Node2D" parent="."]
-position = Vector2(635, 360)
-scale = Vector2(0.34, 0.34)
-
-[node name="BG" type="Sprite2D" parent="ALLSPRITES"]
-texture = ExtResource("1_c7niu")
-
-[node name="Fenetre" type="Sprite2D" parent="ALLSPRITES"]
-position = Vector2(1517, -626)
-texture = ExtResource("2_lka11")
-
-[node name="Arbre" type="Sprite2D" parent="ALLSPRITES"]
-position = Vector2(-685, 63)
-texture = ExtResource("3_iuqht")
-
-[node name="Arbre2" type="Sprite2D" parent="ALLSPRITES"]
-position = Vector2(766, 63)
-texture = ExtResource("3_iuqht")
-
-[node name="Cloture" type="Sprite2D" parent="ALLSPRITES"]
-position = Vector2(-1593, 0)
-texture = ExtResource("4_hjcrb")
-
-[node name="Engrais" type="Sprite2D" parent="ALLSPRITES"]
-position = Vector2(-1450, 596)
-texture = ExtResource("5_ucl0g")
-
-[node name="Roche" type="Sprite2D" parent="ALLSPRITES"]
-position = Vector2(1661, 654)
-texture = ExtResource("6_pedlr")
-
-[node name="BackTrou" type="Sprite2D" parent="ALLSPRITES"]
-position = Vector2(462, 690)
-texture = ExtResource("7_f73s6")
-
-[node name="FronTrou" type="Sprite2D" parent="ALLSPRITES"]
-position = Vector2(462, 690)
-texture = ExtResource("8_e2mn0")
-
-[node name="Vaisseau" type="Sprite2D" parent="ALLSPRITES"]
-position = Vector2(-725, -754)
-texture = ExtResource("9_b2vuv")
+[node name="ALLSPRITES" parent="." instance=ExtResource("1_cpv22")]
 
 [node name="FightManager" type="Node2D" parent="." node_paths=PackedStringArray("spawnPositions", "spawnTimer")]
 script = ExtResource("1_7r1cq")
