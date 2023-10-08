@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=4 format=3 uid="uid://b12tm55josuhd"]
 
-[ext_resource type="FontFile" uid="uid://b2pgj5b8y2hbg" path="res://theming/NotoSans-Regular.ttf" id="1_07cn3"]
+[ext_resource type="FontFile" uid="uid://cxo6jnr3l6e4q" path="res://font/James Stroker.ttf" id="1_80ium"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1e555"]
 bg_color = Color(0, 0.823529, 0.105882, 1)
@@ -8,7 +8,7 @@ bg_color = Color(0, 0.823529, 0.105882, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7lh8q"]
 
 [resource]
-default_font = ExtResource("1_07cn3")
+default_font = ExtResource("1_80ium")
 default_font_size = 30
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_1e555")
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_7lh8q")

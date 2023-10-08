@@ -3,7 +3,7 @@ using System;
 
 public partial class Four : Control
 {
-	private Button manualButton;
+	private TextureButton manualButton;
 
 	[Export] public TextureRect fourImg;
 
@@ -18,7 +18,7 @@ public partial class Four : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		manualButton = GetNode<Button>("Button");
+		manualButton = GetNode<TextureButton>("Button");
 		timer = GetNode<Timer>("Timer");
         chefTimer = GetNode<Timer>("ChefTimer");
 
