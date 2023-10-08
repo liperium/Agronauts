@@ -63,7 +63,7 @@ public partial class GameState
 		if (GameState.SAVE_ENABLED == false)
 		{
 			GameState.instance.numbers.potatoCount.SetValue(100000);
-			GameState.instance.numbers.cookedPotatoCount.SetValue(10000);
+			//GameState.instance.numbers.cookedPotatoCount.SetValue(10000);
 		}
 
 	}

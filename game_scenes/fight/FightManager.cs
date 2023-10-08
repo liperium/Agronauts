@@ -13,6 +13,8 @@ public partial class FightManager : Node
 
     private int enemiesKilled = 0;
 
+    public static long enemyDamage;
+
     private Random rd;
 
     public override void _Ready()
@@ -27,6 +29,10 @@ public partial class FightManager : Node
             return;
         }
 
+        enemyDamage = (long)(GameState.instance.numbers.cookedPotatoCount.GetValue() * 0.03f);
+        
+        GameState.instance.numbers.cookedPotatoCount.SetOnValueChanged(OnCookedPotatoChanged);
+
         OnEnemyKill += OnKillEnemy;
 
         spawnTimer.Timeout += SpawnEnemy;
@@ -34,7 +40,22 @@ public partial class FightManager : Node
 
         //TODO fight layer for music
     }
-    
+
+    public void OnCookedPotatoChanged(long value)
+    {
+        if (value == 0)
+        {
+            GameState.instance.numbers.cookedPotatoCount.ResetOnValueChanged(OnCookedPotatoChanged);
+            LoseFight();
+        }
+    }
+
+    private void LoseFight()
+    {
+        GD.Print("FIGHT LOSE!");
+        EndFight();
+    }
+
     private void EndFight()
     {
         OnEnemyKill = null;
@@ -66,6 +87,8 @@ public partial class FightManager : Node
         if (enemiesKilled >= GetNbEnemiesToKill())
         {
             //TODO Play fight end SFX
+            GameState.instance.numbers.fightWave.IncreaseValue(1);
+            GD.Print("FIGHT WIN!");
             EndFight();
         }
     }

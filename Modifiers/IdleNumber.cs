@@ -68,7 +68,14 @@ public partial class IdleNumber
 
 	public void DecreaseValue(long value)
 	{
-		SetValue(this.value - value);
+		if (this.value - value <= 0)
+		{
+			SetValue(0);
+		}
+		else
+		{
+			SetValue(this.value - value);
+		}
 		if (value < 0) GD.Print("ON EST DANS LE NEGATIF DEFCON 5");
 	}
 
