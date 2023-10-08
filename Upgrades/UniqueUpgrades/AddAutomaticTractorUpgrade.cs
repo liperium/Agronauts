@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public partial class AddAutomaticTractorUpgrade : TieredUpgrade<MultiplierModifier>
 {
-	private List<FarmField> farmFieldsUnlocked = new List<FarmField>();
+	private List<FarmField> farmFieldsUnlocked;
 	public void AddField(FarmField toAdd)
 	{
         farmFieldsUnlocked.Add(toAdd);
@@ -42,6 +42,7 @@ public partial class AddAutomaticTractorUpgrade : TieredUpgrade<MultiplierModifi
     public override void OnLoad()
     {
         base.OnLoad();
+        farmFieldsUnlocked = new List<FarmField>();
         GameState.instance.numbers.truckAmount.SetOnValueChanged(CheckUnlock);
     }
 

@@ -25,6 +25,30 @@ public class IdleNumberContainer
 
     public IdleNumber fightWave;
 
+    public void OnLoad()
+    {
+        potatoCount.OnLoad();
+        potatoYield.OnLoad();
+        potatoGrowSpeed.OnLoad();
+        
+        cookedPotatoCount.OnLoad();
+        cookedPotatoYield.OnLoad();
+
+        potatoTemperature.OnLoad();
+        
+        furnaceAutoBakeSpeed.OnLoad();
+        furnaceTotalAutoCookedPotato.OnLoad();
+        furnaceBatchCount.OnLoad();
+        furnaceSpeed.OnLoad();
+        
+        numberOfTilesUnlocked.OnLoad();
+        
+        truckAmount.OnLoad();
+        truckSpeed.OnLoad();
+        
+        fightWave.OnLoad();
+    }
+    
     public void Init()
     {
         potatoCount = new IdleNumber();
@@ -42,6 +66,7 @@ public class IdleNumberContainer
         furnaceAutoBakeSpeed = new IdleNumber();
         furnaceAutoBakeSpeed.SetValue(100);
         furnaceTotalAutoCookedPotato = new IdleNumber();
+        furnaceTotalAutoCookedPotato.SetValue(1000);
         furnaceBatchCount = new IdleNumber();
         furnaceBatchCount.SetValue(1);
         furnaceSpeed = new IdleNumber();
@@ -57,8 +82,5 @@ public class IdleNumberContainer
         fightWave.SetValue(1);
     }
 
-    public void OnLoad()
-    {
-        
-    }
+  
 }

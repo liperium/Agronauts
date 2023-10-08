@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dgui53jtc0qch"]
 
 [ext_resource type="Script" path="res://game_scenes/farm/farmland/FarmLand.cs" id="1_b6x40"]
-[ext_resource type="Texture2D" uid="uid://dm5a3no2spvvm" path="res://game_scenes/farm/farmland/tiles/terre_laboure.png" id="2_sbsca"]
+[ext_resource type="Texture2D" uid="uid://ca8xbjwp5xse3" path="res://game_scenes/farm/farmland/tiles/terre_laboure.png" id="2_sbsca"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfbp4"]
 size = Vector2(32, 32)
@@ -17,6 +17,18 @@ tracks/0/path = NodePath("TextureButton:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PriceLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -38,6 +50,7 @@ script = ExtResource("1_b6x40")
 wait_time = 0.541
 
 [node name="TextureButton" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -91,4 +104,3 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeAnimation_ibj7y")
 anim_player = NodePath("../AnimationPlayer")
-active = true

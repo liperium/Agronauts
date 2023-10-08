@@ -22,7 +22,7 @@ public partial class FightWaveHandler : Node2D
         }
         else
         {
-            firstTractorUpgrade.OnBuyUpgrade += OnFirstTractorUnlocked;
+            firstTractorUpgrade.SetOnBuyUpgrade(OnFirstTractorUnlocked);
             unlockSubscribed = true;
         }
     }
@@ -33,7 +33,7 @@ public partial class FightWaveHandler : Node2D
         
         if (unlockSubscribed)
         {
-            GameState.instance.upgrades.firstTractorUpgrade.OnBuyUpgrade -= OnFirstTractorUnlocked;
+            GameState.instance.upgrades.firstTractorUpgrade.ResetOnBuyUpgrade(OnFirstTractorUnlocked);
             unlockSubscribed = false;
         }
     }

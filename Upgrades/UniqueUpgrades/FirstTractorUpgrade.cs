@@ -1,15 +1,15 @@
 using Godot;
 using System;
-
+[Serializable]
 public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
 {
-
-    
     public override void OnBuy()
     {
         Tracteur tractor = ResourceLoader.Load<PackedScene>("res://game_scenes/farm/tracteur/tracteur.tscn").Instantiate() as Tracteur;
         ObjectSpawner.Spawn(tractor, new Vector2(640,360));    
         GameState.instance.numbers.truckAmount.IncreaseValue(1);
+        unlock_pop_up.instance.ChangeText("KCONGRATULATIONS", "KCONTROLTRACTOR");
+        unlock_pop_up.instance.Animation();
         base.OnBuy();
     }
 

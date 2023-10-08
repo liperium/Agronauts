@@ -7,17 +7,66 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 	
 	public bool unlocked;
     
-	public Action<long> OnCostChanged;
-	public Action OnUnlock;
-	public Action OnBuyUpgrade;
+	private Action<long> OnCostChanged;
+	private Action OnUnlock;
+	private Action OnBuyUpgrade;
+
+	protected IdleNumber costNumber;
+	
+	#region Action Setters
+	public void SetOnCostChanged(Action<long> action)
+	{
+		OnCostChanged += action;
+	}
+	
+	public void ResetOnCostChanged(Action<long> action)
+	{
+		OnCostChanged -= action;
+	}
+	
+	public void SetOnUnlock(Action action)
+	{
+		OnUnlock += action;
+	}
+	
+	public void ResetOnUnlock(Action action)
+	{
+		OnUnlock -= action;
+	}
+	
+	public void SetOnBuyUpgrade(Action action)
+	{
+		OnBuyUpgrade += action;
+	}
+	
+	public void ResetOnBuyUpgrade(Action action)
+	{
+		OnBuyUpgrade -= action;
+	}
+	
+	#endregion
 
 	public override void OnLoad()
 	{
 		base.OnLoad();
 		UpdateCost();
+		SetCostNumber();
 	}
 
-	public bool IsUnlocked()
+    protected void SetCostNumber()
+    {
+        if (costNumber == null)
+        {
+            costNumber = GetCostNumber();
+        }
+    }
+
+    public virtual IdleNumber GetCostNumber()
+    {
+        return GameState.instance.numbers.potatoCount;
+    }
+
+    public bool IsUnlocked()
 	{
 		return unlocked;
 	}
@@ -36,6 +85,8 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 	{
 		if (CanBuy())
 		{
+			acquired = true;
+			
 			SetAffectedNumber();
 			Pay();
 			OnBuy();
@@ -56,13 +107,13 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
     }
     public virtual void Pay()
     {
-	    GameState.instance.numbers.potatoCount.DecreaseValue(cost);
+	    costNumber.DecreaseValue(cost);
     }
 
     public virtual bool CanBuy()
 	{
-		GD.Print(GameState.instance.numbers.potatoCount.GetValue());
-		return GameState.instance.numbers.potatoCount.GetValue() >= cost;
+		GD.Print(costNumber.GetValue() + " | "+cost);
+		return costNumber.GetValue() >= cost;
 	}
 
     public virtual void UpdateCost() {}

@@ -9,23 +9,31 @@ public partial class firstTractorUpgradeUI : HBoxContainer
         base._Ready();
         
         firstTractorUpgrade = GameState.instance.upgrades.firstTractorUpgrade;
-        buyButton = GetNode<TextureButton>("BuyButton");
 
+        if (firstTractorUpgrade.acquired)
+        {
+            QueueFree();
+            return;
+        }
+        
         Visible = firstTractorUpgrade.IsUnlocked();
-        firstTractorUpgrade.OnUnlock += OnUnlock;
+        firstTractorUpgrade.SetOnUnlock(OnUnlock);
 
-        GetNode<UpgradeInfoContainer>("UpgradeInfoContainer").SetUpgrade(firstTractorUpgrade.GetInfo(),
-            firstTractorUpgrade.GetCost(),
-            ref firstTractorUpgrade.OnCostChanged);
+        UpgradeInfoContainer infoContainer = GetNode<UpgradeInfoContainer>("UpgradeInfoContainer");
+        infoContainer.SetUpgrade(firstTractorUpgrade.GetInfo(),
+            firstTractorUpgrade.GetCost());
 
+        buyButton = GetNode<TextureButton>("BuyButton");
         buyButton.Pressed += PressBuy;
     }
 
     private void PressBuy()
     {
+        if (!firstTractorUpgrade.CanBuy()) return;
+
         firstTractorUpgrade.Buy();
         
-        firstTractorUpgrade.OnUnlock -= OnUnlock;
+        firstTractorUpgrade.ResetOnUnlock(OnUnlock);
         buyButton.Pressed -= PressBuy;
         
         QueueFree();
