@@ -24,31 +24,31 @@ alienPrefab = ExtResource("2_qvy1s")
 [node name="SpawnPositions" type="Node2D" parent="."]
 
 [node name="spawn1" type="Node2D" parent="SpawnPositions"]
-position = Vector2(96, 473)
+position = Vector2(144, 481)
 
 [node name="spawn2" type="Node2D" parent="SpawnPositions"]
-position = Vector2(290, 217)
+position = Vector2(137, 268)
 
 [node name="spawn3" type="Node2D" parent="SpawnPositions"]
-position = Vector2(668, 169)
+position = Vector2(1151, 175)
 
 [node name="spawn4" type="Node2D" parent="SpawnPositions"]
-position = Vector2(627, 473)
+position = Vector2(794, 573)
 
 [node name="spawn5" type="Node2D" parent="SpawnPositions"]
-position = Vector2(355, 91)
+position = Vector2(486, 99)
 
 [node name="spawn6" type="Node2D" parent="SpawnPositions"]
-position = Vector2(383, 592)
+position = Vector2(1228, 499)
 
 [node name="spawn7" type="Node2D" parent="SpawnPositions"]
-position = Vector2(890, 529)
+position = Vector2(276, 317)
 
 [node name="spawn8" type="Node2D" parent="SpawnPositions"]
-position = Vector2(129, 141)
+position = Vector2(481, 300)
 
 [node name="spawn9" type="Node2D" parent="SpawnPositions"]
-position = Vector2(837, 262)
+position = Vector2(25, 192)
 
 [node name="ShootManager" type="Area2D" parent="."]
 position = Vector2(355, 169)
