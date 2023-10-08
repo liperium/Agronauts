@@ -37,12 +37,18 @@ public partial class FarmLand : Area2D
 		ResourceLoader.Load<CompressedTexture2D>(baseFolder+"terre_pret2.png"),
 		ResourceLoader.Load<CompressedTexture2D>(baseFolder+"terre_pret3.png"),
 	};
+	public static AudioStreamWav harvestSound =
+		ResourceLoader.Load<AudioStreamWav>("res://game_scenes/farm/farmland/sfx/potato_harvested.wav");
+	public static AudioStreamWav buySound =
+		ResourceLoader.Load<AudioStreamWav>("res://game_scenes/farm/farmland/sfx/buy_land.wav");
 
 	private TextureButton button;
 	private Timer growthTimer;
 	private ProgressBar progressBar;
 	private LandState currState = LandState.Wild;
 	private Label priceLabel;
+	[Export] public AudioStreamPlayer2D audioPlayer;
+
 	public long cost = 0;
 	public LandState CurrState => currState;
 
@@ -158,6 +164,10 @@ public partial class FarmLand : Area2D
 		priceLabel.QueueFree();
 		MouseEntered -= Hovered;
 		MouseExited -= UnHovered;
+
+		audioPlayer.Stream = buySound;
+		audioPlayer.Play();
+
 		
 		// Check if it can expand
 		GetParent<FarmField>().LandBought(new Pos2D(position.X,position.Y));
@@ -180,6 +190,8 @@ public partial class FarmLand : Area2D
 		currState = LandState.Laboure;
 		progressBar.Visible = false;
 
+		audioPlayer.Stream = harvestSound;
+		audioPlayer.Play();
 		GameState.instance.numbers.potatoCount.IncreaseValue(GameState.instance.numbers.potatoYield.GetValue());
 	}
 

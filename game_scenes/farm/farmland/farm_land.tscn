@@ -43,8 +43,9 @@ _data = {
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ibj7y"]
 animation = &"FarmLandFadeIn"
 
-[node name="FarmLand" type="Area2D"]
+[node name="FarmLand" type="Area2D" node_paths=PackedStringArray("audioPlayer")]
 script = ExtResource("1_b6x40")
+audioPlayer = NodePath("AudioStreamPlayer2D")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.541
@@ -104,3 +105,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeAnimation_ibj7y")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -5.0
