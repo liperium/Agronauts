@@ -11,6 +11,7 @@ public partial class IdleNumber
 
 	private Action<long> OnValueChanged;
 
+
 	public void AddModifier(IdleModifier modifier)
 	{
 		if (modifiers == null)
