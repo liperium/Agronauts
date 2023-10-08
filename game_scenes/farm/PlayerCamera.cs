@@ -53,7 +53,8 @@ public partial class PlayerCamera : Camera2D
 		{
 			float opacity =  1 - Zoom.X;
 			(GetNode<ColorRect>("../Clouds").Material as ShaderMaterial).Set("shader_parameter/transparency",opacity);
-			AudioServer.SetBusVolumeDb(0, (1-Zoom.X)*-50.0f);
+			AudioServer.SetBusVolumeDb(2, (1-Zoom.X)*-25.0f);
+			AudioServer.SetBusVolumeDb(0, (1-Zoom.X)*-5.0f);
 		}
 		if (Input.IsActionPressed("mouse_control_camera"))
 		{

@@ -4,12 +4,25 @@ using System;
 public partial class Alien : Area2D
 {
 
+    [Export] public Timer timer;
+    
     private long HP;
     public FightManager manager;
+    
     public override void _Ready()
     {
         base._Ready();
         HP = GetHP();
+        
+        timer.Timeout += TimerOnTimeout;
+    }
+
+    private void TimerOnTimeout()
+    {
+        //TODO SFX shoot
+        GameState.instance.numbers.cookedPotatoCount.DecreaseValue(FightManager.enemyDamage);
+        
+        QueueFree();
     }
 
     public long GetHP()

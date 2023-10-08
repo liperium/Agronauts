@@ -4,6 +4,7 @@ using Godot;
 
 public partial class FightManager : Node
 {
+    [Export] public PackedScene farmScene;
     [Export] public Node2D[] spawnPositions;
     [Export] public Timer spawnTimer;
 
@@ -12,6 +13,8 @@ public partial class FightManager : Node
     public static Action OnEnemyKill;
 
     private int enemiesKilled = 0;
+
+    public static long enemyDamage;
 
     private Random rd;
 
@@ -27,6 +30,10 @@ public partial class FightManager : Node
             return;
         }
 
+        enemyDamage = (long)(GameState.instance.numbers.cookedPotatoCount.GetValue() * 0.03f);
+        
+        GameState.instance.numbers.cookedPotatoCount.SetOnValueChanged(OnCookedPotatoChanged);
+
         OnEnemyKill += OnKillEnemy;
 
         spawnTimer.Timeout += SpawnEnemy;
@@ -34,12 +41,28 @@ public partial class FightManager : Node
 
         //TODO fight layer for music
     }
-    
+
+    public void OnCookedPotatoChanged(long value)
+    {
+        if (value == 0)
+        {
+            GameState.instance.numbers.cookedPotatoCount.ResetOnValueChanged(OnCookedPotatoChanged);
+            LoseFight();
+        }
+    }
+
+    private void LoseFight()
+    {
+        GD.Print("FIGHT LOSE!");
+        EndFight();
+    }
+
     private void EndFight()
     {
         OnEnemyKill = null;
         
         //TODO load back to farm scene
+        GetTree().ChangeSceneToPacked(farmScene);
         GD.Print("FIGHT END!");
         
     }
@@ -66,6 +89,8 @@ public partial class FightManager : Node
         if (enemiesKilled >= GetNbEnemiesToKill())
         {
             //TODO Play fight end SFX
+            GameState.instance.numbers.fightWave.IncreaseValue(1);
+            GD.Print("FIGHT WIN!");
             EndFight();
         }
     }

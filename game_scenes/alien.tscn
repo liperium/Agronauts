@@ -8,11 +8,16 @@ size = Vector2(30, 60)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7nqd"]
 size = Vector2(30, 60)
 
-[node name="Alien" type="Area2D"]
+[node name="Alien" type="Area2D" node_paths=PackedStringArray("timer")]
 script = ExtResource("1_7b474")
+timer = NodePath("Timer")
 
 [node name="AlienSprite" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_v7qw5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_p7nqd")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
