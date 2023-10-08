@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dgui53jtc0qch"]
 
 [ext_resource type="Script" path="res://game_scenes/farm/farmland/FarmLand.cs" id="1_b6x40"]
-[ext_resource type="Texture2D" uid="uid://dm5a3no2spvvm" path="res://game_scenes/farm/farmland/tiles/terre_laboure.png" id="2_sbsca"]
+[ext_resource type="Texture2D" uid="uid://ca8xbjwp5xse3" path="res://game_scenes/farm/farmland/tiles/terre_laboure.png" id="2_sbsca"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfbp4"]
 size = Vector2(32, 32)
@@ -52,6 +52,7 @@ grow_vertical = 2
 scale = Vector2(0.125, 0.125)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+action_mode = 0
 texture_normal = ExtResource("2_sbsca")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

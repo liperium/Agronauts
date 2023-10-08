@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3pp5ojtc8bt"
-path="res://.godot/imported/terre_pret1.png-117044251e6b9b9ddb271f7605453866.ctex"
+uid="uid://b5lrpmvdxxo2t"
+path="res://.godot/imported/arbre2.png-f7334598c4016ebc17873c76902380e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scenes/farm/farmland/tiles/terre_pret1.png"
-dest_files=["res://.godot/imported/terre_pret1.png-117044251e6b9b9ddb271f7605453866.ctex"]
+source_file="res://game_scenes/farm/farmland/tiles/arbre2.png"
+dest_files=["res://.godot/imported/arbre2.png-f7334598c4016ebc17873c76902380e4.ctex"]
 
 [params]
 

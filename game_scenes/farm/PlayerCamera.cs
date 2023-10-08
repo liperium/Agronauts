@@ -24,6 +24,7 @@ public partial class PlayerCamera : Camera2D
 			targetZoom -= Vector2.One * zoomSens * targetZoom;
 		}
 
+
 		if (cameraTransformMouse && @event is InputEventMouseMotion eventMouseMotion)
 		{
 			Position -= eventMouseMotion.Relative * (1.0f / targetZoom.X);
@@ -38,13 +39,20 @@ public partial class PlayerCamera : Camera2D
 	public override void _Ready()
 	{
 		homePosition = Position;
+
+		float opacity =  0.0f;
+		(GetNode<ColorRect>("../Clouds").Material as ShaderMaterial).Set("shader_parameter/transparency",opacity);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		Zoom = Vector2.One * Mathf.Lerp(Zoom.X, targetZoom.X, lerpValue * (float)delta);
-
+		if (Zoom.X < 1.0f)
+		{
+			float opacity =  1 - Zoom.X;
+			(GetNode<ColorRect>("../Clouds").Material as ShaderMaterial).Set("shader_parameter/transparency",opacity);
+		}
 		if (Input.IsActionPressed("mouse_control_camera"))
 		{
 			cameraTransformMouse = true;
