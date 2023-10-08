@@ -3,6 +3,7 @@ using System;
 
 public partial class StartGame : Button
 {
+	[Export] public PackedScene farmScene;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -16,7 +17,6 @@ public partial class StartGame : Button
 	public override void _Pressed()
 	{
 		base._Pressed();
-		var scene = ResourceLoader.Load<PackedScene>("res://game_scenes/farm/farm.tscn");
-		GetTree().ChangeSceneToPacked(scene);
+		GetTree().ChangeSceneToPacked(farmScene);
 	}
 }

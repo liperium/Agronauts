@@ -1,9 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://do4brtumlcxqx"]
+[gd_scene load_steps=9 format=3 uid="uid://do4brtumlcxqx"]
 
 [ext_resource type="Script" path="res://game_scenes/fight/Alien.cs" id="1_7b474"]
+[ext_resource type="AudioStream" uid="uid://dfdtmykkg20lr" path="res://game_scenes/fight/alien/pew.wav" id="2_af8rg"]
+[ext_resource type="Texture2D" uid="uid://cjbb0yso8f1pe" path="res://game_scenes/fight/sprites/alien-fight.png" id="2_hyvot"]
+[ext_resource type="Texture2D" uid="uid://d1wodf4bswlpl" path="res://game_scenes/fight/sprites/alien-detente.png" id="2_nv1fa"]
+[ext_resource type="AudioStream" uid="uid://dv171gxjkt80q" path="res://game_scenes/fight/alien/ennemy_spawn.wav" id="3_kwsyt"]
+[ext_resource type="AudioStream" uid="uid://dc0chy1j4nisg" path="res://game_scenes/fight/alien/ennemy_dies.wav" id="4_rqijv"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_v7qw5"]
-size = Vector2(30, 60)
+[sub_resource type="SpriteFrames" id="SpriteFrames_c2nqo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nv1fa")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hyvot")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7nqd"]
 size = Vector2(30, 60)
@@ -11,9 +32,14 @@ size = Vector2(30, 60)
 [node name="Alien" type="Area2D" node_paths=PackedStringArray("timer")]
 script = ExtResource("1_7b474")
 timer = NodePath("Timer")
+shootSound = ExtResource("2_af8rg")
+spawnSound = ExtResource("3_kwsyt")
+dieSound = ExtResource("4_rqijv")
 
-[node name="AlienSprite" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_v7qw5")
+[node name="AlienSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_c2nqo")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_p7nqd")
@@ -21,3 +47,5 @@ shape = SubResource("RectangleShape2D_p7nqd")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

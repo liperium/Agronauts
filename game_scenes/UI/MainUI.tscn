@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://y1unomfdmkif"]
+[gd_scene load_steps=46 format=3 uid="uid://y1unomfdmkif"]
 
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="2_hrn0e"]
 [ext_resource type="Texture2D" uid="uid://bq6rvvq07awwd" path="res://UI/sprites/fourche_Bouton1.png" id="2_xvtxr"]
@@ -19,10 +19,12 @@
 [ext_resource type="Script" path="res://UI/TractorSpeedUpgradeUI.cs" id="6_7mv0j"]
 [ext_resource type="Texture2D" uid="uid://cn6r5swi20lga" path="res://UI/sprites/FOUR_fond_sombre.png" id="6_joar3"]
 [ext_resource type="Script" path="res://UI/TemperatureLabel.cs" id="6_ya5yg"]
+[ext_resource type="Script" path="res://game_scenes/UI/UnlockFurnaceTab.cs" id="7_c4a04"]
 [ext_resource type="Script" path="res://game_scenes/UI/PotatoYieldUpgradeUI.cs" id="7_f25uh"]
 [ext_resource type="Texture2D" uid="uid://cmq3rsfe7ocyi" path="res://UI/sprites/ALIEN_fond.png" id="8_tvxf0"]
 [ext_resource type="Texture2D" uid="uid://cdh8cnbwq2knw" path="res://UI/sprites/option_Bouton4.png" id="9_102yr"]
 [ext_resource type="Script" path="res://UI/AutoFurnaceUpgradeUI.cs" id="9_tu6tx"]
+[ext_resource type="Script" path="res://game_scenes/UI/UnlockArtifactsTab.cs" id="10_bips4"]
 [ext_resource type="Script" path="res://UI/AutoCookLevel2UpgradeUI.cs" id="10_epy4h"]
 [ext_resource type="Script" path="res://game_scenes/UI/QuitButton.cs" id="10_g0usx"]
 [ext_resource type="Texture2D" uid="uid://bpyh0bpbc0a67" path="res://UI/sprites/OPTION_fond.png" id="10_l6qf2"]
@@ -174,6 +176,16 @@ tabContainer = NodePath("../TabContainer")
 bg = NodePath("../TabBG")
 bgTexture = ExtResource("6_joar3")
 
+[node name="UnlockFurnaceTab" type="Control" parent="UpgradeMenu/TabFurnace"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_c4a04")
+
 [node name="TabArtifacts" type="TextureButton" parent="UpgradeMenu" node_paths=PackedStringArray("tabContainer", "bg")]
 layout_mode = 0
 offset_left = 340.0
@@ -188,6 +200,15 @@ tabIndex = 2
 tabContainer = NodePath("../TabContainer")
 bg = NodePath("../TabBG")
 bgTexture = ExtResource("8_tvxf0")
+
+[node name="Control" type="Control" parent="UpgradeMenu/TabArtifacts"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_bips4")
 
 [node name="TabOptions" type="TextureButton" parent="UpgradeMenu" node_paths=PackedStringArray("tabContainer", "bg")]
 layout_mode = 0
