@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://xc2nesxhuplu"]
+
+[ext_resource type="Texture2D" uid="uid://dpm0ui757lu6o" path="res://game_scenes/farm/farmland/renfourer_bouton.png" id="1_hkjnt"]
+
+[node name="NinePatchRect" type="NinePatchRect"]
+offset_right = 748.0
+offset_bottom = 229.0
+texture = ExtResource("1_hkjnt")
+patch_margin_left = 37
+patch_margin_top = 37
+patch_margin_right = 38
+patch_margin_bottom = 40
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1

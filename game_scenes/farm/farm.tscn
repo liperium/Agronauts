@@ -51,6 +51,8 @@ script = ExtResource("1_ou2to")
 [node name="FarmFieldMaster" parent="." instance=ExtResource("3_8lrfd")]
 position = Vector2(610, 328)
 
+[node name="Tracteur" parent="." instance=ExtResource("4_mymk5")]
+
 [node name="Clouds" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_iryth")
 offset_left = -8581.0
@@ -58,5 +60,3 @@ offset_top = -4684.0
 offset_right = 8106.0
 offset_bottom = 5680.0
 mouse_filter = 2
-
-[node name="Tracteur" parent="." instance=ExtResource("4_mymk5")]
