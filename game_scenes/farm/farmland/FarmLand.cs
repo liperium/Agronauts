@@ -158,7 +158,10 @@ public partial class FarmLand : Area2D
 		if (pay)
 		{
 			GameState.instance.numbers.potatoCount.DecreaseValue(cost);
-			GameState.instance.numbers.numberOfTilesUnlocked.IncreaseValue(1);	
+			GameState.instance.numbers.numberOfTilesUnlocked.IncreaseValue(1);
+			
+			audioPlayer.Stream = buySound;
+			audioPlayer.Play();
 		}
 
 		button.TextureNormal = GetRandomTexture(BoughtTextures);
@@ -167,9 +170,6 @@ public partial class FarmLand : Area2D
 		//MouseEntered -= Hovered;
 		//MouseExited -= UnHovered;
 
-		audioPlayer.Stream = buySound;
-		audioPlayer.Play();
-		
 		// Check if it can expand
 		GetParent<FarmField>().LandBought(new Pos2D(position.X,position.Y), addToHistory);
 	}
