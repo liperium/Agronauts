@@ -9,7 +9,8 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
     
 	public Action<long> OnCostChanged;
 	public Action OnUnlock;
-	
+	public Action OnBuyUpgrade;
+
 	public override void OnLoad()
 	{
 		base.OnLoad();
@@ -51,6 +52,7 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 	}
     public virtual void OnBuy() {
 	    affectedNumber.UpdateValue();
+	    if (OnBuyUpgrade != null) OnBuyUpgrade();
     }
     public virtual void Pay()
     {
