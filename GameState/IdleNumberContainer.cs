@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 [Serializable]
 public class IdleNumberContainer
@@ -12,8 +12,11 @@ public class IdleNumberContainer
     
     public IdleNumber potatoTemperature;
 
+    public IdleNumber furnaceAutoBakeSpeed;
+    public IdleNumber furnaceTotalAutoCookedPotato;
     public IdleNumber furnaceBatchCount;
     public IdleNumber furnaceSpeed;
+
 
     public IdleNumber numberOfTilesUnlocked;
 
@@ -36,6 +39,9 @@ public class IdleNumberContainer
 
         potatoTemperature = new IdleNumber();
 
+        furnaceAutoBakeSpeed = new IdleNumber();
+        furnaceAutoBakeSpeed.SetValue(100);
+        furnaceTotalAutoCookedPotato = new IdleNumber();
         furnaceBatchCount = new IdleNumber();
         furnaceBatchCount.SetValue(1);
         furnaceSpeed = new IdleNumber();
@@ -43,7 +49,7 @@ public class IdleNumberContainer
         
         truckAmount = new IdleNumber();
         truckSpeed = new IdleNumber();
-        truckSpeed.SetValue(1);
+        truckSpeed.SetValue(20);
 
         numberOfTilesUnlocked = new IdleNumber();
 

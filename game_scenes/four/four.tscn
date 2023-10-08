@@ -37,3 +37,6 @@ text = "Enfourner"
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="ChefTimer" type="Timer" parent="."]
+one_shot = true
