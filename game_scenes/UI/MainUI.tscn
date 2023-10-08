@@ -142,7 +142,7 @@ layout_mode = 0
 offset_left = 124.0
 offset_right = 551.0
 offset_bottom = 720.563
-texture = ExtResource("4_y7gcn")
+texture = ExtResource("6_joar3")
 expand_mode = 5
 
 [node name="TabFarm" type="TextureButton" parent="UpgradeMenu" node_paths=PackedStringArray("tabContainer", "bg")]
@@ -214,6 +214,7 @@ theme = ExtResource("5_a2xpl")
 tabs_visible = false
 
 [node name="Farm" type="Control" parent="UpgradeMenu/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu/TabContainer/Farm"]
@@ -259,42 +260,48 @@ size_flags_horizontal = 3
 script = ExtResource("5_kqpvt")
 
 [node name="FourTab" type="Control" parent="UpgradeMenu/TabContainer"]
-visible = false
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu/TabContainer/FourTab"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenu/TabContainer/FourTab"]
 layout_mode = 2
+offset_right = 392.0
+offset_bottom = 548.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Four" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("3_tw2g8")]
-custom_minimum_size = Vector2(0, 240)
+[node name="Four" parent="UpgradeMenu/TabContainer/FourTab/VBoxContainer" instance=ExtResource("3_tw2g8")]
+custom_minimum_size = Vector2(0, 275)
 layout_mode = 2
 
-[node name="AutoCookUpgrade" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeMenu/TabContainer/FourTab/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 25
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu/TabContainer/FourTab/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenu/TabContainer/FourTab/VBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="AutoCookUpgrade" parent="UpgradeMenu/TabContainer/FourTab/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("9_tu6tx")
 
-[node name="AutoCookUpgrade2" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+[node name="AutoCookUpgrade2" parent="UpgradeMenu/TabContainer/FourTab/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("10_epy4h")
 
-[node name="AutoCookUpgrade3" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+[node name="AutoCookUpgrade3" parent="UpgradeMenu/TabContainer/FourTab/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("11_fivar")
 
-[node name="AutoCookUpgrade4" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+[node name="AutoCookUpgrade4" parent="UpgradeMenu/TabContainer/FourTab/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("12_muskv")
