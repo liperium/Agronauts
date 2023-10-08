@@ -19,6 +19,7 @@ public class IdleUpgradeContainer
     public FurnaceTempUpgrade furnaceTempUpgrade;
 
     public UnlockFurnaceUpgrade unlockFurnaceUpgrade;
+    public UnlockArtifactsUpgrade unlockArtifactsUpgrade;
     public void Init()
     {
         totalPotatoYieldUpgrade = new TotalPotatoYieldUpgrade();
@@ -38,6 +39,7 @@ public class IdleUpgradeContainer
         furnaceTempUpgrade = new FurnaceTempUpgrade();
 
         unlockFurnaceUpgrade = new UnlockFurnaceUpgrade();
+        unlockArtifactsUpgrade = new UnlockArtifactsUpgrade();
 
     }
 
@@ -60,5 +62,6 @@ public class IdleUpgradeContainer
         furnaceTempUpgrade.OnLoad();
         
         unlockFurnaceUpgrade.OnLoad();
+        unlockArtifactsUpgrade.OnLoad();
     }
 }

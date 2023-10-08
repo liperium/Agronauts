@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 [Serializable]
 public partial class GameState
 {
-	public const bool SAVE_ENABLED = true;
+	public const bool SAVE_ENABLED = false;
 	
 	static JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
 	
