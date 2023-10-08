@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 
 public partial class CookedPotatoCountLabel : Node
 {
@@ -19,9 +19,4 @@ public partial class CookedPotatoCountLabel : Node
         GetParent<LerpValue>().SetNewValue(newValue);
     }
 
-    public override void _ExitTree()
-    {
-        base._ExitTree();
-        number.ResetOnValueChanged(ValueChanged);
-    }
 }
