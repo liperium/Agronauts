@@ -11,13 +11,29 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 	public Action OnUnlock;
 	public Action OnBuyUpgrade;
 
+	protected IdleNumber costNumber;
+
 	public override void OnLoad()
 	{
 		base.OnLoad();
 		UpdateCost();
+		SetCostNumber();
 	}
 
-	public bool IsUnlocked()
+    protected void SetCostNumber()
+    {
+        if (costNumber == null)
+        {
+            costNumber = GetCostNumber();
+        }
+    }
+
+    public virtual IdleNumber GetCostNumber()
+    {
+        return GameState.instance.numbers.potatoCount;
+    }
+
+    public bool IsUnlocked()
 	{
 		return unlocked;
 	}
@@ -56,13 +72,13 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
     }
     public virtual void Pay()
     {
-	    GameState.instance.numbers.potatoCount.DecreaseValue(cost);
+	    costNumber.DecreaseValue(cost);
     }
 
     public virtual bool CanBuy()
 	{
-		GD.Print(GameState.instance.numbers.potatoCount.GetValue());
-		return GameState.instance.numbers.potatoCount.GetValue() >= cost;
+		GD.Print(costNumber.GetValue() + " | "+cost);
+		return costNumber.GetValue() >= cost;
 	}
 
     public virtual void UpdateCost() {}

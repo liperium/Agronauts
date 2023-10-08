@@ -23,6 +23,8 @@ public partial class firstTractorUpgradeUI : HBoxContainer
 
     private void PressBuy()
     {
+        if (!firstTractorUpgrade.CanBuy()) return;
+
         firstTractorUpgrade.Buy();
         
         firstTractorUpgrade.OnUnlock -= OnUnlock;

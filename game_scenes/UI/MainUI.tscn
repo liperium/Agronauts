@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://y1unomfdmkif"]
+[gd_scene load_steps=31 format=3 uid="uid://y1unomfdmkif"]
 
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="2_hrn0e"]
 [ext_resource type="Script" path="res://UI/PotatoCountLabel.cs" id="3_4xs5e"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" path="res://UI/TractorSpeedUpgradeUI.cs" id="6_7mv0j"]
 [ext_resource type="Script" path="res://UI/TemperatureLabel.cs" id="6_ya5yg"]
 [ext_resource type="Script" path="res://game_scenes/UI/PotatoYieldUpgradeUI.cs" id="7_f25uh"]
+[ext_resource type="Script" path="res://UI/AutoFurnaceUpgradeUI.cs" id="9_1o5p7"]
+[ext_resource type="Script" path="res://UI/AutoCookLevel2UpgradeUI.cs" id="10_fk6gb"]
 [ext_resource type="PackedScene" uid="uid://c7vdiidjnc4py" path="res://UI/unlock_pop_up.tscn" id="13_wab65"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mr71e"]
@@ -205,10 +207,15 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 
-[node name="AddAutoTractorUpgrade" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+[node name="AutoCookUpgrade" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("5_kqpvt")
+script = ExtResource("9_1o5p7")
+
+[node name="AutoCookUpgrade2" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("10_fk6gb")
 
 [node name="Artifacts" type="Control" parent="UpgradeMenu/TabContainer"]
 visible = false
