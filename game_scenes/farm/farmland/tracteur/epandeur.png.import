@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1d0wnoy65yna"
-path="res://.godot/imported/Terre_Pret3.png-1b1f03b1f4df0d6c1738cab5296c3c5a.ctex"
+uid="uid://bwxru3otuu7gf"
+path="res://.godot/imported/epandeur.png-154cb5e90cf755e1b540afd8a2a9a372.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scenes/farm/farmland/tiles/Terre_Pret3.png"
-dest_files=["res://.godot/imported/Terre_Pret3.png-1b1f03b1f4df0d6c1738cab5296c3c5a.ctex"]
+source_file="res://game_scenes/farm/farmland/tracteur/epandeur.png"
+dest_files=["res://.godot/imported/epandeur.png-154cb5e90cf755e1b540afd8a2a9a372.ctex"]
 
 [params]
 

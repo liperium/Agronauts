@@ -21,9 +21,9 @@ public partial class FarmField : Node2D
 			if (node is FarmLand farmLand)
 			{
 				farmLand.Position = new Vector2(xCount*CELL_SIZE, yCount*CELL_SIZE);
-				if (xCount == 2 && yCount == 2 && first) FarmFieldMaster.originFarmLand = farmLand.Position;
+				if (xCount == 2 && yCount == 2 && first) FarmFieldMaster.originFarmLand = farmLand.GlobalPosition;
 				farmLand.position = new Pos2D(xCount, yCount);
-				farmLand.cost = (int)farmLand.Position.DistanceTo(FarmFieldMaster.originFarmLand);
+
 				xCount++;
 				if (xCount > squareSize - 1)
 				{
@@ -32,9 +32,22 @@ public partial class FarmField : Node2D
 				}
 			}
 		}
-	}
 
-	public void Expand(Pos2D pos)
+		foreach (var node in GetChildren())
+		{
+			if (node is FarmLand farmLand)
+			{
+				farmLand.ChangeCost((int)farmLand.GlobalPosition.DistanceTo(FarmFieldMaster.originFarmLand));
+			}
+		}
+
+
+        GameState.instance.upgrades.addAutomaticTractorUpgrade.AddField(this);
+    }
+
+
+
+    public void Expand(Pos2D pos)
 	{
 		FarmFieldMaster ffm = GetParent<FarmFieldMaster>();
 		FarmFieldMaster.Cardinality cardinality = FarmFieldMaster.Cardinality.EAST;

@@ -28,7 +28,7 @@ public partial class IdleNumber
 		{
 			im.Apply();
 		}
-		if (OnValueChanged != null) OnValueChanged(value);
+		if (OnValueChanged != null) OnValueChanged(GetValue());
 	}
 
 	public long GetValue()
@@ -66,4 +66,9 @@ public partial class IdleNumber
 			OnValueChanged += action;
 		}
 	}
+
+    public void ResetOnValueChanged(Action<long> action)
+    {
+	    OnValueChanged -= action;
+    }
 }

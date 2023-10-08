@@ -6,7 +6,7 @@ public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier
 
 	public override void OnBuy()
 	{
-        modifier.multiplier += 0.05f;
+		modifier.multiplier++;
         base.OnBuy();
     }
 
@@ -23,6 +23,10 @@ public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier
 	public override void InnitInfo()
 	{
 		base.InnitInfo();
+		
+		info.SetName("KPOTATOYIELDUPGRADE");
+		info.SetDescription("KPOTATOYIELDUPGRADEDESC");
+		info.SetImagePath("res://Icons/Potato.png");
 	}
 
 	public override void OnLoad()

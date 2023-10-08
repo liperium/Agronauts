@@ -49,7 +49,7 @@ public partial class GameState
 		numbers.OnLoad();
 		upgrades.OnLoad();
 		
-		if (GameState.SAVE_ENABLED == false) GameState.instance.numbers.potatoCount.SetValue(100);
+		if (GameState.SAVE_ENABLED == false) GameState.instance.numbers.potatoCount.SetValue(100000);
 	}
 	
 	public void SaveToFile()

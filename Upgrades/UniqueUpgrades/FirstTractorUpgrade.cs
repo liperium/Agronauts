@@ -4,10 +4,15 @@ using System;
 public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
 {
 
+    
     public override void OnBuy()
     {
         Tracteur tractor = ResourceLoader.Load<PackedScene>("res://game_scenes/farm/tracteur/tracteur.tscn").Instantiate() as Tracteur;
-        ObjectSpawner.Spawn(tractor, new Vector2(FarmFieldMaster.centerPos,FarmFieldMaster.centerPos)*FarmFieldMaster.TILE_SIZE);
+        ObjectSpawner.Spawn(tractor, new Vector2(640,360));
+        tractor.automatic = true;
+        tractor.topLeftBound = tractor.Position;
+        tractor.bottomRightBound = new Vector2(tractor.Position.X + FarmFieldMaster.TILE_PER_FF * FarmFieldMaster.TILE_SIZE, tractor.Position.Y + FarmFieldMaster.TILE_PER_FF * FarmFieldMaster.TILE_SIZE);
+        
         base.OnBuy();
     }
 
@@ -29,16 +34,16 @@ public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
     public override void InnitInfo()
     {
         base.InnitInfo();
+        info.SetName("KFIRSTTRACTORUPGRADE");
+        info.SetDescription("KFIRSTTRACTORUPGRADEDESC");
+        info.SetImagePath("res://Icons/Potato.png");
     }
 
     public override void OnLoad()
     {
         base.OnLoad();
-        if(GameState.instance.numbers.numberOfTilesUnlocked.GetValue() >= 10)
-        {
-            unlocked = true;
-        }
-        else
+
+        if (IsUnlocked() == false)
         {
             GameState.instance.numbers.numberOfTilesUnlocked.SetOnValueChanged(CheckUnlock);
         }
@@ -48,7 +53,8 @@ public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
     {
         if(tiles >= 10)
         {
-            unlocked = true;
+            Unlock();
+            GameState.instance.numbers.numberOfTilesUnlocked.ResetOnValueChanged(CheckUnlock);
         }
     }
 }
