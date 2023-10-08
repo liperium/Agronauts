@@ -48,7 +48,6 @@ public partial class Tracteur : CharacterBody2D
         else
         {
             GameState.instance.upgrades.tractorSpreadSeedsUpgrade.SetOnUnlock(UpgradeEpandeur);
-            GameState.instance.upgrades.tractorSpreadSeedsUpgrade.ResetOnUnlock(UpgradeEpandeur);
         }
     }
 
@@ -171,7 +170,9 @@ public partial class Tracteur : CharacterBody2D
 
     public void UpgradeEpandeur()
     {
-        epandeuse.Visible = false;
+        epandeuse.Visible = true;
         epandeuse.SetCollision(true);
+        GameState.instance.upgrades.tractorSpreadSeedsUpgrade.ResetOnUnlock(UpgradeEpandeur);
+
     }
 }
