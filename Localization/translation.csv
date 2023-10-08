@@ -37,3 +37,9 @@ KFURNACESPEED,Furnace speed,Vitesse du four
 KFURNACESPEEDDESC,Faster furnace. +10% speed,Four plus rapide. +10% de vitesse
 KFURNACEBATCHCOUNT,Bigger batch,Plus gros lot
 KFURNACEBATCHCOUNTDESC,+100% potatos per batch,+100% de patates par lot
+KTRUCKSPEEDARTIFACT,Alien engine,moteur alien
+KTRUCKSPEEDARTIFACTDESC,When this alien technology doubles the tractor's speed,Quand cette technologie aliene est utilisée la vitesse des tracteurs est doublée
+KFURNACESPEEDARTIFACT,Interstellar fuel,Carburant interstellaire
+KFURNACESPEEDARTIFACTDESC,Double the cooking speed,Cuit deux fois plus vite
+KFURNACETEMP,Temperature,Température
+KFURNACETEMPDESC,Hotter means more damage. The current potato temperature gets 20% hotter, Plus chaud signifie plus de dommages. La température des patates devient 20% plus chaude.

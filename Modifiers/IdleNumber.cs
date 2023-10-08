@@ -11,6 +11,7 @@ public partial class IdleNumber
 
 	private Action<long> OnValueChanged;
 
+
 	public void AddModifier(IdleModifier modifier)
 	{
 		if (modifiers == null)
@@ -48,8 +49,11 @@ public partial class IdleNumber
 	public void SetValue(long value)
 	{
 		this.value = value;
-		GD.Print("THIS IS NOT SUPPOSED TO BE CALL FOR OTHER REASON THAN TESTING");
-		UpdateValue();
+		if (value < long.MaxValue)
+		{
+			//GD.Print("THIS IS NOT SUPPOSED TO BE CALL FOR OTHER REASON THAN TESTING");
+			UpdateValue();
+		}
 	}
 
 	public float GetMultiplier()
