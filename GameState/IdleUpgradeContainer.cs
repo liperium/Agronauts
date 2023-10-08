@@ -10,6 +10,7 @@ public class IdleUpgradeContainer
     public TractorSpeedUpgrade tractorSpeedUpgrade;
     public AutoFurnaceUpgrade autoFurnaceUpgrade;
     public AutoCookLevel2Upgrade autoCookLevel2Upgrade;
+    public AutoCookLevel3Upgrade autoCookLevel3Upgrade;
     public void Init()
     {
         totalPotatoYieldUpgrade = new TotalPotatoYieldUpgrade();
@@ -19,6 +20,7 @@ public class IdleUpgradeContainer
         tractorSpeedUpgrade = new TractorSpeedUpgrade();
         autoFurnaceUpgrade = new AutoFurnaceUpgrade();
         autoCookLevel2Upgrade = new AutoCookLevel2Upgrade();
+        autoCookLevel3Upgrade = new AutoCookLevel3Upgrade();
     }
 
     public void OnLoad()
@@ -30,5 +32,6 @@ public class IdleUpgradeContainer
         tractorSpeedUpgrade.OnLoad();
         autoFurnaceUpgrade.OnLoad();
         autoCookLevel2Upgrade.OnLoad();
+        autoCookLevel3Upgrade.OnLoad();
     }
 }

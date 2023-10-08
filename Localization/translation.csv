@@ -29,3 +29,5 @@ KCOOKLVL2DESC,Your cook is getting faster. It takes half as long for them to sta
 KQUIT,Quit,Quitter
 KSAVE,Save,Sauvegarder
 KCONTROLTRACTOR,Drive your tractor using the arrow keys on your keyboard,Conduisez votre tracteur en utilisant les flèches de votre clavier
+KCOOKLVL3,Michelin chef,Chef Michelin
+KCOOKLVL3DESC,Starting a new batch is three times as fast as before,Commencer un nouveau lot prend trois fois moins de temps qu'avant

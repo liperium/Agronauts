@@ -66,7 +66,7 @@ public class IdleNumberContainer
         furnaceAutoBakeSpeed = new IdleNumber();
         furnaceAutoBakeSpeed.SetValue(100);
         furnaceTotalAutoCookedPotato = new IdleNumber();
-        furnaceTotalAutoCookedPotato.SetValue(1000);
+        furnaceTotalAutoCookedPotato.SetValue(1000000);
         furnaceBatchCount = new IdleNumber();
         furnaceBatchCount.SetValue(1);
         furnaceSpeed = new IdleNumber();
