@@ -25,9 +25,10 @@ KAUTOCOOKUPGRADEDESC,If your oven is left unattended long enough this personal c
 KCONGRATULATIONS,Congratulations!,Félicitations!
 KCOOKUNLOCKTIP,Your new cook will get more skilled the more they cook.,Votre nouveau cuisinier gagnera de l'expérience à chaque cuisson.
 KCOOKLVL2,True chef,Vrai chef
-KCOOKLVL2DESC,Your cook is getting faster. It takes half as long for them to start a batch of potatos,Votre cuisinier devient plus rapide. Commencer a cuire un lot de patates lui prend la moitier du temps
+KCOOKLVL2DESC,Your cook is getting faster. It takes half as long for them to start a batch of potatos,Votre cuisinier devient plus rapide. Commencer a cuire un lot de patates lui prend la moitié du temps
 KQUIT,Quit,Quitter
 KSAVE,Save,Sauvegarder
+KCONTINUE,Continue,Continuer
 KCONTROLTRACTOR,Drive your tractor using the arrow keys on your keyboard,Conduisez votre tracteur en utilisant les flèches de votre clavier
 KCOOKLVL3,Michelin chef,Chef Michelin
 KCOOKLVL3DESC,Starting a new batch is three times as fast as before,Commencer un nouveau lot prend trois fois moins de temps qu'avant
@@ -45,3 +46,8 @@ KFURNACETEMP,Temperature,Température
 KFURNACETEMPDESC,Hotter means more damage. The current potato temperature gets 20% hotter, Plus chaud signifie plus de dommages. La température des patates devient 20% plus chaude.
 KPLANTER,Planter,Épandeur
 KPLANTERDESC,Your tractors now also plant potatos!,Vos tracteurs plantent maintenant aussi des patates!
+KUNLOCKFURNACE,Furnace unlocked!,Four débloqué!
+KUNLOCKFURNACEDESC,The furnace allows you to cook your potatos,Le four vous permet de faire cuire vos patates
+KUNLOCKARTIFACTS,Artifacts unlocked!,Artéfacts débloqué!
+KUNLOCKARTIFACTSDESC,Gain artifacts from defeating aliens invaders,Récupère des artéfacts en vainquant des extraterrestres
+KENFOURNER,Cook,Enfourner
