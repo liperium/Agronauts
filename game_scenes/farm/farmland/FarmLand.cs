@@ -42,7 +42,7 @@ public partial class FarmLand : Area2D
 	private Timer growthTimer;
 	private ProgressBar progressBar;
 	private LandState currState = LandState.Wild;
-	private Label priceLabel;
+	private RichTextLabel priceLabel;
 	public long cost = 0;
 	public LandState CurrState => currState;
 
@@ -58,7 +58,7 @@ public partial class FarmLand : Area2D
 		growthTimer = GetNode<Timer>("Timer");
 		growthTimer.OneShot = true;
 
-		priceLabel = GetNode<Label>("PriceLabel");
+		priceLabel = GetNode<RichTextLabel>("CenterContainer/PriceLabel");
 		priceLabel.Visible = true;
 
 
@@ -92,7 +92,7 @@ public partial class FarmLand : Area2D
 	public void ChangeCost(long newCost)
 	{
 		cost = newCost;
-		priceLabel.Text = cost.FormattedNumber();
+		priceLabel.Text = $"[center]{cost.FormattedNumber()}\n[img=30x30]res://Icons/Potato.png[/img][/center]";
 	}
 
 	public void Show()
@@ -156,8 +156,8 @@ public partial class FarmLand : Area2D
 		button.TextureNormal = GetRandomTexture(BoughtTextures);
 		currState = LandState.Base;
 		priceLabel.QueueFree();
-		MouseEntered -= Hovered;
-		MouseExited -= UnHovered;
+		//MouseEntered -= Hovered;
+		//MouseExited -= UnHovered;
 		
 		// Check if it can expand
 		GetParent<FarmField>().LandBought(new Pos2D(position.X,position.Y));
