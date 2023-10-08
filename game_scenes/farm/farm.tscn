@@ -27,13 +27,13 @@ shader_parameter/Direction = Vector2(20, 1)
 shader_parameter/Speed = 0.3
 shader_parameter/thresholds = PackedFloat32Array(0.1, 0.9, 0, 100, 200, 600)
 shader_parameter/OCTAVE = 10
-shader_parameter/pixel_size = 400
+shader_parameter/pixel_size = 10000
 shader_parameter/dithering = 1.5
 
 [node name="farm" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-modulate = Color(0.803922, 0.803922, 0.803922, 1)
+modulate = Color(0.8, 0.8, 0.8, 1)
 position = Vector2(-48, -8)
 scale = Vector2(0.125, 0.125)
 tile_set = SubResource("TileSet_xhcoa")
