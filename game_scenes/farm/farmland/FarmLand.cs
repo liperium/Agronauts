@@ -68,7 +68,9 @@ public partial class FarmLand : Area2D
 		MouseExited += UnHovered;
 
 		progressBar = GetNode<ProgressBar>("ProgressBar");
-		UpdateProgressBarStats(3.0f);
+		
+		FarmFieldMaster.OnFarmTimeChange += UpdateProgressBarStats;
+		UpdateProgressBarStats();
 	}
 
 	public CompressedTexture2D GetRandomTexture(CompressedTexture2D[] choices)
@@ -172,10 +174,10 @@ public partial class FarmLand : Area2D
 		currState = LandState.Ready;
 	}
 
-	public void UpdateProgressBarStats(float newProgressTime)
+	public void UpdateProgressBarStats()
 	{
-		growthTimer.WaitTime = newProgressTime;
-		progressBar.MaxValue = newProgressTime;
+		growthTimer.WaitTime = FarmFieldMaster.farmTime;
+		progressBar.MaxValue = FarmFieldMaster.farmTime;
 	}
 
 	public override void _Process(double delta)

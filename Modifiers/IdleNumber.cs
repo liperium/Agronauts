@@ -28,7 +28,7 @@ public partial class IdleNumber
 		{
 			im.Apply();
 		}
-		if (OnValueChanged != null) OnValueChanged(value);
+		if (OnValueChanged != null) OnValueChanged(GetValue());
 	}
 
 	public long GetValue()

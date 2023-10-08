@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtbm4xvfjpnyx"]
+[gd_scene load_steps=5 format=3 uid="uid://dtbm4xvfjpnyx"]
 
 [ext_resource type="Script" path="res://game_scenes/farm/YieldNumber.cs" id="1_a6ijh"]
+[ext_resource type="PackedScene" uid="uid://l3mnvwata5si" path="res://game_scenes/farm/farm_field_master/farm_field_master.tscn" id="1_hv6t2"]
 [ext_resource type="Script" path="res://game_scenes/farm/UpgradeFarmYieldButton.cs" id="2_3lc30"]
 [ext_resource type="Script" path="res://game_scenes/ObjectSpawner.cs" id="3_v4u4n"]
 
 [node name="Yield" type="CanvasLayer"]
+
+[node name="farm_field_master" parent="." instance=ExtResource("1_hv6t2")]
+position = Vector2(640, 360)
 
 [node name="Button" type="Button" parent="."]
 anchors_preset = 7
