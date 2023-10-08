@@ -25,6 +25,8 @@ public partial class BtnShowHideMenu : TextureButton
         GD.Print("Menu Open/Close");
 
         opened = !opened;
+
+        FlipH = !opened;
         
         animTree.Set("parameters/conditions/open", opened);
         animTree.Set("parameters/conditions/close", !opened);

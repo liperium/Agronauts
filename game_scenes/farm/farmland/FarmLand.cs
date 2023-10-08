@@ -37,12 +37,17 @@ public partial class FarmLand : Area2D
 		ResourceLoader.Load<CompressedTexture2D>(baseFolder+"terre_pret2.png"),
 		ResourceLoader.Load<CompressedTexture2D>(baseFolder+"terre_pret3.png"),
 	};
+	public static AudioStreamWav harvestSound =
+		ResourceLoader.Load<AudioStreamWav>("res://game_scenes/farm/farmland/sfx/potato_harvested.wav");
+	public static AudioStreamWav buySound =
+		ResourceLoader.Load<AudioStreamWav>("res://game_scenes/farm/farmland/sfx/buy_land.wav");
 
 	private TextureButton button;
 	private Timer growthTimer;
 	private ProgressBar progressBar;
 	private LandState currState = LandState.Wild;
-	private Label priceLabel;
+	private RichTextLabel priceLabel;
+	[Export] public AudioStreamPlayer2D audioPlayer;
 	public long cost = 0;
 	public LandState CurrState => currState;
 
@@ -58,7 +63,7 @@ public partial class FarmLand : Area2D
 		growthTimer = GetNode<Timer>("Timer");
 		growthTimer.OneShot = true;
 
-		priceLabel = GetNode<Label>("PriceLabel");
+		priceLabel = GetNode<RichTextLabel>("CenterContainer/PriceLabel");
 		priceLabel.Visible = true;
 
 
@@ -92,7 +97,7 @@ public partial class FarmLand : Area2D
 	public void ChangeCost(long newCost)
 	{
 		cost = newCost;
-		priceLabel.Text = cost.FormattedNumber();
+		priceLabel.Text = $"[center]{cost.FormattedNumber()}\n[img=30x30]res://Icons/Potato.png[/img][/center]";
 	}
 
 	public void Show()
@@ -148,19 +153,25 @@ public partial class FarmLand : Area2D
 	{
 		priceLabel.Visible = false;
 	}
-	public void Bought()
+	public void Bought(bool pay = true, bool addToHistory = true)
 	{
-		GameState.instance.numbers.potatoCount.DecreaseValue(cost);
-		GameState.instance.numbers.numberOfTilesUnlocked.IncreaseValue(1);
-		
+		if (pay)
+		{
+			GameState.instance.numbers.potatoCount.DecreaseValue(cost);
+			GameState.instance.numbers.numberOfTilesUnlocked.IncreaseValue(1);
+			
+			audioPlayer.Stream = buySound;
+			audioPlayer.Play();
+		}
+
 		button.TextureNormal = GetRandomTexture(BoughtTextures);
 		currState = LandState.Base;
 		priceLabel.QueueFree();
-		MouseEntered -= Hovered;
-		MouseExited -= UnHovered;
-		
+		//MouseEntered -= Hovered;
+		//MouseExited -= UnHovered;
+
 		// Check if it can expand
-		GetParent<FarmField>().LandBought(new Pos2D(position.X,position.Y));
+		GetParent<FarmField>().LandBought(new Pos2D(position.X,position.Y), addToHistory);
 	}
 	public void Laboure()
 	{
@@ -180,6 +191,8 @@ public partial class FarmLand : Area2D
 		currState = LandState.Laboure;
 		progressBar.Visible = false;
 
+		audioPlayer.Stream = harvestSound;
+		audioPlayer.Play();
 		GameState.instance.numbers.potatoCount.IncreaseValue(GameState.instance.numbers.potatoYield.GetValue());
 	}
 

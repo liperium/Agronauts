@@ -37,6 +37,7 @@ public partial class GameState
 
 	public IdleNumberContainer numbers;
 	public IdleUpgradeContainer upgrades;
+	public SavedFieldContainer savedFields;
 
 	[NonSerialized] public static Dictionary<int, IdleModifier> allModifiers = new Dictionary<int, IdleModifier>();
 
@@ -46,6 +47,9 @@ public partial class GameState
 		numbers.Init();
 		upgrades = new IdleUpgradeContainer();
 		upgrades.Init();
+
+		savedFields = new SavedFieldContainer();
+		savedFields.Init();
 		
 		OnLoad();
 	}
