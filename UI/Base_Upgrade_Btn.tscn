@@ -54,8 +54,9 @@ autowrap_mode = 0
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.4
-theme_override_font_sizes/normal_font_size = 15
+theme_override_font_sizes/normal_font_size = 13
 text = "description d'upgrade. Cette upgrade la est cool, + 10% patates."
+scroll_active = false
 
 [node name="BuyButton" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(100, 100)
@@ -91,7 +92,7 @@ grow_vertical = 2
 [node name="txtBuy" type="RichTextLabel" parent="BuyButton/CenterContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/normal_font_size = 15
 bbcode_enabled = true
 text = "KBUY"
 fit_content = true

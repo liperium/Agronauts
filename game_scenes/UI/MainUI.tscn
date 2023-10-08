@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b4x1a71357jod" path="res://UI/sprites/manette_Bouton3.png" id="5_gjxkq"]
 [ext_resource type="Script" path="res://UI/SaveButton.cs" id="5_i545w"]
 [ext_resource type="Script" path="res://UI/AddAutoTractorUpgradeUI.cs" id="5_kqpvt"]
-[ext_resource type="PackedScene" uid="uid://ehn8ld0iouai" path="res://UI/Base_Upgrade_Btn.tscn" id="6_1fuc1"]
+[ext_resource type="PackedScene" path="res://UI/Base_Upgrade_Btn.tscn" id="6_1fuc1"]
 [ext_resource type="Script" path="res://UI/TractorSpeedUpgradeUI.cs" id="6_7mv0j"]
 [ext_resource type="Texture2D" uid="uid://cn6r5swi20lga" path="res://UI/sprites/FOUR_fond_sombre.png" id="6_joar3"]
 [ext_resource type="Script" path="res://UI/TemperatureLabel.cs" id="6_ya5yg"]
@@ -26,6 +26,8 @@
 [ext_resource type="Script" path="res://UI/AutoCookLevel2UpgradeUI.cs" id="10_epy4h"]
 [ext_resource type="Script" path="res://game_scenes/UI/QuitButton.cs" id="10_g0usx"]
 [ext_resource type="Texture2D" uid="uid://bpyh0bpbc0a67" path="res://UI/sprites/OPTION_fond.png" id="10_l6qf2"]
+[ext_resource type="Script" path="res://UI/AutoCookLevel3UpgradeUI.cs" id="11_fivar"]
+[ext_resource type="Script" path="res://UI/AutoCookLevel4UpgradeUI.cs" id="12_muskv"]
 [ext_resource type="PackedScene" uid="uid://c7vdiidjnc4py" path="res://UI/unlock_pop_up.tscn" id="13_wab65"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mr71e"]
@@ -288,10 +290,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("10_epy4h")
 
-[node name="AddAutoTractorUpgrade" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+[node name="AutoCookUpgrade3" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("5_kqpvt")
+script = ExtResource("11_fivar")
+
+[node name="AutoCookUpgrade4" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("12_muskv")
 
 [node name="Artifacts" type="Control" parent="UpgradeMenu/TabContainer"]
 visible = false
