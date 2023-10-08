@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgl6c3vws2bl8"]
+
+[ext_resource type="Script" path="res://game_scenes/MusicManager.cs" id="1_pekix"]
+[ext_resource type="AudioStream" uid="uid://cqswj88fx2tbw" path="res://game_scenes/menu/music01.wav" id="1_vk4eo"]
+[ext_resource type="AudioStream" uid="uid://b4pfqekrnbjoq" path="res://game_scenes/menu/music02.wav" id="2_hbkwt"]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_pekix")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_vk4eo")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+
+[node name="CombatPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hbkwt")
+volume_db = -10.0
+autoplay = true
+bus = &"Combat Music"

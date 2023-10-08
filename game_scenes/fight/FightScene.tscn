@@ -1,22 +1,17 @@
 [gd_scene load_steps=7 format=3 uid="uid://byj332cof46ix"]
 
 [ext_resource type="Script" path="res://game_scenes/fight/FightManager.cs" id="1_7r1cq"]
+[ext_resource type="PackedScene" path="res://game_scenes/fight/allbackground.tscn" id="1_cpv22"]
 [ext_resource type="PackedScene" uid="uid://do4brtumlcxqx" path="res://game_scenes/alien.tscn" id="2_qvy1s"]
 [ext_resource type="Script" path="res://game_scenes/fight/ShootManager.cs" id="3_y82am"]
 [ext_resource type="PackedScene" uid="uid://b110sqwjds46s" path="res://game_scenes/fight/potato_bullet.tscn" id="5_y1n8u"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vrfsj"]
-size = Vector2(1920, 1080)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t34w0"]
 size = Vector2(1302, 742)
 
 [node name="FightScene" type="Node2D"]
 
-[node name="BG" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(965, 539)
-texture = SubResource("PlaceholderTexture2D_vrfsj")
+[node name="ALLSPRITES" parent="." instance=ExtResource("1_cpv22")]
 
 [node name="FightManager" type="Node2D" parent="." node_paths=PackedStringArray("spawnPositions", "spawnTimer")]
 script = ExtResource("1_7r1cq")
