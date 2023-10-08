@@ -4,9 +4,8 @@ using System;
 public partial class FightWaveHandler : Node2D
 {
     [Export] public Timer waveTimer;
-    [Export] public PackedScene fightScene;
+
     private IdleNumber fightWave;
-    private bool alerted = false;
 
     private bool unlockSubscribed;
 
@@ -46,26 +45,17 @@ public partial class FightWaveHandler : Node2D
         if (waveTimer.TimeLeft != 0 && waveTimer.TimeLeft <= 60)
         {
             //TODO WAVE WARNING SFX
-            if(alerted == false)
-            {
-                unlock_pop_up.instance.ChangeText("KWARNING", "KWARNINGDESC");
-                unlock_pop_up.instance.Animation();
-                alerted = true;
-            }
-
         }
     }
 
     private void OnTimerEnd()
     {
         StartWave();
-        alerted = false;
     }
 
     private void StartWave()
     {
         GD.Print("START WAVE");
-        GetTree().ChangeSceneToPacked(fightScene);
     }
 
     public float GetWaveTime()
