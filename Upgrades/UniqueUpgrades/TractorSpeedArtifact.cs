@@ -16,7 +16,7 @@ public partial class TractorSpeedArtifact : BuyableUpgrade<MultiplierModifier>
 
 	public void CheckUnlock(long wave)
 	{
-		if(wave >= 10)
+		if(wave >= 4)
 		{
             GameState.instance.numbers.fightWave.ResetOnValueChanged(CheckUnlock);
             Unlock();
