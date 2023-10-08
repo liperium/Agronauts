@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://y1unomfdmkif"]
+[gd_scene load_steps=30 format=3 uid="uid://y1unomfdmkif"]
 
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="2_hrn0e"]
 [ext_resource type="Script" path="res://UI/PotatoCountLabel.cs" id="3_4xs5e"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://UI/TractorSpeedUpgradeUI.cs" id="6_7mv0j"]
 [ext_resource type="Script" path="res://UI/TemperatureLabel.cs" id="6_ya5yg"]
 [ext_resource type="Script" path="res://game_scenes/UI/PotatoYieldUpgradeUI.cs" id="7_f25uh"]
+[ext_resource type="Script" path="res://game_scenes/UI/QuitButton.cs" id="10_g0usx"]
 [ext_resource type="PackedScene" uid="uid://c7vdiidjnc4py" path="res://UI/unlock_pop_up.tscn" id="13_wab65"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mr71e"]
@@ -246,8 +247,13 @@ size_flags_vertical = 3
 
 [node name="SaveButton" type="Button" parent="UpgradeMenu/TabContainer/Options/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "Save"
+text = "KSAVE"
 script = ExtResource("5_i545w")
+
+[node name="QuitButton" type="Button" parent="UpgradeMenu/TabContainer/Options/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "KQUIT"
+script = ExtResource("10_g0usx")
 
 [node name="BtnShowHideMenu" type="TextureButton" parent="UpgradeMenu" node_paths=PackedStringArray("animTree")]
 layout_mode = 1
