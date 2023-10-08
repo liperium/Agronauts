@@ -30,7 +30,7 @@ public partial class AutoCookLevel4Upgrade : BuyableUpgrade<MultiplierModifier>
         base.InnitInfo();
         info.SetName("KCOOKLVL4");
         info.SetDescription("KCOOKLVL4DESC");
-        info.SetImagePath("res://Upgrades/UpgradeImages/Cuisinier.png");
+        info.SetImagePath("res://Upgrades/UpgradeImages/chapo2star.png");
     }
 
     public override void OnLoad()

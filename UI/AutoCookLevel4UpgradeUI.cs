@@ -23,7 +23,7 @@ public partial class AutoCookLevel4UpgradeUI : HBoxContainer
 
         UpgradeInfoContainer infoContainer = GetNode<UpgradeInfoContainer>("UpgradeInfoContainer");
         infoContainer.SetUpgrade(autoCookLevel4Upgrade.GetInfo(),
-            autoCookLevel4Upgrade.GetCost());
+            autoCookLevel4Upgrade.GetCost(), autoCookLevel4Upgrade.GetEffectText());
 
         buyButton.Pressed += PressBuy;
     }

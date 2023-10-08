@@ -26,7 +26,7 @@ public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier
 		
 		info.SetName("KPOTATOYIELDUPGRADE");
 		info.SetDescription("KPOTATOYIELDUPGRADEDESC");
-		info.SetImagePath("res://Icons/Potato.png");
+		info.SetImagePath("res://Upgrades/UpgradeImages/patate+.png");
 	}
 
 	public override void OnLoad()
@@ -34,6 +34,11 @@ public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier
 		base.OnLoad();
 		unlocked = true;
 	}
+
+    public override string GetEffectText()
+    {
+        return  + ((int)(modifier.multiplier * 100)) + "%";
+    }
 
 
 }

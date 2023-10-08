@@ -38,4 +38,9 @@ public partial class TractorSpeedUpgrade : TieredUpgrade<MultiplierModifier>
         Unlock();
         GameState.instance.numbers.truckAmount.ResetOnValueChanged(CheckUnlock);
     }
+
+    public override string GetEffectText()
+    {
+        return + ((int)(modifier.multiplier * 100)) + "%";
+    }
 }

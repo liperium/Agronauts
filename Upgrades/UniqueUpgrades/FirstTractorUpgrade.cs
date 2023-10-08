@@ -38,7 +38,7 @@ public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
         base.InnitInfo();
         info.SetName("KFIRSTTRACTORUPGRADE");
         info.SetDescription("KFIRSTTRACTORUPGRADEDESC");
-        info.SetImagePath("res://Icons/Potato.png");
+        info.SetImagePath("res://Upgrades/UpgradeImages/tracteurmanuel.png");
     }
 
     public override void OnLoad()

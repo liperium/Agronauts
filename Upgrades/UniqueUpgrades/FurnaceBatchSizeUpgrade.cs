@@ -25,7 +25,7 @@ public partial class FurnaceBatchSizeUpgrade : TieredUpgrade<MultiplierModifier>
 
         info.SetName("KFURNACEBATCHCOUNT");
         info.SetDescription("KFURNACEBATCHCOUNTDESC");
-        info.SetImagePath("res://Upgrades/UpgradeImages/FOUR.png");
+        info.SetImagePath("res://Upgrades/UpgradeImages/four+.png");
     }
 
     public override void OnLoad()
@@ -43,4 +43,11 @@ public partial class FurnaceBatchSizeUpgrade : TieredUpgrade<MultiplierModifier>
             GameState.instance.numbers.cookedPotatoCount.ResetOnValueChanged(CheckUnlock);
         }
     }
+
+    public override string GetEffectText()
+    {
+        return +((int)(modifier.multiplier*100))+"%";
+    }
+
+
 }
