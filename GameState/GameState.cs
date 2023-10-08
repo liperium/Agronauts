@@ -60,6 +60,10 @@ public partial class GameState
 		using (StreamWriter outputFile = new StreamWriter(filePath, new FileStreamOptions{ Mode = FileMode.Create, Access = FileAccess.Write}))
 		{
 			outputFile.WriteLine(saveData);
+			
+			GD.Print("Saved!");
+			unlock_pop_up.instance?.ChangeText("KSAVED", "");
+			unlock_pop_up.instance?.Animation();
 		}
 	}
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
+using Godot;
 
 namespace TinyJson
 {
@@ -22,6 +23,8 @@ namespace TinyJson
 
         static void AppendValue(StringBuilder stringBuilder, object item)
         {
+            GD.Print($"Serializing {item.GetType()}");
+            
             if (item == null)
             {
                 stringBuilder.Append("null");

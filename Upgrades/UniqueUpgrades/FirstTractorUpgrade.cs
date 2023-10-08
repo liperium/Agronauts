@@ -1,10 +1,8 @@
 using Godot;
 using System;
-
+[Serializable]
 public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
 {
-
-    
     public override void OnBuy()
     {
         Tracteur tractor = ResourceLoader.Load<PackedScene>("res://game_scenes/farm/tracteur/tracteur.tscn").Instantiate() as Tracteur;

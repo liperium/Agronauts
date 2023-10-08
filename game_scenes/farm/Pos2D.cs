@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+[Serializable]
 public class Pos2D
 {
 	public int X = 0;
