@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://jmi5sx8v8cpg"]
+[gd_scene load_steps=9 format=3 uid="uid://jmi5sx8v8cpg"]
 
 [ext_resource type="Script" path="res://game_scenes/menu/StartGame.cs" id="1_1ljay"]
 [ext_resource type="Texture2D" uid="uid://bmlpuorrvkd81" path="res://game_scenes/menu/background/base.png" id="1_3y7u8"]
 [ext_resource type="Texture2D" uid="uid://cqfnx2cgc8oci" path="res://game_scenes/menu/background/panneau.png" id="2_3tae2"]
 [ext_resource type="Script" path="res://game_scenes/menu/Quit.cs" id="2_b0yyy"]
 [ext_resource type="FontFile" uid="uid://dimlytvy78tyd" path="res://game_scenes/menu/background/Under Station.ttf" id="3_8e064"]
+[ext_resource type="Texture2D" uid="uid://w58bxt3imsq7" path="res://game_scenes/menu/background/vaisseau.png" id="6_krmyu"]
+[ext_resource type="Texture2D" uid="uid://d2xgmql4xvasy" path="res://game_scenes/menu/background/drone.png" id="7_wqfvf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4l5n3"]
 
@@ -21,11 +23,24 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.334, 0.334)
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="BG" type="TextureRect" parent="Control"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_3y7u8")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_right = 831.0
+offset_bottom = 190.0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+
+[node name="Title" type="Label" parent="Control/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8e064")
+theme_override_font_sizes/font_size = 100
+text = "GAME TITLE LOL"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 1
@@ -44,36 +59,72 @@ theme_override_constants/separation = 140
 layout_mode = 2
 texture = ExtResource("2_3tae2")
 
-[node name="Button" type="Button" parent="Control/HBoxContainer/TextureRect"]
+[node name="PlayButton" type="Button" parent="Control/HBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -4.0
-offset_right = 4.0
-offset_bottom = 8.0
+offset_left = -248.754
+offset_top = 41.4132
+offset_right = 250.246
+offset_bottom = 181.413
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_8e064")
-theme_override_font_sizes/font_size = 160
+theme_override_font_sizes/font_size = 110
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4l5n3")
-text = "Defend!"
+text = "KDEFEND"
 script = ExtResource("1_1ljay")
 
 [node name="TextureRect2" type="TextureRect" parent="Control/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_3tae2")
 
-[node name="Button" type="Button" parent="Control/HBoxContainer/TextureRect2"]
+[node name="QuitButton" type="Button" parent="Control/HBoxContainer/TextureRect2"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -4.0
-offset_right = 4.0
-offset_bottom = 8.0
+offset_left = -239.485
+offset_top = 41.4132
+offset_right = 232.515
+offset_bottom = 181.413
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_8e064")
-theme_override_font_sizes/font_size = 160
+theme_override_font_sizes/font_size = 110
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4l5n3")
-text = "Give Up"
+text = "KGIVEUP"
 script = ExtResource("2_b0yyy")
+
+[node name="AllShips" type="Node2D" parent="Control"]
+scale = Vector2(2.99401, 2.99401)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control/AllShips"]
+position = Vector2(1108, 346)
+scale = Vector2(0.334, 0.334)
+texture = ExtResource("6_krmyu")
+flip_h = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/AllShips"]
+position = Vector2(771, 310)
+scale = Vector2(0.334, 0.334)
+texture = ExtResource("6_krmyu")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Control/AllShips"]
+position = Vector2(920, 287)
+scale = Vector2(0.361444, 0.361444)
+texture = ExtResource("7_wqfvf")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Control/AllShips"]
+position = Vector2(858, 407)
+scale = Vector2(0.361444, 0.361444)
+texture = ExtResource("7_wqfvf")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Control/AllShips"]
+position = Vector2(932, 370)
+scale = Vector2(0.361444, 0.361444)
+texture = ExtResource("7_wqfvf")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Control/AllShips"]
+position = Vector2(969, 332)
+scale = Vector2(0.361444, 0.361444)
+texture = ExtResource("7_wqfvf")

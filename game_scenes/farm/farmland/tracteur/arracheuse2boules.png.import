@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5j7b3b31agad"
-path="res://.godot/imported/Terre_Pousse2.png-d574ea1288638d1cce294bebd14d5360.ctex"
+uid="uid://h7xru5id6ula"
+path="res://.godot/imported/arracheuse2boules.png-aa9789723ced16ca46a3f3e23bc74128.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scenes/farm/farmland/tiles/Terre_Pousse2.png"
-dest_files=["res://.godot/imported/Terre_Pousse2.png-d574ea1288638d1cce294bebd14d5360.ctex"]
+source_file="res://game_scenes/farm/farmland/tracteur/arracheuse2boules.png"
+dest_files=["res://.godot/imported/arracheuse2boules.png-aa9789723ced16ca46a3f3e23bc74128.ctex"]
 
 [params]
 

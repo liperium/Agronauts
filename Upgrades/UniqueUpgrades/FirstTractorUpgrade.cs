@@ -37,11 +37,8 @@ public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
     public override void OnLoad()
     {
         base.OnLoad();
-        if(GameState.instance.numbers.numberOfTilesUnlocked.GetValue() >= 10)
-        {
-            unlocked = true;
-        }
-        else
+
+        if (IsUnlocked() == false)
         {
             GameState.instance.numbers.numberOfTilesUnlocked.SetOnValueChanged(CheckUnlock);
         }
@@ -51,7 +48,8 @@ public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
     {
         if(tiles >= 10)
         {
-            unlocked = true;
+            Unlock();
+            GameState.instance.numbers.numberOfTilesUnlocked.ResetOnValueChanged(CheckUnlock);
         }
     }
 }

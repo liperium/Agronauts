@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6xnrjg7batog"
-path="res://.godot/imported/Terre_Plantee2.png-9bdcf1df3a4750c26a474dca14b6cae4.ctex"
+uid="uid://bdx6x5p5b1cst"
+path="res://.godot/imported/arbre4.png-edea7296d3da0bc0472691d47cd6ca0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scenes/farm/farmland/tiles/Terre_Plantee2.png"
-dest_files=["res://.godot/imported/Terre_Plantee2.png-9bdcf1df3a4750c26a474dca14b6cae4.ctex"]
+source_file="res://game_scenes/farm/farmland/tiles/arbre4.png"
+dest_files=["res://.godot/imported/arbre4.png-edea7296d3da0bc0472691d47cd6ca0d.ctex"]
 
 [params]
 
