@@ -5,6 +5,10 @@ public partial class Alien : Area2D
 {
 
     [Export] public Timer timer;
+    private AudioStreamPlayer2D audioStreamPlayer;
+    [Export] public AudioStreamWav shootSound;
+    [Export] public AudioStreamWav spawnSound;
+    [Export] public AudioStreamWav dieSound;
     
     private long HP;
     public FightManager manager;
@@ -15,14 +19,18 @@ public partial class Alien : Area2D
         HP = GetHP();
         
         timer.Timeout += TimerOnTimeout;
+        audioStreamPlayer = GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
+        audioStreamPlayer.Stream = spawnSound;
+        audioStreamPlayer.Play();
     }
 
     private void TimerOnTimeout()
     {
+        audioStreamPlayer.Stream = shootSound;
+        audioStreamPlayer.Play();
+        GetNode<AnimatedSprite2D>("AlienSprite").Play("shoot");
         //TODO SFX shoot
         GameState.instance.numbers.cookedPotatoCount.DecreaseValue(FightManager.enemyDamage);
-        
-        QueueFree();
     }
 
     public long GetHP()
@@ -37,11 +45,14 @@ public partial class Alien : Area2D
         
         GD.Print($"ALIEN HP IS {HP}");
 
-        if (HP <= 0)
+        if (HP <= 0 && audioStreamPlayer.Stream != dieSound)
         {
             Action onEnemyKill = FightManager.OnEnemyKill;
             if (onEnemyKill != null) onEnemyKill();
-            QueueFree();
+            audioStreamPlayer.Stream = dieSound;
+            audioStreamPlayer.Play();
+            audioStreamPlayer.Finished += () => QueueFree();
+            Visible = false;
         }
     }
 }

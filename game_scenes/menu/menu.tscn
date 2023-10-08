@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://jmi5sx8v8cpg"]
+[gd_scene load_steps=10 format=3 uid="uid://jmi5sx8v8cpg"]
 
 [ext_resource type="Script" path="res://game_scenes/menu/StartGame.cs" id="1_1ljay"]
 [ext_resource type="Texture2D" uid="uid://bmlpuorrvkd81" path="res://game_scenes/menu/background/base.png" id="1_3y7u8"]
 [ext_resource type="Texture2D" uid="uid://cqfnx2cgc8oci" path="res://game_scenes/menu/background/panneau.png" id="2_3tae2"]
 [ext_resource type="Script" path="res://game_scenes/menu/Quit.cs" id="2_b0yyy"]
 [ext_resource type="FontFile" uid="uid://dimlytvy78tyd" path="res://game_scenes/menu/background/Under Station.ttf" id="3_8e064"]
+[ext_resource type="PackedScene" uid="uid://5f2d2u2r7mwr" path="res://game_scenes/farm/farm.tscn" id="5_8msx8"]
 [ext_resource type="Texture2D" uid="uid://w58bxt3imsq7" path="res://game_scenes/menu/background/vaisseau.png" id="6_krmyu"]
 [ext_resource type="Texture2D" uid="uid://d2xgmql4xvasy" path="res://game_scenes/menu/background/drone.png" id="7_wqfvf"]
 
@@ -39,8 +40,8 @@ theme_override_constants/margin_top = 60
 [node name="Title" type="Label" parent="Control/MarginContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_8e064")
-theme_override_font_sizes/font_size = 100
-text = "GAME TITLE LOL"
+theme_override_font_sizes/font_size = 250
+text = "Agronauts"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 1
@@ -74,6 +75,7 @@ theme_override_font_sizes/font_size = 110
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4l5n3")
 text = "KDEFEND"
 script = ExtResource("1_1ljay")
+farmScene = ExtResource("5_8msx8")
 
 [node name="TextureRect2" type="TextureRect" parent="Control/HBoxContainer"]
 layout_mode = 2

@@ -9,6 +9,8 @@ public partial class FightWaveHandler : Node2D
 
     private bool unlockSubscribed;
 
+    [Export] public PackedScene fightScene;
+
     public override void _Ready()
     {
         base._Ready();
@@ -56,6 +58,7 @@ public partial class FightWaveHandler : Node2D
     private void StartWave()
     {
         GD.Print("START WAVE");
+        GetTree().ChangeSceneToPacked(fightScene);
     }
 
     public float GetWaveTime()

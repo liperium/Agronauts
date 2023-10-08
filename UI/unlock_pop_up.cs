@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class unlock_pop_up : TextureRect
+public partial class unlock_pop_up : Control
 {
 	private RichTextLabel techDescription;
     private RichTextLabel techTitle;
@@ -23,10 +23,10 @@ public partial class unlock_pop_up : TextureRect
     public override void _Ready()
 	{
 		
-		techDescription = GetNode<RichTextLabel>("border/mainBackground/HBoxContainer/VBoxContainer/techDescription");
-        techTitle = GetNode<RichTextLabel>("border/mainBackground/HBoxContainer/VBoxContainer/NewTechUnlocked");
-        techThumbnail = GetNode<TextureRect>("border/mainBackground/HBoxContainer/techThumbnail");
-		ySize = GetNode<TextureRect>("border").Size.Y;
+		techDescription = GetNode<RichTextLabel>("MarginContainer/HBoxContainer/VBoxContainer/techDescription");
+        techTitle = GetNode<RichTextLabel>("MarginContainer/HBoxContainer/VBoxContainer/NewTechUnlocked");
+        techThumbnail = GetNode<TextureRect>("MarginContainer/HBoxContainer/techThumbnail");
+		ySize = Size.Y;
 		timerTempsLeve = GetNode<Timer>("tempsLeve");
         timerTempsHold = GetNode<Timer>("tempsHold");
         timerTempsBaisse = GetNode<Timer>("tempsBaisse");
