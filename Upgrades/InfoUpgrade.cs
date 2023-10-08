@@ -6,8 +6,10 @@ public partial class InfoUpgrade
 	private string name;
     private string description;
     private string imagePath;
+	public static string defaultPath = "res://Icons/Potato.png";
 
-	public void SetName(string name)
+
+    public void SetName(string name)
 	{
 		this.name = name;
 	}
