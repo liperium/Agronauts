@@ -20,6 +20,7 @@ public class IdleNumberContainer
     public IdleNumber truckAmount;
     public IdleNumber truckSpeed;
 
+
     public void Init()
     {
         potatoCount = new IdleNumber();
@@ -41,7 +42,7 @@ public class IdleNumberContainer
 
         truckAmount = new IdleNumber();
         truckSpeed = new IdleNumber();
-        truckSpeed.SetValue(1);
+        truckSpeed.SetValue(20);
 
         numberOfTilesUnlocked = new IdleNumber();
     }

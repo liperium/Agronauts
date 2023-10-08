@@ -25,6 +25,7 @@ public partial class AddAutomaticTractorUpgrade : TieredUpgrade<MultiplierModifi
             tractor.automatic = true;
             tractor.topLeftBound = tractor.Position;
             tractor.bottomRightBound = new Vector2(tractor.Position.X + FarmFieldMaster.TILE_PER_FF * FarmFieldMaster.TILE_SIZE, tractor.Position.Y + FarmFieldMaster.TILE_PER_FF * FarmFieldMaster.TILE_SIZE);
+            GameState.instance.numbers.truckAmount.IncreaseValue(1);
         }
         base.OnBuy();
     }
@@ -38,13 +39,23 @@ public partial class AddAutomaticTractorUpgrade : TieredUpgrade<MultiplierModifi
     public override void InnitInfo()
     {
         base.InnitInfo();
+        info.SetName("KADDAUTOTRACTORUPGRADE");
+        info.SetDescription("KADDAUTOTRACTORUPGRADEDESC");
+        info.SetImagePath(InfoUpgrade.defaultPath);
     }
 
     public override void OnLoad()
     {
         base.OnLoad();
-        unlocked = true;
+        GameState.instance.numbers.truckAmount.SetOnValueChanged(CheckUnlock);
     }
+
+    public void CheckUnlock(long tiles)
+    {
+        Unlock();
+        GameState.instance.numbers.truckAmount.ResetOnValueChanged(CheckUnlock);
+    }
+
 
     public override void Apply()
     {

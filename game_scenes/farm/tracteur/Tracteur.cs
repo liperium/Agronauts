@@ -32,7 +32,14 @@ public partial class Tracteur : CharacterBody2D
     public override void _Ready()
 	{
         RotationDegrees = 0;
+        UpdateSpeed(GameState.instance.numbers.truckSpeed.GetValue());
+        GameState.instance.numbers.truckSpeed.SetOnValueChanged(UpdateSpeed);
 	}
+
+    public void UpdateSpeed(long speed)
+    {
+        this.speed = speed;
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
