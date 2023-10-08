@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnxvtxvntw2e1"]
+
+[ext_resource type="Script" path="res://Fight/FightWaveHandler.cs" id="1_cxk1l"]
+
+[node name="FightWaveHandler" type="Node2D" node_paths=PackedStringArray("waveTimer")]
+script = ExtResource("1_cxk1l")
+waveTimer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="."]
