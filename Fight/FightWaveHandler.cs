@@ -17,25 +17,25 @@ public partial class FightWaveHandler : Node2D
 
         waveTimer.Timeout += OnTimerEnd;
         
-        FirstTractorUpgrade firstTractorUpgrade = GameState.instance.upgrades.firstTractorUpgrade;
-        if (firstTractorUpgrade.acquired)
+        UnlockFurnaceUpgrade unlockFurnaceUpgrade = GameState.instance.upgrades.unlockFurnaceUpgrade;
+        if (unlockFurnaceUpgrade.IsUnlocked())
         {
-            OnFirstTractorUnlocked();
+            OnFurnaceUnlocked();
         }
         else
         {
-            firstTractorUpgrade.SetOnBuyUpgrade(OnFirstTractorUnlocked);
+            unlockFurnaceUpgrade.SetOnUnlock(OnFurnaceUnlocked);
             unlockSubscribed = true;
         }
     }
 
-    private void OnFirstTractorUnlocked()
+    private void OnFurnaceUnlocked()
     {
         waveTimer.Start(GetWaveTime());
         
         if (unlockSubscribed)
         {
-            GameState.instance.upgrades.firstTractorUpgrade.ResetOnBuyUpgrade(OnFirstTractorUnlocked);
+            GameState.instance.upgrades.unlockFurnaceUpgrade.SetOnUnlock(OnFurnaceUnlocked);
             unlockSubscribed = false;
         }
     }
