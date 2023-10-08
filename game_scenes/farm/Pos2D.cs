@@ -11,4 +11,13 @@ public class Pos2D
 		this.X = X;
 		this.Y = Y;
 	}
+
+	public static Pos2D operator +(Pos2D other, Pos2D other2)
+	{
+		return new Pos2D(other.X + other2.X, other.Y + other2.Y);
+	}
+	public static Pos2D operator -(Pos2D other, Pos2D other2)
+	{
+		return new Pos2D(other.X - other2.X, other.Y - other2.Y);
+	}
 }
