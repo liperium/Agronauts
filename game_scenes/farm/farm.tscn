@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://5f2d2u2r7mwr"]
+[gd_scene load_steps=11 format=3 uid="uid://5f2d2u2r7mwr"]
 
 [ext_resource type="Script" path="res://game_scenes/farm/PlayerCamera.cs" id="1_ou2to"]
 [ext_resource type="PackedScene" uid="uid://y1unomfdmkif" path="res://game_scenes/UI/MainUI.tscn" id="2_grc08"]
 [ext_resource type="PackedScene" uid="uid://l3mnvwata5si" path="res://game_scenes/farm/farm_field_master/farm_field_master.tscn" id="3_8lrfd"]
-[ext_resource type="PackedScene" uid="uid://c6p0e44pj7nfd" path="res://game_scenes/farm/tracteur/tracteur.tscn" id="4_mymk5"]
 [ext_resource type="Shader" path="res://game_scenes/farm/farmland/clouds.gdshader" id="5_54hw2"]
 [ext_resource type="Texture2D" uid="uid://dcwc517rngmu6" path="res://game_scenes/farm/farmland/BGTiles.png" id="5_udmy4"]
 [ext_resource type="Script" path="res://game_scenes/ObjectSpawner.cs" id="7_6ruyv"]
@@ -29,13 +28,13 @@ shader_parameter/Direction = Vector2(20, 1)
 shader_parameter/Speed = 0.3
 shader_parameter/thresholds = PackedFloat32Array(0.1, 0.9, 0, 100, 200, 600)
 shader_parameter/OCTAVE = 10
-shader_parameter/pixel_size = 400
+shader_parameter/pixel_size = 10000
 shader_parameter/dithering = 1.5
 
 [node name="farm" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-modulate = Color(0.803922, 0.803922, 0.803922, 1)
+modulate = Color(0.8, 0.8, 0.8, 1)
 position = Vector2(-48, -8)
 scale = Vector2(0.125, 0.125)
 tile_set = SubResource("TileSet_xhcoa")
@@ -60,8 +59,6 @@ offset_top = -4684.0
 offset_right = 8106.0
 offset_bottom = 5680.0
 mouse_filter = 2
-
-[node name="Tracteur" parent="." instance=ExtResource("4_mymk5")]
 
 [node name="ObjectSpawner" type="Node2D" parent="."]
 script = ExtResource("7_6ruyv")

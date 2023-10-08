@@ -34,9 +34,10 @@ public partial class FarmFieldMaster : Node2D
 	{
 		isTaken[x, y] = true;
 		FarmField newChild = FarmField.Instantiate() as FarmField;
-		newChild.positionRelative = new Vector2(x, y);
+		newChild.positionRelative = new Pos2D(x, y);
 		newChild.first = origin;
-		newChild.Position = new Vector2((16 - x)*TILE_SIZE*TILE_PER_FF,(16 - y)*TILE_SIZE*TILE_PER_FF);
+		newChild.Name = $"{x}-{y}";
+		newChild.Position = new Vector2(-(16 - x)*TILE_SIZE*TILE_PER_FF,-(16 - y)*TILE_SIZE*TILE_PER_FF);
 		AddChild(newChild);
 		GameState.instance.numbers.numberOfTilesUnlocked.IncreaseValue(1);
 	}
@@ -49,40 +50,27 @@ public partial class FarmFieldMaster : Node2D
 		WESTS
 	}
 
-	public void Expand(Cardinality side, Vector2 posInMaster)
+	public void BuyOrExpand(Pos2D targetField, Pos2D toBuy)
 	{
-		Vector2 toAdd = posInMaster;
-		switch (side)
-		{
-			case Cardinality.EAST:
-				toAdd.X++;
-				break;
-			case Cardinality.WESTS:
-				toAdd.X--;
-				break;
-			case Cardinality.NORTH:
-				toAdd.Y--;
-				break;
-			case Cardinality.SOUTH:
-				toAdd.Y++;
-				break;
-		}
 
-		if (toAdd.X < 0 || toAdd.X > MAX_SIZE - 1)
+		if (targetField.X < 0 || targetField.X > MAX_SIZE - 1)
 		{
 			return;
 		}
-		if (toAdd.Y < 0 || toAdd.Y > MAX_SIZE - 1)
+		if (targetField.Y < 0 || targetField.Y > MAX_SIZE - 1)
 		{
 			return;
 		}
 
-		if (isTaken[(int)toAdd.X, (int)toAdd.Y])
+		if (!isTaken[targetField.X, targetField.Y])
 		{
-			return;
+			GD.Print($"Spawning field {targetField.X}-{targetField.Y}");
+			SpawnField(targetField.X, targetField.Y);
 		}
+		GD.Print($"TryBuy : {targetField.X}-{targetField.Y} Field:{toBuy.X}-{toBuy.Y}");
+		// Unlock la tile
+		GetNode<FarmField>($"{targetField.X}-{targetField.Y}").GetNode<FarmLand>($"{toBuy.X}-{toBuy.Y}").Show();
 
-		SpawnField((int)toAdd.X, (int)toAdd.Y);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

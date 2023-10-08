@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://y1unomfdmkif"]
+[gd_scene load_steps=29 format=3 uid="uid://y1unomfdmkif"]
 
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="2_hrn0e"]
 [ext_resource type="Script" path="res://UI/PotatoCountLabel.cs" id="3_4xs5e"]
@@ -8,9 +8,12 @@
 [ext_resource type="Script" path="res://game_scenes/UI/firstTractorUpgradeUI.cs" id="4_bg7wp"]
 [ext_resource type="Script" path="res://UI/CookedPotatoCountLabel.cs" id="4_ta1m5"]
 [ext_resource type="Script" path="res://UI/SaveButton.cs" id="5_i545w"]
+[ext_resource type="Script" path="res://UI/AddAutoTractorUpgradeUI.cs" id="5_kqpvt"]
 [ext_resource type="PackedScene" uid="uid://ehn8ld0iouai" path="res://UI/Base_Upgrade_Btn.tscn" id="6_1fuc1"]
+[ext_resource type="Script" path="res://UI/TractorSpeedUpgradeUI.cs" id="6_7mv0j"]
 [ext_resource type="Script" path="res://UI/TemperatureLabel.cs" id="6_ya5yg"]
 [ext_resource type="Script" path="res://game_scenes/UI/PotatoYieldUpgradeUI.cs" id="7_f25uh"]
+[ext_resource type="PackedScene" uid="uid://c7vdiidjnc4py" path="res://UI/unlock_pop_up.tscn" id="13_wab65"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mr71e"]
 size = Vector2(32, 64)
@@ -121,6 +124,12 @@ size = Vector2(256, 256)
 
 [node name="UI" type="CanvasLayer"]
 
+[node name="UnlockPopUp" parent="." instance=ExtResource("13_wab65")]
+offset_left = -287.0
+offset_top = -186.0
+offset_right = -6.0
+offset_bottom = -8.0
+
 [node name="UpgradeMenu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 9
@@ -165,6 +174,16 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("4_bg7wp")
 
+[node name="SpeedTruckUpgrade" parent="UpgradeMenu/TabContainer/Farm/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("6_7mv0j")
+
+[node name="AddAutoTractorUpgrade" parent="UpgradeMenu/TabContainer/Farm/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("5_kqpvt")
+
 [node name="FourTab" type="Control" parent="UpgradeMenu/TabContainer"]
 visible = false
 layout_mode = 2
@@ -183,8 +202,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Four" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("3_tw2g8")]
+custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
-size_flags_vertical = 3
+
+[node name="AddAutoTractorUpgrade" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("5_kqpvt")
 
 [node name="Artifacts" type="Control" parent="UpgradeMenu/TabContainer"]
 visible = false
