@@ -1,6 +1,276 @@
-[gd_scene format=3 uid="uid://bseclpg4b38nk"]
+[gd_scene load_steps=28 format=3 uid="uid://bseclpg4b38nk"]
+
+[ext_resource type="Texture2D" uid="uid://dcp5p404gnq1v" path="res://game_scenes/win_scene/sprites/BG.png" id="1_djx13"]
+[ext_resource type="Texture2D" uid="uid://d3wsh7427ffi1" path="res://game_scenes/win_scene/sprites/Feu1-1.png" id="2_fb1xn"]
+[ext_resource type="Texture2D" uid="uid://bkmvisgo6a6o4" path="res://game_scenes/win_scene/sprites/Feu2-1.png" id="3_ga6rk"]
+[ext_resource type="Texture2D" uid="uid://dtfkebux4p7fp" path="res://game_scenes/win_scene/sprites/Feu3-1.png" id="4_jns1m"]
+[ext_resource type="Texture2D" uid="uid://fq21y8lmsynm" path="res://game_scenes/win_scene/sprites/Feu4-1.png" id="5_63nhc"]
+[ext_resource type="Texture2D" uid="uid://bc07d2j7il5bt" path="res://game_scenes/win_scene/sprites/Feu1-2.png" id="6_8bsbg"]
+[ext_resource type="Texture2D" uid="uid://ij82cshmqc1c" path="res://game_scenes/win_scene/sprites/Feu1-3.png" id="7_7fkdx"]
+[ext_resource type="Texture2D" uid="uid://bl7oj5e6v7upu" path="res://game_scenes/win_scene/sprites/Feu2-2.png" id="7_er01o"]
+[ext_resource type="Texture2D" uid="uid://i5p72vjrhl6x" path="res://game_scenes/win_scene/sprites/Feu1-4.png" id="8_ldpmf"]
+[ext_resource type="Texture2D" uid="uid://dqp7elqu7mbuq" path="res://game_scenes/win_scene/sprites/Feu2-3.png" id="8_oi7f3"]
+[ext_resource type="Texture2D" uid="uid://ca586oan1x0id" path="res://game_scenes/win_scene/sprites/Feu2-4.png" id="9_t7uot"]
+[ext_resource type="Texture2D" uid="uid://b2tjd0grdsh45" path="res://game_scenes/win_scene/sprites/Feu3-2.png" id="11_8vhxu"]
+[ext_resource type="Texture2D" uid="uid://olra6flpm7vy" path="res://game_scenes/win_scene/sprites/Feu3-3.png" id="12_8kbvg"]
+[ext_resource type="Texture2D" uid="uid://dqk13qcwekaye" path="res://game_scenes/win_scene/sprites/Feu3-4.png" id="13_tyerr"]
+[ext_resource type="Texture2D" uid="uid://coim1hip2j02r" path="res://game_scenes/win_scene/sprites/Feu4-2.png" id="15_mqnq4"]
+[ext_resource type="Texture2D" uid="uid://chvwmyjh6h6x3" path="res://game_scenes/win_scene/sprites/feu4-3.png" id="16_w2xen"]
+[ext_resource type="Texture2D" uid="uid://dkh5x1pwkw4fy" path="res://game_scenes/win_scene/sprites/feu4-4.png" id="17_svefw"]
+[ext_resource type="Texture2D" uid="uid://w3g36xow0rgt" path="res://game_scenes/win_scene/sprites/DroneMort.png" id="18_nt3h7"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nv10f"]
+animation = &"new_animation"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gkrpe"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nqfa1"]
+states/new_animation/node = SubResource("AnimationNodeAnimation_nv10f")
+states/new_animation/position = Vector2(375, 105)
+transitions = ["Start", "new_animation", SubResource("AnimationNodeStateMachineTransition_gkrpe")]
+
+[sub_resource type="Animation" id="Animation_uk6vs"]
+resource_name = "new_animation"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.9),
+"transitions": PackedFloat32Array(1.31951, 0.482968),
+"update": 0,
+"values": [Vector2(-1100, -1400), Vector2(-1882.35, -1052.94)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.9),
+"transitions": PackedFloat32Array(1.31951, 0.482968),
+"update": 0,
+"values": [Vector2(1.8, 1.8), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.358112, 0.358112), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-300, -1000), Vector2(-800, 23.529)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-5.90794, 5.53269]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_456vn"]
+_data = {
+"new_animation": SubResource("Animation_uk6vs")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jtyd8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fb1xn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8bsbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7fkdx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ldpmf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nboh0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ga6rk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_er01o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_oi7f3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_t7uot")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vtwv0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jns1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8vhxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8kbvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tyerr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ltx5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_63nhc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_mqnq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_w2xen")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_svefw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="win_scene" type="Node2D"]
+scale = Vector2(0.34, 0.34)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_nqfa1")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_456vn")
+}
+
+[node name="BG" type="Sprite2D" parent="."]
+texture = ExtResource("1_djx13")
+
+[node name="Feu1" type="AnimatedSprite2D" parent="."]
+position = Vector2(455, 644)
+sprite_frames = SubResource("SpriteFrames_jtyd8")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="Feu2" type="AnimatedSprite2D" parent="."]
+position = Vector2(384, -815)
+sprite_frames = SubResource("SpriteFrames_nboh0")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="Feu3" type="AnimatedSprite2D" parent="."]
+position = Vector2(1223, -833)
+sprite_frames = SubResource("SpriteFrames_vtwv0")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="Feu4" type="AnimatedSprite2D" parent="."]
+position = Vector2(523, -176)
+sprite_frames = SubResource("SpriteFrames_5ltx5")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="feu" type="Node" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1882.35, -1052.94)
 offset = Vector2(640, 360)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-800, 23.529)
+rotation = 5.53269
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("18_nt3h7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -348.0
+offset_top = -76.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Continue"
+
+[node name="Button2" type="Button" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quit"
