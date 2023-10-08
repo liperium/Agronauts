@@ -47,6 +47,18 @@ public class IdleNumberContainer
         truckSpeed.OnLoad();
         
         fightWave.OnLoad();
+        
+        //win condition
+        potatoCount.SetOnValueChanged(CheckWin);
+        fightWave.SetOnValueChanged(CheckWin);
+    }
+
+    private void CheckWin(long value)
+    {
+        if (!GameState.instance.won && (potatoCount.GetValue() >= long.MaxValue - 1 || fightWave.GetValue() >= 16))
+        {
+            GameState.instance.Win();
+        }
     }
     
     public void Init()

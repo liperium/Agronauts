@@ -34,6 +34,8 @@ public partial class GameState
 
 	private const string filePath = "Save.sav";
 	public int randomSeed = 0xBADF00D;
+	public bool won;
+	private Action OnWin;
 
 	public IdleNumberContainer numbers;
 	public IdleUpgradeContainer upgrades;
@@ -41,6 +43,11 @@ public partial class GameState
 
 	[NonSerialized] public static Dictionary<int, IdleModifier> allModifiers = new Dictionary<int, IdleModifier>();
 
+	public void SetOnWin(Action onWin)
+	{
+		OnWin += onWin;
+	}
+	
 	public void Init()
 	{
 		numbers = new IdleNumberContainer();
@@ -127,5 +134,11 @@ public partial class GameState
 		
 		newInstance.Init();
 		return newInstance;
+	}
+
+	public void Win()
+	{
+		won = true;
+		if (OnWin != null) OnWin();
 	}
 }
