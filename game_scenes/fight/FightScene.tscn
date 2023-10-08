@@ -19,44 +19,46 @@ size = Vector2(1302, 742)
 
 [node name="FightScene" type="Node2D"]
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="ALLSPRITES" type="Node2D" parent="."]
+position = Vector2(635, 360)
+scale = Vector2(0.34, 0.34)
 
-[node name="BG" type="Sprite2D" parent="Node2D"]
+[node name="BG" type="Sprite2D" parent="ALLSPRITES"]
 texture = ExtResource("1_c7niu")
 
-[node name="Fenetre" type="Sprite2D" parent="Node2D"]
+[node name="Fenetre" type="Sprite2D" parent="ALLSPRITES"]
 position = Vector2(1517, -626)
 texture = ExtResource("2_lka11")
 
-[node name="Arbre" type="Sprite2D" parent="Node2D"]
+[node name="Arbre" type="Sprite2D" parent="ALLSPRITES"]
 position = Vector2(-685, 63)
 texture = ExtResource("3_iuqht")
 
-[node name="Arbre2" type="Sprite2D" parent="Node2D"]
+[node name="Arbre2" type="Sprite2D" parent="ALLSPRITES"]
 position = Vector2(766, 63)
 texture = ExtResource("3_iuqht")
 
-[node name="Cloture" type="Sprite2D" parent="Node2D"]
+[node name="Cloture" type="Sprite2D" parent="ALLSPRITES"]
 position = Vector2(-1593, 0)
 texture = ExtResource("4_hjcrb")
 
-[node name="Engrais" type="Sprite2D" parent="Node2D"]
+[node name="Engrais" type="Sprite2D" parent="ALLSPRITES"]
 position = Vector2(-1450, 596)
 texture = ExtResource("5_ucl0g")
 
-[node name="Roche" type="Sprite2D" parent="Node2D"]
+[node name="Roche" type="Sprite2D" parent="ALLSPRITES"]
 position = Vector2(1661, 654)
 texture = ExtResource("6_pedlr")
 
-[node name="BackTrou" type="Sprite2D" parent="Node2D"]
+[node name="BackTrou" type="Sprite2D" parent="ALLSPRITES"]
 position = Vector2(462, 690)
 texture = ExtResource("7_f73s6")
 
-[node name="FronTrou" type="Sprite2D" parent="Node2D"]
+[node name="FronTrou" type="Sprite2D" parent="ALLSPRITES"]
 position = Vector2(462, 690)
 texture = ExtResource("8_e2mn0")
 
-[node name="Vaisseau" type="Sprite2D" parent="Node2D"]
+[node name="Vaisseau" type="Sprite2D" parent="ALLSPRITES"]
 position = Vector2(-725, -754)
 texture = ExtResource("9_b2vuv")
 
