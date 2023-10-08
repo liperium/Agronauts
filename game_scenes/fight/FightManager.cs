@@ -4,6 +4,7 @@ using Godot;
 
 public partial class FightManager : Node
 {
+    [Export] public PackedScene farmScene;
     [Export] public Node2D[] spawnPositions;
     [Export] public Timer spawnTimer;
 
@@ -61,6 +62,7 @@ public partial class FightManager : Node
         OnEnemyKill = null;
         
         //TODO load back to farm scene
+        GetTree().ChangeSceneToPacked(farmScene);
         GD.Print("FIGHT END!");
         
     }
