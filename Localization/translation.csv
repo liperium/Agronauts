@@ -16,3 +16,7 @@ KFIRSTTRACTORUPGRADE,Tractor,Tracteur
 KFIRSTTRACTORUPGRADEDESC,A handy tractor to collect the potatoes,Un tracteur utile pour récolter les patates
 KADDAUTOTRACTORUPGRADE,New self-driving tractor,Nouveau tracteur autonome
 KADDAUTOTRACTORUPGRADEDESC,Adds a self-driving tractor to your fields!, Ajoute un tracteur autonome à vos champs!
+KIMPOSSIBLE,Impossible,Impossible
+KNOSPACEAVAIBLEFORTRUCK,There is no space avaible to add a new tractor!,Il n'y a plus de place disponible pour ajouter un nouveau tracteur!
+KTRUCKSPEEDUPGRADE,Potato fuel,Carburant aux patates
+KTRUCKSPEEDUPGRADEDESC,VROOM! Faster trucks! Double the speed.,VROOM! Des tracteurs plus rapides! Deux fois la vitesse.
