@@ -153,11 +153,14 @@ public partial class FarmLand : Area2D
 	{
 		priceLabel.Visible = false;
 	}
-	public void Bought()
+	public void Bought(bool pay = true, bool addToHistory = true)
 	{
-		GameState.instance.numbers.potatoCount.DecreaseValue(cost);
-		GameState.instance.numbers.numberOfTilesUnlocked.IncreaseValue(1);
-		
+		if (pay)
+		{
+			GameState.instance.numbers.potatoCount.DecreaseValue(cost);
+			GameState.instance.numbers.numberOfTilesUnlocked.IncreaseValue(1);	
+		}
+
 		button.TextureNormal = GetRandomTexture(BoughtTextures);
 		currState = LandState.Base;
 		priceLabel.QueueFree();
@@ -168,7 +171,7 @@ public partial class FarmLand : Area2D
 		audioPlayer.Play();
 		
 		// Check if it can expand
-		GetParent<FarmField>().LandBought(new Pos2D(position.X,position.Y));
+		GetParent<FarmField>().LandBought(new Pos2D(position.X,position.Y), addToHistory);
 	}
 	public void Laboure()
 	{

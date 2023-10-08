@@ -28,6 +28,8 @@ public partial class FarmFieldMaster : Node2D
 			farmTime = 3.0f / newValue;
 			if (OnFarmTimeChange != null) OnFarmTimeChange();
 		});
+
+		ProcessHistory();
 	}
 
 	public void SpawnField(int x, int y, bool origin = false)
@@ -71,6 +73,24 @@ public partial class FarmFieldMaster : Node2D
 		// Unlock la tile
 		GetNode<FarmField>($"{targetField.X}-{targetField.Y}").GetNode<FarmLand>($"{toBuy.X}-{toBuy.Y}").Show();
 
+	}
+
+	public FarmLand GetFarmTile(Pos2D field, Pos2D tile)
+	{
+		return GetNode($"{field.X}-{field.Y}").GetNode<FarmLand>($"{tile.X}-{tile.Y}");
+	}
+
+	private void ProcessHistory()
+	{
+		foreach (SavedField savedField in GameState.instance.savedFields.boughtFieldsHistory)
+		{
+			FarmLand land = GetFarmTile(savedField.field, savedField.tile);
+			if (land != null)
+			{
+				land.Bought(false, false);
+				land.Laboure();
+			}
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
