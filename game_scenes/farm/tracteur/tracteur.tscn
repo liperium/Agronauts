@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6p0e44pj7nfd"]
+[gd_scene load_steps=8 format=3 uid="uid://c6p0e44pj7nfd"]
 
 [ext_resource type="Script" path="res://game_scenes/farm/tracteur/Tracteur.cs" id="1_1nndq"]
 [ext_resource type="Texture2D" uid="uid://fw3cwgvoyeff" path="res://game_scenes/farm/tracteur/sprites/tracteur1.png" id="2_cff55"]
 [ext_resource type="Script" path="res://game_scenes/farm/tracteur/Arracheuse.cs" id="3_f0hjl"]
 [ext_resource type="Texture2D" uid="uid://ci4suadvfx0fs" path="res://game_scenes/farm/tracteur/sprites/arracheuse2boules.png" id="4_t2cnp"]
-[ext_resource type="Texture2D" uid="uid://bwxru3otuu7gf" path="res://game_scenes/farm/tracteur/sprites/epandeur.png" id="6_mqflk"]
-[ext_resource type="Script" path="res://game_scenes/farm/tracteur/Epandeuse.cs" id="6_xpk7c"]
+[ext_resource type="PackedScene" uid="uid://decgj471gku45" path="res://game_scenes/farm/tracteur/epandeuse.tscn" id="5_w5atw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttysw"]
 size = Vector2(16, 28)
@@ -39,14 +38,4 @@ shape = SubResource("RectangleShape2D_f3lx4")
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("4_t2cnp")
 
-[node name="Epandeuse" type="Area2D" parent="."]
-position = Vector2(0.999798, -56)
-script = ExtResource("6_xpk7c")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Epandeuse"]
-position = Vector2(-0.999997, 1)
-shape = SubResource("RectangleShape2D_f3lx4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Epandeuse"]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("6_mqflk")
+[node name="Epandeuse" parent="." instance=ExtResource("5_w5atw")]

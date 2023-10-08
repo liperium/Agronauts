@@ -25,4 +25,9 @@ public partial class Epandeuse:Area2D
             }
         }
     }
+
+    public void SetCollision(bool isEnabled)
+    {
+        GetNode<CollisionShape2D>("CollisionShape2D").Disabled = !isEnabled;
+    }
 }
