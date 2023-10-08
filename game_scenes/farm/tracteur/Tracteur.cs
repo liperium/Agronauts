@@ -21,6 +21,8 @@ public partial class Tracteur : CharacterBody2D
 
     public float RotationSpeed { get => speed / 30f; }
 
+    private Epandeuse epandeuse;
+
     public enum AutoState
     {
         SPIN_CHANGE_ROW,
@@ -34,7 +36,10 @@ public partial class Tracteur : CharacterBody2D
         RotationDegrees = 0;
         UpdateSpeed(GameState.instance.numbers.truckSpeed.GetValue());
         GameState.instance.numbers.truckSpeed.SetOnValueChanged(UpdateSpeed);
-	}
+        epandeuse = GetNode<Epandeuse>("Epandeuse");
+        epandeuse.Visible = false;
+        epandeuse.SetCollision(false);
+    }
 
     public void UpdateSpeed(long speed)
     {
@@ -149,5 +154,11 @@ public partial class Tracteur : CharacterBody2D
             rotationForce = (Input.GetActionStrength("tracteur_right") - Input.GetActionStrength("tracteur_left")) * RotationSpeed * (float)delta;
             Rotate(rotationForce);
         }
+    }
+
+    public void UpgradeEpandeur()
+    {
+        epandeuse.Visible = false;
+        epandeuse.SetCollision(true);
     }
 }

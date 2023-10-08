@@ -13,6 +13,7 @@ public partial class PlayerCamera : Camera2D
 	private bool cameraTransformMouse = false;
 
 	private Vector2 homePosition = Vector2.Zero;
+
 	public override void _Input(InputEvent @event)
 	{
 		base._Input(@event);
@@ -52,6 +53,7 @@ public partial class PlayerCamera : Camera2D
 		{
 			float opacity =  1 - Zoom.X;
 			(GetNode<ColorRect>("../Clouds").Material as ShaderMaterial).Set("shader_parameter/transparency",opacity);
+			AudioServer.SetBusVolumeDb(0, (1-Zoom.X)*-50.0f);
 		}
 		if (Input.IsActionPressed("mouse_control_camera"))
 		{
