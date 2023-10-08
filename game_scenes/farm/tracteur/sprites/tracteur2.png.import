@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cemnx6arj3p6k"
-path="res://.godot/imported/tracteur2.png-3ec5a5974884d68802b4b1d81fa74228.ctex"
+path="res://.godot/imported/tracteur2.png-2f215e3016f20f7235c213df3d387ca8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scenes/farm/farmland/tracteur/tracteur2.png"
-dest_files=["res://.godot/imported/tracteur2.png-3ec5a5974884d68802b4b1d81fa74228.ctex"]
+source_file="res://game_scenes/farm/tracteur/sprites/tracteur2.png"
+dest_files=["res://.godot/imported/tracteur2.png-2f215e3016f20f7235c213df3d387ca8.ctex"]
 
 [params]
 

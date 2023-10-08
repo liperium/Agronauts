@@ -150,4 +150,9 @@ public partial class Tracteur : CharacterBody2D
             Rotate(rotationForce);
         }
     }
+
+    public void UpgradeEpandeur()
+    {
+        
+    }
 }
