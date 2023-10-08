@@ -14,6 +14,9 @@ public class IdleUpgradeContainer
     public AutoCookLevel4Upgrade autoCookLevel4Upgrade;
     public FurnaceSpeedUpgrade furnaceSpeedUpgrade;
     public FurnaceBatchSizeUpgrade furnaceBatchSizeUpgrade;
+    public TractorSpeedArtifact tractorSpeedArtifact;
+    public FurnaceSpeedArtifact furnaceSpeedArtifact;
+    public FurnaceTempUpgrade furnaceTempUpgrade;
     public void Init()
     {
         totalPotatoYieldUpgrade = new TotalPotatoYieldUpgrade();
@@ -27,6 +30,11 @@ public class IdleUpgradeContainer
         autoCookLevel4Upgrade = new AutoCookLevel4Upgrade();
         furnaceSpeedUpgrade = new FurnaceSpeedUpgrade();
         furnaceBatchSizeUpgrade = new FurnaceBatchSizeUpgrade();
+
+        tractorSpeedArtifact = new TractorSpeedArtifact();
+        furnaceSpeedArtifact = new FurnaceSpeedArtifact();
+        furnaceTempUpgrade = new FurnaceTempUpgrade();
+
     }
 
     public void OnLoad()
@@ -42,5 +50,9 @@ public class IdleUpgradeContainer
         autoCookLevel4Upgrade.OnLoad();
         furnaceSpeedUpgrade.OnLoad();
         furnaceBatchSizeUpgrade.OnLoad();
+
+        tractorSpeedArtifact.OnLoad();
+        furnaceSpeedArtifact.OnLoad();
+        furnaceTempUpgrade.OnLoad();
     }
 }

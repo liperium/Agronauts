@@ -10,6 +10,7 @@ public partial class IdleUpgrade <TModifier> where TModifier : IdleModifier, new
 
 	public bool acquired;
 
+
 	public virtual void Apply()
 	{
 		affectedNumber.AddModifier(modifier);
