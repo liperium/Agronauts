@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8euadebtg6xv"
-path="res://.godot/imported/roche.png-f3279b1c29ef5354d2437a998837812f.ctex"
+uid="uid://eva302twfawu"
+path="res://.godot/imported/cloture.png-ffef225a414f651e259f051337b53045.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scenes/fight/roche.png"
-dest_files=["res://.godot/imported/roche.png-f3279b1c29ef5354d2437a998837812f.ctex"]
+source_file="res://game_scenes/fight/sprites/cloture.png"
+dest_files=["res://.godot/imported/cloture.png-ffef225a414f651e259f051337b53045.ctex"]
 
 [params]
 

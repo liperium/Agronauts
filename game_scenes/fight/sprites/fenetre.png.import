@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgacp1nrxra"
-path="res://.godot/imported/ExempleOverall.png-e04a4759af2ca8b6157ae5dad3bc3d70.ctex"
+uid="uid://1q15a0ctdmja"
+path="res://.godot/imported/fenetre.png-66190480f3f139cfba2803a6b3722809.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scenes/fight/ExempleOverall.png"
-dest_files=["res://.godot/imported/ExempleOverall.png-e04a4759af2ca8b6157ae5dad3bc3d70.ctex"]
+source_file="res://game_scenes/fight/sprites/fenetre.png"
+dest_files=["res://.godot/imported/fenetre.png-66190480f3f139cfba2803a6b3722809.ctex"]
 
 [params]
 

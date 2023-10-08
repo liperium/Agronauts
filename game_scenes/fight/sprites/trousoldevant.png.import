@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxi7wujrb84bu"
-path="res://.godot/imported/cloture.png-67f508ff2853164fe02b6cdc39ddd4be.ctex"
+uid="uid://d2pjghq7v8nb5"
+path="res://.godot/imported/trousoldevant.png-2cfc9b64e87ac5f5d96e7d85279a6ad0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scenes/fight/cloture.png"
-dest_files=["res://.godot/imported/cloture.png-67f508ff2853164fe02b6cdc39ddd4be.ctex"]
+source_file="res://game_scenes/fight/sprites/trousoldevant.png"
+dest_files=["res://.godot/imported/trousoldevant.png-2cfc9b64e87ac5f5d96e7d85279a6ad0.ctex"]
 
 [params]
 

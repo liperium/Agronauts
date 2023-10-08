@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fqrlpddggm3d"
-path="res://.godot/imported/vaisseau.png-bc5aa01a7f528eb9d21404ee98733cb2.ctex"
+uid="uid://cjbb0yso8f1pe"
+path="res://.godot/imported/alien-fight.png-8b01126d5385145688edcde8d721a530.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scenes/fight/vaisseau.png"
-dest_files=["res://.godot/imported/vaisseau.png-bc5aa01a7f528eb9d21404ee98733cb2.ctex"]
+source_file="res://game_scenes/fight/sprites/alien-fight.png"
+dest_files=["res://.godot/imported/alien-fight.png-8b01126d5385145688edcde8d721a530.ctex"]
 
 [params]
 

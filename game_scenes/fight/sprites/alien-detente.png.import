@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://55m137ssktap"
-path="res://.godot/imported/alien-fight.png-e9de9c6a3ab8dc271e8dda6d774f8a5b.ctex"
+uid="uid://d1wodf4bswlpl"
+path="res://.godot/imported/alien-detente.png-91c1a9ba5e286f26a82ad4f5c043c9f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scenes/fight/alien-fight.png"
-dest_files=["res://.godot/imported/alien-fight.png-e9de9c6a3ab8dc271e8dda6d774f8a5b.ctex"]
+source_file="res://game_scenes/fight/sprites/alien-detente.png"
+dest_files=["res://.godot/imported/alien-detente.png-91c1a9ba5e286f26a82ad4f5c043c9f9.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5pen2seadsv1"
-path="res://.godot/imported/trousoldevant.png-b3ac8b41d7987e2861737256fc027b7c.ctex"
+uid="uid://dc7yy3dauluty"
+path="res://.godot/imported/plant1.png-bfc91f0805945891191750118a8ebb07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scenes/fight/trousoldevant.png"
-dest_files=["res://.godot/imported/trousoldevant.png-b3ac8b41d7987e2861737256fc027b7c.ctex"]
+source_file="res://game_scenes/fight/sprites/plant1.png"
+dest_files=["res://.godot/imported/plant1.png-bfc91f0805945891191750118a8ebb07.ctex"]
 
 [params]
 

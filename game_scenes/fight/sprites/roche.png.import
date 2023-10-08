@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mdcykyc3o24v"
-path="res://.godot/imported/plant1.png-9122f3bef06ee612029dc9dca6b3fa3b.ctex"
+uid="uid://bg18raqtdjd57"
+path="res://.godot/imported/roche.png-634aef2a59468d6b13d5eaa166df809d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scenes/fight/plant1.png"
-dest_files=["res://.godot/imported/plant1.png-9122f3bef06ee612029dc9dca6b3fa3b.ctex"]
+source_file="res://game_scenes/fight/sprites/roche.png"
+dest_files=["res://.godot/imported/roche.png-634aef2a59468d6b13d5eaa166df809d.ctex"]
 
 [params]
 

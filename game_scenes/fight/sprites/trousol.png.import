@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3kuw7hpf2mm"
-path="res://.godot/imported/shotgun.png-62c0d5769d2920d6d6453a0daaf2f3fe.ctex"
+uid="uid://7sjdqo8l12jk"
+path="res://.godot/imported/trousol.png-e9f8ba1f2c866284657e017bc91d52c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scenes/fight/shotgun.png"
-dest_files=["res://.godot/imported/shotgun.png-62c0d5769d2920d6d6453a0daaf2f3fe.ctex"]
+source_file="res://game_scenes/fight/sprites/trousol.png"
+dest_files=["res://.godot/imported/trousol.png-e9f8ba1f2c866284657e017bc91d52c0.ctex"]
 
 [params]
 

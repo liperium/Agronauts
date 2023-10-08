@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buqeocxo7hnvc"
-path="res://.godot/imported/BackGround.png-2c13eca3ba4da835119f1ace62b31a29.ctex"
+uid="uid://beafx8e6l3pdb"
+path="res://.godot/imported/engrais.png-3ccf6a99d228b4538f6038dd189bfbfd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scenes/fight/BackGround.png"
-dest_files=["res://.godot/imported/BackGround.png-2c13eca3ba4da835119f1ace62b31a29.ctex"]
+source_file="res://game_scenes/fight/sprites/engrais.png"
+dest_files=["res://.godot/imported/engrais.png-3ccf6a99d228b4538f6038dd189bfbfd.ctex"]
 
 [params]
 
