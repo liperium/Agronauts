@@ -10,7 +10,7 @@ KDEFEND,Defend,Defendre
 KGIVEUP,Give up,Abandonner
 KPOTATOYIELDUPGRADE,Better technique,Meilleure technique
 KPOTATOYIELDUPGRADEDESC,Increases your potato yield by 100%,Augmente la récolte de patates de 100%
-KPOTATOSPEEDUPGRADE,potato speed upgrade,améliore vitesse patate
+KPOTATOSPEEDUPGRADE,potato speed,vitesse patate
 KPOTATOSPEEDUPGRADEDESC,increases potato grow speed by 30%,augmente la vitesse de pousse des patates de 30%
 KFIRSTTRACTORUPGRADE,Tractor,Tracteur
 KFIRSTTRACTORUPGRADEDESC,A handy tractor to collect the potatoes,Un tracteur utile pour récolter les patates
@@ -31,3 +31,9 @@ KSAVE,Save,Sauvegarder
 KCONTROLTRACTOR,Drive your tractor using the arrow keys on your keyboard,Conduisez votre tracteur en utilisant les flèches de votre clavier
 KCOOKLVL3,Michelin chef,Chef Michelin
 KCOOKLVL3DESC,Starting a new batch is three times as fast as before,Commencer un nouveau lot prend trois fois moins de temps qu'avant
+KCOOKLVL4,Three stars,Trois étoiles
+KCOOKLVL4DESC,Your chef has developed incredible skill. Starting a new batch of potatos is three times faster than before,Votre chef a développé un talent incroyable. Commencer un nouveau lot prend trois fois moins de temps qu'avant
+KFURNACESPEED,Furnace speed,Vitesse du four
+KFURNACESPEEDDESC,Faster furnace. +10% speed,Four plus rapide. +10% de vitesse
+KFURNACEBATCHCOUNT,Bigger batch,Plus gros lot
+KFURNACEBATCHCOUNTDESC,+100% potatos per batch,+100% de patates par lot
