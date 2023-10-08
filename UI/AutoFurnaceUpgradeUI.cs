@@ -3,7 +3,6 @@ using System;
 
 public partial class AutoFurnaceUpgradeUI : HBoxContainer
 {
-
     private AutoFurnaceUpgrade autoFurnaceUpgrade;
     private TextureButton buyButton;
     public override void _Ready()
@@ -13,12 +12,18 @@ public partial class AutoFurnaceUpgradeUI : HBoxContainer
         autoFurnaceUpgrade = GameState.instance.upgrades.autoFurnaceUpgrade;
         buyButton = GetNode<TextureButton>("BuyButton");
 
+        if (autoFurnaceUpgrade.acquired)
+        {
+            QueueFree();
+            return;
+        }
+        
         Visible = autoFurnaceUpgrade.IsUnlocked();
-        autoFurnaceUpgrade.OnUnlock += OnUnlock;
+        autoFurnaceUpgrade.SetOnUnlock(OnUnlock);
 
-        GetNode<UpgradeInfoContainer>("UpgradeInfoContainer").SetUpgrade(autoFurnaceUpgrade.GetInfo(),
-            autoFurnaceUpgrade.GetCost(),
-            ref autoFurnaceUpgrade.OnCostChanged);
+        UpgradeInfoContainer infoContainer = GetNode<UpgradeInfoContainer>("UpgradeInfoContainer");
+        infoContainer.SetUpgrade(autoFurnaceUpgrade.GetInfo(),
+            autoFurnaceUpgrade.GetCost());
 
         buyButton.Pressed += PressBuy;
     }
@@ -28,7 +33,7 @@ public partial class AutoFurnaceUpgradeUI : HBoxContainer
         if (!autoFurnaceUpgrade.CanBuy()) return;
         autoFurnaceUpgrade.Buy();
 
-        autoFurnaceUpgrade.OnUnlock -= OnUnlock;
+        autoFurnaceUpgrade.ResetOnUnlock(OnUnlock);
         buyButton.Pressed -= PressBuy;
 
         QueueFree();

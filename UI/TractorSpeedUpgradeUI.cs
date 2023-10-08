@@ -13,12 +13,13 @@ public partial class TractorSpeedUpgradeUI : HBoxContainer
         buyButton = GetNode<TextureButton>("BuyButton");
 
         Visible = tractorSpeedUpgrade.IsUnlocked();
-        tractorSpeedUpgrade.OnUnlock += OnUnlock;
+        tractorSpeedUpgrade.SetOnUnlock(OnUnlock);
 
-        GetNode<UpgradeInfoContainer>("UpgradeInfoContainer").SetUpgrade(tractorSpeedUpgrade.GetInfo(),
-            tractorSpeedUpgrade.GetCost(),
-            ref tractorSpeedUpgrade.OnCostChanged);
-
+        UpgradeInfoContainer infoContainer = GetNode<UpgradeInfoContainer>("UpgradeInfoContainer");
+        infoContainer.SetUpgrade(tractorSpeedUpgrade.GetInfo(),
+            tractorSpeedUpgrade.GetCost());
+        tractorSpeedUpgrade.SetOnCostChanged((value) => infoContainer.UpdateCostText(value));
+        
         buyButton.Pressed += PressBuy;
     }
 
@@ -26,7 +27,7 @@ public partial class TractorSpeedUpgradeUI : HBoxContainer
     {
         tractorSpeedUpgrade.Buy();
 
-        tractorSpeedUpgrade.OnUnlock -= OnUnlock;
+        tractorSpeedUpgrade.ResetOnUnlock(OnUnlock);
 
     }
 

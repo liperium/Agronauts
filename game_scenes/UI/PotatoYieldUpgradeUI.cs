@@ -10,12 +10,13 @@ public partial class PotatoYieldUpgradeUI : HBoxContainer
         base._Ready();
 
         potatoYieldUpgrade = GameState.instance.upgrades.totalPotatoYieldUpgrade;
+        
+        UpgradeInfoContainer infoContainer = GetNode<UpgradeInfoContainer>("UpgradeInfoContainer");
+        infoContainer.SetUpgrade(potatoYieldUpgrade.GetInfo(),
+            potatoYieldUpgrade.GetCost());
+        potatoYieldUpgrade.SetOnCostChanged((value) => infoContainer.UpdateCostText(value));
 
         buyButton = GetNode<TextureButton>("BuyButton");
-        GetNode<UpgradeInfoContainer>("UpgradeInfoContainer").SetUpgrade(potatoYieldUpgrade.GetInfo(),
-            potatoYieldUpgrade.GetCost(),
-            ref potatoYieldUpgrade.OnCostChanged);
-
         buyButton.Pressed += PressBuy;
     }
 
