@@ -17,8 +17,12 @@ public partial class FurnaceSpeedUpgradeUI : HBoxContainer
 
         UpgradeInfoContainer infoContainer = GetNode<UpgradeInfoContainer>("UpgradeInfoContainer");
         infoContainer.SetUpgrade(furnaceSpeedUpgrade.GetInfo(),
-            furnaceSpeedUpgrade.GetCost());
-        furnaceSpeedUpgrade.SetOnCostChanged((value) => infoContainer.UpdateCostText(value));
+            furnaceSpeedUpgrade.GetCost(), furnaceSpeedUpgrade.GetEffectText());
+        furnaceSpeedUpgrade.SetOnCostChanged((value) => {
+            infoContainer.SetUpgrade(furnaceSpeedUpgrade.GetInfo(),
+            furnaceSpeedUpgrade.GetCost(), furnaceSpeedUpgrade.GetEffectText());
+            infoContainer.UpdateCostText(value); 
+        });
 
         buyButton.Pressed += PressBuy;
     }

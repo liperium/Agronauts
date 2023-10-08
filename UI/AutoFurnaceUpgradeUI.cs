@@ -23,7 +23,7 @@ public partial class AutoFurnaceUpgradeUI : HBoxContainer
 
         UpgradeInfoContainer infoContainer = GetNode<UpgradeInfoContainer>("UpgradeInfoContainer");
         infoContainer.SetUpgrade(autoFurnaceUpgrade.GetInfo(),
-            autoFurnaceUpgrade.GetCost());
+            autoFurnaceUpgrade.GetCost(), autoFurnaceUpgrade.GetEffectText());
 
         buyButton.Pressed += PressBuy;
     }

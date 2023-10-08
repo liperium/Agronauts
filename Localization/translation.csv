@@ -43,3 +43,5 @@ KFURNACESPEEDARTIFACT,Interstellar fuel,Carburant interstellaire
 KFURNACESPEEDARTIFACTDESC,Double the cooking speed,Cuit deux fois plus vite
 KFURNACETEMP,Temperature,Température
 KFURNACETEMPDESC,Hotter means more damage. The current potato temperature gets 20% hotter, Plus chaud signifie plus de dommages. La température des patates devient 20% plus chaude.
+KPLANTER,Planter,Épandeur
+KPLANTERDESC,Your tractors now also plant potatos!,Vos tracteurs plantent maintenant aussi des patates!

@@ -21,6 +21,7 @@ public partial class Arracheuse : Area2D
 			if (farmLand.CurrState == FarmLand.LandState.Ready)
 			{
 				farmLand.Harvest();
+				GameState.instance.numbers.truckPotatosFarmed.IncreaseValue(GameState.instance.numbers.potatoYield.GetValue());
 			}
 		}
 	}

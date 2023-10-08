@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 [Serializable]
 public class IdleUpgradeContainer
@@ -20,6 +20,7 @@ public class IdleUpgradeContainer
 
     public UnlockFurnaceUpgrade unlockFurnaceUpgrade;
     public UnlockArtifactsUpgrade unlockArtifactsUpgrade;
+    public TractorSpreadSeedsUpgrade tractorSpreadSeedsUpgrade;
     public void Init()
     {
         totalPotatoYieldUpgrade = new TotalPotatoYieldUpgrade();
@@ -37,6 +38,7 @@ public class IdleUpgradeContainer
         tractorSpeedArtifact = new TractorSpeedArtifact();
         furnaceSpeedArtifact = new FurnaceSpeedArtifact();
         furnaceTempUpgrade = new FurnaceTempUpgrade();
+        tractorSpreadSeedsUpgrade = new TractorSpreadSeedsUpgrade();
 
         unlockFurnaceUpgrade = new UnlockFurnaceUpgrade();
         unlockArtifactsUpgrade = new UnlockArtifactsUpgrade();
@@ -63,5 +65,6 @@ public class IdleUpgradeContainer
         
         unlockFurnaceUpgrade.OnLoad();
         unlockArtifactsUpgrade.OnLoad();
+        tractorSpreadSeedsUpgrade.OnLoad();
     }
 }

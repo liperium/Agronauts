@@ -43,4 +43,9 @@ public class PotatoSpeedUpgrade : TieredUpgrade<MultiplierModifier>
             GameState.instance.numbers.potatoCount.ResetOnValueChanged(CheckUnlock);
         }   
     }
+
+    public override string GetEffectText()
+    {
+        return + ((int)(modifier.multiplier * 100)) + "%";
+    }
 }

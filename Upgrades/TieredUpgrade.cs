@@ -21,4 +21,5 @@ public partial class TieredUpgrade<TModifier> : BuyableUpgrade<TModifier> where 
         if (tier == 1) Apply();
         base.OnBuy();
     }
+
 }
