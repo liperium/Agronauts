@@ -4,6 +4,7 @@ using System;
 public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
 {
 
+    
     public override void OnBuy()
     {
         Tracteur tractor = ResourceLoader.Load<PackedScene>("res://game_scenes/farm/tracteur/tracteur.tscn").Instantiate() as Tracteur;
@@ -30,6 +31,9 @@ public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
     public override void InnitInfo()
     {
         base.InnitInfo();
+        info.SetName("KFIRSTTRACTORUPGRADE");
+        info.SetDescription("KFIRSTTRACTORUPGRADEDESC");
+        info.SetImagePath("res://Icons/Potato.png");
     }
 
     public override void OnLoad()

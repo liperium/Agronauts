@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 [Serializable]
 public class IdleNumberContainer
@@ -20,6 +20,7 @@ public class IdleNumberContainer
     public IdleNumber truckAmount;
     public IdleNumber truckSpeed;
 
+    public IdleNumber fightWave;
 
     public void Init()
     {
@@ -39,12 +40,15 @@ public class IdleNumberContainer
         furnaceBatchCount.SetValue(1);
         furnaceSpeed = new IdleNumber();
         furnaceSpeed.SetValue(1);
-
+        
         truckAmount = new IdleNumber();
         truckSpeed = new IdleNumber();
         truckSpeed.SetValue(20);
 
         numberOfTilesUnlocked = new IdleNumber();
+
+        fightWave = new IdleNumber();
+        fightWave.SetValue(1);
     }
 
     public void OnLoad()
