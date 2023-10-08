@@ -43,14 +43,33 @@ public partial class Four : Control
 
 	public void ButtonClicked()
 	{
-		if (timer.IsStopped())
+		if (timer.IsStopped() && CanBuy())
 		{
+			manualButton.Disabled = true;
+			Buy();
 			timer.Start();
 		}
+	}
+
+	private void Buy()
+	{
+		GameState.instance.numbers.potatoCount.DecreaseValue(GameState.instance.numbers.cookedPotatoYield.GetValue());
+	}
+
+	private bool CanBuy()
+	{
+		return GameState.instance.numbers.potatoCount.GetValue() >=
+		       GameState.instance.numbers.furnaceBatchCount.GetValue();
 	}
 
 	public void DoneBatch()
 	{
 		progressBar.Value = 0.0f;
+		
+		GameState.instance.numbers.cookedPotatoCount.IncreaseValue(
+			GameState.instance.numbers.cookedPotatoYield.GetValue() * 
+			GameState.instance.numbers.furnaceBatchCount.GetValue());
+		
+		manualButton.Disabled = false;
 	}
 }

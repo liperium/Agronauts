@@ -8,6 +8,7 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 	public bool unlocked;
     
 	public Action<long> OnCostChanged;
+	public Action OnUnlock;
 	
 	public override void OnLoad()
 	{
@@ -18,6 +19,17 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 	public bool IsUnlocked()
 	{
 		return unlocked;
+	}
+
+	public virtual bool CanUnlock()
+	{
+		return true;
+	}
+
+	public void Unlock()
+	{
+		unlocked = true;
+		if (OnUnlock != null) OnUnlock();
 	}
     public virtual void Buy()
 	{

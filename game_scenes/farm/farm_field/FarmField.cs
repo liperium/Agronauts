@@ -40,9 +40,14 @@ public partial class FarmField : Node2D
 				farmLand.ChangeCost((int)farmLand.GlobalPosition.DistanceTo(FarmFieldMaster.originFarmLand));
 			}
 		}
-	}
 
-	public void Expand(Pos2D pos)
+
+        GameState.instance.upgrades.addAutomaticTractorUpgrade.AddField(this);
+    }
+
+
+
+    public void Expand(Pos2D pos)
 	{
 		FarmFieldMaster ffm = GetParent<FarmFieldMaster>();
 		FarmFieldMaster.Cardinality cardinality = FarmFieldMaster.Cardinality.EAST;

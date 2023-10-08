@@ -9,16 +9,25 @@ public partial class FarmFieldMaster : Node2D
 		ResourceLoader.Load<PackedScene>("res://game_scenes/farm/farm_field/farm_field.tscn");
 
     public static int TILE_SIZE = 32;
-	private const int TILE_PER_FF = 5;
+    public static int TILE_PER_FF = 5;
 	const int MAX_SIZE = 33; // HAS TO BE IMPAIR
 	public static int centerPos = (MAX_SIZE - 1) / 2;
 	public static Vector2 originFarmLand;
     private bool[,] isTaken = new bool[MAX_SIZE,MAX_SIZE];
 
+    public static float farmTime = 3.0f;
+    public static Action OnFarmTimeChange;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		SpawnField(centerPos, centerPos, true);
+		
+		GameState.instance.numbers.potatoGrowSpeed.SetOnValueChanged((newValue) =>
+		{
+			farmTime = 3.0f / newValue;
+			if (OnFarmTimeChange != null) OnFarmTimeChange();
+		});
 	}
 
 	public void SpawnField(int x, int y, bool origin = false)
