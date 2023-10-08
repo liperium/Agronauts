@@ -147,7 +147,6 @@ offset_right = 553.0
 offset_bottom = 720.0
 
 [node name="Farm" type="Control" parent="UpgradeMenu/TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu/TabContainer/Farm"]
@@ -189,6 +188,7 @@ size_flags_horizontal = 3
 script = ExtResource("5_kqpvt")
 
 [node name="FourTab" type="Control" parent="UpgradeMenu/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu/TabContainer/FourTab"]

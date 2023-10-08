@@ -8,21 +8,24 @@ public partial class PotatoSpeedUpgradeUI : HBoxContainer
         base._Ready();
         
         potatoSpeedUpgrade = GameState.instance.upgrades.potatoSpeedUpgrade;
-        buyButton = GetNode<TextureButton>("BuyButton");
 
         Visible = potatoSpeedUpgrade.IsUnlocked();
-        potatoSpeedUpgrade.OnUnlock += OnUnlock;
+        potatoSpeedUpgrade.SetOnUnlock(OnUnlock);
 
-        GetNode<UpgradeInfoContainer>("UpgradeInfoContainer").SetUpgrade(potatoSpeedUpgrade.GetInfo(),
-            potatoSpeedUpgrade.GetCost(),
-            ref potatoSpeedUpgrade.OnCostChanged);
+        UpgradeInfoContainer infoContainer = GetNode<UpgradeInfoContainer>("UpgradeInfoContainer");
+        infoContainer.SetUpgrade(potatoSpeedUpgrade.GetInfo(),
+            potatoSpeedUpgrade.GetCost());
+        potatoSpeedUpgrade.SetOnCostChanged((value) => infoContainer.UpdateCostText(value));
 
+        buyButton = GetNode<TextureButton>("BuyButton");
         buyButton.Pressed += PressBuy;
     }
 
     private void PressBuy()
     {
         potatoSpeedUpgrade.Buy();
+        
+        potatoSpeedUpgrade.ResetOnUnlock(OnUnlock);
     }
 
     private void OnUnlock()

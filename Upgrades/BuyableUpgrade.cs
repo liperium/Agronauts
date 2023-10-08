@@ -7,11 +7,44 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 	
 	public bool unlocked;
     
-	public Action<long> OnCostChanged;
-	public Action OnUnlock;
-	public Action OnBuyUpgrade;
+	private Action<long> OnCostChanged;
+	private Action OnUnlock;
+	private Action OnBuyUpgrade;
 
 	protected IdleNumber costNumber;
+	
+	#region Action Setters
+	public void SetOnCostChanged(Action<long> action)
+	{
+		OnCostChanged += action;
+	}
+	
+	public void ResetOnCostChanged(Action<long> action)
+	{
+		OnCostChanged -= action;
+	}
+	
+	public void SetOnUnlock(Action action)
+	{
+		OnUnlock += action;
+	}
+	
+	public void ResetOnUnlock(Action action)
+	{
+		OnUnlock -= action;
+	}
+	
+	public void SetOnBuyUpgrade(Action action)
+	{
+		OnBuyUpgrade += action;
+	}
+	
+	public void ResetOnBuyUpgrade(Action action)
+	{
+		OnBuyUpgrade -= action;
+	}
+	
+	#endregion
 
 	public override void OnLoad()
 	{
@@ -52,6 +85,8 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 	{
 		if (CanBuy())
 		{
+			acquired = true;
+			
 			SetAffectedNumber();
 			Pay();
 			OnBuy();

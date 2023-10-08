@@ -28,13 +28,14 @@ public partial class Four : Control
 		manualButton.Pressed += ButtonClicked;
 		timer.Timeout += DoneBatch;
 		chefTimer.Timeout += ButtonClickedAuto;
-		GameState.instance.upgrades.autoFurnaceUpgrade.OnBuyUpgrade += UnlockAutomatic;
+		GameState.instance.upgrades.autoFurnaceUpgrade.SetOnBuyUpgrade(UnlockAutomatic);
+		if (GameState.instance.upgrades.autoFurnaceUpgrade.acquired) UnlockAutomatic();
 		
 	}
 
 	public void UnlockAutomatic()
 	{
-		GameState.instance.upgrades.autoFurnaceUpgrade.OnBuyUpgrade -= UnlockAutomatic;
+		GameState.instance.upgrades.autoFurnaceUpgrade.ResetOnBuyUpgrade(UnlockAutomatic);
 		automatic = true;
         chefTimer.WaitTime = TIME_BEFORE_AUTO_COOK / GameState.instance.numbers.furnaceAutoBakeSpeed.GetValue();
         chefTimer.Start();

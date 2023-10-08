@@ -559,7 +559,9 @@ namespace TinyJson
                 FieldInfo fieldInfo;
                 PropertyInfo propertyInfo;
                 if (nameToField.TryGetValue(key, out fieldInfo))
+                {
                     fieldInfo.SetValue(instance, ParseValue(fieldInfo.FieldType, value));
+                }
                 else if (nameToProperty.TryGetValue(key, out propertyInfo))
                     propertyInfo.SetValue(instance, ParseValue(propertyInfo.PropertyType, value), null);
             }

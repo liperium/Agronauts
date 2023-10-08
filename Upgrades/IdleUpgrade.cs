@@ -3,6 +3,7 @@ using System;
 [Serializable]
 public partial class IdleUpgrade <TModifier> where TModifier : IdleModifier, new()
 {
+	public int modifierId;
 	protected TModifier modifier;
 	protected IdleNumber affectedNumber;
 	protected InfoUpgrade info;
@@ -44,7 +45,26 @@ public partial class IdleUpgrade <TModifier> where TModifier : IdleModifier, new
 
 	public virtual void OnLoad()
 	{
-		modifier = new TModifier();
+		if (modifierId == 0)
+		{
+			this.modifier = new TModifier();
+			modifierId = GameState.allModifiers.Count + 1;
+			GameState.allModifiers.Add(modifierId, modifier);
+		}
+		else
+		{
+			IdleModifier newModifier;
+			if (GameState.allModifiers.TryGetValue(modifierId, out newModifier))
+			{
+				this.modifier = (TModifier)newModifier;
+			}
+			else
+			{
+				this.modifier = new TModifier();
+				modifierId = GameState.allModifiers.Count + 1;
+				GameState.allModifiers.Add(modifierId, this.modifier);
+			}
+		}
 		InnitInfo();
 	}
 }
