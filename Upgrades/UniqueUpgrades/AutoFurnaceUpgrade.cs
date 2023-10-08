@@ -16,6 +16,11 @@ public partial class AutoFurnaceUpgrade : BuyableUpgrade<MultiplierModifier>
         cost = 10000;
     }
 
+    public override IdleNumber GetCostNumber()
+    {
+        return GameState.instance.numbers.cookedPotatoCount;
+    }
+
     public override void Apply()
     {
         return;

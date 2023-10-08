@@ -25,6 +25,7 @@ public partial class AutoFurnaceUpgradeUI : HBoxContainer
 
     private void PressBuy()
     {
+        if (!autoFurnaceUpgrade.CanBuy()) return;
         autoFurnaceUpgrade.Buy();
 
         autoFurnaceUpgrade.OnUnlock -= OnUnlock;
