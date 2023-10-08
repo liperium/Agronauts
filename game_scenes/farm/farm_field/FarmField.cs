@@ -8,7 +8,7 @@ public partial class FarmField : Node2D
 	private int xCount = 0;
 	private int yCount = 0;
 	const int CELL_SIZE = 32;
-	public Vector2 positionRelative = Vector2.Zero;
+	public Pos2D positionRelative = new (0,0);
 	public bool first = false;
 	private bool[,] isBought = new bool[MAX_SIZE,MAX_SIZE];
 
@@ -52,31 +52,6 @@ public partial class FarmField : Node2D
 
 
 
-    public void Expand(Pos2D pos)
-	{
-		FarmFieldMaster ffm = GetParent<FarmFieldMaster>();
-		FarmFieldMaster.Cardinality cardinality = FarmFieldMaster.Cardinality.EAST;
-		if (pos.X == MAX_SIZE - 1)
-		{
-			cardinality = FarmFieldMaster.Cardinality.WESTS;
-
-		}else if (pos.X == 0)
-		{
-			cardinality = FarmFieldMaster.Cardinality.EAST;
-		}
-		if (pos.X == 0 || pos.X == MAX_SIZE - 1)
-			ffm.Expand(cardinality, positionRelative);
-
-		if (pos.Y == MAX_SIZE - 1)
-		{
-			cardinality = FarmFieldMaster.Cardinality.NORTH;
-		}else if (pos.Y == 0)
-		{
-			cardinality = FarmFieldMaster.Cardinality.SOUTH;
-		}
-		if (pos.Y == 0 || pos.Y == MAX_SIZE - 1)
-			ffm.Expand(cardinality, positionRelative);
-	}
 
     public void LandBought(Pos2D pos2D)
     {
@@ -86,17 +61,49 @@ public partial class FarmField : Node2D
 	    Pos2D[] variations = { new (0, 1), new (1, 0), new (-1, 0), new (0, -1) };
 	    foreach (var possDir in variations)
 	    {
-		    Pos2D posNei = pos2D+possDir;
+		    Pos2D posNei = new Pos2D(pos2D.X,pos2D.Y)+possDir;
+		    Pos2D posNextNei = new Pos2D(pos2D.X,pos2D.Y) - new Pos2D(2,2);
+		    GD.Print($"{posNextNei.X}LOLLL{posNextNei.Y}");
+		    Pos2D otherFarmFieldPos = new Pos2D(positionRelative.X,positionRelative.Y);
+
 
 		    //Over border check
-		    if (!(posNei.X < 0 || posNei.Y < 0 || posNei.X > MAX_SIZE - 1 || posNei.Y > MAX_SIZE - 1))
-		    {
-			    GetNode<FarmLand>($"{posNei.X}-{posNei.Y}").Show();
-		    }
-		    else
-		    {
+		    bool callParent = false;
+			//ICI on sort
+			if (posNei.X < 0)
+			{
+				posNextNei.X = -posNextNei.X;
+				otherFarmFieldPos.X--;
+				callParent = true;
+			}else if (posNei.X > MAX_SIZE - 1)
+			{
+				posNextNei.X = -posNextNei.X;
+				otherFarmFieldPos.X++;
+				callParent = true;
+			}else if (posNei.Y < 0)
+			{
+				posNextNei.Y = -posNextNei.Y;
+				otherFarmFieldPos.Y--;
+				callParent = true;
+			}else if (posNei.Y > MAX_SIZE - 1)
+			{
+				posNextNei.Y = -posNextNei.Y;
+				otherFarmFieldPos.Y++;
+				callParent = true;
+			}
+			else
+			{
+				GetNode<FarmLand>($"{posNei.X}-{posNei.Y}").Show();
+			}
+			posNextNei += new Pos2D(2,2);
+			posNextNei.X = Math.Abs(posNextNei.X);
+			posNextNei.Y = Math.Abs(posNextNei.Y);
+			if (callParent)
+			{
+				GD.Print($"{posNextNei.X}SEND{posNextNei.Y}");
+				GetParent<FarmFieldMaster>().BuyOrExpand(otherFarmFieldPos, posNextNei);
+			}
 
-		    }
 	    }
 
     }

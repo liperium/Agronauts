@@ -158,8 +158,7 @@ public partial class FarmLand : Area2D
 		MouseExited -= UnHovered;
 		
 		// Check if it can expand
-		GetParent<FarmField>().Expand(position);
-		GetParent<FarmField>().LandBought(position);
+		GetParent<FarmField>().LandBought(new Pos2D(position.X,position.Y));
 	}
 	public void Laboure()
 	{
