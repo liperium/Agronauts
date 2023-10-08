@@ -91,6 +91,15 @@ public partial class FarmFieldMaster : Node2D
 				land.Laboure();
 			}
 		}
+		
+		//first tractor
+		if (GameState.instance.upgrades.firstTractorUpgrade.IsUnlocked())
+		{
+			GameState.instance.upgrades.firstTractorUpgrade.SpawnTractor();
+		}
+		
+		//tractors
+		GameState.instance.upgrades.addAutomaticTractorUpgrade.SpawnAllTractors();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
