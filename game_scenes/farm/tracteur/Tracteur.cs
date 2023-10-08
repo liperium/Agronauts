@@ -32,7 +32,14 @@ public partial class Tracteur : CharacterBody2D
     public override void _Ready()
 	{
         RotationDegrees = 0;
+        UpdateSpeed(GameState.instance.numbers.truckSpeed.GetValue());
+        GameState.instance.numbers.truckSpeed.SetOnValueChanged(UpdateSpeed);
 	}
+
+    public void UpdateSpeed(long speed)
+    {
+        this.speed = speed;
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -126,7 +133,7 @@ public partial class Tracteur : CharacterBody2D
             float front_back = Input.GetActionStrength("tracteur_front") - Input.GetActionStrength("tracteur_back");
             velocity = front_back * speed * Transform.Y * (float)delta;
             rotationForce = (Input.GetActionStrength("tracteur_right") - Input.GetActionStrength("tracteur_left")) * RotationSpeed * (float)delta;
-            if (front_back > 0)
+            if (front_back >= 0)
             {
                 Rotate(rotationForce);
             }
@@ -136,6 +143,11 @@ public partial class Tracteur : CharacterBody2D
             }
 
             MoveAndCollide(velocity);
+        }
+        else if (Input.IsActionPressed("tracteur_right") || Input.IsActionPressed("tracteur_left"))
+        {
+            rotationForce = (Input.GetActionStrength("tracteur_right") - Input.GetActionStrength("tracteur_left")) * RotationSpeed * (float)delta;
+            Rotate(rotationForce);
         }
     }
 }

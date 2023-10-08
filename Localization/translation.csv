@@ -10,5 +10,22 @@ KDEFEND,Defend,Defendre
 KGIVEUP,Give up,Abandonner
 KPOTATOYIELDUPGRADE,Better technique,Meilleure technique
 KPOTATOYIELDUPGRADEDESC,Increases your potato yield by 100%,Augmente la récolte de patates de 100%
-KPOTATOSPEEDUPGRADE,potato speed upgrade,upgrade patate speed
+KPOTATOSPEEDUPGRADE,potato speed upgrade,améliore vitesse patate
 KPOTATOSPEEDUPGRADEDESC,increases potato grow speed by 30%,augmente la vitesse de pousse des patates de 30%
+KFIRSTTRACTORUPGRADE,Tractor,Tracteur
+KFIRSTTRACTORUPGRADEDESC,A handy tractor to collect the potatoes,Un tracteur utile pour récolter les patates
+KADDAUTOTRACTORUPGRADE,New self-driving tractor,Nouveau tracteur autonome
+KADDAUTOTRACTORUPGRADEDESC,Adds a self-driving tractor to your fields!, Ajoute un tracteur autonome à vos champs!
+KIMPOSSIBLE,Impossible,Impossible
+KNOSPACEAVAIBLEFORTRUCK,There is no space avaible to add a new tractor!,Il n'y a plus de place disponible pour ajouter un nouveau tracteur!
+KTRUCKSPEEDUPGRADE,Potato fuel,Carburant aux patates
+KTRUCKSPEEDUPGRADEDESC,VROOM! Faster trucks! Double the speed.,VROOM! Des tracteurs plus rapides! Deux fois la vitesse.
+KAUTOCOOKUPGRADE,Personal cook,Cuisinier personel
+KAUTOCOOKUPGRADEDESC,If your oven is left unattended long enough this personal cook will fill it for you,Si votre four est laissez sans surveillance assez longtemps ce cuisinier va le remplir pour vous.
+KCONGRATULATIONS,Congratulations!,Félicitations!
+KCOOKUNLOCKTIP,Your new cook will get more skilled the more they cook.,Votre nouveau cuisinier gagnera de l'expérience à chaque cuisson.
+KCOOKLVL2,True chef,Vrai chef
+KCOOKLVL2DESC,Your cook is getting faster. It takes half as long for them to start a batch of potatos,Votre cuisinier devient plus rapide. Commencer a cuire un lot de patates lui prend la moitier du temps
+KQUIT,Quit,Quitter
+KSAVE,Save,Sauvegarder
+KCONTROLTRACTOR,Drive your tractor using the arrow keys on your keyboard,Conduisez votre tracteur en utilisant les flèches de votre clavier

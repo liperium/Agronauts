@@ -8,6 +8,6 @@ public partial class MultiplierModifier : IdleModifier
     public override void Apply()
     {
         base.Apply();
-        owner.multiplier *= multiplier;
+        owner.SetMultiplier(owner.GetMultiplier() * multiplier);
     }
 }

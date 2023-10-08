@@ -151,6 +151,7 @@ public partial class FarmLand : Area2D
 	public void Bought()
 	{
 		GameState.instance.numbers.potatoCount.DecreaseValue(cost);
+		GameState.instance.numbers.numberOfTilesUnlocked.IncreaseValue(1);
 		
 		button.TextureNormal = GetRandomTexture(BoughtTextures);
 		currState = LandState.Base;

@@ -1,15 +1,22 @@
-[gd_scene load_steps=25 format=3 uid="uid://y1unomfdmkif"]
+[gd_scene load_steps=32 format=3 uid="uid://y1unomfdmkif"]
 
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="2_hrn0e"]
 [ext_resource type="Script" path="res://UI/PotatoCountLabel.cs" id="3_4xs5e"]
 [ext_resource type="Script" path="res://game_scenes/UI/BtnShowHideMenu.cs" id="3_crgan"]
 [ext_resource type="Script" path="res://game_scenes/UI/PotatoSpeedUpgradeUI.cs" id="3_eexby"]
 [ext_resource type="PackedScene" uid="uid://dc4wna03ta38b" path="res://game_scenes/four/four.tscn" id="3_tw2g8"]
+[ext_resource type="Script" path="res://game_scenes/UI/firstTractorUpgradeUI.cs" id="4_bg7wp"]
 [ext_resource type="Script" path="res://UI/CookedPotatoCountLabel.cs" id="4_ta1m5"]
 [ext_resource type="Script" path="res://UI/SaveButton.cs" id="5_i545w"]
+[ext_resource type="Script" path="res://UI/AddAutoTractorUpgradeUI.cs" id="5_kqpvt"]
 [ext_resource type="PackedScene" uid="uid://ehn8ld0iouai" path="res://UI/Base_Upgrade_Btn.tscn" id="6_1fuc1"]
+[ext_resource type="Script" path="res://UI/TractorSpeedUpgradeUI.cs" id="6_7mv0j"]
 [ext_resource type="Script" path="res://UI/TemperatureLabel.cs" id="6_ya5yg"]
 [ext_resource type="Script" path="res://game_scenes/UI/PotatoYieldUpgradeUI.cs" id="7_f25uh"]
+[ext_resource type="Script" path="res://UI/AutoFurnaceUpgradeUI.cs" id="9_tu6tx"]
+[ext_resource type="Script" path="res://UI/AutoCookLevel2UpgradeUI.cs" id="10_epy4h"]
+[ext_resource type="Script" path="res://game_scenes/UI/QuitButton.cs" id="10_g0usx"]
+[ext_resource type="PackedScene" uid="uid://c7vdiidjnc4py" path="res://UI/unlock_pop_up.tscn" id="13_wab65"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mr71e"]
 size = Vector2(32, 64)
@@ -120,6 +127,12 @@ size = Vector2(256, 256)
 
 [node name="UI" type="CanvasLayer"]
 
+[node name="UnlockPopUp" parent="." instance=ExtResource("13_wab65")]
+offset_left = -287.0
+offset_top = -186.0
+offset_right = -6.0
+offset_bottom = -8.0
+
 [node name="UpgradeMenu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 9
@@ -132,12 +145,11 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 553.0
 offset_bottom = 720.0
-tab_alignment = 1
 
-[node name="FarmUpgrades" type="Control" parent="UpgradeMenu/TabContainer"]
+[node name="Farm" type="Control" parent="UpgradeMenu/TabContainer"]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu/TabContainer/FarmUpgrades"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu/TabContainer/Farm"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -145,20 +157,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenu/TabContainer/FarmUpgrades/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenu/TabContainer/Farm/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PotatoYieldUpgrade" parent="UpgradeMenu/TabContainer/FarmUpgrades/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+[node name="PotatoYieldUpgrade" parent="UpgradeMenu/TabContainer/Farm/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("7_f25uh")
 
-[node name="PotatoYieldUpgrade2" parent="UpgradeMenu/TabContainer/FarmUpgrades/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+[node name="PotatoSpeedUpgrade" parent="UpgradeMenu/TabContainer/Farm/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("3_eexby")
+
+[node name="FirstTractorUpgrade" parent="UpgradeMenu/TabContainer/Farm/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_bg7wp")
+
+[node name="SpeedTruckUpgrade" parent="UpgradeMenu/TabContainer/Farm/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("6_7mv0j")
+
+[node name="AddAutoTractorUpgrade" parent="UpgradeMenu/TabContainer/Farm/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("5_kqpvt")
 
 [node name="FourTab" type="Control" parent="UpgradeMenu/TabContainer"]
 visible = false
@@ -178,8 +205,67 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Four" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("3_tw2g8")]
+custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
+
+[node name="AutoCookUpgrade" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("9_tu6tx")
+
+[node name="AutoCookUpgrade2" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("10_epy4h")
+
+[node name="AddAutoTractorUpgrade" parent="UpgradeMenu/TabContainer/FourTab/ScrollContainer/VBoxContainer" instance=ExtResource("6_1fuc1")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("5_kqpvt")
+
+[node name="Artifacts" type="Control" parent="UpgradeMenu/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu/TabContainer/Artifacts"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenu/TabContainer/Artifacts/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Options" type="Control" parent="UpgradeMenu/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenu/TabContainer/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenu/TabContainer/Options/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SaveButton" type="Button" parent="UpgradeMenu/TabContainer/Options/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "KSAVE"
+script = ExtResource("5_i545w")
+
+[node name="QuitButton" type="Button" parent="UpgradeMenu/TabContainer/Options/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "KQUIT"
+script = ExtResource("10_g0usx")
 
 [node name="BtnShowHideMenu" type="TextureButton" parent="UpgradeMenu" node_paths=PackedStringArray("animTree")]
 layout_mode = 1
@@ -208,14 +294,6 @@ parameters/conditions/open = false
 libraries = {
 "": SubResource("AnimationLibrary_w5t5i")
 }
-
-[node name="SaveButton" type="Button" parent="."]
-offset_left = 1107.0
-offset_top = 648.0
-offset_right = 1270.0
-offset_bottom = 711.0
-text = "Save"
-script = ExtResource("5_i545w")
 
 [node name="StatsBar" type="TextureRect" parent="."]
 offset_left = 941.0
