@@ -25,7 +25,7 @@ public partial class FurnaceTempUpgrade : TieredUpgrade<MultiplierModifier>
 
         info.SetName("KFURNACETEMP");
         info.SetDescription("KFURNACETEMPDESC");
-        info.SetImagePath("res://Upgrades/UpgradeImages/FOUR.png");
+        info.SetImagePath("res://Upgrades/UpgradeImages/temp.png");
     }
 
     public override void OnLoad()
@@ -42,5 +42,10 @@ public partial class FurnaceTempUpgrade : TieredUpgrade<MultiplierModifier>
             Unlock();
             GameState.instance.numbers.fightWave.ResetOnValueChanged(CheckUnlock);
         }
+    }
+
+    public override string GetEffectText()
+    {
+        return  + ((int)(modifier.multiplier * 100)) + "%";
     }
 }

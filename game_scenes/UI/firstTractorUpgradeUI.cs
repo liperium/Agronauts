@@ -21,7 +21,7 @@ public partial class firstTractorUpgradeUI : HBoxContainer
 
         UpgradeInfoContainer infoContainer = GetNode<UpgradeInfoContainer>("UpgradeInfoContainer");
         infoContainer.SetUpgrade(firstTractorUpgrade.GetInfo(),
-            firstTractorUpgrade.GetCost());
+            firstTractorUpgrade.GetCost(), firstTractorUpgrade.GetEffectText());
 
         buyButton = GetNode<TextureButton>("BuyButton");
         buyButton.Pressed += PressBuy;

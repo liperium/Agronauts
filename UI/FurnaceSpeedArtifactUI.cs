@@ -21,7 +21,7 @@ public partial class FurnaceSpeedArtifactUI : HBoxContainer
 
         UpgradeInfoContainer infoContainer = GetNode<UpgradeInfoContainer>("UpgradeInfoContainer");
         infoContainer.SetUpgrade(furnaceSpeedArtifact.GetInfo(),
-            furnaceSpeedArtifact.GetCost());
+            furnaceSpeedArtifact.GetCost(), furnaceSpeedArtifact.GetEffectText());
 
     }
 

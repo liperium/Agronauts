@@ -25,7 +25,7 @@ public partial class FurnaceSpeedUpgrade : TieredUpgrade<MultiplierModifier>
 
         info.SetName("KFURNACESPEED");
         info.SetDescription("KFURNACESPEEDDESC");
-        info.SetImagePath("res://Upgrades/UpgradeImages/FOUR.png");
+        info.SetImagePath("res://Upgrades/UpgradeImages/fourSPEED.png");
     }
 
     public override void OnLoad()
@@ -42,5 +42,10 @@ public partial class FurnaceSpeedUpgrade : TieredUpgrade<MultiplierModifier>
             Unlock();
             GameState.instance.numbers.cookedPotatoCount.ResetOnValueChanged(CheckUnlock);
         }
+    }
+
+    public override string GetEffectText()
+    {
+        return  + ((int)(modifier.multiplier * 100)) + "%";
     }
 }

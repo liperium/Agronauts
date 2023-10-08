@@ -22,6 +22,7 @@ public class IdleNumberContainer
 
     public IdleNumber truckAmount;
     public IdleNumber truckSpeed;
+    public IdleNumber truckPotatosFarmed;
 
     public IdleNumber fightWave;
 
@@ -45,7 +46,8 @@ public class IdleNumberContainer
         
         truckAmount.OnLoad();
         truckSpeed.OnLoad();
-        
+        truckPotatosFarmed.OnLoad();
+
         fightWave.OnLoad();
     }
     
@@ -76,6 +78,7 @@ public class IdleNumberContainer
         truckAmount = new IdleNumber();
         truckSpeed = new IdleNumber();
         truckSpeed.SetValue(20);
+        truckPotatosFarmed = new IdleNumber();
 
         numberOfTilesUnlocked = new IdleNumber();
 

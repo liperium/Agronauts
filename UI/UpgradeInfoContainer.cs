@@ -8,10 +8,10 @@ public partial class UpgradeInfoContainer : Node
     [Export] public RichTextLabel upgradeDescription;
     [Export] public RichTextLabel buyButtonText;
 
-    public void SetUpgrade(InfoUpgrade info, long cost)
+    public void SetUpgrade(InfoUpgrade info, long cost, string effect)
     {
         if (upgradeImage != null && info.GetImagePath() != "") upgradeImage.Texture = ResourceLoader.Load<CompressedTexture2D>(info.GetImagePath());
-        if (upgradeTitle != null) upgradeTitle.Text = info.GetName();
+        if (upgradeTitle != null) upgradeTitle.Text = Tr(info.GetName()) +" "+ effect;
         if (upgradeTitle != null) upgradeDescription.Text = info.GetDescription();
         UpdateCostText(cost);
     }

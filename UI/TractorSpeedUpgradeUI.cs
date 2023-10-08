@@ -17,8 +17,12 @@ public partial class TractorSpeedUpgradeUI : HBoxContainer
 
         UpgradeInfoContainer infoContainer = GetNode<UpgradeInfoContainer>("UpgradeInfoContainer");
         infoContainer.SetUpgrade(tractorSpeedUpgrade.GetInfo(),
-            tractorSpeedUpgrade.GetCost());
-        tractorSpeedUpgrade.SetOnCostChanged((value) => infoContainer.UpdateCostText(value));
+            tractorSpeedUpgrade.GetCost(), tractorSpeedUpgrade.GetEffectText());
+        tractorSpeedUpgrade.SetOnCostChanged((value) => {
+            infoContainer.SetUpgrade(tractorSpeedUpgrade.GetInfo(),
+            tractorSpeedUpgrade.GetCost(), tractorSpeedUpgrade.GetEffectText());
+            infoContainer.UpdateCostText(value);
+            });
         
         buyButton.Pressed += PressBuy;
     }

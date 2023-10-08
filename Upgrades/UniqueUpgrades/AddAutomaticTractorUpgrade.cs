@@ -40,7 +40,7 @@ public partial class AddAutomaticTractorUpgrade : TieredUpgrade<MultiplierModifi
         base.InnitInfo();
         info.SetName("KADDAUTOTRACTORUPGRADE");
         info.SetDescription("KADDAUTOTRACTORUPGRADEDESC");
-        info.SetImagePath(InfoUpgrade.defaultPath);
+        info.SetImagePath("res://Upgrades/UpgradeImages/ai.png");
     }
 
     public override void OnLoad()
@@ -82,5 +82,10 @@ public partial class AddAutomaticTractorUpgrade : TieredUpgrade<MultiplierModifi
         {
             base.Buy();
         }
+    }
+
+    public override string GetEffectText()
+    {
+        return "("+tier+")";
     }
 }

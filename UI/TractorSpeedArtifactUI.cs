@@ -21,7 +21,7 @@ public partial class TractorSpeedArtifactUI : HBoxContainer
 
         UpgradeInfoContainer infoContainer = GetNode<UpgradeInfoContainer>("UpgradeInfoContainer");
         infoContainer.SetUpgrade(tractorSpeedArtifact.GetInfo(),
-            tractorSpeedArtifact.GetCost());
+            tractorSpeedArtifact.GetCost(), tractorSpeedArtifact.GetEffectText());
 
     }
 
