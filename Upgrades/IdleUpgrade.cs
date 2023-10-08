@@ -23,6 +23,7 @@ public partial class IdleUpgrade <TModifier> where TModifier : IdleModifier, new
 		}
 	}
 
+
 	public virtual IdleNumber GetAffectedNumber()
 	{
 		return GameState.instance.numbers.potatoCount;
