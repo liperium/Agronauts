@@ -80,6 +80,7 @@ public partial class Four : Control
             manualButton.Disabled = true;
             Buy();
             timer.Start();
+            fourImg.Visible = true;
             GameState.instance.numbers.furnaceTotalAutoCookedPotato.IncreaseValue(
             GameState.instance.numbers.cookedPotatoYield.GetValue() *
             GameState.instance.numbers.furnaceBatchCount.GetValue());
