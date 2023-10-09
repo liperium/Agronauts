@@ -10,8 +10,6 @@ public partial class Tracteur : CharacterBody2D
 
 	private float rotationForce = 0.0f;
 
-    public static bool planter = false;
-
 	public bool automatic = false;
 	public Vector2 topLeftBound;
 	public Vector2 bottomRightBound;
@@ -50,7 +48,7 @@ public partial class Tracteur : CharacterBody2D
         }
         else
         {
-            GameState.instance.upgrades.tractorSpreadSeedsUpgrade.SetOnUnlock(UpgradeEpandeur);
+            GameState.instance.upgrades.tractorSpreadSeedsUpgrade.SetOnBuyUpgrade(UpgradeEpandeur);
         }
     }
 
@@ -176,7 +174,7 @@ public partial class Tracteur : CharacterBody2D
     {
         epandeuse.Visible = true;
         epandeuse.SetCollision(true);
-        GameState.instance.upgrades.tractorSpreadSeedsUpgrade.ResetOnUnlock(UpgradeEpandeur);
+        GameState.instance.upgrades.tractorSpreadSeedsUpgrade.ResetOnBuyUpgrade(UpgradeEpandeur);
 
     }
 }
