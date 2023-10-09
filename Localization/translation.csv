@@ -28,6 +28,7 @@ KCOOKLVL2,True chef,Vrai chef
 KCOOKLVL2DESC,Your cook is getting faster. It takes half as long for them to start a batch of potatos,Votre cuisinier devient plus rapide. Commencer a cuire un lot de patates lui prend la moitié du temps
 KQUIT,Quit,Quitter
 KSAVE,Save,Sauvegarder
+KSAVED,Savec,Sauvegardé
 KCONTINUE,Continue,Continuer
 KCONTROLTRACTOR,Drive your tractor using the arrow keys on your keyboard,Conduisez votre tracteur en utilisant les flèches de votre clavier
 KCOOKLVL3,Michelin chef,Chef Michelin
@@ -51,3 +52,5 @@ KUNLOCKFURNACEDESC,The furnace allows you to cook your potatos,Le four vous perm
 KUNLOCKARTIFACTS,Artifacts unlocked!,Artéfacts débloqué!
 KUNLOCKARTIFACTSDESC,Gain artifacts from defeating aliens invaders,Récupère des artéfacts en vainquant des extraterrestres
 KENFOURNER,Cook,Enfourner
+KTEMPSPEEDTRUCK,Hot tractor,Tracteur chaud
+KTEMPSPEEDTRUCKDESC,Your tractors speed up proportional to your potato temperature,La vitesse de vos tracteurs augmente proportionnellement à la température de vos patates.
