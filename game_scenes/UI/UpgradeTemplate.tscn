@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1xtsfl7y7few"]
+
+[ext_resource type="Texture2D" uid="uid://cb6xbrmh0dvso" path="res://UI/sprites/renfourer_bouton.png" id="1_bvbs1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i7ch3"]
+texture = ExtResource("1_bvbs1")
+texture_margin_left = 37.1518
+texture_margin_top = 36.0541
+texture_margin_right = 38.0
+texture_margin_bottom = 37.919
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yscm6"]
+size = Vector2(40, 40)
+
+[node name="Panel" type="PanelContainer"]
+offset_right = 435.0
+offset_bottom = 211.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_i7ch3")
+
+[node name="Button" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Button"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Button/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+
+[node name="Icon" type="TextureRect" parent="Button/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_yscm6")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="UpTitle" type="Label" parent="Button/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.54
+text = "Titre d'upgrade"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Button/VBoxContainer"]
+layout_mode = 2
+
+[node name="UpDesc" type="Label" parent="Button/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "Ceci est une evraiment longue description vraimen trop long lol xd"
+autowrap_mode = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Button"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.37
+
+[node name="Button" type="Button" parent="Button/AspectRatioContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "BUYTEXT"

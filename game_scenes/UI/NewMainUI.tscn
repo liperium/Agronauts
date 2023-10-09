@@ -1,0 +1,208 @@
+[gd_scene load_steps=12 format=3 uid="uid://bgxvkolxvu33k"]
+
+[ext_resource type="PackedScene" uid="uid://c7vdiidjnc4py" path="res://UI/unlock_pop_up.tscn" id="1_1tles"]
+[ext_resource type="PackedScene" uid="uid://c1xtsfl7y7few" path="res://game_scenes/UI/UpgradeTemplate.tscn" id="7_5qwk5"]
+[ext_resource type="Texture2D" uid="uid://bq6rvvq07awwd" path="res://UI/sprites/fourche_Bouton1.png" id="7_njwos"]
+[ext_resource type="Texture2D" uid="uid://bsdonby7bsii2" path="res://UI/sprites/four_Bouton2.png" id="8_tg21o"]
+[ext_resource type="Texture2D" uid="uid://b4x1a71357jod" path="res://UI/sprites/manette_Bouton3.png" id="9_g1gr8"]
+[ext_resource type="Texture2D" uid="uid://cdh8cnbwq2knw" path="res://UI/sprites/option_Bouton4.png" id="10_thu4e"]
+[ext_resource type="Texture2D" uid="uid://cb6xbrmh0dvso" path="res://UI/sprites/renfourer_bouton.png" id="38_mxf2v"]
+[ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="39_hs3fy"]
+[ext_resource type="Script" path="res://UI/PotatoCountLabel.cs" id="40_djgxp"]
+[ext_resource type="Script" path="res://UI/CookedPotatoCountLabel.cs" id="41_ynf4h"]
+[ext_resource type="Script" path="res://UI/TemperatureLabel.cs" id="42_fe1i4"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="UnlockPopUp" parent="." instance=ExtResource("1_1tles")]
+visible = false
+offset_left = -287.0
+offset_top = -186.0
+offset_right = -6.0
+offset_bottom = -8.0
+
+[node name="StatsBar" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 941.0
+offset_right = 1279.0
+offset_bottom = 170.0
+scale = Vector2(1.00271, 1)
+
+[node name="BG" type="NinePatchRect" parent="StatsBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 338.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("38_mxf2v")
+patch_margin_left = 37
+patch_margin_top = 35
+patch_margin_right = 37
+patch_margin_bottom = 37
+
+[node name="potatoesDisplay" type="HBoxContainer" parent="StatsBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 88.7594
+offset_top = -59.0
+offset_right = 339.76
+offset_bottom = -9.0
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="StatsBar/potatoesDisplay"]
+layout_mode = 2
+
+[node name="potatoesNb" type="RichTextLabel" parent="StatsBar/potatoesDisplay/CenterContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "dsefsf"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("39_hs3fy")
+
+[node name="potatoCountLabel" type="Node2D" parent="StatsBar/potatoesDisplay/CenterContainer/potatoesNb"]
+position = Vector2(-555, 0)
+script = ExtResource("40_djgxp")
+
+[node name="kpotatoes" type="RichTextLabel" parent="StatsBar/potatoesDisplay"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[img=50xz50]res://Icons/Potato.png[/img]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="cookedPotatoDisplay" type="HBoxContainer" parent="StatsBar"]
+layout_mode = 0
+offset_left = 182.505
+offset_top = 74.0
+offset_right = 319.505
+offset_bottom = 124.0
+scale = Vector2(0.9, 0.9)
+alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="StatsBar/cookedPotatoDisplay"]
+layout_mode = 2
+
+[node name="potatoesNb" type="RichTextLabel" parent="StatsBar/cookedPotatoDisplay/CenterContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "dsefsf"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("39_hs3fy")
+
+[node name="cookedPotatoCountLabel" type="Node2D" parent="StatsBar/cookedPotatoDisplay/CenterContainer/potatoesNb"]
+position = Vector2(-555, 0)
+script = ExtResource("41_ynf4h")
+
+[node name="kpotatoes" type="RichTextLabel" parent="StatsBar/cookedPotatoDisplay"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[img=50xz50]res://UI/sprites/PotatoeFumante.png[/img]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="temperatureDisplay" type="HBoxContainer" parent="StatsBar"]
+layout_mode = 0
+offset_left = -21.9406
+offset_top = 113.0
+offset_right = 350.059
+offset_bottom = 158.0
+scale = Vector2(0.9, 0.9)
+alignment = 2
+
+[node name="cookedPotatoesNb" type="RichTextLabel" parent="StatsBar/temperatureDisplay"]
+layout_mode = 2
+text = "dsefsf"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("39_hs3fy")
+
+[node name="cookedPotatoCountLabel" type="Node2D" parent="StatsBar/temperatureDisplay/cookedPotatoesNb"]
+position = Vector2(-555, 0)
+script = ExtResource("42_fe1i4")
+
+[node name="kpotatoes" type="Label" parent="StatsBar/temperatureDisplay"]
+layout_mode = 2
+text = "°C"
+
+[node name="Control" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 658.0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("7_njwos")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton2" type="TextureButton" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("8_tg21o")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton3" type="TextureButton" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("9_g1gr8")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton4" type="TextureButton" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("10_thu4e")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Farm" type="ScrollContainer" parent="Control"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Farm"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UpgradeTemplate1" parent="Control/Farm/VBoxContainer" instance=ExtResource("7_5qwk5")]
+layout_mode = 2
+
+[node name="UpgradeTemplate2" parent="Control/Farm/VBoxContainer" instance=ExtResource("7_5qwk5")]
+layout_mode = 2
+
+[node name="UpgradeTemplate3" parent="Control/Farm/VBoxContainer" instance=ExtResource("7_5qwk5")]
+layout_mode = 2
+
+[node name="UpgradeTemplate4" parent="Control/Farm/VBoxContainer" instance=ExtResource("7_5qwk5")]
+layout_mode = 2
+
+[node name="UpgradeTemplate5" parent="Control/Farm/VBoxContainer" instance=ExtResource("7_5qwk5")]
+layout_mode = 2
+
+[node name="UpgradeTemplate6" parent="Control/Farm/VBoxContainer" instance=ExtResource("7_5qwk5")]
+layout_mode = 2
+
+[node name="UpgradeTemplate7" parent="Control/Farm/VBoxContainer" instance=ExtResource("7_5qwk5")]
+layout_mode = 2
