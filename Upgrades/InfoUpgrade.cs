@@ -6,6 +6,7 @@ public partial class InfoUpgrade
 	private string name;
     private string description;
     private string imagePath;
+	private string costImagePath;
 	public static string defaultPath = "res://Icons/Potato.png";
 
 
@@ -38,4 +39,16 @@ public partial class InfoUpgrade
     {
         return this.imagePath;
     }
+
+    public void SetCostImagePath(string costImagePath)
+    {
+        this.costImagePath = costImagePath;
+    }
+
+    public string GetCostImagePath()
+    {
+        return this.costImagePath;
+    }
+
+
 }

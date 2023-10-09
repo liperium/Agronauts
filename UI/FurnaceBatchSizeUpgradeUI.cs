@@ -21,7 +21,6 @@ public partial class FurnaceBatchSizeUpgradeUI : HBoxContainer
         furnaceBatchSizeUpgrade.SetOnCostChanged((value) => {
             infoContainer.SetUpgrade(furnaceBatchSizeUpgrade.GetInfo(),
             furnaceBatchSizeUpgrade.GetCost(), furnaceBatchSizeUpgrade.GetEffectText());
-            infoContainer.UpdateCostText(value); 
         });
 
         buyButton.Pressed += PressBuy;

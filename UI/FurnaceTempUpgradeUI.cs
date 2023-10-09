@@ -21,7 +21,6 @@ public partial class FurnaceTempUpgradeUI : HBoxContainer
         furnaceTempUpgrade.SetOnCostChanged((value) => {
             infoContainer.SetUpgrade(furnaceTempUpgrade.GetInfo(),
             furnaceTempUpgrade.GetCost(), furnaceTempUpgrade.GetEffectText());
-            infoContainer.UpdateCostText(value);
         });
 
         buyButton.Pressed += PressBuy;
