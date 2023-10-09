@@ -17,10 +17,11 @@ public class IdleUpgradeContainer
     public TractorSpeedArtifact tractorSpeedArtifact;
     public FurnaceSpeedArtifact furnaceSpeedArtifact;
     public FurnaceTempUpgrade furnaceTempUpgrade;
+    public TractorSpreadSeedsUpgrade tractorSpreadSeedsUpgrade;
+    public TempTractorSpeedUpgrade tempTractorSpeedUpgrade;
 
     public UnlockFurnaceUpgrade unlockFurnaceUpgrade;
     public UnlockArtifactsUpgrade unlockArtifactsUpgrade;
-    public TractorSpreadSeedsUpgrade tractorSpreadSeedsUpgrade;
     public void Init()
     {
         totalPotatoYieldUpgrade = new TotalPotatoYieldUpgrade();
@@ -38,6 +39,7 @@ public class IdleUpgradeContainer
         tractorSpeedArtifact = new TractorSpeedArtifact();
         furnaceSpeedArtifact = new FurnaceSpeedArtifact();
         furnaceTempUpgrade = new FurnaceTempUpgrade();
+        tempTractorSpeedUpgrade = new TempTractorSpeedUpgrade();
         tractorSpreadSeedsUpgrade = new TractorSpreadSeedsUpgrade();
 
         unlockFurnaceUpgrade = new UnlockFurnaceUpgrade();
@@ -62,7 +64,9 @@ public class IdleUpgradeContainer
         tractorSpeedArtifact.OnLoad();
         furnaceSpeedArtifact.OnLoad();
         furnaceTempUpgrade.OnLoad();
-        
+        tempTractorSpeedUpgrade.OnLoad();
+
+
         unlockFurnaceUpgrade.OnLoad();
         unlockArtifactsUpgrade.OnLoad();
         tractorSpreadSeedsUpgrade.OnLoad();

@@ -39,8 +39,11 @@ public partial class Tracteur : CharacterBody2D
         UpdateSpeed(GameState.instance.numbers.truckSpeed.GetValue());
         GameState.instance.numbers.truckSpeed.SetOnValueChanged(UpdateSpeed);
         epandeuse = GetNode<Epandeuse>("Epandeuse");
-        epandeuse.Visible = false;
-        epandeuse.SetCollision(false);
+        if (automatic)
+        {
+            epandeuse.Visible = false;
+            epandeuse.SetCollision(false);
+        }
         if (GameState.instance.upgrades.tractorSpreadSeedsUpgrade.acquired)
         {
             UpgradeEpandeur();
@@ -48,7 +51,6 @@ public partial class Tracteur : CharacterBody2D
         else
         {
             GameState.instance.upgrades.tractorSpreadSeedsUpgrade.SetOnUnlock(UpgradeEpandeur);
-            GameState.instance.upgrades.tractorSpreadSeedsUpgrade.ResetOnUnlock(UpgradeEpandeur);
         }
     }
 
@@ -146,10 +148,11 @@ public partial class Tracteur : CharacterBody2D
 
 	public void ManualProcess(double delta)
 	{
+
         if (Input.IsActionPressed("tracteur_front") || Input.IsActionPressed("tracteur_back"))
         {
             float front_back = Input.GetActionStrength("tracteur_front") - Input.GetActionStrength("tracteur_back");
-            velocity = front_back * speed * Transform.Y * (float)delta;
+            velocity = front_back * speed * 2 * Transform.Y * (float)delta;
             rotationForce = (Input.GetActionStrength("tracteur_right") - Input.GetActionStrength("tracteur_left")) * RotationSpeed * (float)delta;
             if (front_back >= 0)
             {
@@ -171,7 +174,9 @@ public partial class Tracteur : CharacterBody2D
 
     public void UpgradeEpandeur()
     {
-        epandeuse.Visible = false;
+        epandeuse.Visible = true;
         epandeuse.SetCollision(true);
+        GameState.instance.upgrades.tractorSpreadSeedsUpgrade.ResetOnUnlock(UpgradeEpandeur);
+
     }
 }
