@@ -15,7 +15,6 @@ public partial class PotatoYieldUpgradeUI : HBoxContainer
         infoContainer.SetUpgrade(potatoYieldUpgrade.GetInfo(),
             potatoYieldUpgrade.GetCost(), potatoYieldUpgrade.GetEffectText());
         potatoYieldUpgrade.SetOnCostChanged((value) => { 
-            infoContainer.UpdateCostText(value);
             infoContainer.SetUpgrade(potatoYieldUpgrade.GetInfo(),
             potatoYieldUpgrade.GetCost(), potatoYieldUpgrade.GetEffectText());
         });

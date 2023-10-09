@@ -72,6 +72,7 @@ public class IdleNumberContainer
         potatoGrowSpeed.SetValue(1);
 
         cookedPotatoCount = new IdleNumber();
+        cookedPotatoCount.SetImagePath("res://UI/sprites/PotatoeFumante.png");
         cookedPotatoYield = new IdleNumber();
         cookedPotatoYield.SetValue(1);
 

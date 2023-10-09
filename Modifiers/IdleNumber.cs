@@ -6,6 +6,7 @@ public partial class IdleNumber
 {
 	public long value;
 	private float multiplier;
+	private string imagePath = InfoUpgrade.defaultPath;
 
 	public List<IdleModifier> modifiers;
 
@@ -115,4 +116,15 @@ public partial class IdleNumber
 	    }
 	    UpdateValue(false);
     }
+
+	public string GetImagePath()
+	{
+		return imagePath;
+	}
+
+	public void SetImagePath(string path)
+	{
+		this.imagePath = path;
+	}
+
 }

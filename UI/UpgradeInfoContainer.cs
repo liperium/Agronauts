@@ -13,14 +13,15 @@ public partial class UpgradeInfoContainer : Node
         if (upgradeImage != null && info.GetImagePath() != "") upgradeImage.Texture = ResourceLoader.Load<CompressedTexture2D>(info.GetImagePath());
         if (upgradeTitle != null) upgradeTitle.Text = Tr(info.GetName()) +" "+ effect;
         if (upgradeDescription != null) upgradeDescription.Text = info.GetDescription();
-        UpdateCostText(cost);
+        UpdateCostText(cost,info.GetCostImagePath());
     }
 
-    public void UpdateCostText(long newCost)
+    public void UpdateCostText(long newCost, string imagePath)
     {
         if (buyButtonText != null)
         {
-            buyButtonText.Text = $"[center]{newCost.FormattedNumber()}[img=20xz20]res://Icons/Potato.png[/img][/center]";
+            //  buyButtonText.Text = $"[center]{newCost.FormattedNumber()}[img=20xz20]res://Icons/Potato.png[/img][/center]";
+            buyButtonText.Text = $"[center]{newCost.FormattedNumber()}[img=20xz20]{imagePath}[/img][/center]";
         }
     }
 }

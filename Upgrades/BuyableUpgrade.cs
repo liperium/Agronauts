@@ -58,6 +58,7 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
         if (costNumber == null)
         {
             costNumber = GetCostNumber();
+			info.SetCostImagePath(costNumber.GetImagePath());
         }
     }
 
