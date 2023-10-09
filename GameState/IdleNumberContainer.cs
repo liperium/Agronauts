@@ -66,12 +66,14 @@ public class IdleNumberContainer
     public void Init()
     {
         potatoCount = new IdleNumber();
+        potatoCount.SetImagePath(InfoUpgrade.defaultPath);
         potatoYield = new IdleNumber();
         potatoYield.SetValue(1);
         potatoGrowSpeed = new IdleNumber();
         potatoGrowSpeed.SetValue(1);
 
         cookedPotatoCount = new IdleNumber();
+        cookedPotatoCount.SetImagePath("res://UI/sprites/PotatoeFumante.png");
         cookedPotatoYield = new IdleNumber();
         cookedPotatoYield.SetValue(1);
 
@@ -81,7 +83,6 @@ public class IdleNumberContainer
         furnaceAutoBakeSpeed = new IdleNumber();
         furnaceAutoBakeSpeed.SetValue(100);
         furnaceTotalAutoCookedPotato = new IdleNumber();
-        furnaceTotalAutoCookedPotato.SetValue(1000000);
         furnaceBatchCount = new IdleNumber();
         furnaceBatchCount.SetValue(1);
         furnaceSpeed = new IdleNumber();

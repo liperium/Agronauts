@@ -18,7 +18,6 @@ public partial class PotatoSpeedUpgradeUI : HBoxContainer
         potatoSpeedUpgrade.SetOnCostChanged((value) => {
             infoContainer.SetUpgrade(potatoSpeedUpgrade.GetInfo(),
             potatoSpeedUpgrade.GetCost(), potatoSpeedUpgrade.GetEffectText());
-            infoContainer.UpdateCostText(value); 
         });
 
         buyButton = GetNode<TextureButton>("BuyButton");

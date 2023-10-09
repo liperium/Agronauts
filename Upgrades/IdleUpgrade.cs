@@ -50,6 +50,7 @@ public partial class IdleUpgrade <TModifier> where TModifier : IdleModifier, new
 		{
 			this.modifier = new TModifier();
 			modifierId = GameState.allModifiers.Count + 1;
+			this.modifier.id = modifierId;
 			GameState.allModifiers.Add(modifierId, modifier);
 		}
 		else
@@ -63,7 +64,9 @@ public partial class IdleUpgrade <TModifier> where TModifier : IdleModifier, new
 			{
 				this.modifier = new TModifier();
 				modifierId = GameState.allModifiers.Count + 1;
-				GameState.allModifiers.Add(modifierId, this.modifier);
+                this.modifier.id = modifierId;
+				while (GameState.allModifiers.ContainsKey(modifierId)) modifierId++;
+                GameState.allModifiers.Add(modifierId, this.modifier);
 			}
 		}
 		InnitInfo();

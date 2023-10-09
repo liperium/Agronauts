@@ -6,6 +6,7 @@ public partial class IdleNumber
 {
 	public long value;
 	private float multiplier;
+	public string imagePath;
 
 	public List<IdleModifier> modifiers;
 
@@ -108,11 +109,22 @@ public partial class IdleNumber
 	    {
 		    foreach (IdleModifier modifier in modifiers)
 		    {
-			    int newId = GameState.allModifiers.Count + 1;
+			    int newId = modifier.id;
 			    GameState.allModifiers.Add(newId, modifier);
 			    modifier.SetOwner(this);
 		    }
 	    }
 	    UpdateValue(false);
     }
+
+	public string GetImagePath()
+	{
+		return imagePath;
+	}
+
+	public void SetImagePath(string path)
+	{
+		this.imagePath = path;
+	}
+
 }

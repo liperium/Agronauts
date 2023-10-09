@@ -19,7 +19,6 @@ public partial class AddAutoTractorUpgradeUI : HBoxContainer
         infoContainer.SetUpgrade(addAutomaticTractorUpgrade.GetInfo(),
             addAutomaticTractorUpgrade.GetCost(), addAutomaticTractorUpgrade.GetEffectText());
         addAutomaticTractorUpgrade.SetOnCostChanged((value) => {
-            infoContainer.UpdateCostText(value);
             infoContainer.SetUpgrade(addAutomaticTractorUpgrade.GetInfo(),
                         addAutomaticTractorUpgrade.GetCost(), addAutomaticTractorUpgrade.GetEffectText());
         });

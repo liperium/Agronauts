@@ -11,7 +11,7 @@ public partial class TractorSpeedUpgrade : TieredUpgrade<MultiplierModifier>
 
     public override void UpdateCost()
     {
-        cost =  (long)Mathf.Pow(1000f,tier+1);
+        cost =  (long)Mathf.Pow(500f,tier+1);
     }
 
     public override IdleNumber GetAffectedNumber()

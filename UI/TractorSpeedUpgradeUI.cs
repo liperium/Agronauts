@@ -21,7 +21,6 @@ public partial class TractorSpeedUpgradeUI : HBoxContainer
         tractorSpeedUpgrade.SetOnCostChanged((value) => {
             infoContainer.SetUpgrade(tractorSpeedUpgrade.GetInfo(),
             tractorSpeedUpgrade.GetCost(), tractorSpeedUpgrade.GetEffectText());
-            infoContainer.UpdateCostText(value);
             });
         
         buyButton.Pressed += PressBuy;

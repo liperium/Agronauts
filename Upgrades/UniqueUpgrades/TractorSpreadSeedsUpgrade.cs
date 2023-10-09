@@ -11,7 +11,7 @@ public partial class TractorSpreadSeedsUpgrade : BuyableUpgrade<IdleModifier>
 
     public override void UpdateCost()
     {
-        cost = 5000000;
+        cost = 1000000;
     }
 
     public override void Apply()
@@ -22,8 +22,8 @@ public partial class TractorSpreadSeedsUpgrade : BuyableUpgrade<IdleModifier>
     public override void InnitInfo()
     {
         base.InnitInfo();
-        info.SetName("KFIRSTTRACTORUPGRADE");
-        info.SetDescription("KFIRSTTRACTORUPGRADEDESC");
+        info.SetName("KPLANTER");
+        info.SetDescription("KPLANTERDESC");
         info.SetImagePath("res://game_scenes/farm/tracteur/sprites/epandeur.png");
     }
 
@@ -39,7 +39,7 @@ public partial class TractorSpreadSeedsUpgrade : BuyableUpgrade<IdleModifier>
 
     public void CheckUnlock(long potatos)
     {
-        if (potatos >= 10000000)
+        if (potatos >= 1000000)
         {
             Unlock();
             GameState.instance.numbers.truckPotatosFarmed.ResetOnValueChanged(CheckUnlock);

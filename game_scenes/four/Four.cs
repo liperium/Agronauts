@@ -24,8 +24,8 @@ public partial class Four : Control
 
         progressBar = GetNode<ProgressBar>("ProgressBar");
 
-
-		UpdateProgressBarStats(PROGRESS_START_TIME);
+		GameState.instance.numbers.furnaceSpeed.SetOnValueChanged(UpdateProgressBarStats);
+		UpdateProgressBarStats(GameState.instance.numbers.furnaceSpeed.value);
 
 		fourImg.Visible = false;
 
@@ -47,9 +47,9 @@ public partial class Four : Control
 
 
 
-	public void UpdateProgressBarStats(float newBatchTime)
+	public void UpdateProgressBarStats(long speed)
 	{
-		timer.WaitTime = newBatchTime;
+		timer.WaitTime = PROGRESS_START_TIME / speed;
 		progressBar.MaxValue = timer.WaitTime;
 	}
 
@@ -80,6 +80,7 @@ public partial class Four : Control
             manualButton.Disabled = true;
             Buy();
             timer.Start();
+            fourImg.Visible = true;
             GameState.instance.numbers.furnaceTotalAutoCookedPotato.IncreaseValue(
             GameState.instance.numbers.cookedPotatoYield.GetValue() *
             GameState.instance.numbers.furnaceBatchCount.GetValue());
