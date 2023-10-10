@@ -68,7 +68,7 @@ public partial class UIManager : CanvasLayer
 		}
 		else
 		{
-			GD.Print("YOOOOO SHOULDNT BE HERE");
+			GD.PrintErr("AddAllUpgrade added same upgrade");
 		}
 	}
 
