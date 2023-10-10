@@ -7,11 +7,11 @@ public partial class UnlockFurnaceTab : Control
     {
         base._Ready();
 
-        GetParent<TextureButton>().Visible = false;
+        GetParent<Control>().Visible = false;
         
         if (GameState.instance.upgrades.unlockFurnaceUpgrade.IsUnlocked())
         {
-            GetParent<TextureButton>().Visible = true;
+            GetParent<Control>().Visible = true;
         }
         else
         {
@@ -23,7 +23,7 @@ public partial class UnlockFurnaceTab : Control
     {
         GameState.instance.upgrades.unlockFurnaceUpgrade.ResetOnUnlock(UnlockTab);
         
-        GetParent<TextureButton>().Visible = true;
+        GetParent<Control>().Visible = true;
         
         unlock_pop_up.instance.ChangeText("KUNLOCKFURNACE", "KUNLOCKFURNACEDESC");
         unlock_pop_up.instance.Animation();

@@ -4,16 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://c7vdiidjnc4py" path="res://UI/unlock_pop_up.tscn" id="1_1tles"]
 [ext_resource type="StyleBox" uid="uid://c2ug7gqx5pccl" path="res://game_scenes/UI/styleboxwood.tres" id="2_yjk30"]
 [ext_resource type="Texture2D" uid="uid://c38udnmhrwqc6" path="res://UI/sprites/FERME_fond.png" id="7_cpijt"]
-[ext_resource type="Texture2D" uid="uid://bq6rvvq07awwd" path="res://UI/sprites/fourche_Bouton1.png" id="7_njwos"]
-[ext_resource type="Texture2D" uid="uid://bsdonby7bsii2" path="res://UI/sprites/four_Bouton2.png" id="8_tg21o"]
-[ext_resource type="Texture2D" uid="uid://b4x1a71357jod" path="res://UI/sprites/manette_Bouton3.png" id="9_g1gr8"]
+[ext_resource type="Texture2D" uid="uid://uu6tex3dyyqi" path="res://UI/sprites/fourche_nobg.png" id="9_vcuvw"]
 [ext_resource type="Script" path="res://game_scenes/UI/Tab.cs" id="10_fq3ht"]
-[ext_resource type="Texture2D" uid="uid://cdh8cnbwq2knw" path="res://UI/sprites/option_Bouton4.png" id="10_thu4e"]
+[ext_resource type="Texture2D" uid="uid://balns1cnkjntf" path="res://UI/sprites/four_nobg.png" id="11_jr12r"]
 [ext_resource type="Texture2D" uid="uid://bcbblpddy6qv5" path="res://UI/sprites/fleche_bouton.png" id="12_bpahg"]
 [ext_resource type="Script" path="res://game_scenes/UI/UnlockFurnaceTab.cs" id="12_er6ur"]
 [ext_resource type="Script" path="res://game_scenes/UI/BtnShowHideMenu.cs" id="13_fsg4l"]
+[ext_resource type="Texture2D" uid="uid://d2i7dnxvaly0g" path="res://UI/sprites/manette_nobg.png" id="13_n8qf6"]
 [ext_resource type="Script" path="res://UI/SaveButton.cs" id="14_qlxfs"]
 [ext_resource type="Script" path="res://game_scenes/UI/UnlockArtifactsTab.cs" id="14_vu3tg"]
+[ext_resource type="Texture2D" uid="uid://bhsalfesr2ybk" path="res://UI/sprites/option_nobg.png" id="15_tx240"]
 [ext_resource type="Script" path="res://game_scenes/UI/QuitButton.cs" id="15_xxpdw"]
 [ext_resource type="PackedScene" uid="uid://dc4wna03ta38b" path="res://game_scenes/four/four.tscn" id="16_nvoum"]
 [ext_resource type="Texture2D" uid="uid://c6voma67rfl5h" path="res://UI/sprites/FOUR_cosy.png" id="17_aeybh"]
@@ -253,68 +253,81 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control"]
+[node name="MarginContainer" type="MarginContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.22
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.23
 
-[node name="FarmTabButton" type="TextureButton" parent="LeftMenu/TextureRect2/MarginContainer/Control/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
+[node name="PanelContainer" type="PanelContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("7_njwos")
+
+[node name="FarmTabButton" type="TextureButton" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/PanelContainer" node_paths=PackedStringArray("tabContainer")]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("9_vcuvw")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("10_fq3ht")
-tabContainer = NodePath("../../Control")
+tabContainer = NodePath("../../../../Control")
 
-[node name="FurnaceTabButton" type="TextureButton" parent="LeftMenu/TextureRect2/MarginContainer/Control/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
+[node name="PanelContainer2" type="PanelContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("8_tg21o")
+
+[node name="FurnaceTabButton" type="TextureButton" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/PanelContainer2" node_paths=PackedStringArray("tabContainer")]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("11_jr12r")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("10_fq3ht")
 tabIndex = 1
-tabContainer = NodePath("../../Control")
+tabContainer = NodePath("../../../../Control")
 
-[node name="UnlockFurnaceTab" type="Control" parent="LeftMenu/TextureRect2/MarginContainer/Control/HBoxContainer/FurnaceTabButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="UnlockFurnaceTab" type="Control" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
 mouse_filter = 2
 script = ExtResource("12_er6ur")
 
-[node name="ArtifactTabButton" type="TextureButton" parent="LeftMenu/TextureRect2/MarginContainer/Control/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
+[node name="PanelContainer3" type="PanelContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("9_g1gr8")
+
+[node name="ArtifactTabButton" type="TextureButton" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/PanelContainer3" node_paths=PackedStringArray("tabContainer")]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("13_n8qf6")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("10_fq3ht")
 tabIndex = 2
-tabContainer = NodePath("../../Control")
+tabContainer = NodePath("../../../../Control")
 
-[node name="UnlockArtifactsTab" type="Control" parent="LeftMenu/TextureRect2/MarginContainer/Control/HBoxContainer/ArtifactTabButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="UnlockArtifactsTab" type="Control" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/PanelContainer3"]
+layout_mode = 2
 script = ExtResource("14_vu3tg")
 
-[node name="SettingsTabButton" type="TextureButton" parent="LeftMenu/TextureRect2/MarginContainer/Control/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
+[node name="PanelContainer4" type="PanelContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("10_thu4e")
+
+[node name="SettingsTabButton" type="TextureButton" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/PanelContainer4" node_paths=PackedStringArray("tabContainer")]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("15_tx240")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("10_fq3ht")
 tabIndex = 3
-tabContainer = NodePath("../../Control")
+tabContainer = NodePath("../../../../Control")
 
 [node name="Control" type="TabContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control"]
 layout_mode = 2
