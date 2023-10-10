@@ -265,69 +265,87 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.23
 
-[node name="PanelContainer" type="PanelContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer"]
+[node name="Button4" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="FarmTabButton" type="TextureButton" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/PanelContainer" node_paths=PackedStringArray("tabContainer")]
-layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = ExtResource("9_vcuvw")
-ignore_texture_size = true
-stretch_mode = 5
 script = ExtResource("10_fq3ht")
-tabContainer = NodePath("../../../../Control")
+tabContainer = NodePath("../../../Control")
 
-[node name="PanelContainer2" type="PanelContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="FurnaceTabButton" type="TextureButton" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/PanelContainer2" node_paths=PackedStringArray("tabContainer")]
-layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = ExtResource("11_jr12r")
-ignore_texture_size = true
+[node name="TextureRect" type="TextureRect" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/Button4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_vcuvw")
+expand_mode = 1
 stretch_mode = 5
+
+[node name="Button3" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
+layout_mode = 2
+size_flags_horizontal = 3
 script = ExtResource("10_fq3ht")
 tabIndex = 1
-tabContainer = NodePath("../../../../Control")
+tabContainer = NodePath("../../../Control")
 
-[node name="UnlockFurnaceTab" type="Control" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/PanelContainer2"]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/Button3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_jr12r")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="UnlockFurnaceTab" type="Control" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/Button3"]
+layout_mode = 3
+anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("12_er6ur")
 
-[node name="PanelContainer3" type="PanelContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer"]
+[node name="Button2" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="ArtifactTabButton" type="TextureButton" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/PanelContainer3" node_paths=PackedStringArray("tabContainer")]
-layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = ExtResource("13_n8qf6")
-ignore_texture_size = true
-stretch_mode = 5
 script = ExtResource("10_fq3ht")
 tabIndex = 2
-tabContainer = NodePath("../../../../Control")
+tabContainer = NodePath("../../../Control")
 
-[node name="UnlockArtifactsTab" type="Control" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/PanelContainer3"]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_n8qf6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="UnlockArtifactsTab" type="Control" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/Button2"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("14_vu3tg")
 
-[node name="PanelContainer4" type="PanelContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="SettingsTabButton" type="TextureButton" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/PanelContainer4" node_paths=PackedStringArray("tabContainer")]
-layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = ExtResource("15_tx240")
-ignore_texture_size = true
-stretch_mode = 5
 script = ExtResource("10_fq3ht")
 tabIndex = 3
-tabContainer = NodePath("../../../../Control")
+tabContainer = NodePath("../../../Control")
+
+[node name="TextureRect" type="TextureRect" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_tx240")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Control" type="TabContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control"]
 layout_mode = 2
