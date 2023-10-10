@@ -66,12 +66,10 @@ public partial class UIManager : CanvasLayer
 		{
 			all_upgrades.Add(upgrade);
 		}
-
 		else
 		{
 			GD.Print("YOOOOO SHOULDNT BE HERE");
 		}
-
 	}
 
 
