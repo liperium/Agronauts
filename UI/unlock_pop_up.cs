@@ -38,7 +38,6 @@ public partial class unlock_pop_up : Control
 		timerTempsHold.Timeout += ToDown;
 		timerTempsBaisse.Timeout += DontMove;
 		instance = this;
-
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
