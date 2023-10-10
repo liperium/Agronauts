@@ -67,10 +67,8 @@ public partial class FarmFieldMaster : Node2D
 
 		if (!isTaken[targetField.X, targetField.Y])
 		{
-			GD.Print($"Spawning field {targetField.X}-{targetField.Y}");
 			SpawnField(targetField.X, targetField.Y);
 		}
-		GD.Print($"TryBuy : {targetField.X}-{targetField.Y} Field:{toBuy.X}-{toBuy.Y}");
 		// Unlock la tile
 		GetNode<FarmField>($"{targetField.X}-{targetField.Y}").GetNode<FarmLand>($"{toBuy.X}-{toBuy.Y}").Show();
 

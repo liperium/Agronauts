@@ -77,7 +77,6 @@ public partial class FarmField : Node2D
 	    {
 		    Pos2D posNei = new Pos2D(pos2D.X,pos2D.Y)+possDir;
 		    Pos2D posNextNei = new Pos2D(pos2D.X,pos2D.Y) - new Pos2D(2,2);
-		    GD.Print($"{posNextNei.X}LOLLL{posNextNei.Y}");
 		    Pos2D otherFarmFieldPos = new Pos2D(positionRelative.X,positionRelative.Y);
 
 
@@ -114,7 +113,6 @@ public partial class FarmField : Node2D
 			posNextNei.Y = Math.Abs(posNextNei.Y);
 			if (callParent)
 			{
-				GD.Print($"{posNextNei.X}SEND{posNextNei.Y}");
 				GetParent<FarmFieldMaster>().BuyOrExpand(otherFarmFieldPos, posNextNei);
 			}
 
