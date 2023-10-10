@@ -257,21 +257,21 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.22
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_bottom = 25
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_bottom = 21
 
 [node name="HBoxContainer" type="HBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.23
 
-[node name="Button4" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
+[node name="TabButton1" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("10_fq3ht")
 tabContainer = NodePath("../../../Control")
 
-[node name="TextureRect" type="TextureRect" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/Button4"]
+[node name="TextureRect" type="TextureRect" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/TabButton1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -282,14 +282,14 @@ texture = ExtResource("9_vcuvw")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Button3" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
+[node name="TabButton2" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("10_fq3ht")
 tabIndex = 1
 tabContainer = NodePath("../../../Control")
 
-[node name="TextureRect" type="TextureRect" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/Button3"]
+[node name="TextureRect" type="TextureRect" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/TabButton2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -300,20 +300,20 @@ texture = ExtResource("11_jr12r")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="UnlockFurnaceTab" type="Control" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/Button3"]
+[node name="UnlockFurnaceTab" type="Control" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/TabButton2"]
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("12_er6ur")
 
-[node name="Button2" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
+[node name="TabButton3" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("10_fq3ht")
 tabIndex = 2
 tabContainer = NodePath("../../../Control")
 
-[node name="TextureRect" type="TextureRect" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/Button2"]
+[node name="TextureRect" type="TextureRect" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/TabButton3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -324,19 +324,19 @@ texture = ExtResource("13_n8qf6")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="UnlockArtifactsTab" type="Control" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/Button2"]
+[node name="UnlockArtifactsTab" type="Control" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/TabButton3"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("14_vu3tg")
 
-[node name="Button" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
+[node name="TabButton4" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("10_fq3ht")
 tabIndex = 3
 tabContainer = NodePath("../../../Control")
 
-[node name="TextureRect" type="TextureRect" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/Button"]
+[node name="TextureRect" type="TextureRect" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/TabButton4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
