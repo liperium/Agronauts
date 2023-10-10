@@ -49,7 +49,7 @@ public partial class UIManager : CanvasLayer
 				addToNode = GetNode<VBoxContainer>("LeftMenu/TextureRect2/MarginContainer/Control/Control/Farm/FarmUpgrades");
 				break;
 			case UpgradeTab.Furnace:
-				addToNode = GetNode<VBoxContainer>("LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace/FurnaceUpgrades");
+				addToNode = GetNode<VBoxContainer>("LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace/VBoxContainer/MarginContainer/FurnaceUpgrades");
 				break;
 			case UpgradeTab.Artifact:
 				addToNode = GetNode<VBoxContainer>("LeftMenu/TextureRect2/MarginContainer/Control/Control/Artifact/ArtifactUpgrades");
