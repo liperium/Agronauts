@@ -21,8 +21,6 @@ public partial class UpgradeHolderUI : Control
 
         genericUpgrade = upgrade;
         Name = genericUpgrade.GetInfo().GetName();
-        Visible = genericUpgrade.IsUnlocked();
-        genericUpgrade.SetOnUnlock(OnUnlock);
 
         SetUpgrade(genericUpgrade.GetInfo(),
             genericUpgrade.GetCost(), genericUpgrade.GetEffectText());
@@ -30,8 +28,13 @@ public partial class UpgradeHolderUI : Control
             SetUpgrade(genericUpgrade.GetInfo(),
                 genericUpgrade.GetCost(), genericUpgrade.GetEffectText());
         });
+    }
 
-
+    public override void _Ready()
+    {
+        base._Ready();
+        Visible = genericUpgrade.IsUnlocked();
+        genericUpgrade.SetOnUnlock(OnUnlock);
     }
 
     private void PressBuy()
