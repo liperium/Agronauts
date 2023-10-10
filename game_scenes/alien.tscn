@@ -30,6 +30,7 @@ animations = [{
 size = Vector2(30, 60)
 
 [node name="Alien" type="Area2D" node_paths=PackedStringArray("timer")]
+scale = Vector2(6, 6)
 script = ExtResource("1_7b474")
 timer = NodePath("Timer")
 shootSound = ExtResource("2_af8rg")
@@ -37,15 +38,19 @@ spawnSound = ExtResource("3_kwsyt")
 dieSound = ExtResource("4_rqijv")
 
 [node name="AlienSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 5.66667)
 scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_c2nqo")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.66667)
 shape = SubResource("RectangleShape2D_p7nqd")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
 one_shot = true
 autostart = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 5.66667)
