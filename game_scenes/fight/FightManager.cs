@@ -119,7 +119,8 @@ public partial class FightManager : Node
         if (alienInstance != null)
         {
             alienInstance.manager = this;
-            ObjectSpawner.Spawn(alienInstance, spawnPoint.Position);
+            spawnPoint.AddChild(alienInstance);
+            //ObjectSpawner.Spawn(alienInstance, spawnPoint.Position);
         }
         else
         {
