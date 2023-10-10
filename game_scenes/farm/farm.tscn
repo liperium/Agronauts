@@ -26,7 +26,7 @@ shader_parameter/Direction = Vector2(20, 1)
 shader_parameter/Speed = 0.3
 shader_parameter/thresholds = PackedFloat32Array(0.1, 0.9, 0, 100, 200, 600)
 shader_parameter/OCTAVE = 10
-shader_parameter/pixel_size = 10000
+shader_parameter/pixel_size = 100000
 shader_parameter/dithering = 1.5
 
 [node name="farm" type="Node2D"]
@@ -52,8 +52,8 @@ position = Vector2(570, 296)
 [node name="Clouds" type="ColorRect" parent="."]
 z_index = 1
 material = SubResource("ShaderMaterial_iryth")
-offset_left = -8581.0
-offset_top = -4684.0
-offset_right = 8106.0
-offset_bottom = 5680.0
+offset_left = -24248.0
+offset_top = -20524.0
+offset_right = 23112.0
+offset_bottom = 20436.0
 mouse_filter = 2
