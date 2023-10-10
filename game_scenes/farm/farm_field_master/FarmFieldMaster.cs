@@ -92,7 +92,7 @@ public partial class FarmFieldMaster : Node2D
 		}
 		
 		//first tractor
-		if (GameState.instance.upgrades.firstTractorUpgrade.IsUnlocked())
+		if (GameState.instance.upgrades.firstTractorUpgrade.IsAcquired())
 		{
 			GameState.instance.upgrades.firstTractorUpgrade.SpawnTractor();
 		}
