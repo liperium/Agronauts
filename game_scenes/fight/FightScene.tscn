@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://byj332cof46ix"]
+[gd_scene load_steps=6 format=3 uid="uid://byj332cof46ix"]
 
 [ext_resource type="Script" path="res://game_scenes/fight/FightManager.cs" id="1_7r1cq"]
 [ext_resource type="PackedScene" uid="uid://bcp68obaiwjnr" path="res://game_scenes/fight/allbackground.tscn" id="1_cpv22"]
@@ -6,12 +6,11 @@
 [ext_resource type="Script" path="res://game_scenes/fight/ShootManager.cs" id="3_y82am"]
 [ext_resource type="PackedScene" uid="uid://b110sqwjds46s" path="res://game_scenes/fight/potato_bullet.tscn" id="5_y1n8u"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t34w0"]
-size = Vector2(1302, 742)
-
 [node name="FightScene" type="Node2D"]
 
 [node name="ALLSPRITES" parent="." instance=ExtResource("1_cpv22")]
+position = Vector2(960, 540)
+scale = Vector2(0.5, 0.5)
 
 [node name="FightManager" type="Node2D" parent="." node_paths=PackedStringArray("spawnPositions", "spawnTimer")]
 script = ExtResource("1_7r1cq")
@@ -22,6 +21,8 @@ alienPrefab = ExtResource("2_qvy1s")
 [node name="SpawnTimer" type="Timer" parent="FightManager"]
 
 [node name="SpawnPositions" type="Node2D" parent="."]
+position = Vector2(20, 0)
+scale = Vector2(1.5, 1.5)
 
 [node name="spawn1" type="Node2D" parent="SpawnPositions"]
 position = Vector2(144, 481)
@@ -50,11 +51,6 @@ position = Vector2(481, 300)
 [node name="spawn9" type="Node2D" parent="SpawnPositions"]
 position = Vector2(25, 192)
 
-[node name="ShootManager" type="Area2D" parent="."]
-position = Vector2(355, 169)
+[node name="ShootManager" type="Node2D" parent="."]
 script = ExtResource("3_y82am")
 potatoBulletPrefab = ExtResource("5_y1n8u")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootManager"]
-position = Vector2(287, 188)
-shape = SubResource("RectangleShape2D_t34w0")
