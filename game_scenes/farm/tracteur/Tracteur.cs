@@ -160,7 +160,7 @@ public partial class Tracteur : CharacterBody2D
         {
             float front_back = Input.GetActionStrength("tracteur_front") - Input.GetActionStrength("tracteur_back");
             velocity = front_back * speed * 2 * Transform.Y * (float)delta;
-            rotationForce = (Input.GetActionStrength("tracteur_right") - Input.GetActionStrength("tracteur_left")) * RotationSpeed * (float)delta;
+            rotationForce = (Input.GetActionStrength("tracteur_right") - Input.GetActionStrength("tracteur_left")) * RotationSpeed * 3 * (float)delta;
             if (front_back >= 0)
             {
                 Rotate(rotationForce);
@@ -174,7 +174,7 @@ public partial class Tracteur : CharacterBody2D
         }
         else if (Input.IsActionPressed("tracteur_right") || Input.IsActionPressed("tracteur_left"))
         {
-            rotationForce = (Input.GetActionStrength("tracteur_right") - Input.GetActionStrength("tracteur_left")) * RotationSpeed * (float)delta;
+            rotationForce = (Input.GetActionStrength("tracteur_right") - Input.GetActionStrength("tracteur_left")) * RotationSpeed * 3 * (float)delta;
             Rotate(rotationForce);
         }
     }
