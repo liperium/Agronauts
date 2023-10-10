@@ -124,9 +124,6 @@ _data = {
 script = ExtResource("1_1o6vr")
 
 [node name="UnlockPopUp" parent="." instance=ExtResource("1_1tles")]
-offset_left = -432.0
-offset_top = -261.0
-offset_bottom = 0.0
 
 [node name="RessourceCounter" type="PanelContainer" parent="."]
 anchors_preset = 1

@@ -18,11 +18,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 3843.0
-offset_bottom = 2180.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.334, 0.334)
 
 [node name="BG" type="TextureRect" parent="Control"]
 layout_mode = 1
@@ -32,18 +29,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_3y7u8")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 0
 offset_right = 831.0
 offset_bottom = 190.0
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 60
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 150
 
 [node name="Title" type="Label" parent="Control/MarginContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_8e064")
-theme_override_font_sizes/font_size = 250
+theme_override_font_sizes/font_size = 100
 text = "Agronauts"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
@@ -53,28 +52,30 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
+offset_left = -929.0
+offset_top = -221.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_constants/separation = 140
+theme_override_constants/separation = 0
 
 [node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("2_3tae2")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="PlayButton" type="Button" parent="Control/HBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -248.754
-offset_top = 41.4132
-offset_right = 250.246
-offset_bottom = 181.413
+offset_left = -178.0
+offset_right = 93.0
+offset_bottom = 120.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_8e064")
-theme_override_font_sizes/font_size = 110
+theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4l5n3")
 text = "KDEFEND"
 script = ExtResource("1_1ljay")
@@ -82,20 +83,22 @@ farmScene = ExtResource("5_8msx8")
 
 [node name="TextureRect2" type="TextureRect" parent="Control/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("2_3tae2")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="QuitButton" type="Button" parent="Control/HBoxContainer/TextureRect2"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -239.485
-offset_top = 41.4132
-offset_right = 232.515
-offset_bottom = 181.413
+offset_left = -163.5
+offset_right = 92.5
+offset_bottom = 117.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_8e064")
-theme_override_font_sizes/font_size = 110
+theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4l5n3")
 text = "KGIVEUP"
 script = ExtResource("2_b0yyy")

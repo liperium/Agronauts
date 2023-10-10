@@ -60,6 +60,19 @@ public partial class UIManager : CanvasLayer
 
 	}
 
+	public static void AddAllUpgrade(IBuyable upgrade)
+	{
+		if (!all_upgrades.Contains(upgrade))
+		{
+			all_upgrades.Add(upgrade);
+		}
+
+		else
+		{
+			GD.Print("YOOOOO SHOULDNT BE HERE");
+		}
+
+	}
 
 
 // Called every frame. 'delta' is the elapsed time since the previous frame.

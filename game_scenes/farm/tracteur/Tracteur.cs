@@ -50,6 +50,15 @@ public partial class Tracteur : CharacterBody2D
         {
             GameState.instance.upgrades.tractorSpreadSeedsUpgrade.SetOnBuyUpgrade(UpgradeEpandeur);
         }
+
+        Timer timer = GetNode<Timer>("SoundTimer");
+        timer.WaitTime = new Random().NextDouble()*3.0;
+        AudioStreamPlayer2D streamPlayer2D = GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
+        timer.Timeout += () =>
+        {
+            streamPlayer2D.Play();
+            timer.QueueFree();
+        };
     }
 
 
