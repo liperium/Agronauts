@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class BtnShowHideMenu : TextureButton
+public partial class BtnShowHideMenu : BaseButton
 {
     [Export] AnimationTree animTree;
 
@@ -12,7 +12,7 @@ public partial class BtnShowHideMenu : TextureButton
         if (GameState.instance.numbers.potatoCount.GetValue() == 0)
         {
             Disabled = true;
-            Visible = false;   
+            GetParent<TextureRect>().Visible = false;
         }
 
         GameState.instance.numbers.potatoCount.SetOnValueChanged(OnGetPotato);
@@ -26,7 +26,7 @@ public partial class BtnShowHideMenu : TextureButton
 
         opened = !opened;
 
-        FlipH = !opened;
+        GetParent<TextureRect>().FlipH = !opened;
         
         animTree.Set("parameters/conditions/open", opened);
         animTree.Set("parameters/conditions/close", !opened);
@@ -36,7 +36,7 @@ public partial class BtnShowHideMenu : TextureButton
     {
         if (newValue > 0)
         {
-            Visible = true;
+            GetParent<TextureRect>().Visible = true;
             Disabled = false;
             
             GameState.instance.numbers.potatoCount.ResetOnValueChanged(OnGetPotato);

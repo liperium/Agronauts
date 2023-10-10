@@ -43,4 +43,8 @@ public partial class FurnaceSpeedArtifact : BuyableUpgrade<MultiplierModifier>
         info.SetDescription("KFURNACESPEEDARTIFACTDESC");
         info.SetImagePath("res://Upgrades/UpgradeImages/CarburantInterstellaire.png");
     }
+    public override UIManager.UpgradeTab GetUpgradeTab()
+    {
+        return UIManager.UpgradeTab.Artifact;
+    }
 }

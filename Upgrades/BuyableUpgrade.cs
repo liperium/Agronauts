@@ -43,6 +43,11 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 	{
 		OnBuyUpgrade -= action;
 	}
+
+	public bool IsAcquired()
+	{
+		return acquired;
+	}
 	
 	#endregion
 
@@ -51,6 +56,7 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 		base.OnLoad();
 		UpdateCost();
 		SetCostNumber();
+		UIManager.all_upgrades.Add(this); // Fight scene fuck??
 	}
 
     protected void SetCostNumber()
@@ -122,5 +128,15 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
     public long GetCost()
     {
 	    return cost;
+    }
+
+    public virtual UIManager.UpgradeTab GetUpgradeTab()
+    {
+	    return UIManager.UpgradeTab.None;
+    }
+
+    public virtual bool IsOneTimeBuy()
+    {
+	    return true;
     }
 }

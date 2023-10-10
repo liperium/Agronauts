@@ -43,4 +43,8 @@ public partial class TractorSpeedUpgrade : TieredUpgrade<MultiplierModifier>
     {
         return + ((int)(modifier.multiplier * 100)) + "%";
     }
+    public override UIManager.UpgradeTab GetUpgradeTab()
+    {
+        return UIManager.UpgradeTab.Farm;
+    }
 }

@@ -52,4 +52,8 @@ public partial class AutoCookLevel4Upgrade : BuyableUpgrade<MultiplierModifier>
 
         }
     }
+    public override UIManager.UpgradeTab GetUpgradeTab()
+    {
+        return UIManager.UpgradeTab.Furnace;
+    }
 }

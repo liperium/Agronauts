@@ -1,208 +1,440 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgxvkolxvu33k"]
+[gd_scene load_steps=40 format=3 uid="uid://bgxvkolxvu33k"]
 
+[ext_resource type="Script" path="res://game_scenes/UI/UIManager.cs" id="1_1o6vr"]
 [ext_resource type="PackedScene" uid="uid://c7vdiidjnc4py" path="res://UI/unlock_pop_up.tscn" id="1_1tles"]
-[ext_resource type="PackedScene" uid="uid://c1xtsfl7y7few" path="res://game_scenes/UI/UpgradeTemplate.tscn" id="7_5qwk5"]
+[ext_resource type="StyleBox" uid="uid://c2ug7gqx5pccl" path="res://game_scenes/UI/styleboxwood.tres" id="2_yjk30"]
+[ext_resource type="Texture2D" uid="uid://c38udnmhrwqc6" path="res://UI/sprites/FERME_fond.png" id="7_cpijt"]
 [ext_resource type="Texture2D" uid="uid://bq6rvvq07awwd" path="res://UI/sprites/fourche_Bouton1.png" id="7_njwos"]
 [ext_resource type="Texture2D" uid="uid://bsdonby7bsii2" path="res://UI/sprites/four_Bouton2.png" id="8_tg21o"]
 [ext_resource type="Texture2D" uid="uid://b4x1a71357jod" path="res://UI/sprites/manette_Bouton3.png" id="9_g1gr8"]
+[ext_resource type="Script" path="res://game_scenes/UI/Tab.cs" id="10_fq3ht"]
 [ext_resource type="Texture2D" uid="uid://cdh8cnbwq2knw" path="res://UI/sprites/option_Bouton4.png" id="10_thu4e"]
-[ext_resource type="Texture2D" uid="uid://cb6xbrmh0dvso" path="res://UI/sprites/renfourer_bouton.png" id="38_mxf2v"]
+[ext_resource type="Texture2D" uid="uid://bcbblpddy6qv5" path="res://UI/sprites/fleche_bouton.png" id="12_bpahg"]
+[ext_resource type="Script" path="res://game_scenes/UI/UnlockFurnaceTab.cs" id="12_er6ur"]
+[ext_resource type="Script" path="res://game_scenes/UI/BtnShowHideMenu.cs" id="13_fsg4l"]
+[ext_resource type="Script" path="res://UI/SaveButton.cs" id="14_qlxfs"]
+[ext_resource type="Script" path="res://game_scenes/UI/UnlockArtifactsTab.cs" id="14_vu3tg"]
+[ext_resource type="Script" path="res://game_scenes/UI/QuitButton.cs" id="15_xxpdw"]
+[ext_resource type="PackedScene" uid="uid://dc4wna03ta38b" path="res://game_scenes/four/four.tscn" id="16_nvoum"]
+[ext_resource type="Texture2D" uid="uid://c6voma67rfl5h" path="res://UI/sprites/FOUR_cosy.png" id="17_aeybh"]
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="39_hs3fy"]
 [ext_resource type="Script" path="res://UI/PotatoCountLabel.cs" id="40_djgxp"]
 [ext_resource type="Script" path="res://UI/CookedPotatoCountLabel.cs" id="41_ynf4h"]
 [ext_resource type="Script" path="res://UI/TemperatureLabel.cs" id="42_fe1i4"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n48gx"]
+texture = ExtResource("7_cpijt")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wct25"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ri4j0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1x8q1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_601yh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjefs"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5m61w"]
+animation = &"menu_close"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iahrq"]
+animation = &"menu_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m0456"]
+animation = &"menu_open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8rpby"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_td7d2"]
+advance_mode = 2
+advance_condition = &"open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u4cgq"]
+advance_mode = 2
+advance_condition = &"close"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bvbs7"]
+advance_mode = 2
+advance_condition = &"open"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_es2qs"]
+states/menu_close/node = SubResource("AnimationNodeAnimation_5m61w")
+states/menu_close/position = Vector2(632, 115)
+states/menu_idle/node = SubResource("AnimationNodeAnimation_iahrq")
+states/menu_idle/position = Vector2(399, 75)
+states/menu_open/node = SubResource("AnimationNodeAnimation_m0456")
+states/menu_open/position = Vector2(435, 151)
+transitions = ["Start", "menu_idle", SubResource("AnimationNodeStateMachineTransition_8rpby"), "menu_idle", "menu_open", SubResource("AnimationNodeStateMachineTransition_td7d2"), "menu_open", "menu_close", SubResource("AnimationNodeStateMachineTransition_u4cgq"), "menu_close", "menu_open", SubResource("AnimationNodeStateMachineTransition_bvbs7")]
+
+[sub_resource type="Animation" id="Animation_78gye"]
+resource_name = "menu_idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-562, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6wc51"]
+resource_name = "menu_open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.225313, 0.258817),
+"update": 0,
+"values": [Vector2(-562, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qm2v2"]
+resource_name = "menu_close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.258817, 0.225313),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-562, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8kweu"]
+_data = {
+"menu_close": SubResource("Animation_qm2v2"),
+"menu_idle": SubResource("Animation_78gye"),
+"menu_open": SubResource("Animation_6wc51")
+}
+
 [node name="UI" type="CanvasLayer"]
+script = ExtResource("1_1o6vr")
 
 [node name="UnlockPopUp" parent="." instance=ExtResource("1_1tles")]
-visible = false
-offset_left = -287.0
-offset_top = -186.0
-offset_right = -6.0
-offset_bottom = -8.0
+offset_left = -432.0
+offset_top = -261.0
+offset_bottom = 0.0
 
-[node name="StatsBar" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = 941.0
-offset_right = 1279.0
-offset_bottom = 170.0
-scale = Vector2(1.00271, 1)
-
-[node name="BG" type="NinePatchRect" parent="StatsBar"]
-layout_mode = 1
-anchors_preset = 15
+[node name="RessourceCounter" type="PanelContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 338.0
-offset_bottom = 170.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("38_mxf2v")
-patch_margin_left = 37
-patch_margin_top = 35
-patch_margin_right = 37
-patch_margin_bottom = 37
+offset_left = -196.0
+offset_right = 0.151855
+offset_bottom = 226.0
+grow_horizontal = 0
+scale = Vector2(1.00271, 1)
+size_flags_horizontal = 8
+theme_override_styles/panel = ExtResource("2_yjk30")
 
-[node name="potatoesDisplay" type="HBoxContainer" parent="StatsBar"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 88.7594
-offset_top = -59.0
-offset_right = 339.76
-offset_bottom = -9.0
-grow_vertical = 2
-scale = Vector2(0.9, 0.9)
+[node name="VBoxContainer" type="VBoxContainer" parent="RessourceCounter"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="potatoesDisplay" type="HBoxContainer" parent="RessourceCounter/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
 alignment = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="StatsBar/potatoesDisplay"]
+[node name="CenterContainer" type="CenterContainer" parent="RessourceCounter/VBoxContainer/potatoesDisplay"]
 layout_mode = 2
 
-[node name="potatoesNb" type="RichTextLabel" parent="StatsBar/potatoesDisplay/CenterContainer"]
+[node name="potatoesNb" type="RichTextLabel" parent="RessourceCounter/VBoxContainer/potatoesDisplay/CenterContainer"]
 layout_mode = 2
 bbcode_enabled = true
-text = "dsefsf"
+text = "0"
 fit_content = true
 autowrap_mode = 0
 script = ExtResource("39_hs3fy")
 
-[node name="potatoCountLabel" type="Node2D" parent="StatsBar/potatoesDisplay/CenterContainer/potatoesNb"]
-position = Vector2(-555, 0)
+[node name="potatoCountLabel" type="Node2D" parent="RessourceCounter/VBoxContainer/potatoesDisplay/CenterContainer/potatoesNb"]
 script = ExtResource("40_djgxp")
 
-[node name="kpotatoes" type="RichTextLabel" parent="StatsBar/potatoesDisplay"]
+[node name="kpotatoes" type="RichTextLabel" parent="RessourceCounter/VBoxContainer/potatoesDisplay"]
 layout_mode = 2
 bbcode_enabled = true
 text = "[img=50xz50]res://Icons/Potato.png[/img]"
 fit_content = true
 autowrap_mode = 0
 
-[node name="cookedPotatoDisplay" type="HBoxContainer" parent="StatsBar"]
-layout_mode = 0
-offset_left = 182.505
-offset_top = 74.0
-offset_right = 319.505
-offset_bottom = 124.0
-scale = Vector2(0.9, 0.9)
+[node name="cookedPotatoDisplay" type="HBoxContainer" parent="RessourceCounter/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
 alignment = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="StatsBar/cookedPotatoDisplay"]
+[node name="CenterContainer" type="CenterContainer" parent="RessourceCounter/VBoxContainer/cookedPotatoDisplay"]
 layout_mode = 2
 
-[node name="potatoesNb" type="RichTextLabel" parent="StatsBar/cookedPotatoDisplay/CenterContainer"]
+[node name="potatoesNb" type="RichTextLabel" parent="RessourceCounter/VBoxContainer/cookedPotatoDisplay/CenterContainer"]
 layout_mode = 2
 bbcode_enabled = true
-text = "dsefsf"
+text = "0"
 fit_content = true
 autowrap_mode = 0
 script = ExtResource("39_hs3fy")
 
-[node name="cookedPotatoCountLabel" type="Node2D" parent="StatsBar/cookedPotatoDisplay/CenterContainer/potatoesNb"]
-position = Vector2(-555, 0)
+[node name="cookedPotatoCountLabel" type="Node2D" parent="RessourceCounter/VBoxContainer/cookedPotatoDisplay/CenterContainer/potatoesNb"]
 script = ExtResource("41_ynf4h")
 
-[node name="kpotatoes" type="RichTextLabel" parent="StatsBar/cookedPotatoDisplay"]
+[node name="kpotatoes" type="RichTextLabel" parent="RessourceCounter/VBoxContainer/cookedPotatoDisplay"]
 layout_mode = 2
 bbcode_enabled = true
 text = "[img=50xz50]res://UI/sprites/PotatoeFumante.png[/img]"
 fit_content = true
 autowrap_mode = 0
 
-[node name="temperatureDisplay" type="HBoxContainer" parent="StatsBar"]
-layout_mode = 0
-offset_left = -21.9406
-offset_top = 113.0
-offset_right = 350.059
-offset_bottom = 158.0
-scale = Vector2(0.9, 0.9)
+[node name="temperatureDisplay" type="HBoxContainer" parent="RessourceCounter/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
 alignment = 2
 
-[node name="cookedPotatoesNb" type="RichTextLabel" parent="StatsBar/temperatureDisplay"]
+[node name="CenterContainer" type="CenterContainer" parent="RessourceCounter/VBoxContainer/temperatureDisplay"]
 layout_mode = 2
-text = "dsefsf"
+
+[node name="cookedPotatoesNb" type="RichTextLabel" parent="RessourceCounter/VBoxContainer/temperatureDisplay/CenterContainer"]
+layout_mode = 2
+text = "30"
 fit_content = true
 autowrap_mode = 0
 script = ExtResource("39_hs3fy")
 
-[node name="cookedPotatoCountLabel" type="Node2D" parent="StatsBar/temperatureDisplay/cookedPotatoesNb"]
-position = Vector2(-555, 0)
+[node name="cookedPotatoCountLabel" type="Node2D" parent="RessourceCounter/VBoxContainer/temperatureDisplay/CenterContainer/cookedPotatoesNb"]
 script = ExtResource("42_fe1i4")
 
-[node name="kpotatoes" type="Label" parent="StatsBar/temperatureDisplay"]
+[node name="cookedPotatoesNb2" type="RichTextLabel" parent="RessourceCounter/VBoxContainer/temperatureDisplay"]
 layout_mode = 2
-text = "°C"
+theme_override_font_sizes/normal_font_size = 28
+text = "°C "
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("39_hs3fy")
 
-[node name="Control" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(500, 0)
+[node name="LeftMenu" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 658.0
+offset_left = -562.0
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+[node name="TextureRect2" type="Panel" parent="LeftMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_n48gx")
+
+[node name="MarginContainer" type="MarginContainer" parent="LeftMenu/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 50
+
+[node name="Control" type="VBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.1
+size_flags_stretch_ratio = 0.23
 
-[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer"]
+[node name="FarmTabButton" type="TextureButton" parent="LeftMenu/TextureRect2/MarginContainer/Control/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("7_njwos")
 ignore_texture_size = true
 stretch_mode = 5
+script = ExtResource("10_fq3ht")
+tabContainer = NodePath("../../Control")
 
-[node name="TextureButton2" type="TextureButton" parent="Control/HBoxContainer"]
+[node name="FurnaceTabButton" type="TextureButton" parent="LeftMenu/TextureRect2/MarginContainer/Control/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("8_tg21o")
 ignore_texture_size = true
 stretch_mode = 5
+script = ExtResource("10_fq3ht")
+tabIndex = 1
+tabContainer = NodePath("../../Control")
 
-[node name="TextureButton3" type="TextureButton" parent="Control/HBoxContainer"]
+[node name="UnlockFurnaceTab" type="Control" parent="LeftMenu/TextureRect2/MarginContainer/Control/HBoxContainer/FurnaceTabButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("12_er6ur")
+
+[node name="ArtifactTabButton" type="TextureButton" parent="LeftMenu/TextureRect2/MarginContainer/Control/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("9_g1gr8")
 ignore_texture_size = true
 stretch_mode = 5
+script = ExtResource("10_fq3ht")
+tabIndex = 2
+tabContainer = NodePath("../../Control")
 
-[node name="TextureButton4" type="TextureButton" parent="Control/HBoxContainer"]
+[node name="UnlockArtifactsTab" type="Control" parent="LeftMenu/TextureRect2/MarginContainer/Control/HBoxContainer/ArtifactTabButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_vu3tg")
+
+[node name="SettingsTabButton" type="TextureButton" parent="LeftMenu/TextureRect2/MarginContainer/Control/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("10_thu4e")
 ignore_texture_size = true
 stretch_mode = 5
+script = ExtResource("10_fq3ht")
+tabIndex = 3
+tabContainer = NodePath("../../Control")
 
-[node name="Farm" type="ScrollContainer" parent="Control"]
+[node name="Control" type="TabContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control"]
+layout_mode = 2
+size_flags_vertical = 3
+tabs_visible = false
+
+[node name="Farm" type="ScrollContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Farm"]
+[node name="FarmUpgrades" type="VBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Farm"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="UpgradeTemplate1" parent="Control/Farm/VBoxContainer" instance=ExtResource("7_5qwk5")]
+[node name="Furnace" type="ScrollContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Four" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace/VBoxContainer" instance=ExtResource("16_nvoum")]
+custom_minimum_size = Vector2(0, 275)
 layout_mode = 2
 
-[node name="UpgradeTemplate2" parent="Control/Farm/VBoxContainer" instance=ExtResource("7_5qwk5")]
+[node name="MarginContainer" type="MarginContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="UpgradeTemplate3" parent="Control/Farm/VBoxContainer" instance=ExtResource("7_5qwk5")]
+[node name="TextureRect" type="TextureRect" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace/VBoxContainer/MarginContainer"]
 layout_mode = 2
+texture = ExtResource("17_aeybh")
+expand_mode = 1
 
-[node name="UpgradeTemplate4" parent="Control/Farm/VBoxContainer" instance=ExtResource("7_5qwk5")]
+[node name="FurnaceUpgrades" type="VBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace/VBoxContainer/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="UpgradeTemplate5" parent="Control/Farm/VBoxContainer" instance=ExtResource("7_5qwk5")]
+[node name="Artifact" type="ScrollContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control"]
+visible = false
 layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
 
-[node name="UpgradeTemplate6" parent="Control/Farm/VBoxContainer" instance=ExtResource("7_5qwk5")]
+[node name="ArtifactUpgrades" type="VBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Artifact"]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="UpgradeTemplate7" parent="Control/Farm/VBoxContainer" instance=ExtResource("7_5qwk5")]
+[node name="Settings" type="ScrollContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control"]
+visible = false
 layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="SettingsHBox" type="VBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Save" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox"]
+layout_mode = 2
+text = "KSAVE"
+script = ExtResource("14_qlxfs")
+
+[node name="Quit" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox"]
+layout_mode = 2
+text = "KQUIT"
+script = ExtResource("15_xxpdw")
+
+[node name="TextureRect" type="TextureRect" parent="LeftMenu"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -64.0
+offset_right = 83.0
+offset_bottom = 65.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("12_bpahg")
+expand_mode = 3
+stretch_mode = 4
+flip_h = true
+
+[node name="BtnShowHideMenu" type="Button" parent="LeftMenu/TextureRect" node_paths=PackedStringArray("animTree")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wct25")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ri4j0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1x8q1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_601yh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rjefs")
+script = ExtResource("13_fsg4l")
+animTree = NodePath("../../AnimationTree")
+
+[node name="AnimationTree" type="AnimationTree" parent="LeftMenu"]
+tree_root = SubResource("AnimationNodeStateMachine_es2qs")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/conditions/close = false
+parameters/conditions/open = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LeftMenu"]
+libraries = {
+"": SubResource("AnimationLibrary_8kweu")
+}

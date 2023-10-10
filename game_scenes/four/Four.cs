@@ -3,9 +3,7 @@ using System;
 
 public partial class Four : Control
 {
-	private TextureButton manualButton;
-
-	[Export] public TextureRect fourImg;
+	private Button manualButton;
 
 	private Timer timer;
     private Timer chefTimer;
@@ -18,16 +16,14 @@ public partial class Four : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		manualButton = GetNode<TextureButton>("Button");
+		manualButton = GetNode<Button>("VBoxContainer/PanelContainer/Button");
 		timer = GetNode<Timer>("Timer");
         chefTimer = GetNode<Timer>("ChefTimer");
 
-        progressBar = GetNode<ProgressBar>("ProgressBar");
+        progressBar = GetNode<ProgressBar>("VBoxContainer/TextureRect/ProgressBar");
 
 		GameState.instance.numbers.furnaceSpeed.SetOnValueChanged(UpdateProgressBarStats);
 		UpdateProgressBarStats(GameState.instance.numbers.furnaceSpeed.value);
-
-		fourImg.Visible = false;
 
 		manualButton.Pressed += ButtonClicked;
 		timer.Timeout += DoneBatch;
@@ -69,7 +65,6 @@ public partial class Four : Control
 			manualButton.Disabled = true;
 			Buy();
 			timer.Start();
-			fourImg.Visible = true;
 		}
 	}
 
@@ -80,7 +75,6 @@ public partial class Four : Control
             manualButton.Disabled = true;
             Buy();
             timer.Start();
-            fourImg.Visible = true;
             GameState.instance.numbers.furnaceTotalAutoCookedPotato.IncreaseValue(
             GameState.instance.numbers.cookedPotatoYield.GetValue() *
             GameState.instance.numbers.furnaceBatchCount.GetValue());
@@ -113,7 +107,5 @@ public partial class Four : Control
             chefTimer.WaitTime = TIME_BEFORE_AUTO_COOK / GameState.instance.numbers.furnaceAutoBakeSpeed.GetValue();
             chefTimer.Start();
         }
-
-		fourImg.Visible = false;
 	}
 }
