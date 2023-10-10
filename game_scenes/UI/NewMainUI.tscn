@@ -68,6 +68,21 @@ states/menu_open/node = SubResource("AnimationNodeAnimation_m0456")
 states/menu_open/position = Vector2(435, 151)
 transitions = ["Start", "menu_idle", SubResource("AnimationNodeStateMachineTransition_8rpby"), "menu_idle", "menu_open", SubResource("AnimationNodeStateMachineTransition_td7d2"), "menu_open", "menu_close", SubResource("AnimationNodeStateMachineTransition_u4cgq"), "menu_close", "menu_open", SubResource("AnimationNodeStateMachineTransition_bvbs7")]
 
+[sub_resource type="Animation" id="Animation_qm2v2"]
+resource_name = "menu_close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.258817, 0.225313),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-562, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_78gye"]
 resource_name = "menu_idle"
 tracks/0/type = "value"
@@ -96,21 +111,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.225313, 0.258817),
 "update": 0,
 "values": [Vector2(-562, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_qm2v2"]
-resource_name = "menu_close"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.258817, 0.225313),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-562, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8kweu"]
