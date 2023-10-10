@@ -1,24 +1,37 @@
 ﻿using Godot;
 
-public partial class CookedPotatoCountLabel : Node
+public partial class IdleNumberLabel : Node
 {
-    private IdleNumber number;
+    protected IdleNumber number;
+    
     public override void _Ready()
     {
         base._Ready();
 
-        number = GameState.instance.numbers.cookedPotatoCount;
+        number = GetIdleNumber();
+
+        if (number == null)
+        {
+            GD.PrintErr($"No idle number set for Idle Number label: {GetType()}. Please override GetIdleNumber and provide a number");
+            QueueFree();
+            return;
+        }
         
         number.SetOnValueChanged(ValueChanged);
         
         GetParent<LerpValue>().Init(number.GetValue());
     }
 
+    protected virtual IdleNumber GetIdleNumber()
+    {
+        return null;
+    }
+
     private void ValueChanged(long newValue)
     {
         GetParent<LerpValue>().SetNewValue(newValue);
     }
-
+    
     public override void _ExitTree()
     {
         base._ExitTree();

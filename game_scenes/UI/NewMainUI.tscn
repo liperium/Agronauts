@@ -3,7 +3,10 @@
 [ext_resource type="Script" path="res://game_scenes/UI/UIManager.cs" id="1_1o6vr"]
 [ext_resource type="PackedScene" uid="uid://c7vdiidjnc4py" path="res://UI/unlock_pop_up.tscn" id="1_1tles"]
 [ext_resource type="StyleBox" uid="uid://c2ug7gqx5pccl" path="res://game_scenes/UI/styleboxwood.tres" id="2_yjk30"]
+[ext_resource type="Script" path="res://UI/Labels/PotatoCountLabel.cs" id="5_bp0s2"]
+[ext_resource type="Script" path="res://UI/Labels/CookedPotatoCountLabel.cs" id="6_6ave8"]
 [ext_resource type="Texture2D" uid="uid://c38udnmhrwqc6" path="res://UI/sprites/FERME_fond.png" id="7_cpijt"]
+[ext_resource type="Script" path="res://UI/Labels/TemperatureLabel.cs" id="7_d3vh4"]
 [ext_resource type="Texture2D" uid="uid://uu6tex3dyyqi" path="res://UI/sprites/fourche_nobg.png" id="9_vcuvw"]
 [ext_resource type="Script" path="res://game_scenes/UI/Tab.cs" id="10_fq3ht"]
 [ext_resource type="Texture2D" uid="uid://balns1cnkjntf" path="res://UI/sprites/four_nobg.png" id="11_jr12r"]
@@ -18,9 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://dc4wna03ta38b" path="res://game_scenes/four/four.tscn" id="16_nvoum"]
 [ext_resource type="Texture2D" uid="uid://c6voma67rfl5h" path="res://UI/sprites/FOUR_cosy.png" id="17_aeybh"]
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="39_hs3fy"]
-[ext_resource type="Script" path="res://UI/PotatoCountLabel.cs" id="40_djgxp"]
-[ext_resource type="Script" path="res://UI/CookedPotatoCountLabel.cs" id="41_ynf4h"]
-[ext_resource type="Script" path="res://UI/TemperatureLabel.cs" id="42_fe1i4"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n48gx"]
 texture = ExtResource("7_cpijt")
@@ -156,9 +156,9 @@ autowrap_mode = 0
 script = ExtResource("39_hs3fy")
 
 [node name="potatoCountLabel" type="Node2D" parent="RessourceCounter/VBoxContainer/potatoesDisplay/CenterContainer/potatoesNb"]
-script = ExtResource("40_djgxp")
+script = ExtResource("5_bp0s2")
 
-[node name="kpotatoes" type="RichTextLabel" parent="RessourceCounter/VBoxContainer/potatoesDisplay"]
+[node name="potatoImg" type="RichTextLabel" parent="RessourceCounter/VBoxContainer/potatoesDisplay"]
 layout_mode = 2
 bbcode_enabled = true
 text = "[img=50xz50]res://Icons/Potato.png[/img]"
@@ -182,9 +182,9 @@ autowrap_mode = 0
 script = ExtResource("39_hs3fy")
 
 [node name="cookedPotatoCountLabel" type="Node2D" parent="RessourceCounter/VBoxContainer/cookedPotatoDisplay/CenterContainer/potatoesNb"]
-script = ExtResource("41_ynf4h")
+script = ExtResource("6_6ave8")
 
-[node name="kpotatoes" type="RichTextLabel" parent="RessourceCounter/VBoxContainer/cookedPotatoDisplay"]
+[node name="cookedPotatoImg" type="RichTextLabel" parent="RessourceCounter/VBoxContainer/cookedPotatoDisplay"]
 layout_mode = 2
 bbcode_enabled = true
 text = "[img=50xz50]res://UI/sprites/PotatoeFumante.png[/img]"
@@ -199,20 +199,21 @@ alignment = 2
 [node name="CenterContainer" type="CenterContainer" parent="RessourceCounter/VBoxContainer/temperatureDisplay"]
 layout_mode = 2
 
-[node name="cookedPotatoesNb" type="RichTextLabel" parent="RessourceCounter/VBoxContainer/temperatureDisplay/CenterContainer"]
+[node name="temperatureNb" type="RichTextLabel" parent="RessourceCounter/VBoxContainer/temperatureDisplay/CenterContainer"]
 layout_mode = 2
 text = "30"
 fit_content = true
 autowrap_mode = 0
 script = ExtResource("39_hs3fy")
 
-[node name="cookedPotatoCountLabel" type="Node2D" parent="RessourceCounter/VBoxContainer/temperatureDisplay/CenterContainer/cookedPotatoesNb"]
-script = ExtResource("42_fe1i4")
+[node name="temperatureLabel" type="Node2D" parent="RessourceCounter/VBoxContainer/temperatureDisplay/CenterContainer/temperatureNb"]
+script = ExtResource("7_d3vh4")
 
-[node name="cookedPotatoesNb2" type="RichTextLabel" parent="RessourceCounter/VBoxContainer/temperatureDisplay"]
+[node name="temperatureImg" type="RichTextLabel" parent="RessourceCounter/VBoxContainer/temperatureDisplay"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
-text = "°C "
+bbcode_enabled = true
+text = "[img=50xz29]res://Upgrades/UpgradeImages/temp.png[/img]"
 fit_content = true
 autowrap_mode = 0
 script = ExtResource("39_hs3fy")
