@@ -21,7 +21,7 @@ tracks/0/path = NodePath("Control/HBoxContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 2),
+"times": PackedFloat32Array(0.3, 1),
 "transitions": PackedFloat32Array(0.233259, 0.233259),
 "update": 0,
 "values": [Vector2(991, 1100), Vector2(991, 859)]
@@ -86,7 +86,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -929.0
 offset_top = -221.0
-offset_bottom = 0.000244141
+offset_bottom = -0.000244141
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 0
