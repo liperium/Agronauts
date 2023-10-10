@@ -50,6 +50,7 @@ script = ExtResource("1_ou2to")
 position = Vector2(570, 296)
 
 [node name="Clouds" type="ColorRect" parent="."]
+z_index = 1
 material = SubResource("ShaderMaterial_iryth")
 offset_left = -8581.0
 offset_top = -4684.0

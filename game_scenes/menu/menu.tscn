@@ -86,6 +86,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -929.0
 offset_top = -221.0
+offset_bottom = 0.000244141
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 0
