@@ -81,6 +81,7 @@ public partial class FarmFieldMaster : Node2D
 
 	private void ProcessHistory()
 	{
+		GameState.instance.numbers.numberOfTilesUnlocked.SetValue(0);
 		foreach (SavedField savedField in GameState.instance.savedFields.boughtFieldsHistory)
 		{
 			FarmLand land = GetFarmTile(savedField.field, savedField.tile);
