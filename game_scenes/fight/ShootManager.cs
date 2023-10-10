@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class ShootManager : Area2D
+public partial class ShootManager : Node2D
 {
     [Export] public PackedScene potatoBulletPrefab;
     public override void _Input(InputEvent @event)
