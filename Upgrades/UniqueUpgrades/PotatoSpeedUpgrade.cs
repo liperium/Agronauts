@@ -48,4 +48,8 @@ public class PotatoSpeedUpgrade : TieredUpgrade<MultiplierModifier>
     {
         return + ((int)(modifier.multiplier * 100)) + "%";
     }
+    public override UIManager.UpgradeTab GetUpgradeTab()
+    {
+        return UIManager.UpgradeTab.Farm;
+    }
 }

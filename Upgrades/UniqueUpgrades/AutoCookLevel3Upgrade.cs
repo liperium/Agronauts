@@ -51,4 +51,8 @@ public partial class AutoCookLevel3Upgrade : BuyableUpgrade<MultiplierModifier>
             GameState.instance.numbers.furnaceTotalAutoCookedPotato.ResetOnValueChanged(CheckUnlock);
         }
     }
+    public override UIManager.UpgradeTab GetUpgradeTab()
+    {
+        return UIManager.UpgradeTab.Furnace;
+    }
 }

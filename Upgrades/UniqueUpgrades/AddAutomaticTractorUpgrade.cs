@@ -88,4 +88,8 @@ public partial class AddAutomaticTractorUpgrade : TieredUpgrade<MultiplierModifi
     {
         return "("+tier+")";
     }
+    public override UIManager.UpgradeTab GetUpgradeTab()
+    {
+        return UIManager.UpgradeTab.Farm;
+    }
 }

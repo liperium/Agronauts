@@ -59,4 +59,8 @@ public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
             GameState.instance.numbers.numberOfTilesUnlocked.ResetOnValueChanged(CheckUnlock);
         }
     }
+    public override UIManager.UpgradeTab GetUpgradeTab()
+    {
+        return UIManager.UpgradeTab.Farm;
+    }
 }

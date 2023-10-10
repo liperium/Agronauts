@@ -45,4 +45,8 @@ public partial class TractorSpreadSeedsUpgrade : BuyableUpgrade<IdleModifier>
             GameState.instance.numbers.truckPotatosFarmed.ResetOnValueChanged(CheckUnlock);
         }
     }
+    public override UIManager.UpgradeTab GetUpgradeTab()
+    {
+        return UIManager.UpgradeTab.Farm;
+    }
 }

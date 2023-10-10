@@ -22,4 +22,8 @@ public partial class TieredUpgrade<TModifier> : BuyableUpgrade<TModifier> where 
         base.OnBuy();
     }
 
+	public override bool IsOneTimeBuy()
+	{
+		return false;
+	}
 }

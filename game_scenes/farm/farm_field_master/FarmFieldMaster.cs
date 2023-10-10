@@ -5,8 +5,7 @@ using System.Collections.Generic;
 public partial class FarmFieldMaster : Node2D
 {
 	//TODO Spawn temp fields when edge of a field is ateined
-	private PackedScene FarmField =
-		ResourceLoader.Load<PackedScene>("res://game_scenes/farm/farm_field/farm_field.tscn");
+	private PackedScene FarmField;
 
     public static int TILE_SIZE = 32;
     public static int TILE_PER_FF = 5;
@@ -21,6 +20,8 @@ public partial class FarmFieldMaster : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		FarmField  =
+		ResourceLoader.Load<PackedScene>("res://game_scenes/farm/farm_field/farm_field.tscn");
 		SpawnField(centerPos, centerPos, true);
 		
 		GameState.instance.numbers.potatoGrowSpeed.SetOnValueChanged((newValue) =>
