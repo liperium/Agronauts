@@ -11,7 +11,7 @@ public partial class AutoCookLevel4Upgrade : BuyableUpgrade<MultiplierModifier>
 
     public override void UpdateCost()
     {
-        cost = 10000000000;
+        cost = 10000000;
     }
 
     public override IdleNumber GetAffectedNumber()
@@ -45,7 +45,7 @@ public partial class AutoCookLevel4Upgrade : BuyableUpgrade<MultiplierModifier>
 
     public void CheckUnlock(long cookedPotatos)
     {
-        if (cookedPotatos >= 1000000000)
+        if (cookedPotatos >= 100000)
         {
             Unlock();
             GameState.instance.numbers.furnaceTotalAutoCookedPotato.ResetOnValueChanged(CheckUnlock);

@@ -11,7 +11,7 @@ public partial class FurnaceTempUpgrade : TieredUpgrade<MultiplierModifier>
 
     public override void UpdateCost()
     {
-        cost = (long)(500 + Mathf.Pow(3f, tier) + 10 * tier);
+        cost = (long)(500 + Mathf.Pow(tier,3f) + 10 * tier);
     }
 
     public override IdleNumber GetAffectedNumber()
@@ -32,15 +32,15 @@ public partial class FurnaceTempUpgrade : TieredUpgrade<MultiplierModifier>
     {
         base.OnLoad();
 
-        if (IsUnlocked() == false) GameState.instance.numbers.fightWave.SetOnValueChanged(CheckUnlock);
+        if (IsUnlocked() == false) GameState.instance.numbers.cookedPotatoCount.SetOnValueChanged(CheckUnlock);
     }
 
     private void CheckUnlock(long value)
     {
-        if (GameState.instance.numbers.fightWave.GetValue() > 1)
+        if (value > 10)
         {
             Unlock();
-            GameState.instance.numbers.fightWave.ResetOnValueChanged(CheckUnlock);
+            GameState.instance.numbers.cookedPotatoCount.ResetOnValueChanged(CheckUnlock);
         }
     }
 
