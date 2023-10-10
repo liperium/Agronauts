@@ -43,6 +43,9 @@ public partial class TractorSpeedArtifact : BuyableUpgrade<MultiplierModifier>
         info.SetDescription("KTRUCKSPEEDARTIFACTDESC");
         info.SetImagePath("res://Upgrades/UpgradeImages/moteurextraterrestre.png");
     }
-
+	public override UIManager.UpgradeTab GetUpgradeTab()
+	{
+		return UIManager.UpgradeTab.Artifact;
+	}
 
 }

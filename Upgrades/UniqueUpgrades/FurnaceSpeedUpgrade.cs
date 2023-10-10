@@ -48,4 +48,8 @@ public partial class FurnaceSpeedUpgrade : TieredUpgrade<MultiplierModifier>
     {
         return  + ((int)(modifier.multiplier * 100)) + "%";
     }
+    public override UIManager.UpgradeTab GetUpgradeTab()
+    {
+        return UIManager.UpgradeTab.Furnace;
+    }
 }

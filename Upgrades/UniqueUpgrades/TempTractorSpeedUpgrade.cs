@@ -61,4 +61,8 @@ public partial class TempTractorSpeedUpgrade : BuyableUpgrade<MultiplierModifier
             GameState.instance.numbers.furnaceBatchCount.ResetOnValueChanged(CheckUnlock);
         }
     }
+    public override UIManager.UpgradeTab GetUpgradeTab()
+    {
+        return UIManager.UpgradeTab.Furnace;
+    }
 }

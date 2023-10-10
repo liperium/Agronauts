@@ -1,0 +1,12 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://c2ug7gqx5pccl"]
+
+[ext_resource type="Texture2D" uid="uid://cb6xbrmh0dvso" path="res://UI/sprites/renfourer_bouton.png" id="1_h575p"]
+
+[resource]
+texture = ExtResource("1_h575p")
+texture_margin_left = 37.1518
+texture_margin_top = 36.0541
+texture_margin_right = 38.0
+texture_margin_bottom = 37.919
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2

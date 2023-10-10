@@ -53,4 +53,8 @@ public partial class AutoFurnaceUpgrade : BuyableUpgrade<MultiplierModifier>
 
         }
     }
+    public override UIManager.UpgradeTab GetUpgradeTab()
+    {
+        return UIManager.UpgradeTab.Furnace;
+    }
 }
