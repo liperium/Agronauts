@@ -8,7 +8,7 @@ public partial class UIManager : CanvasLayer
 
 	public static UIManager instance;
 
-	public static List<IBuyable> all_upgrades = new List<IBuyable>();
+	private static List<IBuyable> all_upgrades = new List<IBuyable>();
 
 	public enum UpgradeTab
 	{
