@@ -18,4 +18,10 @@ public partial class PotatoCountLabel : Node
     {
         GetParent<LerpValue>().SetNewValue(newValue);
     }
+    
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        number.ResetOnValueChanged(ValueChanged);
+    }
 }
