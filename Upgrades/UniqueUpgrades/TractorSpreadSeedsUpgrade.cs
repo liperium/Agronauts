@@ -3,20 +3,9 @@ using System;
 
 public partial class TractorSpreadSeedsUpgrade : BuyableUpgrade<IdleModifier>
 {
-    public override void OnBuy()
-    {      
-        base.OnBuy();
-    }
-
-
     public override void UpdateCost()
     {
-        cost = 1000000;
-    }
-
-    public override void Apply()
-    {
-        return;
+        cost = 100000;
     }
 
     public override void InnitInfo()
@@ -33,16 +22,16 @@ public partial class TractorSpreadSeedsUpgrade : BuyableUpgrade<IdleModifier>
 
         if (IsUnlocked() == false)
         {
-            GameState.instance.numbers.truckPotatosFarmed.SetOnValueChanged(CheckUnlock);
+            GameState.instance.numbers.truckAmount.SetOnValueChanged(CheckUnlock);
         }
     }
 
-    public void CheckUnlock(long potatos)
+    public void CheckUnlock(long truckAmount)
     {
-        if (potatos >= 1000000)
+        if (truckAmount >= 1)
         {
             Unlock();
-            GameState.instance.numbers.truckPotatosFarmed.ResetOnValueChanged(CheckUnlock);
+            GameState.instance.numbers.truckAmount.ResetOnValueChanged(CheckUnlock);
         }
     }
     public override UIManager.UpgradeTab GetUpgradeTab()

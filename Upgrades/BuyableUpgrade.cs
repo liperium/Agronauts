@@ -85,13 +85,17 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 
 	public void Unlock()
 	{
-		unlocked = true;
-		if (OnUnlock != null) OnUnlock();
+		if (unlocked == false)
+		{
+			unlocked = true;
+			if (OnUnlock != null) OnUnlock();
+		}
 	}
     public virtual void Buy()
 	{
 		if (CanBuy())
 		{
+			Unlock();
 			acquired = true;
 			
 			SetAffectedNumber();
