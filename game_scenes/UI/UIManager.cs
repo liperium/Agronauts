@@ -6,8 +6,6 @@ public partial class UIManager : CanvasLayer
 {
 	private PackedScene upgradeTemplate;
 
-	public static UIManager instance;
-
 	private static List<IBuyable> all_upgrades = new List<IBuyable>();
 
 	public enum UpgradeTab
@@ -30,11 +28,17 @@ public partial class UIManager : CanvasLayer
 
 	public void InstantiateUpgradeUI(IBuyable upgrade)
 	{
-		if (upgrade.GetUpgradeTab() == UpgradeTab.None || (upgrade.IsOneTimeBuy()&&upgrade.IsAcquired()))
+		if (upgrade.GetUpgradeTab() == UpgradeTab.None || (upgrade.IsOneTimeBuy() && upgrade.IsAcquired()))
 		{
 			return;
 		}
 		UpgradeHolderUI newUpgradeHolderUi = upgradeTemplate.Instantiate() as UpgradeHolderUI;
+		if (newUpgradeHolderUi == null)
+		{
+			GD.PrintErr($"Failed to instantiate upgrade holder UI! this upgrade will not be instantiated: {upgrade.GetInfo().GetName()}");
+			return;
+		}
+		
 		newUpgradeHolderUi.Init(upgrade);
 
 		if (upgrade.IsOneTimeBuy())

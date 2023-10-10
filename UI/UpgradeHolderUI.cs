@@ -9,6 +9,8 @@ public partial class UpgradeHolderUI : Control
     private Label upgradeTitle;
     private Label upgradeDescription;
 
+    private bool onUnlockPlugged;
+
     public void Init(IBuyable upgrade)
     {
         buyButton = GetNode<Button>("HBoxContainer/AspectRatioContainer/Button");
@@ -24,31 +26,42 @@ public partial class UpgradeHolderUI : Control
 
         SetUpgrade(genericUpgrade.GetInfo(),
             genericUpgrade.GetCost(), genericUpgrade.GetEffectText());
-        genericUpgrade.SetOnCostChanged((value) => {
-            SetUpgrade(genericUpgrade.GetInfo(),
-                genericUpgrade.GetCost(), genericUpgrade.GetEffectText());
-        });
+        
+        genericUpgrade.SetOnCostChanged(OnUpgradeCostChanged);
     }
 
     public override void _Ready()
     {
         base._Ready();
-        Visible = genericUpgrade.IsUnlocked();
-        genericUpgrade.SetOnUnlock(OnUnlock);
+        bool unlocked = genericUpgrade.IsUnlocked();
+        
+        Visible = unlocked;
+        
+        if (unlocked == false)
+        {
+            genericUpgrade.SetOnUnlock(OnUnlock);
+            onUnlockPlugged = true;
+        }
     }
 
     private void PressBuy()
     {
         genericUpgrade.Buy();
-        genericUpgrade.ResetOnUnlock(OnUnlock);
     }
 
     private void OnUnlock()
     {
         Visible = true;
+        genericUpgrade.ResetOnUnlock(OnUnlock);
+        onUnlockPlugged = false;
+    }
+    
+    private void OnUpgradeCostChanged(long cost)
+    {
+        SetUpgrade(genericUpgrade.GetInfo(), cost, genericUpgrade.GetEffectText());
     }
 
-    public void SetUpgrade(InfoUpgrade info, long cost, string effect)
+    private void SetUpgrade(InfoUpgrade info, long cost, string effect)
     {
         if (upgradeImage != null && info.GetImagePath() != "") upgradeImage.Texture = ResourceLoader.Load<CompressedTexture2D>(info.GetImagePath());
         if (upgradeTitle != null) upgradeTitle.Text = Tr(info.GetName()) +" "+ effect;
@@ -56,7 +69,7 @@ public partial class UpgradeHolderUI : Control
         UpdateCostText(cost,info.GetCostImagePath());
     }
 
-    public void UpdateCostText(long newCost, string imagePath)
+    private void UpdateCostText(long newCost, string imagePath)
     {
         if (buyButtonText != null)
         {
@@ -72,5 +85,16 @@ public partial class UpgradeHolderUI : Control
     {
         genericUpgrade.ResetOnBuyUpgrade(FreeMe);
         QueueFree();
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        genericUpgrade.SetOnCostChanged(OnUpgradeCostChanged);
+        
+        if (onUnlockPlugged)
+        {
+            genericUpgrade.ResetOnUnlock(OnUnlock);
+        }
     }
 }
