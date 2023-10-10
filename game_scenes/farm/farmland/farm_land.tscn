@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dgui53jtc0qch"]
 
 [ext_resource type="Script" path="res://game_scenes/farm/farmland/FarmLand.cs" id="1_b6x40"]
-[ext_resource type="Texture2D" uid="uid://dm5a3no2spvvm" path="res://game_scenes/farm/farmland/tiles/terre_laboure.png" id="2_sbsca"]
+[ext_resource type="Texture2D" uid="uid://ca8xbjwp5xse3" path="res://game_scenes/farm/farmland/tiles/terre_laboure.png" id="2_sbsca"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfbp4"]
 size = Vector2(32, 32)
@@ -73,7 +73,6 @@ texture_normal = ExtResource("2_sbsca")
 shape = SubResource("RectangleShape2D_nfbp4")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0.231373)
 anchors_preset = 8
 anchor_left = 0.5
@@ -81,9 +80,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -16.0
-offset_top = -7.0
+offset_top = 13.0
 offset_right = 112.0
-offset_bottom = 49.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.25, 0.25)
