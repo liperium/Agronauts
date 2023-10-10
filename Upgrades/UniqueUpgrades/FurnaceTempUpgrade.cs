@@ -11,7 +11,7 @@ public partial class FurnaceTempUpgrade : TieredUpgrade<MultiplierModifier>
 
     public override void UpdateCost()
     {
-        cost = (long)(500 + Mathf.Pow(3f, tier) + 10 * tier);
+        cost = (long)(500 + Mathf.Pow(tier,3f) + 10 * tier);
     }
 
     public override IdleNumber GetAffectedNumber()
