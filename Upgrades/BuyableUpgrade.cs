@@ -56,7 +56,7 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 		base.OnLoad();
 		UpdateCost();
 		SetCostNumber();
-		UIManager.all_upgrades.Add(this); // Fight scene fuck??
+		UIManager.AddAllUpgrade(this);
 	}
 
     protected void SetCostNumber()
