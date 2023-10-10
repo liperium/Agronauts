@@ -4,9 +4,9 @@
 
 [resource]
 texture = ExtResource("1_h575p")
-texture_margin_left = 37.1518
-texture_margin_top = 36.0541
-texture_margin_right = 38.0
-texture_margin_bottom = 37.919
+texture_margin_left = 37.5572
+texture_margin_top = 37.0
+texture_margin_right = 38.8175
+texture_margin_bottom = 39.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
