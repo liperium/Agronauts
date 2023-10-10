@@ -46,7 +46,7 @@ public partial class AutoFurnaceUpgrade : BuyableUpgrade<MultiplierModifier>
 
     public void CheckUnlock(long cookedPotatos)
     {
-        if (cookedPotatos >= 1000)
+        if (cookedPotatos >= 100)
         {
             Unlock();
             GameState.instance.numbers.cookedPotatoCount.ResetOnValueChanged(CheckUnlock);

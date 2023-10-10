@@ -12,7 +12,7 @@ public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier
 
     public override void UpdateCost()
 	{
-		cost = (long)(5 + Mathf.Pow(1.05f, tier) + tier);
+		cost = (long)(5 + Mathf.Pow(tier, 2) + tier);
 	}
 
 	public override IdleNumber GetAffectedNumber()

@@ -6,7 +6,7 @@ public partial class TempTractorSpeedUpgrade : BuyableUpgrade<MultiplierModifier
     public override void OnBuy()
     {
         GameState.instance.numbers.potatoTemperature.SetOnValueChanged(UpdateMultiplier);
-        modifier.multiplier = 1 + GameState.instance.numbers.potatoTemperature.GetValue() / 100f;
+        modifier.multiplier = 1 + (GameState.instance.numbers.potatoTemperature.GetValue() / 100f);
         base.OnBuy();
     }
 
@@ -17,7 +17,7 @@ public partial class TempTractorSpeedUpgrade : BuyableUpgrade<MultiplierModifier
 
     public override IdleNumber GetAffectedNumber()
     {
-        return GameState.instance.numbers.potatoYield;
+        return GameState.instance.numbers.truckSpeed;
     }
 
     public override IdleNumber GetCostNumber()
@@ -41,7 +41,8 @@ public partial class TempTractorSpeedUpgrade : BuyableUpgrade<MultiplierModifier
         {
             GameState.instance.numbers.furnaceBatchCount.SetOnValueChanged(CheckUnlock);
         }
-        else
+
+        else if(acquired)
         {
             GameState.instance.numbers.potatoTemperature.SetOnValueChanged(UpdateMultiplier);
         }
@@ -54,7 +55,7 @@ public partial class TempTractorSpeedUpgrade : BuyableUpgrade<MultiplierModifier
 
     public void CheckUnlock(long yield)
     {
-        if (yield >= 50)
+        if (yield >= 30)
         {
             Unlock();
             GameState.instance.numbers.furnaceBatchCount.ResetOnValueChanged(CheckUnlock);
