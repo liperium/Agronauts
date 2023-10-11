@@ -15,8 +15,7 @@ public partial class Tab : Control
         button = GetNode<BaseButton>("Button");
 
         button.Pressed += TabButtonPressed;
-        //TODO unlock certain tabs
-        FlashTab();
+        //FlashTab();
     }
 
     public void TabButtonPressed()
