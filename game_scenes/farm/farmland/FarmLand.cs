@@ -144,15 +144,14 @@ public partial class FarmLand : Area2D
 		return GameState.instance.numbers.potatoCount.GetValue() >= cost;
 	}
 
-	public void Hovered()
-	{
-		priceLabel.Visible = true;
 
-	}
-	private void UnHovered()
+	public override void _MouseEnter()
 	{
-		priceLabel.Visible = false;
-	}
+		if (Input.IsActionPressed("upgrade_tile"))
+		{
+			Clicked();
+		}
+    }
 	public void Bought(bool pay = true, bool addToHistory = true)
 	{
 		if (pay)

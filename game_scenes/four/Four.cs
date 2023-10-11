@@ -12,7 +12,7 @@ public partial class Four : Control
 	private bool automatic = false;
 
 	private const float PROGRESS_START_TIME = 6.0f;
-	private const float TIME_BEFORE_AUTO_COOK = 2000f;
+	private const float TIME_BEFORE_AUTO_COOK = 800f;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

@@ -11,7 +11,7 @@ public class PotatoSpeedUpgrade : TieredUpgrade<MultiplierModifier>
 
     public override void UpdateCost()
     {
-        cost = (long)(50 + Mathf.Pow(2.5f, tier) + 5*tier);
+        cost = (long)(50 + Mathf.Pow(tier, 2.5f) + 5*tier);
     }
 
     public override IdleNumber GetAffectedNumber()

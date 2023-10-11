@@ -362,32 +362,33 @@ vertical_scroll_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Furnace" type="ScrollContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control"]
+[node name="Furnace2" type="VBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control"]
 visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Four" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace2" instance=ExtResource("16_nvoum")]
+custom_minimum_size = Vector2(0, 275)
+layout_mode = 2
+
+[node name="Furnace" type="ScrollContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace2"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace"]
+[node name="MarginContainer" type="MarginContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace2/Furnace"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Four" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace/VBoxContainer" instance=ExtResource("16_nvoum")]
-custom_minimum_size = Vector2(0, 275)
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="TextureRect" type="TextureRect" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace/VBoxContainer/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace2/Furnace/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("17_aeybh")
 expand_mode = 1
 
-[node name="FurnaceUpgrades" type="VBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace/VBoxContainer/MarginContainer"]
+[node name="FurnaceUpgrades" type="VBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace2/Furnace/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 

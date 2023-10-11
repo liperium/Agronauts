@@ -39,7 +39,7 @@ public partial class TempTractorSpeedUpgrade : BuyableUpgrade<MultiplierModifier
 
         if (IsUnlocked() == false)
         {
-            GameState.instance.numbers.furnaceBatchCount.SetOnValueChanged(CheckUnlock);
+            GameState.instance.numbers.cookedPotatoCount.SetOnValueChanged(CheckUnlock);
         }
 
         else if(acquired)
@@ -53,12 +53,12 @@ public partial class TempTractorSpeedUpgrade : BuyableUpgrade<MultiplierModifier
         modifier.multiplier = 1 + GameState.instance.numbers.potatoTemperature.GetValue() / 100f;
     }
 
-    public void CheckUnlock(long yield)
+    public void CheckUnlock(long cookedPotatos)
     {
-        if (yield >= 30)
+        if (cookedPotatos >= 10)
         {
             Unlock();
-            GameState.instance.numbers.furnaceBatchCount.ResetOnValueChanged(CheckUnlock);
+            GameState.instance.numbers.cookedPotatoCount.ResetOnValueChanged(CheckUnlock);
         }
     }
     public override UIManager.UpgradeTab GetUpgradeTab()

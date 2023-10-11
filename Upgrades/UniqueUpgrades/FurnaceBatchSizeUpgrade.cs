@@ -11,7 +11,7 @@ public partial class FurnaceBatchSizeUpgrade : TieredUpgrade<MultiplierModifier>
 
     public override void UpdateCost()
     {
-        cost = (long)(100 + Mathf.Pow(1.1, tier)*tier + tier);
+        cost = (long)(100 + Mathf.Pow(tier,2f) + tier);
     }
 
     public override IdleNumber GetAffectedNumber()
