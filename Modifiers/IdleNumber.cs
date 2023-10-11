@@ -11,6 +11,7 @@ public partial class IdleNumber
 	public List<IdleModifier> modifiers;
 
 	private Action<long> OnValueChanged;
+	private Action<long> OnValueIncreased;
 
 
 	public void AddModifier(IdleModifier modifier)
@@ -83,6 +84,7 @@ public partial class IdleNumber
     public void IncreaseValue(long value)
     {
         SetValue(this.value + value);
+		OnValueIncreased(value);
         if (value < 0) GD.Print("ON EST DANS LE NEGATIF DEFCON 5");
     }
 
@@ -101,6 +103,23 @@ public partial class IdleNumber
     public void ResetOnValueChanged(Action<long> action)
     {
 	    OnValueChanged -= action;
+    }
+
+    public void SetOnValueIncreased(Action<long> action)
+    {
+        if (action == null)
+        {
+            GD.PrintErr("ERROR ACTION(INCREASE) IS NULL WTF");
+        }
+        else
+        {
+            OnValueIncreased += action;
+        }
+    }
+
+    public void ResetOnValueIncreased(Action<long> action)
+    {
+        OnValueIncreased -= action;
     }
 
     public void OnLoad()
