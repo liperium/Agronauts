@@ -16,9 +16,9 @@ public class GameSettings
     public void Init()
     {
         soundVolumes = new Dictionary<SoundCategory, double>();
-        soundVolumes.Add(SoundCategory.Master, 1.0);
-        soundVolumes.Add(SoundCategory.Music, 1.0);
-        soundVolumes.Add(SoundCategory.Sfx, 1.0);
+        soundVolumes.Add(SoundCategory.PlayerMaster, 1.0);
+        soundVolumes.Add(SoundCategory.PlayerMusic, 1.0);
+        soundVolumes.Add(SoundCategory.PlayerSfx, 1.0);
 
         buyLandOnHold = false;
     }

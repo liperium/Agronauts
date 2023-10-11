@@ -3,9 +3,13 @@ using System;
 
 public enum SoundCategory
 {
-	Master = 1,
-	Music = 2,
-	Sfx = 3
+	GameMaster = 0,
+	PlayerMaster = 1,
+	PlayerMusic = 2,
+	PlayerSfx = 3,
+	GameMusic = 4,
+	GameSfx = 5,
+	CombatMusic = 6,
 }
 
 public partial class SoundSlider : HSlider
@@ -17,12 +21,7 @@ public partial class SoundSlider : HSlider
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		double settingsSoundVolume = 0;
-		if (GameState.settings.soundVolumes.ContainsKey(category))
-		{
-			settingsSoundVolume = GameState.settings.soundVolumes[category];
-		}
-		
+		double settingsSoundVolume = GameState.settings.soundVolumes[category];
 		busID = (int)category;
 		
 		double volume = Mathf.LinearToDb(settingsSoundVolume);
