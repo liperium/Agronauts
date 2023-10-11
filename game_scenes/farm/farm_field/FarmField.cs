@@ -23,7 +23,7 @@ public partial class FarmField : Node2D
 				farmLand.Position = new Vector2(xCount*CELL_SIZE, yCount*CELL_SIZE);
 				if (xCount == 2 && yCount == 2 && first)
 				{
-					farmLand.Show();
+					farmLand.FirstShow();
 					FarmFieldMaster.originFarmLand = farmLand.GlobalPosition;
 				}
 				farmLand.position = new Pos2D(xCount, yCount);
