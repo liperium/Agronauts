@@ -353,7 +353,6 @@ size_flags_vertical = 3
 tabs_visible = false
 
 [node name="Farm" type="ScrollContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
@@ -364,6 +363,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Furnace2" type="VBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
