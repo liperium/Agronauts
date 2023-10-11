@@ -8,11 +8,11 @@ public partial class UnlockFurnaceTab : Control
     public override void _Ready()
     {
         base._Ready();
-        GetParent<Control>().Visible = false;
+        GetParent<Control>().Hide();
         
         if (GameState.instance.upgrades.unlockFurnaceUpgrade.IsUnlocked())
         {
-            GetParent<Control>().Visible = true;
+            GetParent<Control>().Show();
         }
         else
         {
@@ -26,7 +26,7 @@ public partial class UnlockFurnaceTab : Control
         GameState.instance.upgrades.unlockFurnaceUpgrade.ResetOnUnlock(UnlockTab);
         onUnlockPlugged = false;
         
-        GetParent<Control>().Visible = true;
+        GetParent<Control>().Show();
         unlock_pop_up.instance.ChangeText("KUNLOCKFURNACE", "KUNLOCKFURNACEDESC");
         unlock_pop_up.instance.Animation();
     }
