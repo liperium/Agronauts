@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://2hdxwrsf3nu0"]
+[gd_scene load_steps=6 format=3 uid="uid://2hdxwrsf3nu0"]
 
 [ext_resource type="Script" path="res://UI/SaveButton.cs" id="1_xypjv"]
 [ext_resource type="Script" path="res://game_scenes/UI/SoundSlider.cs" id="2_41ko5"]
+[ext_resource type="Script" path="res://game_scenes/UI/BuyOnHoldSetting.cs" id="3_5cyjo"]
 [ext_resource type="Script" path="res://game_scenes/UI/QuitButton.cs" id="3_xfdxp"]
+[ext_resource type="Script" path="res://UI/ShowAcquiredUpgradesSetting.cs" id="4_cr5j1"]
 
 [node name="SettingsHBox" type="VBoxContainer"]
 size_flags_horizontal = 3
@@ -35,7 +37,6 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 script = ExtResource("2_41ko5")
-busID = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -52,7 +53,6 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 script = ExtResource("2_41ko5")
-busID = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -69,10 +69,31 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 script = ExtResource("2_41ko5")
-busID = 3
 
 [node name="HSeparator2" type="HSeparator" parent="."]
 layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer4"]
+layout_mode = 2
+text = "KBUYLANDONHELD :"
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer4"]
+layout_mode = 2
+script = ExtResource("3_5cyjo")
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer5"]
+layout_mode = 2
+text = "KSHOWACQUIREDUPGRADES :"
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer5"]
+layout_mode = 2
+script = ExtResource("4_cr5j1")
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 2
