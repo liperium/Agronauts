@@ -46,13 +46,26 @@ public partial class FightWaveHandler : Node2D
 
         if (waveTimer.TimeLeft != 0 && waveTimer.TimeLeft <= 60)
         {
-            //TODO WAVE WARNING SFX
+            //TODO time remaining UI
         }
     }
 
     private void OnTimerEnd()
     {
-        StartWave();
+        waveTimer.Timeout -= OnTimerEnd;
+        
+        //TODO VAGUE ARRIVE POPUP
+        
+        waveTimer.Timeout += WaveStayEnd;
+        waveTimer.Start(GetInvasionStayTime());
+    }
+
+    private void WaveStayEnd()
+    {
+        //TODO Wave s'en va
+        waveTimer.Timeout -= WaveStayEnd;
+        waveTimer.Timeout -= OnTimerEnd;
+        waveTimer.Start(GetWaveTime());
     }
 
     private void StartWave()
@@ -63,6 +76,11 @@ public partial class FightWaveHandler : Node2D
 
     public float GetWaveTime()
     {
-        return 15;
+        return 15f;
+    }
+
+    public float GetInvasionStayTime()
+    {
+        return 120f;
     }
 }
