@@ -9,7 +9,10 @@ public partial class IdleUpgrade <TModifier> : BaseIdleUpgrade where TModifier :
 	
 	public virtual void Apply()
 	{
-		affectedNumber.AddModifier(modifier);
+		if (!affectedNumber.HasModifier(modifier))
+		{
+			affectedNumber.AddModifier(modifier);
+		}
 	}
 
 	protected void SetAffectedNumber()

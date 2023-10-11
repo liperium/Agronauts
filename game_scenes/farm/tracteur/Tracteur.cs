@@ -18,6 +18,7 @@ public partial class Tracteur : CharacterBody2D
     private int directionV = 1;
     private int row = 0;
     private AutoState state = AutoState.MOVE_VERTICAL;
+    private bool enabled = true;
 
     public float RotationSpeed { get => speed / 30f; }
 
@@ -41,6 +42,11 @@ public partial class Tracteur : CharacterBody2D
         {
             epandeuse.Hide();
             epandeuse.SetCollision(false);
+        }
+        else
+        {
+            HideTractor(HideManualTractor.IsHidden());
+            HideManualTractor.SetOnHideCheck(HideTractor);
         }
         if (GameState.instance.upgrades.tractorSpreadSeedsUpgrade.acquired)
         {
@@ -88,6 +94,7 @@ public partial class Tracteur : CharacterBody2D
 
     public void AutoProcess(double delta)
     {
+        if(!enabled) return;
         if (step == -1) step = Mathf.Abs((bottomRightBound.X - topLeftBound.X)/FarmFieldMaster.TILE_PER_FF);
         switch (state)
         {
@@ -154,8 +161,10 @@ public partial class Tracteur : CharacterBody2D
     }
 
 	public void ManualProcess(double delta)
-	{
+    {
 
+        if (!enabled) return;
+        
         if (Input.IsActionPressed("tracteur_front") || Input.IsActionPressed("tracteur_back"))
         {
             float front_back = Input.GetActionStrength("tracteur_front") - Input.GetActionStrength("tracteur_back");
@@ -185,5 +194,24 @@ public partial class Tracteur : CharacterBody2D
         epandeuse.SetCollision(true);
         GameState.instance.upgrades.tractorSpreadSeedsUpgrade.ResetOnBuyUpgrade(UpgradeEpandeur);
 
+    }
+
+    public void HideTractor(bool hide)
+    {
+        if (hide)
+        {
+            Hide();
+            enabled = false;
+        }
+        else
+        {
+            Show();
+            enabled = true;
+        }
+    }
+
+    public override void _ExitTree()
+    {
+        HideManualTractor.ResetOnHideCheck(HideTractor);
     }
 }

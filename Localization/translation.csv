@@ -21,7 +21,7 @@ KNOSPACEAVAIBLEFORTRUCK,There is no space avaible to add a new tractor!,Il n'y a
 KTRUCKSPEEDUPGRADE,Potato fuel,Carburant aux patates
 KTRUCKSPEEDUPGRADEDESC,VROOM! Faster trucks! Double the speed.,VROOM! Des tracteurs plus rapides! Deux fois la vitesse.
 KAUTOCOOKUPGRADE,Personal cook,Cuisinier personel
-KAUTOCOOKUPGRADEDESC,If your oven is left unattended long enough this personal cook will fill it for you,Si votre four est laissez sans surveillance assez longtemps ce cuisinier va le remplir pour vous.
+KAUTOCOOKUPGRADEDESC,If your oven is left unattended long enough your personal cook will fill it for you,Si votre four est laissez sans surveillance assez longtemps votre cuisinier va le remplir pour vous.
 KCONGRATULATIONS,Congratulations!,Félicitations!
 KCOOKUNLOCKTIP,Your new cook will get more skilled the more they cook.,Votre nouveau cuisinier gagnera de l'expérience à chaque cuisson.
 KCOOKLVL2,True chef,Vrai chef
@@ -56,3 +56,10 @@ KTEMPSPEEDTRUCK,Hot tractor,Tracteur chaud
 KTEMPSPEEDTRUCKDESC,Your tractors speed up proportional to your potato temperature,La vitesse de vos tracteurs augmente proportionnellement à la température de vos patates
 KCOOKEDRECYCLER,Recycler,Recycleur
 KCOOKEDRECYCLERDESC,You use the crumbs at the bottom of the furnace to generate +10% fresh potatos from each batch,Vous utilisez les miettes au fond du four pour générer +10% de patates fraîches 
+KVOLUME,Volume,Volume
+KMASTER,Master,Global
+KMUSIC,Music,Musique
+KSFX,Sound effects,Effets sonores
+KBUYLANDONHELD,Buy land on hold click,Acheter terrain avec clic enfoncé
+KSHOWACQUIREDUPGRADES,Show bought upgrades,Montrer les améliorations achetées
+KHIDEMANUALTRACTOR,Hide manual tractor,Cacher le tracteur manuel
