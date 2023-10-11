@@ -26,7 +26,7 @@ public partial class FurnacePotatoRecyclerUpgrade : TieredUpgrade<MultiplierModi
 
         info.SetName("KCOOKEDRECYCLER");
         info.SetDescription("KCOOKEDRECYCLERDESC");
-        info.SetImagePath(InfoUpgrade.defaultPath);
+        info.SetImagePath("res://Upgrades/UpgradeImages/recup.png");
     }
 
     public override void Apply()

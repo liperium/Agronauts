@@ -26,11 +26,19 @@ public partial class IdleNumber
 
 	public void RemoveModifier(IdleModifier modifier)
 	{
+		if (modifiers == null)
+		{
+			modifiers = new List<IdleModifier>();
+		}
 		modifiers.Remove(modifier);
 	}
 
 	public bool HasModifier(IdleModifier modifier)
 	{
+		if (modifiers == null)
+		{
+			modifiers = new List<IdleModifier>();
+		}
 		return modifiers.Contains(modifier);
 	}
 

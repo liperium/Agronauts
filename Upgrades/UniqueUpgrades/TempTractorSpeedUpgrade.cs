@@ -30,7 +30,7 @@ public partial class TempTractorSpeedUpgrade : BuyableUpgrade<MultiplierModifier
         base.InnitInfo();
         info.SetName("KTEMPSPEEDTRUCK");
         info.SetDescription("KTEMPSPEEDTRUCKDESC");
-        info.SetImagePath(InfoUpgrade.defaultPath);
+        info.SetImagePath("res://Upgrades/UpgradeImages/tracteurfeu.png");
     }
 
     public override void OnLoad()
