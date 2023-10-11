@@ -23,7 +23,7 @@ public partial class Four : Control
         progressBar = GetNode<ProgressBar>("VBoxContainer/TextureRect/ProgressBar");
 
 		GameState.instance.numbers.furnaceSpeed.SetOnValueChanged(UpdateProgressBarStats);
-		UpdateProgressBarStats(GameState.instance.numbers.furnaceSpeed.value);
+		UpdateProgressBarStats(GameState.instance.numbers.furnaceSpeed.GetValue());
 
 		manualButton.Pressed += ButtonClicked;
 		timer.Timeout += DoneBatch;

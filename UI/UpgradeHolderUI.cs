@@ -87,7 +87,15 @@ public partial class UpgradeHolderUI : Control
     public void FreeMe()
     {
         genericUpgrade.ResetOnBuyUpgrade(FreeMe);
-        QueueFree();
+        NoButton();
+        UIManager.SetOnShowAcquired(ToggleShow);
+        ToggleShow(UIManager.AreAcquiredUpgradesShown());
+    }
+    
+    public void ToggleShow(bool show)
+    {
+        if (show) Show();
+        else Hide();
     }
 
     public override void _ExitTree()
@@ -100,4 +108,6 @@ public partial class UpgradeHolderUI : Control
             genericUpgrade.ResetOnUnlock(OnUnlock);
         }
     }
+
+
 }

@@ -2,7 +2,7 @@ using Godot;
 
 public partial class PotatoCountLabel : IdleNumberLabel
 {
-    protected override IdleNumber GetIdleNumber()
+    public override IdleNumber GetIdleNumber()
     {
         return GameState.instance.numbers.potatoCount;
     }

@@ -2,7 +2,7 @@
 
 public partial class CookedPotatoCountLabel : IdleNumberLabel
 {
-    protected override IdleNumber GetIdleNumber()
+    public override IdleNumber GetIdleNumber()
     {
         return GameState.instance.numbers.cookedPotatoCount;
     }

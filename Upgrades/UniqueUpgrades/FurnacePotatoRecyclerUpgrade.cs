@@ -6,7 +6,7 @@ public partial class FurnacePotatoRecyclerUpgrade : TieredUpgrade<MultiplierModi
     public override void OnBuy()
     {
         base.OnBuy();
-        GameState.instance.numbers.cookedPotatoCount.SetOnValueIncreased(Recycle);
+        if(!acquired) GameState.instance.numbers.cookedPotatoCount.SetOnValueIncreased(Recycle);
     }
 
 
@@ -54,7 +54,7 @@ public partial class FurnacePotatoRecyclerUpgrade : TieredUpgrade<MultiplierModi
 
     public override string GetEffectText()
     {
-        return +((int)(modifier.multiplier * 10)) + "%";
+        return +((int)(tier * 10)) + "%";
     }
     public override UIManager.UpgradeTab GetUpgradeTab()
     {

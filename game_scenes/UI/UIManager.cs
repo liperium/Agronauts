@@ -8,6 +8,10 @@ public partial class UIManager : CanvasLayer
 
 	private static List<IBuyable> all_upgrades = new List<IBuyable>();
 
+	private static bool showAcquired;
+
+	private static Action<bool> OnShowAcquired;
+
 	public enum UpgradeTab
 	{
 		Farm,
@@ -28,7 +32,7 @@ public partial class UIManager : CanvasLayer
 
 	public void InstantiateUpgradeUI(IBuyable upgrade)
 	{
-		if (upgrade.GetUpgradeTab() == UpgradeTab.None || (upgrade.IsOneTimeBuy() && upgrade.IsAcquired()))
+		if (upgrade.GetUpgradeTab() == UpgradeTab.None)
 		{
 			return;
 		}
@@ -41,7 +45,7 @@ public partial class UIManager : CanvasLayer
 		
 		newUpgradeHolderUi.Init(upgrade);
 
-		if (upgrade.IsOneTimeBuy())
+		if (upgrade.IsOneTimeBuy() && !upgrade.IsAcquired())
 		{
 			upgrade.SetOnBuyUpgrade(newUpgradeHolderUi.FreeMe);
 		}
@@ -64,8 +68,16 @@ public partial class UIManager : CanvasLayer
 				newUpgradeHolderUi.NoButton();
 				break;
 		}
+		
 		addToNode.AddChild(newUpgradeHolderUi);
 		upgrade.SetOnUnlock(tabButton.FlashTab);
+
+		if ((upgrade.IsOneTimeBuy() && upgrade.IsAcquired()))
+		{
+			newUpgradeHolderUi.FreeMe();
+		}
+		
+		
 	}
 
 	public static void AddAllUpgrade(IBuyable upgrade)
@@ -79,6 +91,46 @@ public partial class UIManager : CanvasLayer
 			GD.PrintErr("AddAllUpgrade added same upgrade");
 		}
 	}
+	
+	public static void SetOnShowAcquired(Action<bool> action)
+	{
+		if (action == null)
+		{
+			GD.Print("ERROR ACTION IS NULL WTF");
+		}
+		else
+		{
+			OnShowAcquired += action;
+		}
+	}
+	
+	public static void ResetOnShowAcquired(Action<bool> action)
+	{
+		if (action == null)
+		{
+			GD.Print("ERROR ACTION IS NULL WTF");
+		}
+		else
+		{
+			OnShowAcquired -= action;
+		}
+	}
+
+	public static void ShowAcquiredUpgrades(bool show)
+	{
+		showAcquired = show;
+		if(OnShowAcquired != null)OnShowAcquired(show);
+	}
+	
+
+	public static bool AreAcquiredUpgradesShown()
+	{
+		return showAcquired;
+	}
+	
+	
+	
+	
 
 
 // Called every frame. 'delta' is the elapsed time since the previous frame.

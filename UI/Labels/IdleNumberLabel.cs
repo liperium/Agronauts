@@ -22,7 +22,7 @@ public partial class IdleNumberLabel : Node
         GetParent<LerpValue>().Init(number.GetValue());
     }
 
-    protected virtual IdleNumber GetIdleNumber()
+    public virtual IdleNumber GetIdleNumber()
     {
         return null;
     }
