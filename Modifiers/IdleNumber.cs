@@ -29,6 +29,11 @@ public partial class IdleNumber
 		modifiers.Remove(modifier);
 	}
 
+	public bool HasModifier(IdleModifier modifier)
+	{
+		return modifiers.Contains(modifier);
+	}
+
 	public void UpdateValue(bool callValueChanged = true)
 	{
 		multiplier = 1.0f;

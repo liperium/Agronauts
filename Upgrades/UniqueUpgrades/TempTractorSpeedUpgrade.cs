@@ -51,6 +51,7 @@ public partial class TempTractorSpeedUpgrade : BuyableUpgrade<MultiplierModifier
     public void UpdateMultiplier(long temp)
     {
         modifier.multiplier = 1 + GameState.instance.numbers.potatoTemperature.GetValue() / 100f;
+        GameState.instance.numbers.truckSpeed.UpdateValue();
     }
 
     public void CheckUnlock(long cookedPotatos)
