@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://5f2d2u2r7mwr"]
+[gd_scene load_steps=11 format=3 uid="uid://5f2d2u2r7mwr"]
 
 [ext_resource type="Script" path="res://game_scenes/farm/PlayerCamera.cs" id="1_ou2to"]
 [ext_resource type="PackedScene" uid="uid://bgxvkolxvu33k" path="res://game_scenes/UI/NewMainUI.tscn" id="2_grc08"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://game_scenes/farm/farmland/clouds.gdshader" id="5_54hw2"]
 [ext_resource type="Texture2D" uid="uid://dcwc517rngmu6" path="res://game_scenes/farm/farmland/BGTiles.png" id="5_udmy4"]
 [ext_resource type="Script" path="res://game_scenes/farm/Cheats.cs" id="6_fg8l0"]
+[ext_resource type="PackedScene" uid="uid://cnxvtxvntw2e1" path="res://Fight/FightWaveHandler.tscn" id="7_88jwg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5ielc"]
 texture = ExtResource("5_udmy4")
@@ -61,3 +62,6 @@ mouse_filter = 2
 
 [node name="Cheats" type="Node2D" parent="."]
 script = ExtResource("6_fg8l0")
+
+[node name="FightWaveHandler" parent="." instance=ExtResource("7_88jwg")]
+position = Vector2(499, 480)
