@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bgxvkolxvu33k"]
+[gd_scene load_steps=42 format=3 uid="uid://bgxvkolxvu33k"]
 
 [ext_resource type="Script" path="res://game_scenes/UI/UIManager.cs" id="1_1o6vr"]
 [ext_resource type="PackedScene" uid="uid://c7vdiidjnc4py" path="res://UI/unlock_pop_up.tscn" id="1_1tles"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dc4wna03ta38b" path="res://game_scenes/four/four.tscn" id="16_nvoum"]
 [ext_resource type="Texture2D" uid="uid://c6voma67rfl5h" path="res://UI/sprites/FOUR_cosy.png" id="17_aeybh"]
 [ext_resource type="Script" path="res://game_scenes/UI/SoundSlider.cs" id="19_y76fi"]
+[ext_resource type="Script" path="res://game_scenes/UI/BuyOnHoldSetting.cs" id="20_mqnpq"]
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="39_hs3fy"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n48gx"]
@@ -473,6 +474,17 @@ busID = 3
 
 [node name="HSeparator2" type="HSeparator" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox"]
 layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox/HBoxContainer4"]
+layout_mode = 2
+text = "KBUYTILESONHOLD :"
+
+[node name="CheckBox" type="CheckBox" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox/HBoxContainer4"]
+layout_mode = 2
+script = ExtResource("20_mqnpq")
 
 [node name="Quit" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox"]
 layout_mode = 2
