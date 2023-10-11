@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6eyx2i5qt26b"]
+
+[ext_resource type="Script" path="res://game_scenes/UI/SoundSlider.cs" id="1_r2i8o"]
+[ext_resource type="Script" path="res://game_scenes/UI/BuyOnHoldSetting.cs" id="2_q8qgc"]
+[ext_resource type="Script" path="res://UI/ShowAcquiredUpgradesSetting.cs" id="3_o8y84"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "KVOLUME"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "KMASTER :"
+
+[node name="SoundSlider" type="HSlider" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("1_r2i8o")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+text = "KSFX :"
+
+[node name="SoundSlider" type="HSlider" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("1_r2i8o")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer3"]
+layout_mode = 2
+text = "KMUSIC :"
+
+[node name="SoundSlider" type="HSlider" parent="HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("1_r2i8o")
+
+[node name="HSeparator2" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer4"]
+layout_mode = 2
+text = "KBUYLANDONHELD :"
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 10
+script = ExtResource("2_q8qgc")
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer5"]
+layout_mode = 2
+text = "KSHOWACQUIREDUPGRADES :"
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 10
+script = ExtResource("3_o8y84")

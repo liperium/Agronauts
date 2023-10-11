@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://jmi5sx8v8cpg"]
+[gd_scene load_steps=19 format=3 uid="uid://jmi5sx8v8cpg"]
 
 [ext_resource type="Script" path="res://game_scenes/menu/StartGame.cs" id="1_1ljay"]
 [ext_resource type="Texture2D" uid="uid://bmlpuorrvkd81" path="res://game_scenes/menu/background/base.png" id="1_3y7u8"]
@@ -6,11 +6,13 @@
 [ext_resource type="Script" path="res://game_scenes/menu/Quit.cs" id="2_b0yyy"]
 [ext_resource type="Script" path="res://game_scenes/menu/MainMenuSettings.cs" id="2_gnbxs"]
 [ext_resource type="FontFile" uid="uid://dimlytvy78tyd" path="res://game_scenes/menu/background/Under Station.ttf" id="3_8e064"]
-[ext_resource type="PackedScene" uid="uid://2hdxwrsf3nu0" path="res://UI/all_settings.tscn" id="3_d5x73"]
+[ext_resource type="PackedScene" uid="uid://b6eyx2i5qt26b" path="res://UI/only_settings.tscn" id="3_fm8tp"]
 [ext_resource type="Texture2D" uid="uid://bhsalfesr2ybk" path="res://UI/sprites/option_nobg.png" id="4_itp0p"]
 [ext_resource type="PackedScene" uid="uid://5f2d2u2r7mwr" path="res://game_scenes/farm/farm.tscn" id="5_8msx8"]
 [ext_resource type="Texture2D" uid="uid://w58bxt3imsq7" path="res://game_scenes/menu/background/vaisseau.png" id="6_krmyu"]
 [ext_resource type="Texture2D" uid="uid://d2xgmql4xvasy" path="res://game_scenes/menu/background/drone.png" id="7_wqfvf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ab6q"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4l5n3"]
 
@@ -101,13 +103,23 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="SettingsHBox" parent="Control/MainMenuSettings/PanelContainer/MarginContainer" instance=ExtResource("3_d5x73")]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/MainMenuSettings/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MainMenuSettings/PanelContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "KSETTINGS"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" parent="Control/MainMenuSettings/PanelContainer/MarginContainer/VBoxContainer2" instance=ExtResource("3_fm8tp")]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="Control/MainMenuSettings"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2ab6q")
 
 [node name="TextureRect" type="TextureRect" parent="Control/MainMenuSettings/Button"]
 layout_mode = 1
@@ -143,7 +155,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -929.0
 offset_top = -221.0
-offset_bottom = 0.000976563
+offset_bottom = 0.00109863
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 0

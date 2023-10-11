@@ -6,12 +6,10 @@ public partial class Tab : Control
     [Export] public int tabIndex;
     [Export] public TabContainer tabContainer;
 
-    private AnimationTree animationTree;
     private BaseButton button;
     public override void _Ready()
     {
         base._Ready();
-        animationTree = GetNode<AnimationTree>("AnimationTree");
         button = GetNode<BaseButton>("Button");
 
         button.Pressed += TabButtonPressed;
@@ -22,8 +20,7 @@ public partial class Tab : Control
     {
         if (tabContainer != null)
         {
-            animationTree.Set("parameters/conditions/idle", true);
-            animationTree.Set("parameters/conditions/flash", false);
+            GetNode<Flash>("Flash").Stop();
             tabContainer.CurrentTab = tabIndex;
         }
         else
@@ -34,10 +31,9 @@ public partial class Tab : Control
 
     public void FlashTab()
     {
-        if (tabContainer != null && (tabContainer.CurrentTab != tabIndex || !BtnShowHideMenu.instance.IsOpened()))
+        if (tabContainer != null && (tabContainer.CurrentTab != tabIndex || !ShowHideMenu.instance.IsOpened()))
         {
-            animationTree.Set("parameters/conditions/flash", true);
-            animationTree.Set("parameters/conditions/idle", false);
+            GetNode<Flash>("Flash").Start();
         }
         else
         {
