@@ -34,13 +34,16 @@ public partial class UpgradeHolderUI : Control
     {
         base._Ready();
         bool unlocked = genericUpgrade.IsUnlocked();
-        
-        Visible = unlocked;
-        
+                
         if (unlocked == false)
         {
+            Hide();
             genericUpgrade.SetOnUnlock(OnUnlock);
             onUnlockPlugged = true;
+        }
+        else
+        {
+            Show();
         }
     }
 
@@ -51,7 +54,7 @@ public partial class UpgradeHolderUI : Control
 
     private void OnUnlock()
     {
-        Visible = true;
+        Show();
         genericUpgrade.ResetOnUnlock(OnUnlock);
         onUnlockPlugged = false;
     }
