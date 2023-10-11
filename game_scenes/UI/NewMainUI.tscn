@@ -285,7 +285,9 @@ stretch_mode = 5
 [node name="TabButton2" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("10_fq3ht")
+script = ExtResource("12_er6ur")
+popupTitle = "KUNLOCKFURNACE"
+popupDescription = "KUNLOCKFURNACEDESC"
 tabIndex = 1
 tabContainer = NodePath("../../../Control")
 
@@ -300,16 +302,12 @@ texture = ExtResource("11_jr12r")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="UnlockFurnaceTab" type="Control" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/TabButton2"]
-layout_mode = 3
-anchors_preset = 0
-mouse_filter = 2
-script = ExtResource("12_er6ur")
-
 [node name="TabButton3" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("10_fq3ht")
+script = ExtResource("14_vu3tg")
+popupTitle = "KUNLOCKARTIFACTS"
+popupDescription = "KUNLOCKARTIFACTSDESC"
 tabIndex = 2
 tabContainer = NodePath("../../../Control")
 
@@ -323,11 +321,6 @@ grow_vertical = 2
 texture = ExtResource("13_n8qf6")
 expand_mode = 1
 stretch_mode = 5
-
-[node name="UnlockArtifactsTab" type="Control" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/TabButton3"]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("14_vu3tg")
 
 [node name="TabButton4" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer" node_paths=PackedStringArray("tabContainer")]
 layout_mode = 2

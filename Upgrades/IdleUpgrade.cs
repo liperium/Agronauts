@@ -1,16 +1,12 @@
-using Godot;
 using System;
+
 [Serializable]
-public partial class IdleUpgrade <TModifier> where TModifier : IdleModifier, new()
+public partial class IdleUpgrade <TModifier> : BaseIdleUpgrade where TModifier : IdleModifier, new()
 {
 	public int modifierId;
 	protected TModifier modifier;
 	protected IdleNumber affectedNumber;
-	protected InfoUpgrade info;
-
-	public bool acquired;
-
-
+	
 	public virtual void Apply()
 	{
 		affectedNumber.AddModifier(modifier);
@@ -25,27 +21,15 @@ public partial class IdleUpgrade <TModifier> where TModifier : IdleModifier, new
 		}
 	}
 
-
 	public virtual IdleNumber GetAffectedNumber()
 	{
 		return GameState.instance.numbers.potatoCount;
 	}
 
-	public InfoUpgrade GetInfo()
+	public override void OnLoad()
 	{
-		return info;
-	}
-
-	public virtual void InnitInfo()
-	{
-		info = new InfoUpgrade();
-		info.SetName("ERROR");
-		info.SetDescription("ERROR NOT SET");
-		info.SetImagePath("res://theming/icon.svg");
-    }
-
-	public virtual void OnLoad()
-	{
+		base.OnLoad();
+		
 		if (modifierId == 0)
 		{
 			this.modifier = new TModifier();
