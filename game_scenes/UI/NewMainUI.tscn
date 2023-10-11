@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://UI/Labels/CookedPotatoCountLabel.cs" id="6_6ave8"]
 [ext_resource type="Texture2D" uid="uid://c38udnmhrwqc6" path="res://UI/sprites/FERME_fond.png" id="7_cpijt"]
 [ext_resource type="Script" path="res://UI/Labels/TemperatureLabel.cs" id="7_d3vh4"]
-[ext_resource type="PackedScene" uid="uid://ikvd5qc30t20" path="res://UI/menu_tab_button.tscn" id="9_7m5yc"]
+[ext_resource type="PackedScene" uid="uid://b7uldwnmxuawf" path="res://UI/menu_tab_button.tscn" id="9_7m5yc"]
 [ext_resource type="Script" path="res://game_scenes/UI/Tab.cs" id="10_syuad"]
 [ext_resource type="Texture2D" uid="uid://balns1cnkjntf" path="res://UI/sprites/four_nobg.png" id="11_jr12r"]
 [ext_resource type="Texture2D" uid="uid://bcbblpddy6qv5" path="res://UI/sprites/fleche_bouton.png" id="12_bpahg"]

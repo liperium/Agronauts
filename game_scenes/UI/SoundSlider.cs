@@ -17,7 +17,12 @@ public partial class SoundSlider : HSlider
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		double settingsSoundVolume = GameState.settings.soundVolumes[category];
+		double settingsSoundVolume = 0;
+		if (GameState.settings.soundVolumes.ContainsKey(category))
+		{
+			settingsSoundVolume = GameState.settings.soundVolumes[category];
+		}
+		
 		busID = (int)category;
 		
 		double volume = Mathf.LinearToDb(settingsSoundVolume);
