@@ -39,7 +39,7 @@ public partial class Tracteur : CharacterBody2D
         epandeuse = GetNode<Epandeuse>("Epandeuse");
         if (automatic)
         {
-            epandeuse.Visible = false;
+            epandeuse.Hide();
             epandeuse.SetCollision(false);
         }
         if (GameState.instance.upgrades.tractorSpreadSeedsUpgrade.acquired)
@@ -181,7 +181,7 @@ public partial class Tracteur : CharacterBody2D
 
     public void UpgradeEpandeur()
     {
-        epandeuse.Visible = true;
+        epandeuse.Show();
         epandeuse.SetCollision(true);
         GameState.instance.upgrades.tractorSpreadSeedsUpgrade.ResetOnBuyUpgrade(UpgradeEpandeur);
 

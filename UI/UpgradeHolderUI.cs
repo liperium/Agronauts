@@ -82,7 +82,7 @@ public partial class UpgradeHolderUI : Control
 
     public void NoButton()
     {
-        GetNode<Control>("HBoxContainer/AspectRatioContainer").Visible = false;
+        GetNode<Control>("HBoxContainer/AspectRatioContainer").Hide();
     }
     public void FreeMe()
     {

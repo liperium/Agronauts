@@ -106,7 +106,7 @@ public partial class FarmField : Node2D
 			}
 			else
 			{
-				GetNode<FarmLand>($"{posNei.X}-{posNei.Y}").Show();
+				GetNode<FarmLand>($"{posNei.X}-{posNei.Y}").FirstShow();
 			}
 			posNextNei += new Pos2D(2,2);
 			posNextNei.X = Math.Abs(posNextNei.X);

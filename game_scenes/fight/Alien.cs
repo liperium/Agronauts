@@ -52,7 +52,7 @@ public partial class Alien : Area2D
             audioStreamPlayer.Stream = dieSound;
             audioStreamPlayer.Play();
             audioStreamPlayer.Finished += () => QueueFree();
-            Visible = false;
+            Hide();
         }
     }
 }

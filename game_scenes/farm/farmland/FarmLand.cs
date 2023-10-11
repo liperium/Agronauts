@@ -64,7 +64,7 @@ public partial class FarmLand : Area2D
 		growthTimer.OneShot = true;
 
 		priceLabel = GetNode<RichTextLabel>("CenterContainer/PriceLabel");
-		priceLabel.Visible = true;
+		priceLabel.Show();
 
 
 		//TODO link with global timer
@@ -78,7 +78,7 @@ public partial class FarmLand : Area2D
 		FarmFieldMaster.OnFarmTimeChange += UpdateProgressBarStats;
 		UpdateProgressBarStats();
 
-		Hide();
+		HideRemoveInteract();
 	}
 
 	public CompressedTexture2D GetRandomTexture(CompressedTexture2D[] choices)
@@ -100,16 +100,16 @@ public partial class FarmLand : Area2D
 		priceLabel.Text = $"[center]{cost.FormattedNumber()}\n[img=30x30]res://Icons/Potato.png[/img][/center]";
 	}
 
-	public void Show()
+	public void FirstShow()
 	{
-		Visible = true;
+		Show();
 		GetNode<AnimationTree>("AnimationTree").Active = true;
 		button.MouseFilter = Control.MouseFilterEnum.Stop;
 	}
 
-	public void Hide()
+	public void HideRemoveInteract()
 	{
-		Visible = false;
+		Hide();
 		button.MouseFilter = Control.MouseFilterEnum.Ignore;
 	}
 
@@ -182,13 +182,13 @@ public partial class FarmLand : Area2D
 		button.TextureNormal = GetRandomTexture(PlantedTextures);
 		currState = LandState.Planted;
 		growthTimer.Start();
-		progressBar.Visible = true;
+		progressBar.Show();
 	}
 	public void Harvest()
 	{
 		button.TextureNormal = GetRandomTexture(LaboureTextures);
 		currState = LandState.Laboure;
-		progressBar.Visible = false;
+		progressBar.Hide();
 
 		audioPlayer.Stream = harvestSound;
 		audioPlayer.Play();
@@ -197,7 +197,7 @@ public partial class FarmLand : Area2D
 
 	public void Grown()
 	{
-		progressBar.Visible = false;
+		progressBar.Hide();
 		button.TextureNormal = GetRandomTexture(ReadyTextures);
 		currState = LandState.Ready;
 	}

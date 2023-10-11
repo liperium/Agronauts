@@ -70,7 +70,7 @@ public partial class FarmFieldMaster : Node2D
 			SpawnField(targetField.X, targetField.Y);
 		}
 		// Unlock la tile
-		GetNode<FarmField>($"{targetField.X}-{targetField.Y}").GetNode<FarmLand>($"{toBuy.X}-{toBuy.Y}").Show();
+		GetNode<FarmField>($"{targetField.X}-{targetField.Y}").GetNode<FarmLand>($"{toBuy.X}-{toBuy.Y}").FirstShow();
 
 	}
 
