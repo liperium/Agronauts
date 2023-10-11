@@ -41,7 +41,7 @@ public partial class FarmLand : Area2D
 		ResourceLoader.Load<AudioStreamWav>("res://game_scenes/farm/farmland/sfx/potato_harvested.wav");
 	public static AudioStreamWav buySound =
 		ResourceLoader.Load<AudioStreamWav>("res://game_scenes/farm/farmland/sfx/buy_land.wav");
-
+	public static bool buyOnHeld;
 	private TextureButton button;
 	private Timer growthTimer;
 	private ProgressBar progressBar;
@@ -139,7 +139,13 @@ public partial class FarmLand : Area2D
 		}
 	}
 
-	private bool CanBuy()
+    public void HeldClicked()
+    {
+		if (currState == LandState.Wild && !buyOnHeld) return;
+		Clicked();
+    }
+
+    private bool CanBuy()
 	{
 		return GameState.instance.numbers.potatoCount.GetValue() >= cost;
 	}
@@ -149,7 +155,7 @@ public partial class FarmLand : Area2D
 	{
 		if (Input.IsActionPressed("upgrade_tile"))
 		{
-			Clicked();
+			HeldClicked();
 		}
     }
 	public void Bought(bool pay = true, bool addToHistory = true)
