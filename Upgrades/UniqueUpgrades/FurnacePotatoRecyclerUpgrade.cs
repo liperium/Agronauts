@@ -38,7 +38,7 @@ public partial class FurnacePotatoRecyclerUpgrade : TieredUpgrade<MultiplierModi
     {
         base.OnLoad();
 
-        if (IsUnlocked() == false) GameState.instance.upgrades.autoFurnaceUpgrade.SetOnUnlock(CheckUnlock);
+        if (IsUnlocked() == false) GameState.instance.numbers.truckAmount.SetOnValueChanged(CheckUnlock);
 
         if (acquired)
         {
@@ -46,10 +46,10 @@ public partial class FurnacePotatoRecyclerUpgrade : TieredUpgrade<MultiplierModi
         }
     }
 
-    private void CheckUnlock()
+    private void CheckUnlock(long amount)
     {
         Unlock();
-        GameState.instance.upgrades.autoFurnaceUpgrade.ResetOnUnlock(CheckUnlock);     
+        GameState.instance.numbers.truckAmount.ResetOnValueChanged(CheckUnlock);     
     }
 
     public override string GetEffectText()
@@ -64,7 +64,6 @@ public partial class FurnacePotatoRecyclerUpgrade : TieredUpgrade<MultiplierModi
     public void Recycle(long number)
     {
         GameState.instance.numbers.potatoCount.IncreaseValue((long)(number * tier * 0.1f));
-
     }
 
 }

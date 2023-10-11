@@ -84,7 +84,7 @@ public partial class IdleNumber
     public void IncreaseValue(long value)
     {
         SetValue(this.value + value);
-		OnValueIncreased(value);
+		if(OnValueIncreased != null) { OnValueIncreased(value); }
         if (value < 0) GD.Print("ON EST DANS LE NEGATIF DEFCON 5");
     }
 
