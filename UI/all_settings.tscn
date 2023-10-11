@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://2hdxwrsf3nu0"]
+
+[ext_resource type="Script" path="res://UI/SaveButton.cs" id="1_xypjv"]
+[ext_resource type="Script" path="res://game_scenes/UI/SoundSlider.cs" id="2_41ko5"]
+[ext_resource type="Script" path="res://game_scenes/UI/QuitButton.cs" id="3_xfdxp"]
+
+[node name="SettingsHBox" type="VBoxContainer"]
+size_flags_horizontal = 3
+
+[node name="Save" type="Button" parent="."]
+layout_mode = 2
+text = "KSAVE"
+script = ExtResource("1_xypjv")
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "KVOLUME"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "KMASTER :"
+
+[node name="SoundSlider" type="HSlider" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("2_41ko5")
+busID = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+text = "KSFX :"
+
+[node name="SoundSlider" type="HSlider" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("2_41ko5")
+busID = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer3"]
+layout_mode = 2
+text = "KMUSIC :"
+
+[node name="SoundSlider" type="HSlider" parent="HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("2_41ko5")
+busID = 3
+
+[node name="HSeparator2" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 2
+text = "KQUIT"
+script = ExtResource("3_xfdxp")
