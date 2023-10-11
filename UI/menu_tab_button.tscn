@@ -1,0 +1,130 @@
+[gd_scene load_steps=13 format=3 uid="uid://b7uldwnmxuawf"]
+
+[ext_resource type="Script" path="res://game_scenes/UI/UnlockableTab.cs" id="2_8iqsm"]
+[ext_resource type="Texture2D" uid="uid://uu6tex3dyyqi" path="res://UI/sprites/fourche_nobg.png" id="2_cvn67"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o01nd"]
+
+[sub_resource type="Animation" id="Animation_5pt33"]
+resource_name = "flashing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.406126, 0.217638, 0.406126),
+"update": 0,
+"values": [Color(1, 1, 0.0666667, 0.0980392), Color(1, 1, 0.0666667, 0), Color(1, 1, 0.0666667, 0.0980392)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_gbuoe"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cmshn"]
+_data = {
+"flashing": SubResource("Animation_5pt33"),
+"idle": SubResource("Animation_gbuoe")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_23v7t"]
+animation = &"flashing"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lgb0a"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bttdg"]
+advance_mode = 2
+advance_condition = &"flash"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xjh3y"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_li2l6"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xx1dk"]
+states/flashing/node = SubResource("AnimationNodeAnimation_23v7t")
+states/flashing/position = Vector2(599, 80)
+states/idle/node = SubResource("AnimationNodeAnimation_lgb0a")
+states/idle/position = Vector2(390, 70)
+transitions = ["idle", "flashing", SubResource("AnimationNodeStateMachineTransition_bttdg"), "flashing", "idle", SubResource("AnimationNodeStateMachineTransition_xjh3y"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_li2l6")]
+
+[node name="TextureRect" type="TextureRect"]
+offset_right = 32.0
+offset_bottom = 32.0
+size_flags_horizontal = 3
+texture = ExtResource("2_cvn67")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_8iqsm")
+
+[node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o01nd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cmshn")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_xx1dk")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/conditions/flash = false
+parameters/conditions/idle = false

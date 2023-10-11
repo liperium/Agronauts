@@ -4,10 +4,14 @@ public partial class BtnShowHideMenu : BaseButton
 {
     [Export] AnimationTree animTree;
 
+    public static BtnShowHideMenu instance = null;
+
     private bool opened;
     public override void _Ready()
     {
         base._Ready();
+
+        instance = this;
 
         if (GameState.instance.numbers.potatoCount.GetValue() == 0)
         {
@@ -18,11 +22,14 @@ public partial class BtnShowHideMenu : BaseButton
         GameState.instance.numbers.potatoCount.SetOnValueChanged(OnGetPotato);
     }
 
+    public bool IsOpened()
+    {
+        return opened;
+    }
+
     public override void _Pressed()
     {
         base._Pressed();
-        
-        GD.Print("Menu Open/Close");
 
         opened = !opened;
 
