@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bgxvkolxvu33k"]
+[gd_scene load_steps=39 format=3 uid="uid://bgxvkolxvu33k"]
 
 [ext_resource type="Script" path="res://game_scenes/UI/UIManager.cs" id="1_1o6vr"]
 [ext_resource type="PackedScene" uid="uid://c7vdiidjnc4py" path="res://UI/unlock_pop_up.tscn" id="1_1tles"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://UI/Labels/CookedPotatoCountLabel.cs" id="6_6ave8"]
 [ext_resource type="Texture2D" uid="uid://c38udnmhrwqc6" path="res://UI/sprites/FERME_fond.png" id="7_cpijt"]
 [ext_resource type="Script" path="res://UI/Labels/TemperatureLabel.cs" id="7_d3vh4"]
-[ext_resource type="PackedScene" uid="uid://b7uldwnmxuawf" path="res://UI/menu_tab_button.tscn" id="9_7m5yc"]
+[ext_resource type="PackedScene" uid="uid://ikvd5qc30t20" path="res://UI/menu_tab_button.tscn" id="9_7m5yc"]
 [ext_resource type="Script" path="res://game_scenes/UI/Tab.cs" id="10_syuad"]
 [ext_resource type="Texture2D" uid="uid://balns1cnkjntf" path="res://UI/sprites/four_nobg.png" id="11_jr12r"]
 [ext_resource type="Texture2D" uid="uid://bcbblpddy6qv5" path="res://UI/sprites/fleche_bouton.png" id="12_bpahg"]
@@ -15,12 +15,10 @@
 [ext_resource type="Script" path="res://game_scenes/UI/BtnShowHideMenu.cs" id="13_fsg4l"]
 [ext_resource type="Texture2D" uid="uid://d2i7dnxvaly0g" path="res://UI/sprites/manette_nobg.png" id="13_n8qf6"]
 [ext_resource type="Script" path="res://game_scenes/UI/UnlockArtifactsTab.cs" id="14_jeoe7"]
-[ext_resource type="Script" path="res://UI/SaveButton.cs" id="14_qlxfs"]
 [ext_resource type="Texture2D" uid="uid://bhsalfesr2ybk" path="res://UI/sprites/option_nobg.png" id="15_tx240"]
-[ext_resource type="Script" path="res://game_scenes/UI/QuitButton.cs" id="15_xxpdw"]
 [ext_resource type="PackedScene" uid="uid://dc4wna03ta38b" path="res://game_scenes/four/four.tscn" id="16_nvoum"]
 [ext_resource type="Texture2D" uid="uid://c6voma67rfl5h" path="res://UI/sprites/FOUR_cosy.png" id="17_aeybh"]
-[ext_resource type="Script" path="res://game_scenes/UI/SoundSlider.cs" id="19_y76fi"]
+[ext_resource type="PackedScene" uid="uid://2hdxwrsf3nu0" path="res://UI/all_settings.tscn" id="18_khtjg"]
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="39_hs3fy"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n48gx"]
@@ -358,83 +356,8 @@ size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="SettingsHBox" type="VBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings"]
+[node name="AllSettings" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings" instance=ExtResource("18_khtjg")]
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Save" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox"]
-layout_mode = 2
-text = "KSAVE"
-script = ExtResource("14_qlxfs")
-
-[node name="HSeparator" type="HSeparator" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox"]
-layout_mode = 2
-text = "KVOLUME"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox/HBoxContainer"]
-layout_mode = 2
-text = "KMASTER :"
-
-[node name="SoundSlider" type="HSlider" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-max_value = 1.0
-step = 0.01
-value = 1.0
-script = ExtResource("19_y76fi")
-busID = 1
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox/HBoxContainer2"]
-layout_mode = 2
-text = "KSFX :"
-
-[node name="SoundSlider" type="HSlider" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-max_value = 1.0
-step = 0.01
-value = 1.0
-script = ExtResource("19_y76fi")
-category = 2
-busID = 2
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox/HBoxContainer3"]
-layout_mode = 2
-text = "KMUSIC :"
-
-[node name="SoundSlider" type="HSlider" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox/HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-max_value = 1.0
-step = 0.01
-value = 1.0
-script = ExtResource("19_y76fi")
-category = 1
-busID = 3
-
-[node name="HSeparator2" type="HSeparator" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox"]
-layout_mode = 2
-
-[node name="Quit" type="Button" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Settings/SettingsHBox"]
-layout_mode = 2
-text = "KQUIT"
-script = ExtResource("15_xxpdw")
 
 [node name="TextureRect" type="TextureRect" parent="LeftMenu"]
 layout_mode = 1
