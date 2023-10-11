@@ -1,24 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://b7uldwnmxuawf"]
 
-[ext_resource type="Script" path="res://game_scenes/UI/Tab.cs" id="1_0yawm"]
+[ext_resource type="Script" path="res://game_scenes/UI/UnlockableTab.cs" id="2_8iqsm"]
 [ext_resource type="Texture2D" uid="uid://uu6tex3dyyqi" path="res://UI/sprites/fourche_nobg.png" id="2_cvn67"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o01nd"]
-
-[sub_resource type="Animation" id="Animation_gbuoe"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_5pt33"]
 resource_name = "flashing"
@@ -46,6 +31,21 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_gbuoe"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmshn"]
@@ -85,7 +85,7 @@ size_flags_horizontal = 3
 texture = ExtResource("2_cvn67")
 expand_mode = 1
 stretch_mode = 5
-script = ExtResource("1_0yawm")
+script = ExtResource("2_8iqsm")
 
 [node name="Panel" type="Panel" parent="."]
 show_behind_parent = true
@@ -107,6 +107,7 @@ size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxEmpty_o01nd")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -114,7 +115,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(1, 1, 0.0666667, 0.0605061)
+color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

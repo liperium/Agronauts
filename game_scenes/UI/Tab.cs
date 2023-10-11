@@ -35,7 +35,7 @@ public partial class Tab : Control
 
     public void FlashTab()
     {
-        if (tabContainer != null)
+        if (tabContainer != null && (tabContainer.CurrentTab != tabIndex || !BtnShowHideMenu.instance.IsOpened()))
         {
             animationTree.Set("parameters/conditions/flash", true);
             animationTree.Set("parameters/conditions/idle", false);

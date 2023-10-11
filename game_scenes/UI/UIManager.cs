@@ -47,21 +47,25 @@ public partial class UIManager : CanvasLayer
 		}
 
 		Node addToNode = null;
+		Tab tabButton = null;
 		switch (upgrade.GetUpgradeTab())
 		{
 			case UpgradeTab.Farm:
 				addToNode = GetNode<VBoxContainer>("LeftMenu/TextureRect2/MarginContainer/Control/Control/Farm/FarmUpgrades");
+				tabButton = GetNode<Tab>("LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/FarmTabButton");
 				break;
 			case UpgradeTab.Furnace:
 				addToNode = GetNode<VBoxContainer>("LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace2/Furnace/MarginContainer/FurnaceUpgrades");
+				tabButton = GetNode<Tab>("LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/FurnaceTabButton");
 				break;
 			case UpgradeTab.Artifact:
 				addToNode = GetNode<VBoxContainer>("LeftMenu/TextureRect2/MarginContainer/Control/Control/Artifact/ArtifactUpgrades");
+				tabButton = GetNode<Tab>("LeftMenu/TextureRect2/MarginContainer/Control/MarginContainer/HBoxContainer/ArtifactTabButton");
 				newUpgradeHolderUi.NoButton();
 				break;
 		}
 		addToNode.AddChild(newUpgradeHolderUi);
-
+		upgrade.SetOnUnlock(tabButton.FlashTab);
 	}
 
 	public static void AddAllUpgrade(IBuyable upgrade)
