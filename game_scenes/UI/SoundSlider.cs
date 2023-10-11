@@ -3,21 +3,22 @@ using System;
 
 public enum SoundCategory
 {
-	Master,
-	Music,
-	Sfx
+	Master = 1,
+	Music = 2,
+	Sfx = 3
 }
 
 public partial class SoundSlider : HSlider
 {
 	[Export] public SoundCategory category;
 	
-	[Export] public int busID;
+	private int busID = 0;
 	//TODO save volume settings in another file
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		double settingsSoundVolume = GameState.settings.soundVolumes[category];
+		busID = (int)category;
 		
 		double volume = Mathf.LinearToDb(settingsSoundVolume);
 		AudioServer.SetBusVolumeDb(busID, (int)(volume));

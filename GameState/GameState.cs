@@ -43,7 +43,7 @@ public partial class GameState
 	public SavedFieldContainer savedFields;
 	
 	//Settings
-	public static GameSettings settings;
+	public static GameSettings settings; // TODO GameState on menu load??
 
 	[NonSerialized] public static Dictionary<int, IdleModifier> allModifiers = new Dictionary<int, IdleModifier>();
 

@@ -1,10 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://jmi5sx8v8cpg"]
+[gd_scene load_steps=18 format=3 uid="uid://jmi5sx8v8cpg"]
 
 [ext_resource type="Script" path="res://game_scenes/menu/StartGame.cs" id="1_1ljay"]
 [ext_resource type="Texture2D" uid="uid://bmlpuorrvkd81" path="res://game_scenes/menu/background/base.png" id="1_3y7u8"]
 [ext_resource type="Texture2D" uid="uid://cqfnx2cgc8oci" path="res://game_scenes/menu/background/panneau.png" id="2_3tae2"]
 [ext_resource type="Script" path="res://game_scenes/menu/Quit.cs" id="2_b0yyy"]
+[ext_resource type="Script" path="res://game_scenes/menu/MainMenuSettings.cs" id="2_gnbxs"]
 [ext_resource type="FontFile" uid="uid://dimlytvy78tyd" path="res://game_scenes/menu/background/Under Station.ttf" id="3_8e064"]
+[ext_resource type="PackedScene" uid="uid://2hdxwrsf3nu0" path="res://UI/all_settings.tscn" id="3_d5x73"]
+[ext_resource type="Texture2D" uid="uid://bhsalfesr2ybk" path="res://UI/sprites/option_nobg.png" id="4_itp0p"]
 [ext_resource type="PackedScene" uid="uid://5f2d2u2r7mwr" path="res://game_scenes/farm/farm.tscn" id="5_8msx8"]
 [ext_resource type="Texture2D" uid="uid://w58bxt3imsq7" path="res://game_scenes/menu/background/vaisseau.png" id="6_krmyu"]
 [ext_resource type="Texture2D" uid="uid://d2xgmql4xvasy" path="res://game_scenes/menu/background/drone.png" id="7_wqfvf"]
@@ -25,6 +28,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.233259, 0.233259),
 "update": 0,
 "values": [Vector2(991, 1100), Vector2(991, 859)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/MainMenuSettings/Button:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eud2i"]
@@ -52,6 +67,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="BG" type="TextureRect" parent="Control"]
 layout_mode = 1
@@ -64,12 +80,53 @@ texture = ExtResource("1_3y7u8")
 expand_mode = 1
 stretch_mode = 4
 
+[node name="MainMenuSettings" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -568.0
+offset_right = 448.0
+grow_vertical = 0
+alignment = 2
+script = ExtResource("2_gnbxs")
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/MainMenuSettings"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MainMenuSettings/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="SettingsHBox" parent="Control/MainMenuSettings/PanelContainer/MarginContainer" instance=ExtResource("3_d5x73")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/MainMenuSettings"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control/MainMenuSettings/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_itp0p")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 0
 offset_right = 831.0
 offset_bottom = 190.0
-theme_override_constants/margin_left = 300
-theme_override_constants/margin_top = 150
+theme_override_constants/margin_left = 425
+theme_override_constants/margin_top = 100
 
 [node name="Title" type="Label" parent="Control/MarginContainer"]
 layout_mode = 2
@@ -85,8 +142,8 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -929.0
-offset_top = -199.768
-offset_bottom = 21.2313
+offset_top = -221.0
+offset_bottom = 0.000976563
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 0
