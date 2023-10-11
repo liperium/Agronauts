@@ -1,10 +1,13 @@
 using Godot;
 
-public partial class BtnShowHideMenu : BaseButton
+public partial class ShowHideMenu : TextureRect
 {
     [Export] AnimationTree animTree;
 
-    public static BtnShowHideMenu instance = null;
+    public static ShowHideMenu instance = null;
+
+    public BaseButton button = null;
+    public Flash flash = null;
 
     private bool opened;
     public override void _Ready()
@@ -13,13 +16,17 @@ public partial class BtnShowHideMenu : BaseButton
 
         instance = this;
 
+        button = GetNode<BaseButton>("Button");
+        flash = GetNode<Flash>("Flash");
+
         if (GameState.instance.numbers.potatoCount.GetValue() == 0)
         {
-            Disabled = true;
-            GetParent<TextureRect>().Hide();
+            button.Disabled = true;
+            Hide();
         }
 
         GameState.instance.numbers.potatoCount.SetOnValueChanged(OnGetPotato);
+        button.Pressed += ButtonPressed;
     }
 
     public bool IsOpened()
@@ -27,26 +34,33 @@ public partial class BtnShowHideMenu : BaseButton
         return opened;
     }
 
-    public override void _Pressed()
+    private void ButtonPressed()
     {
-        base._Pressed();
-
         opened = !opened;
 
-        GetParent<TextureRect>().FlipH = !opened;
+        FlipH = !opened;
         
         animTree.Set("parameters/conditions/open", opened);
         animTree.Set("parameters/conditions/close", !opened);
+        flash.Stop();
     }
 
     private void OnGetPotato(long newValue)
     {
         if (newValue > 0)
         {
-            GetParent<TextureRect>().Show();
-            Disabled = false;
+            Show();
+            button.Disabled = false;
             
             GameState.instance.numbers.potatoCount.ResetOnValueChanged(OnGetPotato);
+        }
+    }
+
+    public void UnlockedUpgrade()
+    {
+        if (!opened)
+        {
+            flash.Start();
         }
     }
 }

@@ -71,6 +71,7 @@ public partial class UIManager : CanvasLayer
 		
 		addToNode.AddChild(newUpgradeHolderUi);
 		upgrade.SetOnUnlock(tabButton.FlashTab);
+		upgrade.SetOnUnlock(ShowHideMenu.instance.UnlockedUpgrade);
 
 		if ((upgrade.IsOneTimeBuy() && upgrade.IsAcquired()))
 		{
