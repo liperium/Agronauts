@@ -5,10 +5,8 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 {
 	protected long cost;
 	
-	public bool unlocked;
     
 	private Action<long> OnCostChanged;
-	private Action OnUnlock;
 	private Action OnBuyUpgrade;
 
 	protected IdleNumber costNumber;
@@ -23,17 +21,7 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 	{
 		OnCostChanged -= action;
 	}
-	
-	public void SetOnUnlock(Action action)
-	{
-		OnUnlock += action;
-	}
-	
-	public void ResetOnUnlock(Action action)
-	{
-		OnUnlock -= action;
-	}
-	
+
 	public void SetOnBuyUpgrade(Action action)
 	{
 		OnBuyUpgrade += action;
@@ -73,24 +61,6 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
         return GameState.instance.numbers.potatoCount;
     }
 
-    public bool IsUnlocked()
-	{
-		return unlocked;
-	}
-
-	public virtual bool CanUnlock()
-	{
-		return true;
-	}
-
-	public void Unlock()
-	{
-		if (unlocked == false)
-		{
-			unlocked = true;
-			if (OnUnlock != null) OnUnlock();
-		}
-	}
     public virtual void Buy()
 	{
 		if (CanBuy())
