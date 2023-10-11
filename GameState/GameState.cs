@@ -10,7 +10,7 @@ public partial class GameState
 {
 	public const bool SAVE_ENABLED = true;
 	
-	static JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
+	static JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
 	
 	private static GameState _instance;
 	public static GameState instance
@@ -32,13 +32,18 @@ public partial class GameState
 	}
 
 	private const string filePath = "Save.sav";
+	private const string settingsPath = "Settings.json";
 	public int randomSeed = 0xBADF00D;
 	public bool won;
 	private Action OnWin;
-
+	
+	//Save file
 	public IdleNumberContainer numbers;
 	public IdleUpgradeContainer upgrades;
 	public SavedFieldContainer savedFields;
+	
+	//Settings
+	public static GameSettings settings;
 
 	[NonSerialized] public static Dictionary<int, IdleModifier> allModifiers = new Dictionary<int, IdleModifier>();
 
@@ -71,14 +76,12 @@ public partial class GameState
 			GameState.instance.numbers.potatoCount.SetValue(100000);
 			//GameState.instance.numbers.cookedPotatoCount.SetValue(10000);
 		}
-
 	}
 	
 	public void SaveToFile()
 	{
-		string saveData = JsonConvert.SerializeObject(this, settings);
+		string saveData = JsonConvert.SerializeObject(this, jsonSerializerSettings);
 		
-		// Write the string array to a new file named "WriteLines.txt".
 		using (StreamWriter outputFile = new StreamWriter(filePath, new FileStreamOptions{ Mode = FileMode.Create, Access = FileAccess.Write}))
 		{
 			outputFile.WriteLine(saveData);
@@ -93,13 +96,10 @@ public partial class GameState
 	{
 		try
 		{
-			// Open the text file using a stream reader.
 			using (var sr = new StreamReader(filePath))
 			{
-				// Read the stream as a string, and write the string to the console.
 				GameState newState;
-				newState = JsonConvert.DeserializeObject<GameState>(sr.ReadToEnd(), settings);
-				//newState = sr.ReadToEnd().FromJson<GameState>();
+				newState = JsonConvert.DeserializeObject<GameState>(sr.ReadToEnd(), jsonSerializerSettings);
 				instance = newState;
 
 				if (newState == null)
@@ -116,7 +116,7 @@ public partial class GameState
 		catch (IOException e)
 		{
 			//ERROR
-			GD.Print(e.Message);
+			GD.PrintErr(e.Message);
 		}
 
 		return false;
@@ -139,5 +139,48 @@ public partial class GameState
 	{
 		won = true;
 		if (OnWin != null) OnWin();
+	}
+
+	public static void LoadSettings()
+	{
+		try
+		{
+			using (var sr = new StreamReader(settingsPath))
+			{
+				settings = JsonConvert.DeserializeObject<GameSettings>(sr.ReadToEnd());
+
+				if (settings == null)
+				{
+					GD.PrintErr("AFTER LOADING SETTINGS ARE STILL NULL!");
+					return;
+				}
+				
+				settings.OnLoad();
+			}
+		}
+		catch (IOException e)
+		{
+			//ERROR
+			GD.PrintErr(e.Message);
+
+			settings = new GameSettings();
+			settings.Init();
+			settings.OnLoad();
+		}
+	}
+
+	public static void SaveSettings()
+	{
+		if (settings == null)
+		{
+			GD.PrintErr("Trying to save settings but they are null!");
+		}
+		
+		string settingsData = JsonConvert.SerializeObject(settings);
+		
+		using (StreamWriter outputFile = new StreamWriter(settingsPath, new FileStreamOptions{ Mode = FileMode.Create, Access = FileAccess.Write}))
+		{
+			outputFile.WriteLine(settingsData);
+		}
 	}
 }
