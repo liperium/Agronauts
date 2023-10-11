@@ -39,10 +39,11 @@ public partial class NumberPerSecTooltip : Node2D
 	{
 		label.TooltipText = numberPerSec.FormattedNumber() + "/s";
 	}
-	
-	
-	
 
+	public override void _ExitTree()
+	{
+		number.ResetOnValueIncreased(AddAmount);
+	}
 }
 
 
