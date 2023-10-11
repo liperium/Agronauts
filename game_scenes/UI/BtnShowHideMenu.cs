@@ -12,7 +12,7 @@ public partial class BtnShowHideMenu : BaseButton
         if (GameState.instance.numbers.potatoCount.GetValue() == 0)
         {
             Disabled = true;
-            GetParent<TextureRect>().Visible = false;
+            GetParent<TextureRect>().Hide();
         }
 
         GameState.instance.numbers.potatoCount.SetOnValueChanged(OnGetPotato);
@@ -36,7 +36,7 @@ public partial class BtnShowHideMenu : BaseButton
     {
         if (newValue > 0)
         {
-            GetParent<TextureRect>().Visible = true;
+            GetParent<TextureRect>().Show();
             Disabled = false;
             
             GameState.instance.numbers.potatoCount.ResetOnValueChanged(OnGetPotato);

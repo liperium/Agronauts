@@ -23,7 +23,7 @@ public partial class FarmField : Node2D
 				farmLand.Position = new Vector2(xCount*CELL_SIZE, yCount*CELL_SIZE);
 				if (xCount == 2 && yCount == 2 && first)
 				{
-					farmLand.Show();
+					farmLand.FirstShow();
 					FarmFieldMaster.originFarmLand = farmLand.GlobalPosition;
 				}
 				farmLand.position = new Pos2D(xCount, yCount);
@@ -106,7 +106,7 @@ public partial class FarmField : Node2D
 			}
 			else
 			{
-				GetNode<FarmLand>($"{posNei.X}-{posNei.Y}").Show();
+				GetNode<FarmLand>($"{posNei.X}-{posNei.Y}").FirstShow();
 			}
 			posNextNei += new Pos2D(2,2);
 			posNextNei.X = Math.Abs(posNextNei.X);

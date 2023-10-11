@@ -7,11 +7,11 @@ public partial class UnlockArtifactsTab : Control
     {
         base._Ready();
 
-        GetParent<Control>().Visible = false;
+        GetParent<Control>().Hide();
         
         if (GameState.instance.upgrades.unlockArtifactsUpgrade.IsUnlocked())
         {
-            GetParent<Control>().Visible = true;
+            GetParent<Control>().Show();
         }
         else
         {
@@ -23,7 +23,7 @@ public partial class UnlockArtifactsTab : Control
     {
         GameState.instance.upgrades.unlockArtifactsUpgrade.ResetOnUnlock(UnlockTab);
         
-        GetParent<Control>().Visible = true;
+        GetParent<Control>().Show();
         
         unlock_pop_up.instance.ChangeText("KUNLOCKARTIFACTS", "KUNLOCKARTIFACTSDESC");
         unlock_pop_up.instance.Animation();
