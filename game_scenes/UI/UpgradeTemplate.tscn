@@ -1,6 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1xtsfl7y7few"]
 
 [ext_resource type="Script" path="res://UI/UpgradeHolderUI.cs" id="1_f3sbs"]
+[ext_resource type="Texture2D" uid="uid://b3gb7mp507g7h" path="res://Upgrades/UpgradeImages/fourTemp.png" id="2_1ro6e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3574p"]
 content_margin_left = 10.0
@@ -12,9 +13,6 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yscm6"]
-size = Vector2(40, 40)
 
 [node name="Panel" type="PanelContainer"]
 offset_right = 417.0
@@ -36,9 +34,9 @@ size_flags_stretch_ratio = 0.6
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_yscm6")
-expand_mode = 3
-stretch_mode = 4
+texture = ExtResource("2_1ro6e")
+expand_mode = 2
+stretch_mode = 5
 
 [node name="UpTitle" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

@@ -228,7 +228,7 @@ script = ExtResource("7_d3vh4")
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = "[img=50xz29]res://Upgrades/UpgradeImages/temp.png[/img]"
+text = "[img=50xz29]res://Upgrades/UpgradeImages/fourTemp.png[/img]"
 fit_content = true
 autowrap_mode = 0
 script = ExtResource("39_hs3fy")

@@ -25,7 +25,7 @@ public partial class FurnaceTempUpgrade : TieredUpgrade<MultiplierModifier>
 
         info.SetName("KFURNACETEMP");
         info.SetDescription("KFURNACETEMPDESC");
-        info.SetImagePath("res://Upgrades/UpgradeImages/temp.png");
+        info.SetImagePath("res://Upgrades/UpgradeImages/fourTemp.png");
     }
 
     public override void OnLoad()

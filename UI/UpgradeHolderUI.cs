@@ -66,7 +66,7 @@ public partial class UpgradeHolderUI : Control
 
     private void SetUpgrade(InfoUpgrade info, long cost, string effect)
     {
-        if (upgradeImage != null && info.GetImagePath() != "") upgradeImage.Texture = ResourceLoader.Load<CompressedTexture2D>(info.GetImagePath());
+        if (upgradeImage != null && info.GetImagePath() != "") upgradeImage.Texture = info.GetImage();
         if (upgradeTitle != null) upgradeTitle.Text = Tr(info.GetName()) +" "+ effect;
         if (upgradeDescription != null) upgradeDescription.Text = info.GetDescription();
         UpdateCostText(cost,info.GetCostImagePath());
