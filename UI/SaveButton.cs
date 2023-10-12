@@ -11,7 +11,5 @@ public partial class SaveButton : Button
         {
             GameState.instance.SaveToFile();
         }
-        
-        GameState.SaveSettings();
     }
 }

@@ -36,6 +36,7 @@ public partial class SoundSlider : HSlider
 		AudioServer.SetBusVolumeDb(busID, (int)(volume));
 
 		GameState.settings.soundVolumes[category] = newValue;
+		GameState.SaveSettings();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
