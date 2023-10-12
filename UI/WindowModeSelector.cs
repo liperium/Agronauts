@@ -16,6 +16,10 @@ public partial class WindowModeSelector : MenuButton
 	}
 	public void ChangeWindowMode(long index)
 	{
+		if (DisplayServer.WindowGetMode() == (DisplayServer.WindowMode)index)
+		{
+			return;
+		}
 		DisplayServer.WindowSetMode((DisplayServer.WindowMode)index);
 		GameState.settings.windowMode = index;
 		GameState.SaveSettings();
