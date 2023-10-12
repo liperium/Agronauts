@@ -72,6 +72,7 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 			Pay();
 			OnBuy();
 			Apply();
+			affectedNumber.UpdateValue();
 			long tempCost = cost;
 			
 			UpdateCost();
