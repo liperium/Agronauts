@@ -94,7 +94,6 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 
     public virtual bool CanBuy()
 	{
-		GD.Print(costNumber.GetValue() + " | "+cost);
 		return costNumber.GetValue() >= cost;
 	}
 
