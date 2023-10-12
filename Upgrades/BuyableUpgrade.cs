@@ -72,6 +72,7 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 			Pay();
 			OnBuy();
 			Apply();
+			affectedNumber.UpdateValue();
 			long tempCost = cost;
 			
 			UpdateCost();
@@ -93,7 +94,6 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 
     public virtual bool CanBuy()
 	{
-		GD.Print(costNumber.GetValue() + " | "+cost);
 		return costNumber.GetValue() >= cost;
 	}
 

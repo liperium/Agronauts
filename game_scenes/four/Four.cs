@@ -84,7 +84,7 @@ public partial class Four : Control
 
     private void Buy()
 	{
-		GameState.instance.numbers.potatoCount.DecreaseValue(GameState.instance.numbers.cookedPotatoYield.GetValue());
+		GameState.instance.numbers.potatoCount.DecreaseValue(GameState.instance.numbers.furnaceBatchCount.GetValue());
 	}
 
 	private bool CanBuy()

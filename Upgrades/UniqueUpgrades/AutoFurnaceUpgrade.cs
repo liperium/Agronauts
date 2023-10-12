@@ -13,7 +13,7 @@ public partial class AutoFurnaceUpgrade : BuyableUpgrade<MultiplierModifier>
 
     public override void UpdateCost()
     {
-        cost = 10000;
+        cost = 1000;
     }
 
     public override IdleNumber GetCostNumber()

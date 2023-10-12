@@ -11,7 +11,7 @@ public partial class AutoCookLevel2Upgrade : BuyableUpgrade<MultiplierModifier>
 
     public override void UpdateCost()
     {
-        cost = 500000;
+        cost = 10000;
     }
 
     public override IdleNumber GetAffectedNumber()
@@ -49,7 +49,6 @@ public partial class AutoCookLevel2Upgrade : BuyableUpgrade<MultiplierModifier>
         {
             Unlock();
             GameState.instance.numbers.furnaceTotalAutoCookedPotato.ResetOnValueChanged(CheckUnlock);
-
         }
     }
     public override UIManager.UpgradeTab GetUpgradeTab()
