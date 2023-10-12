@@ -26,13 +26,11 @@ public partial class ZoomBlock : Control
 	public void OnMouseEntered()
 	{
 		blockers[id] = true;
-		GD.Print($"Entered {id}");
 	}
 
 	public void OnMouseExit()
 	{
 		blockers[id] = false;
-		GD.Print($"Exit {id}");
 	}
 
 	public static bool IsBlocking()
