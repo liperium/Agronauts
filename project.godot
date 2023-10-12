@@ -133,6 +133,10 @@ toggle_left_menu={
 
 locale/translations=PackedStringArray("res://Localization/translation.en.translation", "res://Localization/translation.fr.translation")
 
+[memory]
+
+limits/message_queue/max_size_mb=128
+
 [rendering]
 
 textures/default_filters/use_nearest_mipmap_filter=true
