@@ -15,6 +15,7 @@ public partial class ZoomBlock : Control
 		id = idCount++;
 		Connect("mouse_entered", new Callable(this,"OnMouseEntered"));
 		Connect("mouse_exited", new Callable(this,"OnMouseExit"));
+		blockers.Add(id,false);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,11 +26,13 @@ public partial class ZoomBlock : Control
 	public void OnMouseEntered()
 	{
 		blockers[id] = true;
+		GD.Print($"Entered {id}");
 	}
 
 	public void OnMouseExit()
 	{
 		blockers[id] = false;
+		GD.Print($"Exit {id}");
 	}
 
 	public static bool IsBlocking()
