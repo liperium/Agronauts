@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://jmi5sx8v8cpg"]
+[gd_scene load_steps=21 format=3 uid="uid://jmi5sx8v8cpg"]
 
 [ext_resource type="Script" path="res://game_scenes/menu/StartGame.cs" id="1_1ljay"]
 [ext_resource type="Texture2D" uid="uid://bmlpuorrvkd81" path="res://game_scenes/menu/background/base.png" id="1_3y7u8"]
@@ -12,37 +12,21 @@
 [ext_resource type="Texture2D" uid="uid://w58bxt3imsq7" path="res://game_scenes/menu/background/vaisseau.png" id="6_krmyu"]
 [ext_resource type="Texture2D" uid="uid://d2xgmql4xvasy" path="res://game_scenes/menu/background/drone.png" id="7_wqfvf"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ab6q"]
+[sub_resource type="Gradient" id="Gradient_0qi6n"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.521127, 1)
+colors = PackedColorArray(0.152941, 0.231373, 0.0627451, 1, 0.133333, 0.258824, 0.403922, 1, 0.372549, 0.513726, 0.686275, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4l5n3"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o07s7"]
+gradient = SubResource("Gradient_0qi6n")
+width = 100
+height = 100
+fill_from = Vector2(0, 0.863248)
+fill_to = Vector2(0, 0.149573)
 
 [sub_resource type="Animation" id="Animation_8kekk"]
 resource_name = "leve_panneau"
 length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/HBoxContainer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.3, 1),
-"transitions": PackedFloat32Array(0.233259, 0.233259),
-"update": 0,
-"values": [Vector2(991, 1100), Vector2(991, 859)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control/MainMenuSettings/Button:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.3, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eud2i"]
 _data = {
@@ -60,19 +44,13 @@ states/leve_panneau/node = SubResource("AnimationNodeAnimation_uxqev")
 states/leve_panneau/position = Vector2(487, 67)
 transitions = ["Start", "leve_panneau", SubResource("AnimationNodeStateMachineTransition_igmub")]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ab6q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4l5n3"]
+
 [node name="MainMenu" type="CanvasLayer"]
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="BG" type="TextureRect" parent="Control"]
-layout_mode = 1
+[node name="BG" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -80,134 +58,47 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_3y7u8")
 expand_mode = 1
-stretch_mode = 4
+stretch_mode = 5
 
-[node name="MainMenuSettings" type="VBoxContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -568.0
-offset_right = 448.0
-grow_vertical = 0
-alignment = 2
-script = ExtResource("2_gnbxs")
-
-[node name="PanelContainer" type="PanelContainer" parent="Control/MainMenuSettings"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/MainMenuSettings/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/MainMenuSettings/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/MainMenuSettings/PanelContainer/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "KSETTINGS"
-horizontal_alignment = 1
-
-[node name="VBoxContainer" parent="Control/MainMenuSettings/PanelContainer/MarginContainer/VBoxContainer2" instance=ExtResource("3_fm8tp")]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="Control/MainMenuSettings"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_2ab6q")
-
-[node name="TextureRect" type="TextureRect" parent="Control/MainMenuSettings/Button"]
+[node name="TextureRect" type="TextureRect" parent="BG"]
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("4_itp0p")
-expand_mode = 1
-stretch_mode = 5
+texture = SubResource("GradientTexture2D_o07s7")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
-layout_mode = 0
-offset_right = 831.0
-offset_bottom = 190.0
-theme_override_constants/margin_left = 425
-theme_override_constants/margin_top = 100
-
-[node name="Title" type="Label" parent="Control/MarginContainer"]
+[node name="Title" type="Label" parent="BG"]
 layout_mode = 2
+offset_left = 234.0
+offset_top = 95.0
+offset_right = 779.0
+offset_bottom = 280.0
+size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("3_8e064")
 theme_override_font_sizes/font_size = 100
 text = "Agronauts"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -929.0
-offset_top = -221.0
-offset_bottom = 0.000854492
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/separation = 0
-
-[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("2_3tae2")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="PlayButton" type="Button" parent="Control/HBoxContainer/TextureRect"]
-layout_mode = 1
-anchors_preset = 5
+[node name="Control" type="AspectRatioContainer" parent="."]
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -178.0
-offset_right = 93.0
-offset_bottom = 120.0
+anchor_bottom = 0.5
+offset_left = -470.0
+offset_top = -92.5
+offset_right = 470.0
+offset_bottom = 92.5
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_8e064")
-theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxEmpty_4l5n3")
-text = "KDEFEND"
-script = ExtResource("1_1ljay")
-farmScene = ExtResource("5_8msx8")
-
-[node name="TextureRect2" type="TextureRect" parent="Control/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("2_3tae2")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="QuitButton" type="Button" parent="Control/HBoxContainer/TextureRect2"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -163.5
-offset_right = 92.5
-offset_bottom = 117.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_8e064")
-theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxEmpty_4l5n3")
-text = "KGIVEUP"
-script = ExtResource("2_b0yyy")
+grow_vertical = 2
+mouse_filter = 2
+ratio = 2.0
 
 [node name="AllShips" type="Node2D" parent="Control"]
-position = Vector2(4266.47, 1368.26)
-scale = Vector2(4, 4)
+position = Vector2(905, -3.5)
+scale = Vector2(1.5, 1.5)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Control/AllShips"]
 position = Vector2(214.921, 39.5883)
@@ -249,3 +140,111 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_ivxkr")
 anim_player = NodePath("../AnimationPlayer")
 active = true
+
+[node name="MainMenuSettings" type="VBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -568.0
+offset_right = 448.0
+grow_vertical = 0
+alignment = 2
+script = ExtResource("2_gnbxs")
+
+[node name="PanelContainer" type="PanelContainer" parent="MainMenuSettings"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuSettings/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenuSettings/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenuSettings/PanelContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "KSETTINGS"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" parent="MainMenuSettings/PanelContainer/MarginContainer/VBoxContainer2" instance=ExtResource("3_fm8tp")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MainMenuSettings"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2ab6q")
+
+[node name="TextureRect" type="TextureRect" parent="MainMenuSettings/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_itp0p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -929.0
+offset_top = -221.0
+offset_bottom = 0.00146484
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_3tae2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PlayButton" type="Button" parent="HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -178.0
+offset_right = 93.0
+offset_bottom = 120.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_8e064")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4l5n3")
+text = "KDEFEND"
+script = ExtResource("1_1ljay")
+farmScene = ExtResource("5_8msx8")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_3tae2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="QuitButton" type="Button" parent="HBoxContainer/TextureRect2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -163.5
+offset_right = 92.5
+offset_bottom = 117.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_8e064")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4l5n3")
+text = "KGIVEUP"
+script = ExtResource("2_b0yyy")
