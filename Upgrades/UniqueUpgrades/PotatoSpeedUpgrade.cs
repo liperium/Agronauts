@@ -45,6 +45,9 @@ public class PotatoSpeedUpgrade : CappedTieredUpgrade<MultiplierModifier>
 
     public override string GetEffectText()
     {
+        //return  "" + base.GetEffectText() + Mathf.RoundToInt(modifier.multiplier * 100) + "%"; <-- Explose (On unlock de l'upgrade)
+        //return Mathf.RoundToInt(modifier.multiplier * 100) + "%";                              <-- Marche
+        //return "" + base.GetEffectText();                                                      <-- Marche
         return "" + base.GetEffectText(); //+ Mathf.RoundToInt(modifier.multiplier * 100) + "%";
     }
     public override UIManager.UpgradeTab GetUpgradeTab()
