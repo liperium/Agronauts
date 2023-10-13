@@ -53,7 +53,7 @@ KUNLOCKARTIFACTS,Artifacts unlocked!,Artéfacts débloqué!
 KUNLOCKARTIFACTSDESC,Gain artifacts from defeating aliens invaders,Récupère des artéfacts en vainquant des extraterrestres
 KENFOURNER,Cook,Enfourner
 KTEMPSPEEDTRUCK,Hot tractor,Tracteur chaud
-KTEMPSPEEDTRUCKDESC,Your tractors speed up proportional to your potato temperature,La vitesse de vos tracteurs augmente proportionnellement à la température de vos patates
+KTEMPSPEEDTRUCKDESC,The temperature of your tractors preheats your potatos increasing the yield of your furnace proportionally. It increases up to +100% at a temperature of 200,La température de vos tracteurs préchauffe vos patates augmentant proportionnellement le rendement de votre four. Il augmente jusqu'à +100% à une température de 200
 KCOOKEDRECYCLER,Recycler,Recycleur
 KCOOKEDRECYCLERDESC,You use the crumbs at the bottom of the furnace to generate +10% fresh potatos from each batch,Vous utilisez les miettes au fond du four pour générer +10% de patates fraîches 
 KVOLUME,Volume,Volume
