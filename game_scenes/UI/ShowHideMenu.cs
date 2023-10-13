@@ -59,7 +59,7 @@ public partial class ShowHideMenu : TextureRect
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
-        if (@event.IsActionPressed("toggle_left_menu"))
+        if (@event.IsActionPressed("toggle_left_menu") && Visible)
         {
             button.FocusMode = FocusModeEnum.Click;
             ButtonPressed();
