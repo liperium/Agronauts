@@ -56,11 +56,17 @@ public partial class IdleUpgrade <TModifier> : BaseIdleUpgrade where TModifier :
                 GameState.allModifiers.Add(modifierId, this.modifier);
 			}
 		}
+		UpdateModifier();
 		InnitInfo();
 	}
 
 	public virtual string GetEffectText()
 	{
 		return "";
+	}
+
+	public virtual void UpdateModifier()
+	{
+		
 	}
 }

@@ -20,5 +20,11 @@ public interface IBuyable
 	public bool IsOneTimeBuy();
 	public void SetOnBuyUpgrade(Action action);
 	public void ResetOnBuyUpgrade(Action action);
+	public void SetOnInfoChanged(Action action);
+	public void ResetOnInfoChanged(Action action);
+	public void SetOnMaxedUpgrade(Action action);
+	public void ResetOnMaxedUpgrade(Action action);
 	public bool IsAcquired();
+	public bool IsMaxed();
+
 }

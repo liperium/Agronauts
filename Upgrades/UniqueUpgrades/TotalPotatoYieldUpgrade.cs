@@ -3,14 +3,12 @@ using System;
 [Serializable]
 public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier>
 {
-
-	public override void OnBuy()
+	public override void UpdateModifier()
 	{
-		modifier.multiplier++;
-        base.OnBuy();
-    }
+		modifier.multiplier = 1 + tier;
+	}
 
-    public override void UpdateCost()
+	public override void UpdateCost()
 	{
 		cost = (long)(5 + Mathf.Pow(tier, 2) + tier);
 	}

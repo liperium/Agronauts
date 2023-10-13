@@ -1,12 +1,11 @@
 using Godot;
 using System;
 
-public partial class TractorSpeedUpgrade : TieredUpgrade<MultiplierModifier>
+public partial class TractorSpeedUpgrade : CappedTieredUpgrade<MultiplierModifier>
 {
-    public override void OnBuy()
+    public override void UpdateModifier()
     {
-        modifier.multiplier *= 2;
-        base.OnBuy();
+        modifier.multiplier = Mathf.Pow(2, tier);
     }
 
     public override void UpdateCost()
@@ -29,6 +28,7 @@ public partial class TractorSpeedUpgrade : TieredUpgrade<MultiplierModifier>
     }
     public override void OnLoad()
     {
+        tierCap = 3;
         base.OnLoad();
         GameState.instance.numbers.truckAmount.SetOnValueChanged(CheckUnlock);
     }
@@ -41,7 +41,7 @@ public partial class TractorSpeedUpgrade : TieredUpgrade<MultiplierModifier>
 
     public override string GetEffectText()
     {
-        return + ((int)(modifier.multiplier * 100)) + "%";
+        return ""+base.GetEffectText() +(Mathf.RoundToInt(modifier.multiplier * 100)) + "%";
     }
     public override UIManager.UpgradeTab GetUpgradeTab()
     {
