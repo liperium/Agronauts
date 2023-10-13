@@ -3,6 +3,7 @@ using System;
 
 public partial class FurnacePotatoRecyclerUpgrade : TieredUpgrade<MultiplierModifier>
 {
+
     public override void OnBuy()
     {
         base.OnBuy();
@@ -54,7 +55,7 @@ public partial class FurnacePotatoRecyclerUpgrade : TieredUpgrade<MultiplierModi
 
     public override string GetEffectText()
     {
-        return +((int)(tier * 10)) + "%";
+        return +(Mathf.RoundToInt(tier * 10)) + "%";
     }
     public override UIManager.UpgradeTab GetUpgradeTab()
     {
