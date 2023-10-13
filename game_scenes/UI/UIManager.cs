@@ -44,12 +44,7 @@ public partial class UIManager : CanvasLayer
 		}
 		
 		newUpgradeHolderUi.Init(upgrade);
-
-		if (upgrade.IsOneTimeBuy() && !upgrade.IsAcquired())
-		{
-			upgrade.SetOnBuyUpgrade(newUpgradeHolderUi.FreeMe);
-		}
-
+		
 		Node addToNode = null;
 		Tab tabButton = null;
 		switch (upgrade.GetUpgradeTab())
@@ -73,11 +68,14 @@ public partial class UIManager : CanvasLayer
 		upgrade.SetOnUnlock(tabButton.FlashTab);
 		upgrade.SetOnUnlock(ShowHideMenu.instance.UnlockedUpgrade);
 
-		if ((upgrade.IsOneTimeBuy() && upgrade.IsAcquired()))
+		if (upgrade.IsMaxed())
 		{
 			newUpgradeHolderUi.FreeMe();
 		}
-		
+		else
+		{
+			upgrade.SetOnMaxedUpgrade(newUpgradeHolderUi.FreeMe);
+		}
 		
 	}
 

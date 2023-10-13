@@ -25,4 +25,14 @@ public partial class TieredUpgrade<TModifier> : BuyableUpgrade<TModifier> where 
 	{
 		return false;
 	}
+
+	public override bool IsMaxed()
+	{
+		return false;
+	}
+
+	public override string GetEffectText()
+	{
+		return "";
+	}
 }
