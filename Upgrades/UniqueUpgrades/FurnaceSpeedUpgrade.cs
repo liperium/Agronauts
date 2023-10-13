@@ -46,7 +46,7 @@ public partial class FurnaceSpeedUpgrade : TieredUpgrade<MultiplierModifier>
 
     public override string GetEffectText()
     {
-        return  + ((int)(modifier.multiplier * 100)) + "%";
+        return  + Mathf.RoundToInt((modifier.multiplier * 100)) + "%";
     }
     public override UIManager.UpgradeTab GetUpgradeTab()
     {
