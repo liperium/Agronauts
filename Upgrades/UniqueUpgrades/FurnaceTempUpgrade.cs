@@ -9,7 +9,10 @@ public partial class FurnaceTempUpgrade : TieredUpgrade<MultiplierModifier>
         base.OnBuy();
     }
     
-    
+    public override void UpdateModifier()
+    {
+        modifier.multiplier = Mathf.Pow(1.2f,tier);
+    }
 
     public override void UpdateCost()
     {

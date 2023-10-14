@@ -3,10 +3,10 @@ using System;
 
 public partial class FurnaceBatchSizeUpgrade : TieredUpgrade<MultiplierModifier>
 {
-    public override void OnBuy()
+    
+    public override void UpdateModifier()
     {
-        modifier.multiplier += 1f;
-        base.OnBuy();
+        modifier.multiplier = 1 + tier;
     }
 
     public override void UpdateCost()

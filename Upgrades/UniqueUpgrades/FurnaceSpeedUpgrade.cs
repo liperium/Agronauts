@@ -8,6 +8,11 @@ public partial class FurnaceSpeedUpgrade : TieredUpgrade<MultiplierModifier>
         modifier.multiplier += 0.1f;
         base.OnBuy();
     }
+    
+    public override void UpdateModifier()
+    {
+        modifier.multiplier = 1 + 0.1f*tier;
+    }
 
     public override void UpdateCost()
     {

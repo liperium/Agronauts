@@ -3,10 +3,10 @@ using System;
 
 public partial class AutoCookLevel2Upgrade : BuyableUpgrade<MultiplierModifier>
 {
-    public override void OnBuy()
+
+    public override void UpdateModifier()
     {
         modifier.multiplier = 2f;
-        base.OnBuy();
     }
 
     public override void UpdateCost()
