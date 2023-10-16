@@ -7,6 +7,8 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 	
     
 	private Action<long> OnCostChanged;
+	private Action OnInfoChanged;
+	private Action OnMaxedUpgrade;
 	private Action OnBuyUpgrade;
 
 	protected IdleNumber costNumber;
@@ -31,6 +33,26 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 	{
 		OnBuyUpgrade -= action;
 	}
+	public void SetOnInfoChanged(Action action)
+	{
+		OnInfoChanged += action;
+	}
+	
+	public void ResetOnInfoChanged(Action action)
+	{
+		OnInfoChanged -= action;
+	}
+	
+	public void SetOnMaxedUpgrade(Action action)
+	{
+		OnMaxedUpgrade += action;
+	}
+	
+	public void ResetOnMaxedUpgrade(Action action)
+	{
+		OnMaxedUpgrade -= action;
+	}
+	
 
 	public bool IsAcquired()
 	{
@@ -71,17 +93,32 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 			SetAffectedNumber();
 			Pay();
 			OnBuy();
+			UpdateModifier();
 			Apply();
+			affectedNumber.UpdateValue();
 			long tempCost = cost;
-			
+			CheckMaxed();
 			UpdateCost();
-
+			OnUpdateInfo();
 			if (cost != tempCost && OnCostChanged != null)
 			{
 				OnCostChanged(cost);
 			}
 		}
 	}
+
+    public void CheckMaxed()
+    {
+	    if (IsMaxed())
+	    {
+		    if(OnMaxedUpgrade != null)OnMaxedUpgrade();
+	    }
+    }
+    
+    public void OnUpdateInfo()
+    {
+	    if (OnInfoChanged != null) OnInfoChanged();
+    }
     public virtual void OnBuy() {
 	    affectedNumber.UpdateValue();
 	    if (OnBuyUpgrade != null) OnBuyUpgrade();
@@ -93,8 +130,7 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 
     public virtual bool CanBuy()
 	{
-		GD.Print(costNumber.GetValue() + " | "+cost);
-		return costNumber.GetValue() >= cost;
+		return costNumber.GetValue() >= cost && !IsMaxed();
 	}
 
     public virtual void UpdateCost() {}
@@ -112,5 +148,22 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
     public virtual bool IsOneTimeBuy()
     {
 	    return true;
+    }
+
+    public virtual bool IsMaxed()
+    {
+	    return acquired;
+    }
+
+    public override string GetEffectText()
+    {
+	    if (acquired)
+	    {
+		    return " (1/1) ";
+	    }
+	    else
+	    {
+		    return " (0/1) ";
+	    }
     }
 }

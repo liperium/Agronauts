@@ -2,42 +2,38 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class NumberPerSecTooltip : Node2D
+public partial class NumberPerSecTooltip : Timer
 {
 	private IdleNumber number;
 	private LerpValue label;
 	private long numberPerSec;
-	private Queue<long> increaseQueue;
+	private long nextNumberPerSec;
 
-	private const float INTERVAL_TIME = 10f;
+	private const float INTERVAL_TIME = 5f;
 	public override void _Ready()
 	{
 		label = GetParent<IdleNumberLabel>().GetParent<LerpValue>();
 		number = GetParent<IdleNumberLabel>().GetIdleNumber();
-		increaseQueue = new Queue<long>();
 		numberPerSec = 0;
+		nextNumberPerSec = 0;
 		number.SetOnValueIncreased(AddAmount);
+		WaitTime = INTERVAL_TIME;
+		Timeout += UpdateTooltip;
+		Start();
 	}
 	
 	private void AddAmount(long amount)
 	{
-		long toAdd = (long)(amount / INTERVAL_TIME);
-		numberPerSec += toAdd;
-		increaseQueue.Enqueue(toAdd);
-		SceneTreeTimer timer = GetTree().CreateTimer(INTERVAL_TIME);
-		timer.Timeout += RemoveAmount;
-		UpdateTooltip();
+		nextNumberPerSec += (long)(amount / INTERVAL_TIME);
 	}
-
-	private void RemoveAmount()
-	{
-		numberPerSec -= increaseQueue.Dequeue();
-		UpdateTooltip();
-	}
+	
 
 	private void UpdateTooltip()
 	{
+		numberPerSec = nextNumberPerSec;
+		nextNumberPerSec = 0;
 		label.TooltipText = numberPerSec.FormattedNumber() + "/s";
+		Start();
 	}
 
 	public override void _ExitTree()

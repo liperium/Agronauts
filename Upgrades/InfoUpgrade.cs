@@ -5,6 +5,7 @@ public partial class InfoUpgrade
 {
 	private string name;
     private string description;
+    private CompressedTexture2D image;
     private string imagePath;
 	private string costImagePath;
 	public static string defaultPath = "res://Icons/Potato.png";
@@ -33,7 +34,19 @@ public partial class InfoUpgrade
     public void SetImagePath(string imagePath)
 	{
 		this.imagePath = imagePath;
+		SetImage(imagePath);
 	}
+
+    //TODO rework the imgs
+    public void SetImage(string imagePath)
+    {
+	    image = ResourceLoader.Load<CompressedTexture2D>(imagePath);
+    }
+
+    public CompressedTexture2D GetImage()
+    {
+	    return image;
+    }
 
     public string GetImagePath()
     {

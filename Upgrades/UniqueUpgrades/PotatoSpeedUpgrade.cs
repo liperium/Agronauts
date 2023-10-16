@@ -1,12 +1,11 @@
 ﻿
 using Godot;
 
-public class PotatoSpeedUpgrade : TieredUpgrade<MultiplierModifier>
+public class PotatoSpeedUpgrade : CappedTieredUpgrade<MultiplierModifier>
 {
-    public override void OnBuy()
+    public override void UpdateModifier()
     {
-        modifier.multiplier += 0.3f;
-        base.OnBuy();
+        modifier.multiplier = 1 + 0.3f*tier;
     }
 
     public override void UpdateCost()
@@ -22,7 +21,6 @@ public class PotatoSpeedUpgrade : TieredUpgrade<MultiplierModifier>
     public override void InnitInfo()
     {
         base.InnitInfo();
-		
         info.SetName("KPOTATOSPEEDUPGRADE");
         info.SetDescription("KPOTATOSPEEDUPGRADEDESC");
         info.SetImagePath("res://Upgrades/UpgradeImages/EngraisNaturel.png");
@@ -30,8 +28,8 @@ public class PotatoSpeedUpgrade : TieredUpgrade<MultiplierModifier>
 
     public override void OnLoad()
     {
+        tierCap = 10;
         base.OnLoad();
-        
         if (IsUnlocked() == false) GameState.instance.numbers.potatoCount.SetOnValueChanged(CheckUnlock);
     }
 
@@ -46,8 +44,9 @@ public class PotatoSpeedUpgrade : TieredUpgrade<MultiplierModifier>
 
     public override string GetEffectText()
     {
-        return + ((int)(modifier.multiplier * 100)) + "%";
+        return "" + base.GetEffectText() + Mathf.RoundToInt(modifier.multiplier * 100) + "%";
     }
+
     public override UIManager.UpgradeTab GetUpgradeTab()
     {
         return UIManager.UpgradeTab.Farm;

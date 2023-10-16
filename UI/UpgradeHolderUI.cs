@@ -23,11 +23,10 @@ public partial class UpgradeHolderUI : Control
 
         genericUpgrade = upgrade;
         Name = genericUpgrade.GetInfo().GetName();
-
-        SetUpgrade(genericUpgrade.GetInfo(),
-            genericUpgrade.GetCost(), genericUpgrade.GetEffectText());
         
+        UpdateAllInfo();
         genericUpgrade.SetOnCostChanged(OnUpgradeCostChanged);
+        genericUpgrade.SetOnInfoChanged(UpdateAllInfo);
     }
 
     public override void _Ready()
@@ -64,9 +63,14 @@ public partial class UpgradeHolderUI : Control
         SetUpgrade(genericUpgrade.GetInfo(), cost, genericUpgrade.GetEffectText());
     }
 
+    private void UpdateAllInfo()
+    {
+        SetUpgrade(genericUpgrade.GetInfo(), genericUpgrade.GetCost(), genericUpgrade.GetEffectText());
+    }
+
     private void SetUpgrade(InfoUpgrade info, long cost, string effect)
     {
-        if (upgradeImage != null && info.GetImagePath() != "") upgradeImage.Texture = ResourceLoader.Load<CompressedTexture2D>(info.GetImagePath());
+        if (upgradeImage != null && info.GetImagePath() != "") upgradeImage.Texture = info.GetImage();
         if (upgradeTitle != null) upgradeTitle.Text = Tr(info.GetName()) +" "+ effect;
         if (upgradeDescription != null) upgradeDescription.Text = info.GetDescription();
         UpdateCostText(cost,info.GetCostImagePath());

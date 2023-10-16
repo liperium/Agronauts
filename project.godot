@@ -13,7 +13,10 @@ config_version=5
 config/name="WJ-A23-Godot"
 run/main_scene="res://game_scenes/menu/menu.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
-config/icon="res://theming/icon.svg"
+boot_splash/bg_color=Color(0.14902, 0.101961, 0.0392157, 1)
+boot_splash/image="res://UI/sprites/pain_a_lail.png"
+boot_splash/fullsize=false
+config/icon="res://UI/sprites/pain_a_lail.png"
 
 [autoload]
 
@@ -28,6 +31,7 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=2
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [dotnet]
 
@@ -120,10 +124,19 @@ add_cooked_potatos={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194333,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
+toggle_left_menu={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
 
 [internationalization]
 
 locale/translations=PackedStringArray("res://Localization/translation.en.translation", "res://Localization/translation.fr.translation")
+
+[memory]
+
+limits/message_queue/max_size_mb=128
 
 [rendering]
 

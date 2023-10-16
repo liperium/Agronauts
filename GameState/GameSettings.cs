@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Godot;
 
 [Serializable]
 public class GameSettings
@@ -12,6 +13,9 @@ public class GameSettings
 
     public bool buyLandOnHold;
 
+    // Window settings
+    public long windowMode;
+
     //setup default settings
     public void Init()
     {
@@ -21,6 +25,7 @@ public class GameSettings
         soundVolumes.Add(SoundCategory.PlayerSfx, 1.0);
 
         buyLandOnHold = false;
+        windowMode = (int)DisplayServer.WindowMode.Maximized;
     }
 
     public void OnLoad()

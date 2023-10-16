@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://byj332cof46ix"]
+[gd_scene load_steps=17 format=3 uid="uid://byj332cof46ix"]
 
 [ext_resource type="Script" path="res://game_scenes/fight/FightManager.cs" id="1_7r1cq"]
 [ext_resource type="Texture2D" uid="uid://bdbudbddvjaqv" path="res://game_scenes/fight/sprites/BackGround.png" id="1_775qp"]
@@ -15,90 +15,119 @@
 [ext_resource type="Texture2D" uid="uid://1q15a0ctdmja" path="res://game_scenes/fight/sprites/fenetre.png" id="8_3r3s2"]
 [ext_resource type="Texture2D" uid="uid://d2pjghq7v8nb5" path="res://game_scenes/fight/sprites/trousoldevant.png" id="9_ka1q8"]
 
-[node name="FightScene" type="Node2D"]
+[sub_resource type="Gradient" id="Gradient_ql08o"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.122066, 0.42723, 0.680751, 0.948357)
+colors = PackedColorArray(0.14902, 0.105882, 0.027451, 1, 0.145098, 0.305882, 0.0980392, 1, 0.211765, 0.337255, 0.513726, 1, 0.396078, 0.541176, 0.737255, 1)
 
-[node name="Background" type="Node2D" parent="."]
-position = Vector2(960, 540)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tqkgr"]
+gradient = SubResource("Gradient_ql08o")
+width = 100
+height = 100
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_tqkgr")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.77
+
+[node name="Background" type="Node2D" parent="AspectRatioContainer"]
 scale = Vector2(0.5, 0.5)
 
-[node name="FenetreBG" type="Sprite2D" parent="Background"]
+[node name="FenetreBG" type="Sprite2D" parent="AspectRatioContainer/Background"]
 position = Vector2(1516, -628)
 texture = ExtResource("1_w0cwt")
 
-[node name="spawn8" type="Node2D" parent="Background"]
+[node name="spawn8" type="Node2D" parent="AspectRatioContainer/Background"]
 position = Vector2(1400, -558)
 
-[node name="BG" type="Sprite2D" parent="Background"]
+[node name="BG" type="Sprite2D" parent="AspectRatioContainer/Background"]
 texture = ExtResource("1_775qp")
 
-[node name="Fenetre" type="Sprite2D" parent="Background"]
+[node name="Fenetre" type="Sprite2D" parent="AspectRatioContainer/Background"]
 position = Vector2(1517, -626)
 texture = ExtResource("8_3r3s2")
 
-[node name="spawn0" type="Node2D" parent="Background"]
+[node name="spawn0" type="Node2D" parent="AspectRatioContainer/Background"]
 position = Vector2(-418, -780)
 
-[node name="Vaisseau" type="Sprite2D" parent="Background"]
+[node name="Vaisseau" type="Sprite2D" parent="AspectRatioContainer/Background"]
 position = Vector2(-725, -754)
 texture = ExtResource("2_f4045")
 
-[node name="spawn1" type="Node2D" parent="Background"]
+[node name="spawn1" type="Node2D" parent="AspectRatioContainer/Background"]
 position = Vector2(-1868, -444)
 
-[node name="spawn2" type="Node2D" parent="Background"]
+[node name="spawn2" type="Node2D" parent="AspectRatioContainer/Background"]
 position = Vector2(-1462, -164)
 
-[node name="spawn3" type="Node2D" parent="Background"]
+[node name="spawn3" type="Node2D" parent="AspectRatioContainer/Background"]
 position = Vector2(-530, -140)
 
-[node name="spawn4" type="Node2D" parent="Background"]
+[node name="spawn4" type="Node2D" parent="AspectRatioContainer/Background"]
 position = Vector2(402, -30)
 
-[node name="Arbre" type="Sprite2D" parent="Background"]
+[node name="Arbre" type="Sprite2D" parent="AspectRatioContainer/Background"]
 position = Vector2(-708, 92)
 texture = ExtResource("3_kiusy")
 
-[node name="Arbre2" type="Sprite2D" parent="Background"]
+[node name="Arbre2" type="Sprite2D" parent="AspectRatioContainer/Background"]
 position = Vector2(782, 160)
 texture = ExtResource("3_kiusy")
 
-[node name="Cloture" type="Sprite2D" parent="Background"]
+[node name="Cloture" type="Sprite2D" parent="AspectRatioContainer/Background"]
 position = Vector2(-1596, 0)
 texture = ExtResource("4_3yepp")
 
-[node name="BackTrou" type="Sprite2D" parent="Background"]
+[node name="BackTrou" type="Sprite2D" parent="AspectRatioContainer/Background"]
 position = Vector2(462, 690)
 texture = ExtResource("7_qgtxf")
 
-[node name="spawn5" type="Node2D" parent="Background"]
+[node name="spawn5" type="Node2D" parent="AspectRatioContainer/Background"]
 position = Vector2(-1278, 308)
 
-[node name="spawn6" type="Node2D" parent="Background"]
+[node name="spawn6" type="Node2D" parent="AspectRatioContainer/Background"]
 position = Vector2(486, 606)
 
-[node name="spawn7" type="Node2D" parent="Background"]
+[node name="spawn7" type="Node2D" parent="AspectRatioContainer/Background"]
 position = Vector2(1610, 448)
 
-[node name="FronTrou" type="Sprite2D" parent="Background"]
+[node name="FronTrou" type="Sprite2D" parent="AspectRatioContainer/Background"]
 position = Vector2(462, 690)
 texture = ExtResource("9_ka1q8")
 
-[node name="Engrais" type="Sprite2D" parent="Background"]
+[node name="Engrais" type="Sprite2D" parent="AspectRatioContainer/Background"]
 position = Vector2(-1450, 596)
 texture = ExtResource("5_u83qr")
 
-[node name="Roche" type="Sprite2D" parent="Background"]
+[node name="Roche" type="Sprite2D" parent="AspectRatioContainer/Background"]
 position = Vector2(1661, 654)
 texture = ExtResource("6_xoq7k")
 
-[node name="FightManager" type="Node2D" parent="." node_paths=PackedStringArray("spawnPositions", "spawnTimer")]
+[node name="FightManager" type="Node2D" parent="AspectRatioContainer" node_paths=PackedStringArray("spawnPositions", "spawnTimer")]
 script = ExtResource("1_7r1cq")
 spawnPositions = [NodePath("../Background/spawn0"), NodePath("../Background/spawn1"), NodePath("../Background/spawn2"), NodePath("../Background/spawn3"), NodePath("../Background/spawn4"), NodePath("../Background/spawn5"), NodePath("../Background/spawn6"), NodePath("../Background/spawn7"), NodePath("../Background/spawn8")]
 spawnTimer = NodePath("SpawnTimer")
 alienPrefab = ExtResource("2_qvy1s")
 
-[node name="SpawnTimer" type="Timer" parent="FightManager"]
+[node name="SpawnTimer" type="Timer" parent="AspectRatioContainer/FightManager"]
 
-[node name="ShootManager" type="Node2D" parent="."]
+[node name="ShootManager" type="Node2D" parent="AspectRatioContainer"]
 script = ExtResource("3_y82am")
 potatoBulletPrefab = ExtResource("5_y1n8u")

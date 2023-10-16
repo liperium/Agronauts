@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bgxvkolxvu33k"]
+[gd_scene load_steps=43 format=3 uid="uid://bgxvkolxvu33k"]
 
 [ext_resource type="Script" path="res://game_scenes/UI/UIManager.cs" id="1_1o6vr"]
 [ext_resource type="PackedScene" uid="uid://c7vdiidjnc4py" path="res://UI/unlock_pop_up.tscn" id="1_1tles"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://UI/Labels/CookedPotatoCountLabel.cs" id="6_6ave8"]
 [ext_resource type="Texture2D" uid="uid://c38udnmhrwqc6" path="res://UI/sprites/FERME_fond.png" id="7_cpijt"]
 [ext_resource type="Script" path="res://UI/Labels/TemperatureLabel.cs" id="7_d3vh4"]
+[ext_resource type="Script" path="res://game_scenes/UI/ZoomBlock.cs" id="9_7dbn7"]
 [ext_resource type="PackedScene" uid="uid://b7uldwnmxuawf" path="res://UI/menu_tab_button.tscn" id="9_7m5yc"]
 [ext_resource type="Script" path="res://game_scenes/UI/Tab.cs" id="10_syuad"]
 [ext_resource type="Texture2D" uid="uid://balns1cnkjntf" path="res://UI/sprites/four_nobg.png" id="11_jr12r"]
@@ -52,11 +53,18 @@ advance_mode = 2
 advance_mode = 2
 advance_condition = &"open"
 
+[sub_resource type="Curve" id="Curve_hvr70"]
+_data = [Vector2(0, 0), 0.0, 2.92916, 0, 0, Vector2(1, 1), 5.82801e-07, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u4cgq"]
+xfade_time = 0.15
+xfade_curve = SubResource("Curve_hvr70")
 advance_mode = 2
 advance_condition = &"close"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bvbs7"]
+xfade_time = 0.15
 advance_mode = 2
 advance_condition = &"open"
 
@@ -159,7 +167,7 @@ script = ExtResource("39_hs3fy")
 [node name="potatoCountLabel" type="Node2D" parent="RessourceCounter/VBoxContainer/potatoesDisplay/CenterContainer/potatoesNb"]
 script = ExtResource("5_bp0s2")
 
-[node name="potatoCountSecTip" type="Node2D" parent="RessourceCounter/VBoxContainer/potatoesDisplay/CenterContainer/potatoesNb/potatoCountLabel"]
+[node name="potatoCountSecTip" type="Timer" parent="RessourceCounter/VBoxContainer/potatoesDisplay/CenterContainer/potatoesNb/potatoCountLabel"]
 script = ExtResource("6_0srm5")
 
 [node name="potatoImg" type="RichTextLabel" parent="RessourceCounter/VBoxContainer/potatoesDisplay"]
@@ -188,7 +196,7 @@ script = ExtResource("39_hs3fy")
 [node name="cookedPotatoCountLabel" type="Node2D" parent="RessourceCounter/VBoxContainer/cookedPotatoDisplay/CenterContainer/potatoesNb"]
 script = ExtResource("6_6ave8")
 
-[node name="cookedPotatoCountSecTip" type="Node2D" parent="RessourceCounter/VBoxContainer/cookedPotatoDisplay/CenterContainer/potatoesNb/cookedPotatoCountLabel"]
+[node name="cookedPotatoCountSecTip" type="Timer" parent="RessourceCounter/VBoxContainer/cookedPotatoDisplay/CenterContainer/potatoesNb/cookedPotatoCountLabel"]
 script = ExtResource("6_0srm5")
 
 [node name="cookedPotatoImg" type="RichTextLabel" parent="RessourceCounter/VBoxContainer/cookedPotatoDisplay"]
@@ -220,7 +228,7 @@ script = ExtResource("7_d3vh4")
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = "[img=50xz29]res://Upgrades/UpgradeImages/temp.png[/img]"
+text = "[img=50xz29]res://Upgrades/UpgradeImages/fourTemp.png[/img]"
 fit_content = true
 autowrap_mode = 0
 script = ExtResource("39_hs3fy")
@@ -231,6 +239,7 @@ anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = -562.0
 grow_vertical = 2
+script = ExtResource("9_7dbn7")
 
 [node name="TextureRect2" type="Panel" parent="LeftMenu"]
 layout_mode = 1

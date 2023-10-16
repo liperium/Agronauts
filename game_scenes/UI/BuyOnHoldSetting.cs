@@ -12,5 +12,6 @@ public partial class BuyOnHoldSetting : CheckBox
 	{
 		FarmLand.buyOnHeld = buttonPressed;
 		GameState.settings.buyLandOnHold = buttonPressed;
+		GameState.SaveSettings();
 	}
 }

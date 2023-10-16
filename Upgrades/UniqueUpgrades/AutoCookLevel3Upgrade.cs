@@ -11,7 +11,7 @@ public partial class AutoCookLevel3Upgrade : BuyableUpgrade<MultiplierModifier>
 
     public override void UpdateCost()
     {
-        cost = 1000000;
+        cost = 100000;
     }
 
     public override IdleNumber GetAffectedNumber()

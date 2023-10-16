@@ -8,10 +8,12 @@ public partial class FurnaceTempUpgrade : TieredUpgrade<MultiplierModifier>
         modifier.multiplier *= 1.2f;
         base.OnBuy();
     }
+    
+    
 
     public override void UpdateCost()
     {
-        cost = (long)(500 + Mathf.Pow(tier,3f) + 10 * tier);
+        cost = (long)(Mathf.Pow(10,tier+2));
     }
 
     public override IdleNumber GetAffectedNumber()
@@ -25,7 +27,12 @@ public partial class FurnaceTempUpgrade : TieredUpgrade<MultiplierModifier>
 
         info.SetName("KFURNACETEMP");
         info.SetDescription("KFURNACETEMPDESC");
-        info.SetImagePath("res://Upgrades/UpgradeImages/temp.png");
+        info.SetImagePath("res://Upgrades/UpgradeImages/fourTemp.png");
+    }
+
+    public override IdleNumber GetCostNumber()
+    {
+        return GameState.instance.numbers.cookedPotatoCount;
     }
 
     public override void OnLoad()
