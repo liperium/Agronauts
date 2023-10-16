@@ -57,6 +57,7 @@ public partial class IdleUpgrade <TModifier> : BaseIdleUpgrade where TModifier :
 			}
 		}
 		UpdateModifier();
+		GetAffectedNumber().UpdateValue();
 		InnitInfo();
 	}
 
