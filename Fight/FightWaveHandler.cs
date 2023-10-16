@@ -9,12 +9,25 @@ public partial class FightWaveHandler : Node2D
 
     private bool unlockSubscribed;
 
+    private RichTextLabel waveComingText;
+
+    private WaveState state;
+
     [Export] public PackedScene fightScene;
+
+    enum WaveState
+    {
+        InvasionComing,
+        InvasionStay,
+    }
 
     public override void _Ready()
     {
         base._Ready();
 
+        waveComingText = GetNode<RichTextLabel>("WaveUI/WaveComingText");
+        waveComingText.Text = "";
+        
         waveTimer.Timeout += OnTimerEnd;
         
         UnlockFurnaceUpgrade unlockFurnaceUpgrade = GameState.instance.upgrades.unlockFurnaceUpgrade;
@@ -31,6 +44,7 @@ public partial class FightWaveHandler : Node2D
 
     private void OnFurnaceUnlocked()
     {
+        state = WaveState.InvasionComing;
         waveTimer.Start(GetWaveTime());
         
         if (unlockSubscribed)
@@ -44,17 +58,21 @@ public partial class FightWaveHandler : Node2D
     {
         base._Process(delta);
 
-        if (waveTimer.TimeLeft != 0 && waveTimer.TimeLeft <= 60)
+        if (waveTimer.TimeLeft != 0 && waveTimer.TimeLeft <= 60 && state == WaveState.InvasionComing)
         {
             //TODO time remaining UI
+            waveComingText.Text = Tr("KWAVECOMING") + " : " + Mathf.RoundToInt(waveTimer.TimeLeft) + " " +Tr("KSECONDS") + "!";
         }
     }
 
     private void OnTimerEnd()
     {
+        state = WaveState.InvasionStay;
+        waveComingText.Text = "";
         waveTimer.Timeout -= OnTimerEnd;
         
         //TODO VAGUE ARRIVE POPUP
+        
         
         waveTimer.Timeout += WaveStayEnd;
         waveTimer.Start(GetInvasionStayTime());
