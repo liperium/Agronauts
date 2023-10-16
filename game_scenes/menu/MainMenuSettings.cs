@@ -19,7 +19,6 @@ public partial class MainMenuSettings : VBoxContainer
 
 	private void ToggleSettings()
 	{
-		GD.Print("YOYLYOOYFDS");
 		opened = !opened;
 		if (opened)
 		{

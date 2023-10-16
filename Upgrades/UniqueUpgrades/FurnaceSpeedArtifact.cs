@@ -29,6 +29,11 @@ public partial class FurnaceSpeedArtifact : BuyableUpgrade<MultiplierModifier>
         modifier.multiplier = 2f;
         base.OnBuy();
     }
+    
+    public override void UpdateModifier()
+    {
+        modifier.multiplier = 3f;
+    }
 
     public override void UpdateCost()
     {
