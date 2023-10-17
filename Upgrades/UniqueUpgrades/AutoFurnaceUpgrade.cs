@@ -6,9 +6,7 @@ public partial class AutoFurnaceUpgrade : BuyableUpgrade<MultiplierModifier>
     public override void OnBuy()
     {      
         base.OnBuy();
-        unlock_pop_up.instance.ChangeText("KCONGRATULATIONS", "KCOOKUNLOCKTIP");
-        unlock_pop_up.instance.ChangeImage("res://Upgrades/UpgradeImages/Cuisinier.png");
-        unlock_pop_up.instance.Animation();
+        GamePopUp.instance.AddToQueue(new GamePopUpInfo("KCONGRATULATIONS","KCOOKUNLOCKTIP",ResourceLoader.Load<CompressedTexture2D>("res://Upgrades/UpgradeImages/Cuisinier.png")));
     }
 
     public override void UpdateCost()
