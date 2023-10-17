@@ -1,17 +1,13 @@
 using Godot;
 using System;
 
-public partial class FurnaceSpeedArtifact : TieredUpgrade<MultiplierModifier>
+public partial class FurnaceSpeedArtifact : ArtifactUpgrade<MultiplierModifier>
 {
     public override IdleNumber GetAffectedNumber()
     {
         return GameState.instance.numbers.furnaceSpeed;
     }
 
-    public override void OnLoad()
-    {
-        base.OnLoad();
-    }
     public override void UpdateModifier()
     {
         modifier.multiplier = 1 + Mathf.RoundToInt( 0.1f * tier);
