@@ -51,8 +51,19 @@ public partial class Alien : Area2D
             if (onEnemyKill != null) onEnemyKill();
             audioStreamPlayer.Stream = dieSound;
             audioStreamPlayer.Play();
-            audioStreamPlayer.Finished += () => QueueFree();
+            audioStreamPlayer.Finished += KillThis;
             Hide();
         }
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        audioStreamPlayer.Finished -= KillThis;
+    }
+
+    private void KillThis()
+    {
+        QueueFree();
     }
 }
