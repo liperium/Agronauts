@@ -54,15 +54,22 @@ public partial class Alien : Area2D
         {
             Action onEnemyKill = FightManager.OnEnemyKill;
             if (onEnemyKill != null) onEnemyKill();
-            if (audioStreamPlayer != null)
+            /*if (audioStreamPlayer != null)
             {
                 audioStreamPlayer.Stream = dieSound;
                 audioStreamPlayer.Play();
                 audioStreamPlayer.Finished += KillThis;
-                audioStreamPlayer.TreeExiting += () => audioStreamPlayer.Finished -= KillThis;
-            }
-
-            Hide();
+                audioStreamPlayer.TreeExiting += () =>
+                {
+                    if (audioStreamPlayer != null)
+                    {
+                        audioStreamPlayer.Finished -= KillThis;
+                        audioStreamPlayer = null;
+                    }
+                };
+            }*/ 
+            //Hide();
+            QueueFree();
         }
     }
 
