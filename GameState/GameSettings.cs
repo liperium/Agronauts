@@ -23,6 +23,7 @@ public class GameSettings
         soundVolumes.Add(SoundCategory.PlayerMaster, 1.0);
         soundVolumes.Add(SoundCategory.PlayerMusic, 1.0);
         soundVolumes.Add(SoundCategory.PlayerSfx, 1.0);
+        soundVolumes.Add(SoundCategory.PlayerTractor, 1.0);
 
         buyLandOnHold = false;
         windowMode = (int)DisplayServer.WindowMode.Maximized;

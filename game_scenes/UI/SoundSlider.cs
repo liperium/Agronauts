@@ -10,6 +10,8 @@ public enum SoundCategory
 	GameMusic = 4,
 	GameSfx = 5,
 	CombatMusic = 6,
+	PlayerTractor = 7,
+	Tractor = 8,
 }
 
 public partial class SoundSlider : HSlider
