@@ -65,3 +65,10 @@ KSHOWACQUIREDUPGRADES,Show bought upgrades,Montrer les améliorations achetées
 KHIDEMANUALTRACTOR,Hide manual tractor,Cacher le tracteur manuel
 KWAVECOMING,ALIEN INVASION IN,INVASION EXTRATERRESTRE DANS
 KSECONDS,SECONDS,SECONDES
+KWINDOWED,Windowed,Fenêtré
+KMINIMIZED,Minimized,Réduit
+KMAXIMIZED,Maximized,Agrandi
+KFULLSCREEN,Fullscreen,Plein écran
+KEXCLUSIVEFULLSCREEN,Exclusive fullscreen,Plein écran exclusif
+KINVASIONTIMEUPGRADE,Alien radar,Radar alien
+KINVASIONTIMEUPGRADEDESC,Attracts aliens. Reduces the time between invasions by 10%.,Attire les aliens. Réduit le temps entre les invasions de 10%.

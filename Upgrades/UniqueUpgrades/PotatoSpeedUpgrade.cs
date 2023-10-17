@@ -18,17 +18,21 @@ public class PotatoSpeedUpgrade : CappedTieredUpgrade<MultiplierModifier>
         return GameState.instance.numbers.potatoGrowSpeed;
     }
 
-    public override void InnitInfo()
+    public override void InitInfo()
     {
-        base.InnitInfo();
+        base.InitInfo();
         info.SetName("KPOTATOSPEEDUPGRADE");
         info.SetDescription("KPOTATOSPEEDUPGRADEDESC");
         info.SetImagePath("res://Upgrades/UpgradeImages/EngraisNaturel.png");
     }
 
+    protected override long GetTierCap()
+    {
+        return 10;
+    }
+
     public override void OnLoad()
     {
-        tierCap = 10;
         base.OnLoad();
         if (IsUnlocked() == false) GameState.instance.numbers.potatoCount.SetOnValueChanged(CheckUnlock);
     }

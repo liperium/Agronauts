@@ -9,19 +9,22 @@ public partial class WindowModeSelector : MenuButton
 		double settingsSoundVolume = GameState.settings.windowMode;
 		foreach (var windowMode in DisplayServer.WindowMode.GetValues(typeof(DisplayServer.WindowMode)))
 		{
-			GetPopup().AddItem($"{windowMode.ToString()}");
+			GetPopup().AddItem($"K{windowMode.ToString().ToUpper()}");
 		}
 		ChangeWindowMode((long)settingsSoundVolume);
 		GetPopup().IndexPressed += ChangeWindowMode;
 	}
-	public void ChangeWindowMode(long index)
+	public void ChangeWindowMode(long newModeInt)
 	{
-		if (DisplayServer.WindowGetMode() == (DisplayServer.WindowMode)index)
+		DisplayServer.WindowMode newWindowMode = (DisplayServer.WindowMode)newModeInt;
+		if (DisplayServer.WindowGetMode() == newWindowMode)
 		{
 			return;
 		}
-		DisplayServer.WindowSetMode((DisplayServer.WindowMode)index);
-		GameState.settings.windowMode = index;
+		GD.Print($"Changed window mode - {newWindowMode}");
+		DisplayServer.WindowSetMode(newWindowMode);
+		ProjectSettings.SetSetting("display/window/size/mode",newModeInt);
+		GameState.settings.windowMode = newModeInt;
 		GameState.SaveSettings();
 	}
 }
