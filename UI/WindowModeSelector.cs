@@ -7,29 +7,29 @@ public partial class WindowModeSelector : MenuButton
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		double settingsWindowMode = GameState.settings.windowMode;
+		long settingsWindowMode = GameState.settings.windowMode;
 		foreach (var windowMode in DisplayServer.WindowMode.GetValues(typeof(DisplayServer.WindowMode)))
 		{
 			GetPopup().AddItem($"K{windowMode.ToString().ToUpper()}");
 		}
-		ChangeWindowMode((long)settingsWindowMode);
+		ChangeWindowMode(settingsWindowMode);
 		GetPopup().IndexPressed += ChangeWindowMode;
 	}
 	public void ChangeWindowMode(DisplayServer.WindowMode newMode)
 	{
-		if (DisplayServer.WindowGetMode() == newMode)
-		{
-			return;
-		}
 
 		if (newMode != DisplayServer.WindowMode.Fullscreen && newMode != DisplayServer.WindowMode.ExclusiveFullscreen)
 		{
 			lastNonFullscreenMode = newMode;
 		}
 		GD.Print($"Changed window mode - {newMode}");
-		DisplayServer.WindowSetMode(newMode);
+		if (DisplayServer.WindowGetMode() != newMode)
+		{
+			DisplayServer.WindowSetMode(newMode);
+		}
 		ProjectSettings.SetSetting("display/window/size/mode",(long)newMode);
 		GameState.settings.windowMode = (long)newMode;
+
 		GameState.SaveSettings();
 	}
 
