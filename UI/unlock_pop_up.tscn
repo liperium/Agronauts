@@ -17,7 +17,7 @@ grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("1_ucxxr")
 
-[node name="NinePatchRect" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
