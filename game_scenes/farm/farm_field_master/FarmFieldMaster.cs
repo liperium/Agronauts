@@ -44,7 +44,6 @@ public partial class FarmFieldMaster : Node2D
 		AddChild(newChild);
 		GameState.instance.numbers.numberOfTilesUnlocked.IncreaseValue(1);
 	}
-
 	public enum Cardinality
 	{
 		NORTH,
@@ -81,6 +80,9 @@ public partial class FarmFieldMaster : Node2D
 
 	private void ProcessHistory()
 	{
+		//TODO Clean up this mess when refactoring tiles
+		GameState.instance.upgrades.addAutomaticTractorUpgrade.ResetFarmFieldList();
+		
 		GameState.instance.numbers.numberOfTilesUnlocked.SetValue(0);
 		foreach (SavedField savedField in GameState.instance.savedFields.boughtFieldsHistory)
 		{
