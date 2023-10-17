@@ -52,14 +52,9 @@ public partial class Alien : Area2D
             audioStreamPlayer.Stream = dieSound;
             audioStreamPlayer.Play();
             audioStreamPlayer.Finished += KillThis;
+            audioStreamPlayer.TreeExiting += () => audioStreamPlayer.Finished -= KillThis;
             Hide();
         }
-    }
-
-    public override void _ExitTree()
-    {
-        base._ExitTree();
-        audioStreamPlayer.Finished -= KillThis;
     }
 
     private void KillThis()
