@@ -15,7 +15,6 @@ public class IdleUpgradeContainer
     public FurnaceSpeedUpgrade furnaceSpeedUpgrade;
     public FurnaceBatchSizeUpgrade furnaceBatchSizeUpgrade;
     public FurnacePotatoRecyclerUpgrade furnacePotatoRecyclerUpgrade;
-    public TractorSpeedArtifact tractorSpeedArtifact;
     public FurnaceSpeedArtifact furnaceSpeedArtifact;
     public FurnaceTempUpgrade furnaceTempUpgrade;
     public TractorSpreadSeedsUpgrade tractorSpreadSeedsUpgrade;
@@ -40,7 +39,6 @@ public class IdleUpgradeContainer
         furnaceBatchSizeUpgrade = new FurnaceBatchSizeUpgrade();
         furnacePotatoRecyclerUpgrade = new FurnacePotatoRecyclerUpgrade();
 
-        tractorSpeedArtifact = new TractorSpeedArtifact();
         furnaceSpeedArtifact = new FurnaceSpeedArtifact();
         furnaceTempUpgrade = new FurnaceTempUpgrade();
         tempTractorSpeedUpgrade = new TempTractorSpeedUpgrade();
@@ -67,7 +65,6 @@ public class IdleUpgradeContainer
         furnaceBatchSizeUpgrade.OnLoad();
         furnacePotatoRecyclerUpgrade.OnLoad();
 
-        tractorSpeedArtifact.OnLoad();
         furnaceSpeedArtifact.OnLoad();
         furnaceTempUpgrade.OnLoad();
         tempTractorSpeedUpgrade.OnLoad();
