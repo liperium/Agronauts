@@ -24,9 +24,9 @@ public partial class FurnaceSpeedUpgrade : TieredUpgrade<MultiplierModifier>
         return GameState.instance.numbers.furnaceSpeed;
     }
 
-    public override void InnitInfo()
+    public override void InitInfo()
     {
-        base.InnitInfo();
+        base.InitInfo();
 
         info.SetName("KFURNACESPEED");
         info.SetDescription("KFURNACESPEEDDESC");

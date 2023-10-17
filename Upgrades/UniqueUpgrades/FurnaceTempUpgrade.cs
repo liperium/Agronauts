@@ -24,9 +24,9 @@ public partial class FurnaceTempUpgrade : TieredUpgrade<MultiplierModifier>
         return GameState.instance.numbers.potatoTemperature;
     }
 
-    public override void InnitInfo()
+    public override void InitInfo()
     {
-        base.InnitInfo();
+        base.InitInfo();
 
         info.SetName("KFURNACETEMP");
         info.SetDescription("KFURNACETEMPDESC");

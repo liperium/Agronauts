@@ -8,7 +8,7 @@ public partial class InfoUpgrade
     private CompressedTexture2D image;
     private string imagePath;
 	private string costImagePath;
-	public static string defaultPath = "res://Icons/Potato.png";
+	public const string defaultImagePath = "res://Icons/Potato.png";
 
 
     public void SetName(string name)

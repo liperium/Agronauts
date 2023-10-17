@@ -31,7 +31,7 @@ public partial class GameState
 		set => _instance = value;
 	}
 
-	private const string filePath = "Save.sav";
+	private const string saveFilePath = "Save.sav";
 	private const string settingsPath = "Settings.json";
 	public int randomSeed = 0xBADF00D;
 	public bool won;
@@ -82,7 +82,7 @@ public partial class GameState
 	{
 		string saveData = JsonConvert.SerializeObject(this, jsonSerializerSettings);
 		
-		using (StreamWriter outputFile = new StreamWriter(filePath, new FileStreamOptions{ Mode = FileMode.Create, Access = FileAccess.Write}))
+		using (StreamWriter outputFile = new StreamWriter(saveFilePath, new FileStreamOptions{ Mode = FileMode.Create, Access = FileAccess.Write}))
 		{
 			outputFile.WriteLine(saveData);
 			
@@ -96,7 +96,7 @@ public partial class GameState
 	{
 		try
 		{
-			using (var sr = new StreamReader(filePath))
+			using (var sr = new StreamReader(saveFilePath))
 			{
 				GameState newState;
 				newState = JsonConvert.DeserializeObject<GameState>(sr.ReadToEnd(), jsonSerializerSettings);
@@ -120,6 +120,23 @@ public partial class GameState
 		}
 
 		return false;
+	}
+
+	public static void DeleteSave()
+	{
+		try
+		{
+			if (File.Exists(saveFilePath))
+			{
+				File.Delete(saveFilePath);
+				
+				GD.Print("Deleted save!");
+			}
+		}
+		catch (Exception ex)
+		{
+			GD.PrintErr(ex);
+		}
 	}
 
 	public static GameState NewGame()

@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 [Serializable]
-public partial class IdleNumber
+public partial class IdleNumber : ISaveable
 {
 	public long value;
 	private float multiplier;

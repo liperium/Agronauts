@@ -13,14 +13,15 @@ public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier
 		cost = (long)(5 + Mathf.Pow(tier, 2) + tier);
 	}
 
+	
 	public override IdleNumber GetAffectedNumber()
 	{
 		return GameState.instance.numbers.potatoYield;
 	}
 
-	public override void InnitInfo()
+	public override void InitInfo()
 	{
-		base.InnitInfo();
+		base.InitInfo();
 		
 		info.SetName("KPOTATOYIELDUPGRADE");
 		info.SetDescription("KPOTATOYIELDUPGRADEDESC");

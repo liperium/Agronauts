@@ -24,6 +24,10 @@ public partial class IdleUpgrade <TModifier> : BaseIdleUpgrade where TModifier :
 		}
 	}
 
+	/// <summary>
+	/// Gets the IdleNumber affected by this upgrade. This needs to be overridden for each upgrade.
+	/// </summary>
+	/// <returns>The IdleNumber affected by this upgrade.</returns>
 	public virtual IdleNumber GetAffectedNumber()
 	{
 		return GameState.instance.numbers.potatoCount;
@@ -58,14 +62,12 @@ public partial class IdleUpgrade <TModifier> : BaseIdleUpgrade where TModifier :
 		}
 		UpdateModifier();
 		GetAffectedNumber().UpdateValue();
-		InnitInfo();
+		InitInfo();
 	}
 
-	public virtual string GetEffectText()
-	{
-		return "";
-	}
-
+	/// <summary>
+	/// Updates the modifier. Called on load and on buy
+	/// </summary>
 	public virtual void UpdateModifier()
 	{
 		

@@ -18,17 +18,22 @@ public partial class TractorSpeedUpgrade : CappedTieredUpgrade<MultiplierModifie
         return GameState.instance.numbers.truckSpeed;
     }
 
-    public override void InnitInfo()
+    public override void InitInfo()
     {
-        base.InnitInfo();
+        base.InitInfo();
 
         info.SetName("KTRUCKSPEEDUPGRADE");
         info.SetDescription("KTRUCKSPEEDUPGRADEDESC");
         info.SetImagePath("res://Upgrades/UpgradeImages/CarburantPatate.png");
     }
+
+    protected override long GetTierCap()
+    {
+        return 3;
+    }
+
     public override void OnLoad()
     {
-        tierCap = 3;
         base.OnLoad();
         GameState.instance.numbers.truckAmount.SetOnValueChanged(CheckUnlock);
     }

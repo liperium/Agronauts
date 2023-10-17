@@ -35,9 +35,9 @@ public partial class AddAutomaticTractorUpgrade : TieredUpgrade<MultiplierModifi
     }
 
 
-    public override void InnitInfo()
+    public override void InitInfo()
     {
-        base.InnitInfo();
+        base.InitInfo();
         info.SetName("KADDAUTOTRACTORUPGRADE");
         info.SetDescription("KADDAUTOTRACTORUPGRADEDESC");
         info.SetImagePath("res://Upgrades/UpgradeImages/ai.png");

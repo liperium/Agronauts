@@ -14,5 +14,10 @@ public partial class Cheats : Node2D
 		{
 			GameState.instance.numbers.cookedPotatoCount.IncreaseValue(1000000);
 		}
+		
+		if (Input.IsActionJustReleased("nuke_save"))
+		{
+			GameState.DeleteSave();
+		}
 	}
 }
