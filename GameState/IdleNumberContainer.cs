@@ -69,38 +69,38 @@ public class IdleNumberContainer
         potatoCount = new IdleNumber();
         potatoCount.SetImagePath(InfoUpgrade.defaultImagePath);
         potatoYield = new IdleNumber();
-        potatoYield.SetValue(1);
+        potatoYield.SetValue(1, false);
         potatoGrowSpeed = new IdleNumber();
-        potatoGrowSpeed.SetValue(1);
+        potatoGrowSpeed.SetValue(1, false);
 
         cookedPotatoCount = new IdleNumber();
         cookedPotatoCount.SetImagePath("res://UI/sprites/PotatoeFumante.png");
         cookedPotatoYield = new IdleNumber();
-        cookedPotatoYield.SetValue(1);
+        cookedPotatoYield.SetValue(1, false);
 
         potatoTemperature = new IdleNumber();
-        potatoTemperature.SetValue(10);
+        potatoTemperature.SetValue(10, false);
 
         furnaceAutoBakeSpeed = new IdleNumber();
-        furnaceAutoBakeSpeed.SetValue(100);
+        furnaceAutoBakeSpeed.SetValue(100, false);
         furnaceTotalAutoCookedPotato = new IdleNumber();
         furnaceBatchCount = new IdleNumber();
-        furnaceBatchCount.SetValue(1);
+        furnaceBatchCount.SetValue(1, false);
         furnaceSpeed = new IdleNumber();
-        furnaceSpeed.SetValue(1);
+        furnaceSpeed.SetValue(1, false);
         
         truckAmount = new IdleNumber();
         truckSpeed = new IdleNumber();
-        truckSpeed.SetValue(20);
+        truckSpeed.SetValue(20, false);
         truckPotatosFarmed = new IdleNumber();
 
         numberOfTilesUnlocked = new IdleNumber();
 
         fightWave = new IdleNumber();
-        fightWave.SetValue(1);
+        fightWave.SetValue(1, false);
 
         invasionTime = new IdleNumber();
-        invasionTime.SetValue(60);
+        invasionTime.SetValue(5, false);
     }
 
   
