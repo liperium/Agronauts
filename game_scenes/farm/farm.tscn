@@ -64,30 +64,3 @@ script = ExtResource("6_fg8l0")
 
 [node name="FightWaveHandler" parent="." instance=ExtResource("7_88jwg")]
 position = Vector2(499, 480)
-
-[node name="WaveUI" type="CanvasLayer" parent="FightWaveHandler"]
-
-[node name="WaveComingText" type="RichTextLabel" parent="FightWaveHandler/WaveUI"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -41.5
-offset_top = 166.0
-offset_right = 41.5
-offset_bottom = 197.0
-grow_horizontal = 2
-theme_override_colors/default_color = Color(0.564706, 0.054902, 0.760784, 1)
-theme_override_font_sizes/normal_font_size = 44
-bbcode_enabled = true
-text = "KWAVECOMING"
-fit_content = true
-autowrap_mode = 0
-
-[node name="Button" type="Button" parent="FightWaveHandler/WaveUI"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -4.0
-offset_right = 4.0
-offset_bottom = 8.0
-grow_horizontal = 2

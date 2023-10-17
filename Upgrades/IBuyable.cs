@@ -14,8 +14,9 @@ public interface IBuyable
 	public string GetEffectText();
 	public bool IsUnlocked();
 	public void SetOnUnlock(Action action);
-	public void SetOnCostChanged(Action<long> action);
 	public void ResetOnUnlock(Action action);
+	public void SetOnCostChanged(Action<long> action);
+	public void ResetOnCostChanged(Action<long> action);
 	public UIManager.UpgradeTab GetUpgradeTab();
 	public bool IsOneTimeBuy();
 	public void SetOnBuyUpgrade(Action action);

@@ -9,7 +9,10 @@ public partial class UpgradeHolderUI : Control
     private Label upgradeTitle;
     private Label upgradeDescription;
 
+    private Tab tab;
+
     private bool onUnlockPlugged;
+    private bool freeOnMaxPlugged;
 
     public void Init(IBuyable upgrade)
     {
@@ -25,8 +28,21 @@ public partial class UpgradeHolderUI : Control
         Name = genericUpgrade.GetInfo().GetName();
         
         UpdateAllInfo();
+        
+        //events
         genericUpgrade.SetOnCostChanged(OnUpgradeCostChanged);
         genericUpgrade.SetOnInfoChanged(UpdateAllInfo);
+        
+        genericUpgrade.SetOnUnlock(ShowHideMenu.instance.UnlockedUpgrade);
+        if (genericUpgrade.IsMaxed())
+        {
+            FreeMe();
+        }
+        else
+        {
+            genericUpgrade.SetOnMaxedUpgrade(FreeMe);
+            freeOnMaxPlugged = true;
+        }
     }
 
     public override void _Ready()
@@ -44,6 +60,12 @@ public partial class UpgradeHolderUI : Control
         {
             Show();
         }
+    }
+
+    public void SetTab(Tab holderTab)
+    {
+        tab = holderTab;
+        genericUpgrade.SetOnUnlock(tab.FlashTab);
     }
 
     private void PressBuy()
@@ -105,13 +127,24 @@ public partial class UpgradeHolderUI : Control
     public override void _ExitTree()
     {
         base._ExitTree();
-        genericUpgrade.SetOnCostChanged(OnUpgradeCostChanged);
+        genericUpgrade.ResetOnCostChanged(OnUpgradeCostChanged);
         
         if (onUnlockPlugged)
         {
             genericUpgrade.ResetOnUnlock(OnUnlock);
         }
+        
+        genericUpgrade.ResetOnInfoChanged(UpdateAllInfo);
+        genericUpgrade.ResetOnUnlock(ShowHideMenu.instance.UnlockedUpgrade);
+
+        if (freeOnMaxPlugged)
+        {
+            genericUpgrade.ResetOnMaxedUpgrade(FreeMe);
+        }
+
+        if (tab != null)
+        {
+            genericUpgrade.ResetOnUnlock(tab.FlashTab);
+        }
     }
-
-
 }

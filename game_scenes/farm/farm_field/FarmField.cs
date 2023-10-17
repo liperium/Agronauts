@@ -48,14 +48,10 @@ public partial class FarmField : Node2D
 					);
 			}
 		}
-
-
+		
         GameState.instance.upgrades.addAutomaticTractorUpgrade.AddField(this);
     }
-
-
-
-
+	
     public void LandBought(Pos2D pos2D, bool addToHistory = true)
     {
 	    isBought[pos2D.X, pos2D.Y] = true;
