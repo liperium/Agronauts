@@ -10,7 +10,7 @@ public class InvasionTimeUpgrade : CappedTieredUpgrade<MultiplierModifier>
 
     public override void UpdateCost()
     {
-        cost = 1; /*(long)(10000*Math.Pow(tier+1, tier));*/
+        cost = (long)(10000 * Math.Pow(tier + 1, tier));
     }
 
     public override IdleNumber GetAffectedNumber()
@@ -37,7 +37,7 @@ public class InvasionTimeUpgrade : CappedTieredUpgrade<MultiplierModifier>
         base.OnLoad();
         if (acquired == false)
         {
-            GameState.instance.numbers.potatoCount.SetOnValueChanged(CheckUnlock);
+            GameState.instance.numbers.fightWave.SetOnValueChanged(CheckUnlock);
         }
     }
 
@@ -46,7 +46,7 @@ public class InvasionTimeUpgrade : CappedTieredUpgrade<MultiplierModifier>
         if (fightWave >= 1)
         {
             Unlock();
-            GameState.instance.numbers.potatoCount.ResetOnValueChanged(CheckUnlock);
+            GameState.instance.numbers.fightWave.ResetOnValueChanged(CheckUnlock);
         }
     }
 
