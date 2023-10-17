@@ -24,9 +24,9 @@ public partial class AutoCookLevel3Upgrade : BuyableUpgrade<MultiplierModifier>
     }
 
 
-    public override void InnitInfo()
+    public override void InitInfo()
     {
-        base.InnitInfo();
+        base.InitInfo();
         info.SetName("KCOOKLVL3");
         info.SetDescription("KCOOKLVL3DESC");
         info.SetImagePath("res://Upgrades/UpgradeImages/chapo1star.png");

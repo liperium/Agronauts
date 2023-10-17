@@ -26,9 +26,9 @@ public partial class AutoFurnaceUpgrade : BuyableUpgrade<MultiplierModifier>
         return;
     }
 
-    public override void InnitInfo()
+    public override void InitInfo()
     {
-        base.InnitInfo();
+        base.InitInfo();
         info.SetName("KAUTOCOOKUPGRADE");
         info.SetDescription("KAUTOCOOKUPGRADEDESC");
         info.SetImagePath("res://Upgrades/UpgradeImages/Cuisinier.png");

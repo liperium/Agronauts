@@ -8,9 +8,9 @@ public partial class TractorSpreadSeedsUpgrade : BuyableUpgrade<IdleModifier>
         cost = 100000;
     }
 
-    public override void InnitInfo()
+    public override void InitInfo()
     {
-        base.InnitInfo();
+        base.InitInfo();
         info.SetName("KPLANTER");
         info.SetDescription("KPLANTERDESC");
         info.SetImagePath("res://game_scenes/farm/tracteur/sprites/epandeur.png");

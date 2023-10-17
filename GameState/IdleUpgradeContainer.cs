@@ -23,6 +23,8 @@ public class IdleUpgradeContainer
 
     public UnlockFurnaceUpgrade unlockFurnaceUpgrade;
     public UnlockArtifactsUpgrade unlockArtifactsUpgrade;
+
+    public InvasionTimeUpgrade invasionTimeUpgrade;
     public void Init()
     {
         totalPotatoYieldUpgrade = new TotalPotatoYieldUpgrade();
@@ -47,6 +49,7 @@ public class IdleUpgradeContainer
         unlockFurnaceUpgrade = new UnlockFurnaceUpgrade();
         unlockArtifactsUpgrade = new UnlockArtifactsUpgrade();
 
+        invasionTimeUpgrade = new InvasionTimeUpgrade();
     }
 
     public void OnLoad()
@@ -68,10 +71,11 @@ public class IdleUpgradeContainer
         furnaceSpeedArtifact.OnLoad();
         furnaceTempUpgrade.OnLoad();
         tempTractorSpeedUpgrade.OnLoad();
-
-
+        
         unlockFurnaceUpgrade.OnLoad();
         unlockArtifactsUpgrade.OnLoad();
         tractorSpreadSeedsUpgrade.OnLoad();
+        
+        invasionTimeUpgrade.OnLoad();
     }
 }

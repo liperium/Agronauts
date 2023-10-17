@@ -27,9 +27,9 @@ public partial class TempTractorSpeedUpgrade : BuyableUpgrade<MultiplierModifier
         return GameState.instance.numbers.cookedPotatoCount;
     }
 
-    public override void InnitInfo()
+    public override void InitInfo()
     {
-        base.InnitInfo();
+        base.InitInfo();
         info.SetName("KTEMPSPEEDTRUCK");
         info.SetDescription("KTEMPSPEEDTRUCKDESC");
         info.SetImagePath("res://Upgrades/UpgradeImages/tracteurfeu.png");
