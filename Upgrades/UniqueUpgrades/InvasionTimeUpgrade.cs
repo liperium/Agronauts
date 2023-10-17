@@ -24,7 +24,7 @@ public class InvasionTimeUpgrade : CappedTieredUpgrade<MultiplierModifier>
 
         info.SetName("KINVASIONTIMEUPGRADE");
         info.SetDescription("KINVASIONTIMEUPGRADEDESC");
-        info.SetImagePath(InfoUpgrade.defaultImagePath);
+        info.SetImagePath("res://Upgrades/UpgradeImages/radar.png");
     }
 
     protected override long GetTierCap()

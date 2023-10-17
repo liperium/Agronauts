@@ -17,20 +17,24 @@ public partial class WindowModeSelector : MenuButton
 	}
 	public void ChangeWindowMode(DisplayServer.WindowMode newMode)
 	{
-
 		if (newMode != DisplayServer.WindowMode.Fullscreen && newMode != DisplayServer.WindowMode.ExclusiveFullscreen)
 		{
-			lastNonFullscreenMode = newMode;
+			if (lastNonFullscreenMode != DisplayServer.WindowGetMode())
+			{
+				lastNonFullscreenMode = DisplayServer.WindowGetMode();
+			}
+			else
+			{
+				lastNonFullscreenMode = newMode;
+			}
 		}
+
 		GD.Print($"Changed window mode - {newMode}");
 		if (DisplayServer.WindowGetMode() != newMode)
 		{
 			DisplayServer.WindowSetMode(newMode);
 		}
-		ProjectSettings.SetSetting("display/window/size/mode",(long)newMode);
-		GameState.settings.windowMode = (long)newMode;
-
-		GameState.SaveSettings();
+		SaveAll((long)newMode);
 	}
 
 	public void ChangeWindowMode(long newModeLong)
@@ -53,4 +57,20 @@ public partial class WindowModeSelector : MenuButton
 			}
 		}
 	}
+
+	public override void _ExitTree()
+	{
+		base._ExitTree();
+
+		SaveAll((long)DisplayServer.WindowGetMode()); // If window was changed externally it needs to save the last.
+	}
+
+	public void SaveAll(long newMode)
+	{
+		ProjectSettings.SetSetting("display/window/size/mode",newMode);
+		GameState.settings.windowMode = newMode;
+
+		GameState.SaveSettings();
+	}
+	//TODO window size
 }
