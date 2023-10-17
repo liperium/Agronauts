@@ -19,9 +19,9 @@ public partial class FurnaceBatchSizeUpgrade : TieredUpgrade<MultiplierModifier>
         return GameState.instance.numbers.furnaceBatchCount;
     }
 
-    public override void InnitInfo()
+    public override void InitInfo()
     {
-        base.InnitInfo();
+        base.InitInfo();
 
         info.SetName("KFURNACEBATCHCOUNT");
         info.SetDescription("KFURNACEBATCHCOUNTDESC");

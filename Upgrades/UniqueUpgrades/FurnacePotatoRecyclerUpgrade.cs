@@ -21,9 +21,9 @@ public partial class FurnacePotatoRecyclerUpgrade : TieredUpgrade<MultiplierModi
         return GameState.instance.numbers.cookedPotatoCount;
     }
 
-    public override void InnitInfo()
+    public override void InitInfo()
     {
-        base.InnitInfo();
+        base.InitInfo();
 
         info.SetName("KCOOKEDRECYCLER");
         info.SetDescription("KCOOKEDRECYCLERDESC");

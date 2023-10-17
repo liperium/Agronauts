@@ -9,7 +9,7 @@ public partial class WindowModeSelector : MenuButton
 		double settingsSoundVolume = GameState.settings.windowMode;
 		foreach (var windowMode in DisplayServer.WindowMode.GetValues(typeof(DisplayServer.WindowMode)))
 		{
-			GetPopup().AddItem($"{windowMode.ToString()}");
+			GetPopup().AddItem($"K{windowMode.ToString().ToUpper()}");
 		}
 		ChangeWindowMode((long)settingsSoundVolume);
 		GetPopup().IndexPressed += ChangeWindowMode;

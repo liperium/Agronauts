@@ -25,6 +25,7 @@ public class IdleNumberContainer
     public IdleNumber truckPotatosFarmed;
 
     public IdleNumber fightWave;
+    public IdleNumber invasionTime;
 
     public void OnLoad()
     {
@@ -66,7 +67,7 @@ public class IdleNumberContainer
     public void Init()
     {
         potatoCount = new IdleNumber();
-        potatoCount.SetImagePath(InfoUpgrade.defaultPath);
+        potatoCount.SetImagePath(InfoUpgrade.defaultImagePath);
         potatoYield = new IdleNumber();
         potatoYield.SetValue(1);
         potatoGrowSpeed = new IdleNumber();
@@ -97,6 +98,9 @@ public class IdleNumberContainer
 
         fightWave = new IdleNumber();
         fightWave.SetValue(1);
+
+        invasionTime = new IdleNumber();
+        invasionTime.SetValue(60);
     }
 
   

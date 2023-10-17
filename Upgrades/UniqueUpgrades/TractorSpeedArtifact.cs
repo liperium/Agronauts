@@ -36,9 +36,9 @@ public partial class TractorSpeedArtifact : BuyableUpgrade<MultiplierModifier>
 	}
 
 
-	public override void InnitInfo()
+	public override void InitInfo()
 	{
-		base.InnitInfo();
+		base.InitInfo();
         info.SetName("KTRUCKSPEEDARTIFACT");
         info.SetDescription("KTRUCKSPEEDARTIFACTDESC");
         info.SetImagePath("res://Upgrades/UpgradeImages/moteurextraterrestre.png");

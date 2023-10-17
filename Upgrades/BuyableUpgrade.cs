@@ -133,6 +133,9 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 		return costNumber.GetValue() >= cost && !IsMaxed();
 	}
 
+    /// <summary>
+    /// Updates the cost. Called on load and on buy
+    /// </summary>
     public virtual void UpdateCost() {}
     
     public long GetCost()

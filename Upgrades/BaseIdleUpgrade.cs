@@ -1,7 +1,7 @@
 ﻿using System;
 
 [Serializable]
-public class BaseIdleUpgrade
+public class BaseIdleUpgrade : ISaveable
 {
     protected InfoUpgrade info;
 
@@ -33,10 +33,14 @@ public class BaseIdleUpgrade
     {
         return unlocked;
     }
-
-    public virtual bool CanUnlock()
+    
+    /// <summary>
+    /// Returns the text that will be appended to the upgrade title. Put things like caps, effects, etc.
+    /// </summary>
+    /// <returns>the string that will be appended to the upgrade title.</returns>
+    public virtual string GetEffectText()
     {
-        return true;
+        return "";
     }
     
     public InfoUpgrade GetInfo()
@@ -44,7 +48,10 @@ public class BaseIdleUpgrade
         return info;
     }
 
-    public virtual void InnitInfo()
+    /// <summary>
+    /// Initializes the information for this upgrade. You can set the name, description and image here. This needs to be overridden for each upgrade. You need to call base.
+    /// </summary>
+    public virtual void InitInfo()
     {
         info = new InfoUpgrade();
         info.SetName("ERROR");
@@ -54,6 +61,6 @@ public class BaseIdleUpgrade
     
     public virtual void OnLoad()
     {
-        InnitInfo();
+        InitInfo();
     }
 }
