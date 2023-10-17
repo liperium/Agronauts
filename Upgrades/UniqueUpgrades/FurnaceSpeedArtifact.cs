@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class FurnaceSpeedArtifact : BuyableUpgrade<MultiplierModifier>
+public partial class FurnaceSpeedArtifact : TieredUpgrade<MultiplierModifier>
 {
     public override IdleNumber GetAffectedNumber()
     {
@@ -10,29 +10,11 @@ public partial class FurnaceSpeedArtifact : BuyableUpgrade<MultiplierModifier>
 
     public override void OnLoad()
     {
-        if (IsUnlocked() == false) GameState.instance.numbers.fightWave.SetOnValueChanged(CheckUnlock);
         base.OnLoad();
     }
-
-    public void CheckUnlock(long wave)
-    {
-        if (wave >= 2)
-        {
-            GameState.instance.numbers.fightWave.ResetOnValueChanged(CheckUnlock);
-            Unlock();
-            Buy();
-        }
-    }
-
-    public override void OnBuy()
-    {
-        modifier.multiplier = 2f;
-        base.OnBuy();
-    }
-    
     public override void UpdateModifier()
     {
-        modifier.multiplier = 3f;
+        modifier.multiplier = 1 + Mathf.RoundToInt( 0.1f * tier);
     }
 
     public override void UpdateCost()
