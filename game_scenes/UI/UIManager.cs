@@ -63,20 +63,20 @@ public partial class UIManager : CanvasLayer
 				newUpgradeHolderUi.NoButton();
 				break;
 		}
-		
-		addToNode.AddChild(newUpgradeHolderUi);
-		upgrade.SetOnUnlock(tabButton.FlashTab);
-		upgrade.SetOnUnlock(ShowHideMenu.instance.UnlockedUpgrade);
 
-		if (upgrade.IsMaxed())
+		if (tabButton != null)
 		{
-			newUpgradeHolderUi.FreeMe();
+			newUpgradeHolderUi.SetTab(tabButton);
 		}
 		else
 		{
-			upgrade.SetOnMaxedUpgrade(newUpgradeHolderUi.FreeMe);
+			GD.PrintErr($"NO TAB FOUND FOR UPGRADE {upgrade.GetType()}");
 		}
-		
+
+		if (addToNode != null)
+		{
+			addToNode.AddChild(newUpgradeHolderUi);
+		}
 	}
 
 	public static void AddAllUpgrade(IBuyable upgrade)
@@ -120,20 +120,9 @@ public partial class UIManager : CanvasLayer
 		showAcquired = show;
 		if(OnShowAcquired != null)OnShowAcquired(show);
 	}
-	
 
 	public static bool AreAcquiredUpgradesShown()
 	{
 		return showAcquired;
-	}
-	
-	
-	
-	
-
-
-// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
 	}
 }

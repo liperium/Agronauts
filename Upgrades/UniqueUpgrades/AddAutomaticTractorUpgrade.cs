@@ -10,6 +10,11 @@ public partial class AddAutomaticTractorUpgrade : TieredUpgrade<MultiplierModifi
         farmFieldsUnlocked.Add(toAdd);
 	}
 
+    public void ResetFarmFieldList()
+    {
+        farmFieldsUnlocked.Clear();
+    }
+
     public override void OnBuy()
     {
         SpawnTractor();

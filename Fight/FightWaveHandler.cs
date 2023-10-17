@@ -4,12 +4,10 @@ using System;
 public partial class FightWaveHandler : Node2D
 {
     [Export] public Timer waveTimer;
-
-    private IdleNumber fightWave;
+    [Export] public BaseButton startWaveBtn;
+    [Export] public RichTextLabel waveComingText;
 
     private bool unlockSubscribed;
-
-    private RichTextLabel waveComingText;
 
     private WaveState state;
 
@@ -25,10 +23,10 @@ public partial class FightWaveHandler : Node2D
     {
         base._Ready();
 
-        waveComingText = GetNode<RichTextLabel>("WaveUI/WaveComingText");
         waveComingText.Text = "";
         
         waveTimer.Timeout += OnTimerEnd;
+        startWaveBtn.Pressed += StartWave;
         
         UnlockFurnaceUpgrade unlockFurnaceUpgrade = GameState.instance.upgrades.unlockFurnaceUpgrade;
         if (unlockFurnaceUpgrade.IsUnlocked())
@@ -41,15 +39,19 @@ public partial class FightWaveHandler : Node2D
             unlockSubscribed = true;
         }
     }
-
+    
     private void OnFurnaceUnlocked()
     {
         state = WaveState.InvasionComing;
         waveTimer.Start(GetWaveTime());
         
+        //hide btn
+        startWaveBtn.Modulate = new Color(1,1,1,0);
+        startWaveBtn.Disabled = true;
+        
         if (unlockSubscribed)
         {
-            GameState.instance.upgrades.unlockFurnaceUpgrade.SetOnUnlock(OnFurnaceUnlocked);
+            GameState.instance.upgrades.unlockFurnaceUpgrade.ResetOnUnlock(OnFurnaceUnlocked);
             unlockSubscribed = false;
         }
     }
@@ -68,11 +70,12 @@ public partial class FightWaveHandler : Node2D
     private void OnTimerEnd()
     {
         state = WaveState.InvasionStay;
-        waveComingText.Text = "";
+        waveComingText.Text = Tr("KINVASIONARRIVED");
         waveTimer.Timeout -= OnTimerEnd;
         
-        //TODO VAGUE ARRIVE POPUP
-        
+        //show btn
+        startWaveBtn.Modulate = new Color(1,1,1);
+        startWaveBtn.Disabled = false;
         
         waveTimer.Timeout += WaveStayEnd;
         waveTimer.Start(GetInvasionStayTime());
@@ -82,7 +85,6 @@ public partial class FightWaveHandler : Node2D
     {
         //TODO Wave s'en va
         waveTimer.Timeout -= WaveStayEnd;
-        waveTimer.Timeout -= OnTimerEnd;
         waveTimer.Start(GetWaveTime());
     }
 
