@@ -81,6 +81,12 @@ public partial class FarmLand : Area2D
 		HideRemoveInteract();
 	}
 
+	public override void _ExitTree()
+	{
+		base._ExitTree();
+		FarmFieldMaster.OnFarmTimeChange -= UpdateProgressBarStats;
+	}
+
 	public CompressedTexture2D GetRandomTexture(CompressedTexture2D[] choices)
 	{
 		if (choices.Length == 1)
