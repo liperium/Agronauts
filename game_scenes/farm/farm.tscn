@@ -42,7 +42,6 @@ layer_0/tile_data = PackedInt32Array(-786451, 0, 0, -720915, 0, 0, -655379, 0, 0
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 offset = Vector2(633.97, 360)
-position_smoothing_enabled = true
 position_smoothing_speed = 75.0
 script = ExtResource("1_ou2to")
 
