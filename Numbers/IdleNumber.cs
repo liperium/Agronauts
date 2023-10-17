@@ -61,13 +61,13 @@ public partial class IdleNumber : ISaveable
 		return (long)(value * multiplier);
 	}
 
-	public void SetValue(long value)
+	public void SetValue(long value, bool callOnValueChanged = true)
 	{
 		this.value = value;
 		if (value < long.MaxValue)
 		{
 			//GD.Print("THIS IS NOT SUPPOSED TO BE CALL FOR OTHER REASON THAN TESTING");
-			UpdateValue();
+			UpdateValue(callOnValueChanged);
 		}
 	}
 
