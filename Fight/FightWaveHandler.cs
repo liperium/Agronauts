@@ -94,9 +94,9 @@ public partial class FightWaveHandler : Node2D
         GetTree().ChangeSceneToPacked(fightScene);
     }
 
-    public float GetWaveTime()
+    public long GetWaveTime()
     {
-        return 15f;
+        return GameState.instance.numbers.invasionTime.GetValue();
     }
 
     public float GetInvasionStayTime()

@@ -100,7 +100,7 @@ public class IdleNumberContainer
         fightWave.SetValue(1);
 
         invasionTime = new IdleNumber();
-        invasionTime.SetValue(60);
+        invasionTime.SetValue(5);
     }
 
   
