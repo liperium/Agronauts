@@ -8,7 +8,7 @@ public partial class PotatoYieldArtifact : ArtifactUpgrade<MultiplierModifier>
 
 	public override void UpdateModifier()
 	{
-		modifier.multiplier = 1 + Mathf.RoundToInt( 0.1f * tier);
+		modifier.multiplier = 1 +  0.1f * tier;
 	}
 
 	public override void InitInfo()

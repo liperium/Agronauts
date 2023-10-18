@@ -87,7 +87,7 @@ public partial class FightManager : Node
             return;
         }
         
-        if (rd.Next() % 3 < 3)
+        if (rd.Next() % 3 < 2)
         {
             GameState.instance.artifacts.GetRandomArtifact().Buy();
         }
