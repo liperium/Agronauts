@@ -80,8 +80,7 @@ public partial class AddAutomaticTractorUpgrade : TieredUpgrade<MultiplierModifi
     {
         if(farmFieldsUnlocked.Count == 0)
         {
-            unlock_pop_up.instance.ChangeText("KIMPOSSIBLE", "KNOSPACEAVAIBLEFORTRUCK");
-            unlock_pop_up.instance.Animation();
+            GamePopUp.instance.AddToQueue(new GamePopUpInfo("KIMPOSSIBLE", "KNOSPACEAVAIBLEFORTRUCK"));
         }
         else
         {

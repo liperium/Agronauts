@@ -94,8 +94,7 @@ public partial class GameState
 			outputFile.WriteLine(saveData);
 			
 			GD.Print("Saved!");
-			unlock_pop_up.instance?.ChangeText("KSAVED", "");
-			unlock_pop_up.instance?.Animation();
+			GamePopUp.instance?.AddToQueue(new GamePopUpInfo("KSAVED", ""));
 		}
 	}
 
