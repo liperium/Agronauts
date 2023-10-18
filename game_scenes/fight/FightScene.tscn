@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://byj332cof46ix"]
+[gd_scene load_steps=19 format=3 uid="uid://byj332cof46ix"]
 
 [ext_resource type="Script" path="res://game_scenes/fight/FightManager.cs" id="1_7r1cq"]
 [ext_resource type="Texture2D" uid="uid://bdbudbddvjaqv" path="res://game_scenes/fight/sprites/BackGround.png" id="1_775qp"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://7sjdqo8l12jk" path="res://game_scenes/fight/sprites/trousol.png" id="7_qgtxf"]
 [ext_resource type="Texture2D" uid="uid://1q15a0ctdmja" path="res://game_scenes/fight/sprites/fenetre.png" id="8_3r3s2"]
 [ext_resource type="Texture2D" uid="uid://d2pjghq7v8nb5" path="res://game_scenes/fight/sprites/trousoldevant.png" id="9_ka1q8"]
+[ext_resource type="PackedScene" uid="uid://wvt81rxwssk7" path="res://UI/HealthBar/HealthBar.tscn" id="15_73aae"]
+[ext_resource type="Script" path="res://game_scenes/fight/PlayerHealthController.cs" id="16_ljifs"]
 
 [sub_resource type="Gradient" id="Gradient_ql08o"]
 interpolation_mode = 2
@@ -131,3 +133,20 @@ alienPrefab = ExtResource("2_qvy1s")
 [node name="ShootManager" type="Node2D" parent="AspectRatioContainer"]
 script = ExtResource("3_y82am")
 potatoBulletPrefab = ExtResource("5_y1n8u")
+
+[node name="HealthBar" parent="." instance=ExtResource("15_73aae")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = -444.0
+offset_top = -82.0
+offset_right = 444.0
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="HealthBar" node_paths=PackedStringArray("healthBar")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("16_ljifs")
+healthBar = NodePath("..")

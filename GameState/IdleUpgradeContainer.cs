@@ -1,8 +1,10 @@
 using System;
+using WJA23Godot.GameState;
 
 [Serializable]
 public class IdleUpgradeContainer
 {
+    
     public TotalPotatoYieldUpgrade totalPotatoYieldUpgrade;
     public FirstTractorUpgrade firstTractorUpgrade;
     public PotatoSpeedUpgrade potatoSpeedUpgrade;
@@ -15,7 +17,6 @@ public class IdleUpgradeContainer
     public FurnaceSpeedUpgrade furnaceSpeedUpgrade;
     public FurnaceBatchSizeUpgrade furnaceBatchSizeUpgrade;
     public FurnacePotatoRecyclerUpgrade furnacePotatoRecyclerUpgrade;
-    public FurnaceSpeedArtifact furnaceSpeedArtifact;
     public FurnaceTempUpgrade furnaceTempUpgrade;
     public TractorSpreadSeedsUpgrade tractorSpreadSeedsUpgrade;
     public TempTractorSpeedUpgrade tempTractorSpeedUpgrade;
@@ -24,6 +25,11 @@ public class IdleUpgradeContainer
     public UnlockArtifactsUpgrade unlockArtifactsUpgrade;
 
     public InvasionTimeUpgrade invasionTimeUpgrade;
+    
+    //Artifacts
+    public FurnaceSpeedArtifact furnaceSpeedArtifact;
+    public PotatoYieldArtifact potatoYieldArtifact;
+
     public void Init()
     {
         totalPotatoYieldUpgrade = new TotalPotatoYieldUpgrade();
@@ -39,7 +45,6 @@ public class IdleUpgradeContainer
         furnaceBatchSizeUpgrade = new FurnaceBatchSizeUpgrade();
         furnacePotatoRecyclerUpgrade = new FurnacePotatoRecyclerUpgrade();
 
-        furnaceSpeedArtifact = new FurnaceSpeedArtifact();
         furnaceTempUpgrade = new FurnaceTempUpgrade();
         tempTractorSpeedUpgrade = new TempTractorSpeedUpgrade();
         tractorSpreadSeedsUpgrade = new TractorSpreadSeedsUpgrade();
@@ -48,6 +53,10 @@ public class IdleUpgradeContainer
         unlockArtifactsUpgrade = new UnlockArtifactsUpgrade();
 
         invasionTimeUpgrade = new InvasionTimeUpgrade();
+        
+        //Artifacts
+        furnaceSpeedArtifact = new FurnaceSpeedArtifact();
+        potatoYieldArtifact = new PotatoYieldArtifact();
     }
 
     public void OnLoad()
@@ -64,8 +73,6 @@ public class IdleUpgradeContainer
         furnaceSpeedUpgrade.OnLoad();
         furnaceBatchSizeUpgrade.OnLoad();
         furnacePotatoRecyclerUpgrade.OnLoad();
-
-        furnaceSpeedArtifact.OnLoad();
         furnaceTempUpgrade.OnLoad();
         tempTractorSpeedUpgrade.OnLoad();
         
@@ -74,5 +81,14 @@ public class IdleUpgradeContainer
         tractorSpreadSeedsUpgrade.OnLoad();
         
         invasionTimeUpgrade.OnLoad();
+        
+        //artifacts
+        furnaceSpeedArtifact.OnLoad();
+        potatoYieldArtifact.OnLoad();
+        
+        ArtifactContainer artifactContainer = GameState.instance.artifacts;
+        artifactContainer.AddArtifact(furnaceSpeedArtifact);
+        artifactContainer.AddArtifact(potatoYieldArtifact);
+
     }
 }
