@@ -13,8 +13,18 @@ public partial class ArtifactUpgrade<TModifier> : TieredUpgrade<TModifier>, IArt
     /// Gets the weight of the artifact representing the odd of it being dropped rolled.
     /// </summary>
     /// <returns>the weight of the artifact</returns>
-    public int GetWeight()
+    public virtual int GetWeight()
     {
         return 0;
+    }
+    
+    public override void UpdateCost()
+    {
+        cost = 0;
+    }
+    
+    public override UIManager.UpgradeTab GetUpgradeTab()
+    {
+        return UIManager.UpgradeTab.Artifact;
     }
 }

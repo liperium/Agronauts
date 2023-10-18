@@ -6,13 +6,16 @@ public partial class FightManager : Node
 {
     private PackedScene farmScene;
     [Export] public Node2D[] spawnPositions;
+    private bool[] spawnAvaible;
     [Export] public Timer spawnTimer;
 
     [Export] public PackedScene alienPrefab;
 
-    public static Action OnEnemyKill;
+    public static Action<int> OnEnemyKill;
 
     private int enemiesKilled = 0;
+
+    private int enemiesSpawned = 0;
 
     public static long enemyDamage;
 
@@ -21,6 +24,12 @@ public partial class FightManager : Node
     public override void _Ready()
     {
         base._Ready();
+
+        spawnAvaible = new bool[spawnPositions.Length];
+        for (int i = 0; i < spawnAvaible.Length; i++)
+        {
+            spawnAvaible[i] = true;
+        }
 
         farmScene = ResourceLoader.Load<PackedScene>("res://game_scenes/farm/farm.tscn");
 
@@ -32,7 +41,7 @@ public partial class FightManager : Node
             return;
         }
 
-        enemyDamage = (long)(GameState.instance.numbers.cookedPotatoCount.GetValue() * 0.03f);
+        enemyDamage = 1; //TODO FIGURE SOMETHING OUT
         
         GameState.instance.numbers.cookedPotatoCount.SetOnValueChanged(OnCookedPotatoChanged);
 
@@ -46,7 +55,7 @@ public partial class FightManager : Node
 
     public void OnCookedPotatoChanged(long value)
     {
-        if (value == 0)
+        if (value <= 0)
         {
             GameState.instance.numbers.cookedPotatoCount.ResetOnValueChanged(OnCookedPotatoChanged);
             LoseFight();
@@ -61,6 +70,7 @@ public partial class FightManager : Node
 
     private void EndFight()
     {
+        CalculateLoot();
         OnEnemyKill = null;
         
         //TODO load back to farm scene
@@ -69,8 +79,27 @@ public partial class FightManager : Node
         
     }
 
+    private void CalculateLoot()
+    {
+        if (GameState.instance.numbers.fightWave.GetValue() == 1)
+        {
+            GameState.instance.artifacts.GetRandomArtifact().Buy();
+            return;
+        }
+        
+        if (rd.Next() % 3 < 3)
+        {
+            GameState.instance.artifacts.GetRandomArtifact().Buy();
+        }
+    }
+
     private float GetSpawnTime()
     {
+        if (enemiesSpawned == 0)
+        {
+            return 1f;
+        }
+        
         return 10f / GameState.instance.numbers.fightWave.GetValue();
     }
 
@@ -85,7 +114,7 @@ public partial class FightManager : Node
         return wave * 2; //TODO proper scaling
     }
 
-    public void OnKillEnemy()
+    public void OnKillEnemy(int index)
     {
         enemiesKilled++;
         if (enemiesKilled >= GetNbEnemiesToKill())
@@ -95,10 +124,37 @@ public partial class FightManager : Node
             GD.Print("FIGHT WIN!");
             EndFight();
         }
+        else
+        {
+            spawnAvaible[index] = true;
+        }
+        
+    }
+
+    private int GetRandomPosition()
+    {
+        bool full = true;
+        List<int> avaibleSpots = new List<int>();
+        for(int i = 0; i < spawnAvaible.Length; i++)
+        {
+            bool avaible = spawnAvaible[i];
+            if (avaible)
+            {
+                full = false;
+                avaibleSpots.Add(i);
+            }
+        }
+
+        if (full) return -1;
+
+        int index =  rd.Next() % avaibleSpots.Count;
+        return avaibleSpots[index];
     }
 
     private void SpawnEnemy()
     {
+        if (enemiesSpawned >= GetNbEnemiesToKill()) return;
+        
         if (alienPrefab == null)
         {
             GD.PrintErr("NO ALIEN PREFAB SET!!!!");
@@ -111,22 +167,30 @@ public partial class FightManager : Node
             return;
         }
         
-        int spawnIndex = rd.Next() % spawnPositions.Length;
+        int spawnIndex = GetRandomPosition();
 
-        Node2D spawnPoint = spawnPositions[spawnIndex];
-
-        Alien alienInstance = alienPrefab.Instantiate() as Alien;
-        if (alienInstance != null)
+        if (spawnIndex != -1)
         {
-            alienInstance.manager = this;
-            spawnPoint.AddChild(alienInstance);
-            //ObjectSpawner.Spawn(alienInstance, spawnPoint.Position);
-        }
-        else
-        {
-            GD.PrintErr("NULL ALIEN SPAWN! WTF");
-        }
+            Node2D spawnPoint = spawnPositions[spawnIndex];
 
+            Alien alienInstance = alienPrefab.Instantiate() as Alien;
+            if (alienInstance != null)
+            {
+                alienInstance.manager = this;
+                alienInstance.spawnIndex = spawnIndex;
+                spawnAvaible[spawnIndex] = false;
+                spawnPoint.AddChild(alienInstance);
+                enemiesSpawned++;
+                //ObjectSpawner.Spawn(alienInstance, spawnPoint.Position);
+            }
+            else
+            {
+                GD.PrintErr("NULL ALIEN SPAWN! WTF");
+            } 
+        }
+        
         StartNextSpawnTimer();
     }
 }
+
+

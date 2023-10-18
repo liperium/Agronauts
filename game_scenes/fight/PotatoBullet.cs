@@ -84,6 +84,8 @@ public partial class PotatoBullet : Area2D
 
     public long GetBulletDamage()
     {
-        return GameState.instance.numbers.cookedPotatoCount.GetValue() + 10; //TODO POLISH
+        long nbPotats = GameState.instance.numbers.cookedPotatoCount.GetValue();
+        long damage = (long)Math.Max((float)Math.Sqrt(nbPotats + 1), 1f);
+        return damage; 
     }
 }

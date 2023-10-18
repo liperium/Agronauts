@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class FurnaceSpeedArtifact : ArtifactUpgrade<MultiplierModifier>
 {
@@ -13,12 +12,6 @@ public partial class FurnaceSpeedArtifact : ArtifactUpgrade<MultiplierModifier>
         modifier.multiplier = 1 + Mathf.RoundToInt( 0.1f * tier);
     }
 
-    public override void UpdateCost()
-    {
-        cost = 0;
-    }
-
-
     public override void InitInfo()
     {
         base.InitInfo();
@@ -26,8 +19,15 @@ public partial class FurnaceSpeedArtifact : ArtifactUpgrade<MultiplierModifier>
         info.SetDescription("KFURNACESPEEDARTIFACTDESC");
         info.SetImagePath("res://Upgrades/UpgradeImages/CarburantInterstellaire.png");
     }
-    public override UIManager.UpgradeTab GetUpgradeTab()
+    
+    public override int GetWeight()
     {
-        return UIManager.UpgradeTab.Artifact;
+        return 1;
     }
+    
+    public override string GetEffectText()
+    {
+        return base.GetEffectText() + Mathf.RoundToInt((modifier.multiplier * 100)) + "%";
+    }
+  
 }
