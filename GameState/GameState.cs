@@ -66,14 +66,12 @@ public partial class GameState
 		savedFields = new SavedFieldContainer();
 		savedFields.Init();
 		
-		artifacts = new ArtifactContainer();
-
-		
 		OnLoad();
 	}
 
 	protected void OnLoad()
 	{
+		artifacts = new ArtifactContainer();
 		numbers.OnLoad();
 		upgrades.OnLoad();
 
