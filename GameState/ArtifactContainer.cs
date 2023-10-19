@@ -72,7 +72,7 @@ public class ArtifactContainer
             GD.PrintErr("ARTIFACT IS NOT IN LIST");
         }
         
-        return ((float)artifact.GetWeight() / GetTotalWeight());
+        return ((float)artifact.GetWeight() / GetTotalWeight()) * 100;
 
     }
 }

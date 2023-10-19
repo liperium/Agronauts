@@ -61,6 +61,12 @@ public class IdleUpgradeContainer
 
     public void OnLoad()
     {
+        //Add before load to calculate % drop chance on load.
+        ArtifactContainer artifactContainer = GameState.instance.artifacts;
+        artifactContainer.AddArtifact(furnaceSpeedArtifact);
+        artifactContainer.AddArtifact(potatoYieldArtifact);
+        
+        
         totalPotatoYieldUpgrade.OnLoad();
         firstTractorUpgrade.OnLoad();
         potatoSpeedUpgrade.OnLoad();
@@ -86,9 +92,6 @@ public class IdleUpgradeContainer
         furnaceSpeedArtifact.OnLoad();
         potatoYieldArtifact.OnLoad();
         
-        ArtifactContainer artifactContainer = GameState.instance.artifacts;
-        artifactContainer.AddArtifact(furnaceSpeedArtifact);
-        artifactContainer.AddArtifact(potatoYieldArtifact);
 
     }
 }

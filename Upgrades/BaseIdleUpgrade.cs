@@ -56,6 +56,7 @@ public class BaseIdleUpgrade : ISaveable
         info = new InfoUpgrade();
         info.SetName("ERROR");
         info.SetDescription("ERROR NOT SET");
+        info.SetAdditionalDescription("");
         info.SetImagePath("res://theming/icon.svg");
     }
     

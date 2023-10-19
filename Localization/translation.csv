@@ -61,7 +61,7 @@ KMASTER,Master,Global
 KMUSIC,Music,Musique
 KSFX,Sound effects,Effets sonores
 KBUYLANDONHELD,Buy land on hold click,Acheter terrain avec clic enfoncé
-KSHOWACQUIREDUPGRADES,Show bought upgrades,Montrer les améliorations achetées
+KSHOWACQUIREDUPGRADES,Show maxed upgrades,Montrer les améliorations maximisées
 KHIDEMANUALTRACTOR,Hide manual tractor,Cacher le tracteur manuel
 KWAVECOMING,ALIEN INVASION IN,INVASION EXTRATERRESTRE DANS
 KSECONDS,SECONDS,SECONDES
@@ -76,3 +76,6 @@ KINVASIONARRIVED,The invasion has arrived!,L'invasion est arrivée!
 KENTERFIGHT,Fight!,Combattre!
 KPOTATOYIELDARTIFACT,Alien fertilizer,Engrais alien
 KPOTATOYIELDARTIFACTDESC,Fertilizer made from alien corpses. +10% potato yield,Engrais fait de corps d'extraterrestres. +10% récolte de patate
+KCOMMON,Common,Commun
+KUNCOMMON,Uncommon,Peu commun
+KLEGENDARY,Legendary,Légendaire

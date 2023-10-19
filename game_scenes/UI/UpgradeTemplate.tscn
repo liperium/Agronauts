@@ -60,6 +60,17 @@ theme_override_font_sizes/font_size = 24
 text = "Ceci est une evraiment longue description vraimen trop long lol xd"
 autowrap_mode = 2
 
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="UpDescAdd" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "Info additionnelle"
+autowrap_mode = 2
+
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
