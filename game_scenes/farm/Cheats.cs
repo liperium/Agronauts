@@ -19,5 +19,10 @@ public partial class Cheats : Node2D
 		{
 			GameState.DeleteSave();
 		}
+		
+		if (Input.IsActionJustReleased("give_artifact"))
+		{
+			GameState.instance.artifacts.GetRandomArtifact().Buy();
+		}
 	}
 }

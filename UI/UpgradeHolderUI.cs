@@ -43,7 +43,7 @@ public partial class UpgradeHolderUI : Control
         {
             FreeMe();
         }
-        else
+        else if(upgrade.GetUpgradeTab() != UIManager.UpgradeTab.Artifact)
         {
             genericUpgrade.SetOnMaxedUpgrade(FreeMe);
             freeOnMaxPlugged = true;

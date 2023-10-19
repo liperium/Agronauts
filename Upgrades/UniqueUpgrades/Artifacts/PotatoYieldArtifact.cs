@@ -1,4 +1,6 @@
 using Godot;
+using WJA23Godot.Upgrades;
+
 public partial class PotatoYieldArtifact : ArtifactUpgrade<MultiplierModifier>
 {
 	public override IdleNumber GetAffectedNumber()
@@ -21,12 +23,16 @@ public partial class PotatoYieldArtifact : ArtifactUpgrade<MultiplierModifier>
 
 	public override int GetWeight()
 	{
-		return 1;
+		return 100;
 	}
 
 	public override string GetEffectText()
 	{
 		return base.GetEffectText() + Mathf.RoundToInt((modifier.multiplier * 100)) + "%";
 	}
-	
+
+	public override ArtifactRarity GetRarity()
+	{
+		return ArtifactRarity.Common;
+	}
 }

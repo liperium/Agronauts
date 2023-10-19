@@ -86,6 +86,11 @@ public partial class PotatoBullet : Area2D
     {
         long nbPotats = GameState.instance.numbers.cookedPotatoCount.GetValue();
         long damage = (long)Math.Max((float)Math.Sqrt(nbPotats + 1), 1f);
+        Random rd = new Random();
+        if ((rd.Next() % 100) + 1 <= GameState.instance.numbers.critChance.GetValue())
+        {
+            damage *= 2;
+        }
         return damage; 
     }
 }

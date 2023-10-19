@@ -11,7 +11,7 @@ public partial class IdleUpgrade <TModifier> : BaseIdleUpgrade where TModifier :
 	{
 		if (!affectedNumber.HasModifier(modifier))
 		{
-			affectedNumber.AddModifier(modifier);
+			affectedNumber.AddMultiplier(modifier);
 		}
 	}
 
