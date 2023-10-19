@@ -5,49 +5,84 @@ using System.Collections.Generic;
 public partial class IdleNumber : ISaveable
 {
 	public long value;
+	private long added;
 	private float multiplier;
 	public string imagePath;
 
-	public List<IdleModifier> modifiers;
+	private List<IdleModifier> multipliers;
+	private List<IdleModifier> additions;
 
 	private Action<long> OnValueChanged;
 	private Action<long> OnValueIncreased;
 
 
-	public void AddModifier(IdleModifier modifier)
+	public void AddMultiplier(IdleModifier modifier)
 	{
-		if (modifiers == null)
+		if (multipliers == null)
 		{
-			modifiers = new List<IdleModifier>();
+			multipliers = new List<IdleModifier>();
 		}
 		
-		modifiers.Add(modifier);
+		multipliers.Add(modifier);
 	}
 
-	public void RemoveModifier(IdleModifier modifier)
+	public void RemoveMultiplier(IdleModifier modifier)
 	{
-		if (modifiers == null)
+		if (multipliers == null)
 		{
-			modifiers = new List<IdleModifier>();
+			multipliers = new List<IdleModifier>();
 		}
-		modifiers.Remove(modifier);
+		multipliers.Remove(modifier);
+	}
+	
+	public void AddAddition(IdleModifier modifier)
+	{
+		if (additions == null)
+		{
+			additions = new List<IdleModifier>();
+		}
+		
+		additions.Add(modifier);
+	}
+
+	public void RemoveAddition(IdleModifier modifier)
+	{
+		if (additions == null)
+		{
+			additions = new List<IdleModifier>();
+		}
+		additions.Remove(modifier);
 	}
 
 	public bool HasModifier(IdleModifier modifier)
 	{
-		if (modifiers == null)
+		if (multipliers == null)
 		{
-			modifiers = new List<IdleModifier>();
+			multipliers = new List<IdleModifier>();
 		}
-		return modifiers.Contains(modifier);
+
+		if (additions == null)
+		{
+			additions = new List<IdleModifier>();
+		}
+		return multipliers.Contains(modifier) || additions.Contains(modifier);
 	}
 
 	public void UpdateValue(bool callValueChanged = true)
 	{
 		multiplier = 1.0f;
-		if (modifiers != null)
+		if (multipliers != null)
 		{
-			foreach(IdleModifier im in modifiers)
+			foreach(IdleModifier im in multipliers)
+			{
+				im.Apply();
+			}
+		}
+
+		added = 0;
+		if (additions != null)
+		{
+			foreach (IdleModifier im in additions)
 			{
 				im.Apply();
 			}
@@ -58,7 +93,7 @@ public partial class IdleNumber : ISaveable
 
 	public long GetValue()
 	{
-		return (long)(value * multiplier);
+		return (long)((value+added) * multiplier);
 	}
 
 	public void SetValue(long value, bool callOnValueChanged = true)
@@ -79,6 +114,16 @@ public partial class IdleNumber : ISaveable
 	public void SetMultiplier(float value)
 	{
 		multiplier = value;
+	}
+
+	public long GetAdded()
+	{
+		return added;
+	}
+
+	public void SetAdded(long value)
+	{
+		added = value;
 	}
 
 	public void DecreaseValue(long value)
@@ -137,16 +182,8 @@ public partial class IdleNumber : ISaveable
 
     public void OnLoad()
     {
-	    if (modifiers != null)
-	    {
-		    foreach (IdleModifier modifier in modifiers)
-		    {
-			    int newId = modifier.id;
-			    GameState.allModifiers.Add(newId, modifier);
-			    modifier.SetOwner(this);
-		    }
-	    }
-	    UpdateValue(false);
+	    multipliers = new List<IdleModifier>();
+	    additions = new List<IdleModifier>();
     }
 
 	public string GetImagePath()

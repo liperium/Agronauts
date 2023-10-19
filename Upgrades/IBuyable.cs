@@ -28,5 +28,6 @@ public interface IBuyable
 	public bool IsAcquired();
 	public bool IsMaxed();
 	public StyleBoxFlat GetBgStyle();
+	public void InitInfo();
 
 }

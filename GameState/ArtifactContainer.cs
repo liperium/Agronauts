@@ -7,16 +7,23 @@ namespace WJA23Godot.GameState;
 
 public class ArtifactContainer
 {
-    private List<IArtifact> artifacts;
-
-    public  ArtifactContainer()
-    {
-        artifacts = new List<IArtifact>();
-    }
+    private List<IArtifact> artifacts = new();
 
     public void AddArtifact(IArtifact artifact)
     {
         artifacts.Add(artifact);
+        if (artifact.IsMaxed() == false)
+        {
+            artifact.SetOnMaxedUpgrade(UpdateArtifactsInfo);
+        }
+    }
+
+    private void UpdateArtifactsInfo()
+    {
+        foreach (IArtifact a in artifacts)
+        {
+            a.InitInfo();
+        }
     }
 
     public void RemoveArtifact(IArtifact artifact)
@@ -35,6 +42,7 @@ public class ArtifactContainer
         
         foreach (IArtifact a in artifacts)
         {
+            if (a.IsMaxed()) continue;
             weight += a.GetWeight();
         }
 
@@ -50,6 +58,7 @@ public class ArtifactContainer
         int count = -1; //Starts at -1 so an artifact with a weight of 0 can't be selected. trust
         foreach (IArtifact a in artifacts)
         {
+            if (a.IsMaxed()) continue;
             count += a.GetWeight();
             if (count >= roll)
             {
@@ -67,6 +76,8 @@ public class ArtifactContainer
 
     public float GetArtifactDropChancePercentage(IArtifact artifact)
     {
+        if (artifact.IsMaxed()) return 0;
+        
         if (!artifacts.Contains(artifact))
         {
             GD.PrintErr("ARTIFACT IS NOT IN LIST");

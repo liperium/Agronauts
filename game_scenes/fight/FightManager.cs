@@ -81,7 +81,8 @@ public partial class FightManager : Node
 
     private void CalculateLoot()
     {
-        if (GameState.instance.numbers.fightWave.GetValue() == 1)
+        //+1 à fightwave ce fait avant le calcul de loot
+        if (GameState.instance.numbers.fightWave.GetValue() == 2)
         {
             GameState.instance.artifacts.GetRandomArtifact().Buy();
             return;

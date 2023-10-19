@@ -27,7 +27,7 @@ public partial class TractorSpeedUpgrade : CappedTieredUpgrade<MultiplierModifie
         info.SetImagePath("res://Upgrades/UpgradeImages/CarburantPatate.png");
     }
 
-    protected override long GetTierCap()
+    public override long GetTierCap()
     {
         return 3;
     }
