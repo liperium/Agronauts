@@ -10,4 +10,12 @@ public class AdditiveModifier : IdleModifier
         owner.SetAdded(owner.GetAdded() + addition);
     }
     
+    public override void AddModifier()
+    {
+        base.AddModifier();
+        if (!owner.HasModifier(this))
+        {
+            owner.AddAddition(this);
+        }
+    }
 }

@@ -9,8 +9,8 @@ public partial class IdleNumber : ISaveable
 	private float multiplier;
 	public string imagePath;
 
-	public List<IdleModifier> multipliers;
-	public List<IdleModifier> additions;
+	private List<IdleModifier> multipliers;
+	private List<IdleModifier> additions;
 
 	private Action<long> OnValueChanged;
 	private Action<long> OnValueIncreased;
@@ -182,16 +182,8 @@ public partial class IdleNumber : ISaveable
 
     public void OnLoad()
     {
-	    if (multipliers != null)
-	    {
-		    foreach (IdleModifier modifier in multipliers)
-		    {
-			    int newId = modifier.id;
-			    GameState.allModifiers.Add(newId, modifier);
-			    modifier.SetOwner(this);
-		    }
-	    }
-	    UpdateValue(false);
+	    multipliers = new List<IdleModifier>();
+	    additions = new List<IdleModifier>();
     }
 
 	public string GetImagePath()
