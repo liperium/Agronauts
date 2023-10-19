@@ -28,4 +28,5 @@ public partial class PotatoYieldArtifact : ArtifactUpgrade<MultiplierModifier>
 	{
 		return base.GetEffectText() + Mathf.RoundToInt((modifier.multiplier * 100)) + "%";
 	}
+	
 }
