@@ -21,8 +21,7 @@ public class CritChanceArtifact : CappedArtifactUpgrade<AdditiveModifier>
 
     public override int GetWeight()
     {
-        //return 25;
-        return 1000000;
+        return 25;
     }
 
     public override ArtifactRarity GetRarity()
