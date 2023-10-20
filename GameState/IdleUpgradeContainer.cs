@@ -30,6 +30,7 @@ public class IdleUpgradeContainer
     public FurnaceSpeedArtifact furnaceSpeedArtifact;
     public PotatoYieldArtifact potatoYieldArtifact;
     public CritChanceArtifact critChanceArtifact;
+    public TractorSpeedArtifact tractorSpeedArtifact;
 
     public void Init()
     {
@@ -59,6 +60,8 @@ public class IdleUpgradeContainer
         furnaceSpeedArtifact = new FurnaceSpeedArtifact();
         potatoYieldArtifact = new PotatoYieldArtifact();
         critChanceArtifact = new CritChanceArtifact();
+        tractorSpeedArtifact = new TractorSpeedArtifact();
+
     }
 
     public void OnLoad()
@@ -68,6 +71,8 @@ public class IdleUpgradeContainer
         artifactContainer.AddArtifact(furnaceSpeedArtifact);
         artifactContainer.AddArtifact(potatoYieldArtifact);
         artifactContainer.AddArtifact(critChanceArtifact);
+        artifactContainer.AddArtifact(tractorSpeedArtifact);
+
         
         
         totalPotatoYieldUpgrade.OnLoad();
@@ -95,6 +100,7 @@ public class IdleUpgradeContainer
         furnaceSpeedArtifact.OnLoad();
         potatoYieldArtifact.OnLoad();
         critChanceArtifact.OnLoad();
+        tractorSpeedArtifact.OnLoad();
 
     }
 }

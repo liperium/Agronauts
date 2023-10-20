@@ -27,23 +27,17 @@ public partial class ArtifactUpgrade<TModifier> : TieredUpgrade<TModifier>, IArt
     public override void InitInfo()
     {
         base.InitInfo();
-        string rarity = "";
-        switch (GetRarity())
+
+        string rarity = "K"+GetRarity().ToString().ToUpper();
+
+        string dropChance = "";
+        if (IsMaxed() == false)
         {
-            case ArtifactRarity.Common:
-                rarity ="KCOMMON";
-                break;
-            case ArtifactRarity.Uncommon:
-                rarity ="KUNCOMMON";
-                break;
-            case ArtifactRarity.Legendary:
-                rarity ="KLEGENDARY";
-                break;
+            dropChance = GameState.instance.artifacts.GetArtifactDropChancePercentage(this).ToString("0.##");
+            dropChance = $" - {dropChance}%";
         }
         
-        string dropChance = GameState.instance.artifacts.GetArtifactDropChancePercentage(this).ToString("0.##");
-        
-        info.SetAdditionalDescription(rarity + " - "+dropChance+"%");
+        info.SetAdditionalDescription(rarity + dropChance);
         
     }
 

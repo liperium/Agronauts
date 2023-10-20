@@ -10,13 +10,5 @@ public partial class MultiplierModifier : IdleModifier
         base.Apply();
         owner.SetMultiplier(owner.GetMultiplier() * multiplier);
     }
-
-    public override void AddModifier()
-    {
-        base.AddModifier();
-        if (!owner.HasModifier(this))
-        {
-            owner.AddMultiplier(this);
-        }
-    }
+    
 }
