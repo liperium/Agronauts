@@ -10,4 +10,5 @@ public partial class MultiplierModifier : IdleModifier
         base.Apply();
         owner.SetMultiplier(owner.GetMultiplier() * multiplier);
     }
+    
 }

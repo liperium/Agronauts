@@ -45,8 +45,7 @@ public partial class UnlockableTab : Tab
         onUnlockPlugged = false;
         
         Show();
-        unlock_pop_up.instance.ChangeText(popupTitle, popupDescription);
-        unlock_pop_up.instance.Animation();
+        GamePopUp.instance.AddToQueue(new GamePopUpInfo(popupTitle,popupDescription));
     }
 
     public override void _ExitTree()

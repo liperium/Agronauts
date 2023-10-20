@@ -27,7 +27,7 @@ public class InvasionTimeUpgrade : CappedTieredUpgrade<MultiplierModifier>
         info.SetImagePath("res://Upgrades/UpgradeImages/radar.png");
     }
 
-    protected override long GetTierCap()
+    public override long GetTierCap()
     {
         return 5;
     }

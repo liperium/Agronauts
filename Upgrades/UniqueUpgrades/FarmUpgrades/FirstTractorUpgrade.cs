@@ -7,8 +7,7 @@ public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
     {
         SpawnTractor();
         GameState.instance.numbers.truckAmount.IncreaseValue(1);
-        unlock_pop_up.instance.ChangeText("KCONGRATULATIONS", "KCONTROLTRACTOR");
-        unlock_pop_up.instance.Animation();
+        GamePopUp.instance.AddToQueue(new GamePopUpInfo("KCONGRATULATIONS","KCONTROLTRACTOR"));
         base.OnBuy();
     }
 

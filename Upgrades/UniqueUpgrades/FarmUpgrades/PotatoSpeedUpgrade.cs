@@ -26,7 +26,7 @@ public class PotatoSpeedUpgrade : CappedTieredUpgrade<MultiplierModifier>
         info.SetImagePath("res://Upgrades/UpgradeImages/EngraisNaturel.png");
     }
 
-    protected override long GetTierCap()
+    public override long GetTierCap()
     {
         return 10;
     }

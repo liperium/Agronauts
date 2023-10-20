@@ -5,15 +5,18 @@ using System.Collections.Generic;
 public partial class IdleNumber : ISaveable
 {
 	public long value;
+	private long calculatedValue;
+	private long added;
 	private float multiplier;
 	public string imagePath;
 
-	public List<IdleModifier> modifiers;
+	private List<IdleModifier> modifiers;
 
 	private Action<long> OnValueChanged;
 	private Action<long> OnValueIncreased;
 
-
+	
+	
 	public void AddModifier(IdleModifier modifier)
 	{
 		if (modifiers == null)
@@ -32,6 +35,8 @@ public partial class IdleNumber : ISaveable
 		}
 		modifiers.Remove(modifier);
 	}
+	
+	
 
 	public bool HasModifier(IdleModifier modifier)
 	{
@@ -39,12 +44,14 @@ public partial class IdleNumber : ISaveable
 		{
 			modifiers = new List<IdleModifier>();
 		}
+		
 		return modifiers.Contains(modifier);
 	}
 
 	public void UpdateValue(bool callValueChanged = true)
 	{
 		multiplier = 1.0f;
+		added = 0;
 		if (modifiers != null)
 		{
 			foreach(IdleModifier im in modifiers)
@@ -52,13 +59,20 @@ public partial class IdleNumber : ISaveable
 				im.Apply();
 			}
 		}
-
+		
+		CalculateValue();
+		
 		if (OnValueChanged != null && callValueChanged) OnValueChanged(GetValue());
+	}
+
+	private void CalculateValue()
+	{
+		calculatedValue = (long)((value + added) * multiplier);
 	}
 
 	public long GetValue()
 	{
-		return (long)(value * multiplier);
+		return calculatedValue;
 	}
 
 	public void SetValue(long value, bool callOnValueChanged = true)
@@ -79,6 +93,16 @@ public partial class IdleNumber : ISaveable
 	public void SetMultiplier(float value)
 	{
 		multiplier = value;
+	}
+
+	public long GetAdded()
+	{
+		return added;
+	}
+
+	public void SetAdded(long value)
+	{
+		added = value;
 	}
 
 	public void DecreaseValue(long value)
@@ -137,16 +161,7 @@ public partial class IdleNumber : ISaveable
 
     public void OnLoad()
     {
-	    if (modifiers != null)
-	    {
-		    foreach (IdleModifier modifier in modifiers)
-		    {
-			    int newId = modifier.id;
-			    GameState.allModifiers.Add(newId, modifier);
-			    modifier.SetOwner(this);
-		    }
-	    }
-	    UpdateValue(false);
+	    modifiers = new List<IdleModifier>();
     }
 
 	public string GetImagePath()

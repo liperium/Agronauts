@@ -9,6 +9,8 @@ public partial class ShowHideMenu : TextureRect
     public BaseButton button = null;
     public Flash flash = null;
 
+    private bool onValueChangedPlugged;
+
     private bool opened;
     public override void _Ready()
     {
@@ -21,11 +23,12 @@ public partial class ShowHideMenu : TextureRect
 
         if (GameState.instance.numbers.potatoCount.GetValue() == 0)
         {
+            GameState.instance.numbers.potatoCount.SetOnValueChanged(OnGetPotato);
+            onValueChangedPlugged = true;
             button.Disabled = true;
             Hide();
         }
 
-        GameState.instance.numbers.potatoCount.SetOnValueChanged(OnGetPotato);
         button.Pressed += ButtonPressed;
     }
 
@@ -53,6 +56,7 @@ public partial class ShowHideMenu : TextureRect
             button.Disabled = false;
             
             GameState.instance.numbers.potatoCount.ResetOnValueChanged(OnGetPotato);
+            onValueChangedPlugged = false;
         }
     }
 
@@ -71,6 +75,15 @@ public partial class ShowHideMenu : TextureRect
         if (!opened)
         {
             flash.Start();
+        }
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        if (onValueChangedPlugged)
+        {
+            GameState.instance.numbers.potatoCount.ResetOnValueChanged(OnGetPotato);
         }
     }
 }

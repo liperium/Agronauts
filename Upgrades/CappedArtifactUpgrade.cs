@@ -2,11 +2,9 @@ using Godot;
 using System;
 using WJA23Godot.Upgrades;
 
-[Serializable]
-public partial class CappedTieredUpgrade<TModifier> : TieredUpgrade<TModifier>, ICappedUpgrade
-	where TModifier : IdleModifier , new()
+public partial class CappedArtifactUpgrade<TModifier> : ArtifactUpgrade<TModifier>, ICappedUpgrade
+	where TModifier :  IdleModifier , new()
 {
-
 	public virtual long GetTierCap()
 	{
 		return 1;

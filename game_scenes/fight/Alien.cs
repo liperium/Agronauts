@@ -5,10 +5,12 @@ public partial class Alien : Area2D
 {
 
     [Export] public Timer timer;
+    [Export] public HealthBar healthBar;
     private AudioStreamPlayer2D audioStreamPlayer;
     [Export] public AudioStreamWav shootSound;
     [Export] public AudioStreamWav spawnSound;
     [Export] public AudioStreamWav dieSound;
+    public int spawnIndex = -1;
     
     private long HP;
     public FightManager manager;
@@ -17,12 +19,18 @@ public partial class Alien : Area2D
     {
         base._Ready();
         HP = GetHP();
-        
+        healthBar.SetMaxHealth(HP);
+        healthBar.SetHealth(HP);
+
         timer.Timeout += TimerOnTimeout;
         audioStreamPlayer = GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
+
         audioStreamPlayer.Stream = spawnSound;
         audioStreamPlayer.Play();
         audioStreamPlayer.TreeExiting += () => audioStreamPlayer = null;
+
+        GetNode<AnimationTree>("AnimationTree").AnimationFinished += OnAnimationFinished;
+
     }
 
     private void TimerOnTimeout()
@@ -32,16 +40,24 @@ public partial class Alien : Area2D
             audioStreamPlayer.Stream = shootSound;
             audioStreamPlayer.Play();
         }
-
-        GetNode<AnimatedSprite2D>("AlienSprite").Play("shoot");
+        GetNode<AnimationTree>("AnimationTree").Set("parameters/conditions/shoot",true);
         //TODO SFX shoot
         GameState.instance.numbers.cookedPotatoCount.DecreaseValue(FightManager.enemyDamage);
+        timer.Start();
+    }
+
+    private void OnAnimationFinished(StringName animname)
+    {
+        if (animname == "Shoot")
+        {
+            GetNode<AnimationTree>("AnimationTree").Set("parameters/conditions/shoot",false);
+        }
     }
 
     public long GetHP()
     {
         long wave = GameState.instance.numbers.fightWave.GetValue();
-        return wave * 100; //TODO proper scaling
+        return wave * 15; //TODO proper scaling
     }
 
     public void TakeDamage(long dmg)
@@ -52,8 +68,8 @@ public partial class Alien : Area2D
 
         if (HP <= 0 && audioStreamPlayer.Stream != dieSound)
         {
-            Action onEnemyKill = FightManager.OnEnemyKill;
-            if (onEnemyKill != null) onEnemyKill();
+            Action<int> onEnemyKill = FightManager.OnEnemyKill;
+            if (onEnemyKill != null) onEnemyKill(spawnIndex);
             /*if (audioStreamPlayer != null)
             {
                 audioStreamPlayer.Stream = dieSound;
@@ -71,6 +87,12 @@ public partial class Alien : Area2D
             //Hide();
             QueueFree();
         }
+        else
+        {
+            healthBar.SetHealth(HP);
+        }
+        
+        
     }
 
     private void KillThis()
