@@ -78,7 +78,7 @@ public partial class PotatoBullet : Area2D
         }
         else
         {
-            Scale -= new Vector2((float)delta, (float)delta) * Mathf.Max(ogScale.X / 10f, 1f);
+            Scale -= new Vector2((float)delta, (float)delta) * Mathf.Max(ogScale.X * 1.5f, 1f);
         }
     }
 
