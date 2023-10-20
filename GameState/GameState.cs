@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using FileAccess = System.IO.FileAccess;
 using Newtonsoft.Json;
+using WJA23Godot.GameState;
 
 [Serializable]
 public partial class GameState
@@ -42,6 +43,9 @@ public partial class GameState
 	public IdleUpgradeContainer upgrades;
 	public SavedFieldContainer savedFields;
 	
+	//Artifacts
+	[NonSerialized] public ArtifactContainer artifacts;
+	
 	//Settings
 	public static GameSettings settings; // TODO GameState on menu load??
 
@@ -67,6 +71,7 @@ public partial class GameState
 
 	protected void OnLoad()
 	{
+		artifacts = new ArtifactContainer();
 		numbers.OnLoad();
 		upgrades.OnLoad();
 

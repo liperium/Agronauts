@@ -6,6 +6,7 @@ public partial class FightWaveHandler : Node2D
     [Export] public Timer waveTimer;
     [Export] public BaseButton startWaveBtn;
     [Export] public RichTextLabel waveComingText;
+    [Export] public CanvasLayer waveUICanvas;
 
     private bool unlockSubscribed;
 
@@ -24,6 +25,7 @@ public partial class FightWaveHandler : Node2D
         base._Ready();
 
         waveComingText.Text = "";
+        waveUICanvas.Visible = false;
         
         waveTimer.Timeout += OnTimerEnd;
         startWaveBtn.Pressed += StartWave;
@@ -64,6 +66,11 @@ public partial class FightWaveHandler : Node2D
         {
             //TODO time remaining UI
             waveComingText.Text = Tr("KWAVECOMING") + " : " + Mathf.RoundToInt(waveTimer.TimeLeft) + " " +Tr("KSECONDS") + "!";
+
+            if (waveUICanvas.Visible == false)
+            {
+                waveUICanvas.Visible = true;
+            }
         }
     }
 

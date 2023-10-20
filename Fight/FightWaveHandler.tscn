@@ -3,11 +3,12 @@
 [ext_resource type="Script" path="res://Fight/FightWaveHandler.cs" id="1_cxk1l"]
 [ext_resource type="PackedScene" uid="uid://byj332cof46ix" path="res://game_scenes/fight/FightScene.tscn" id="2_fyvfy"]
 
-[node name="FightWaveHandler" type="Node2D" node_paths=PackedStringArray("waveTimer", "startWaveBtn", "waveComingText")]
+[node name="FightWaveHandler" type="Node2D" node_paths=PackedStringArray("waveTimer", "startWaveBtn", "waveComingText", "waveUICanvas")]
 script = ExtResource("1_cxk1l")
 waveTimer = NodePath("Timer")
 startWaveBtn = NodePath("WaveUI/PanelContainer/MarginContainer/VBoxContainer/StartFightButton")
 waveComingText = NodePath("WaveUI/PanelContainer/MarginContainer/VBoxContainer/WaveComingText")
+waveUICanvas = NodePath("WaveUI")
 fightScene = ExtResource("2_fyvfy")
 
 [node name="Timer" type="Timer" parent="."]

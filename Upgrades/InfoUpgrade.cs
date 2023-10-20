@@ -8,6 +8,7 @@ public partial class InfoUpgrade
     private CompressedTexture2D image;
     private string imagePath;
 	private string costImagePath;
+	private string additionalInfo;
 	public const string defaultImagePath = "res://Icons/Potato.png";
 
 
@@ -25,10 +26,20 @@ public partial class InfoUpgrade
 	{
 		this.description = description;
 	}
-
+	
     public string GetDescription()
     {
         return this.description;
+    }
+    
+   	public void SetAdditionalDescription(string additionalInfo)
+   	{
+   		this.additionalInfo = additionalInfo;
+   	} 
+    
+    public string GetAdditionalDescription()
+    {
+	    return this.additionalInfo;
     }
 
     public void SetImagePath(string imagePath)

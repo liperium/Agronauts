@@ -42,7 +42,7 @@ KFURNACEBATCHCOUNTDESC,+100% potatos per batch,+100% de patates par lot
 KTRUCKSPEEDARTIFACT,Alien engine,moteur alien
 KTRUCKSPEEDARTIFACTDESC,When this alien technology doubles the tractor's speed,Quand cette technologie aliene est utilisée la vitesse des tracteurs est doublée
 KFURNACESPEEDARTIFACT,Interstellar fuel,Carburant interstellaire
-KFURNACESPEEDARTIFACTDESC,Double the cooking speed,Cuit deux fois plus vite
+KFURNACESPEEDARTIFACTDESC,Speeds the cooking process by +10%,Accélère le processus de cuisson de +10%
 KFURNACETEMP,Temperature,Température
 KFURNACETEMPDESC,Hotter means more damage. The current potato temperature gets 20% hotter, Plus chaud signifie plus de dommages. La température des patates devient 20% plus chaude.
 KPLANTER,Planter,Épandeur
@@ -61,7 +61,7 @@ KMASTER,Master,Global
 KMUSIC,Music,Musique
 KSFX,Sound effects,Effets sonores
 KBUYLANDONHELD,Buy land on hold click,Acheter terrain avec clic enfoncé
-KSHOWACQUIREDUPGRADES,Show bought upgrades,Montrer les améliorations achetées
+KSHOWACQUIREDUPGRADES,Show maxed upgrades,Montrer les améliorations maximisées
 KHIDEMANUALTRACTOR,Hide manual tractor,Cacher le tracteur manuel
 KWAVECOMING,ALIEN INVASION IN,INVASION EXTRATERRESTRE DANS
 KSECONDS,SECONDS,SECONDES
@@ -76,3 +76,8 @@ KINVASIONARRIVED,The invasion has arrived!,L'invasion est arrivée!
 KENTERFIGHT,Fight!,Combattre!
 KPOTATOYIELDARTIFACT,Alien fertilizer,Engrais alien
 KPOTATOYIELDARTIFACTDESC,Fertilizer made from alien corpses. +10% potato yield,Engrais fait de corps d'extraterrestres. +10% récolte de patate
+KCOMMON,Common,Commun
+KUNCOMMON,Uncommon,Peu commun
+KLEGENDARY,Legendary,Légendaire
+KTRUCKSPEEDARTIFACT,Extraterrestrial engine,Moteur extraterrestre
+KTRUCKSPEEDARTIFACTDESC,Speeds up tractors by 50%,Augmente la vitesse des tracteurs de 50%

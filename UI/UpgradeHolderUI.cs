@@ -8,6 +8,7 @@ public partial class UpgradeHolderUI : Control
     private TextureRect upgradeImage;
     private Label upgradeTitle;
     private Label upgradeDescription;
+    private Label upgradeAddDescription;
 
     private Tab tab;
 
@@ -23,9 +24,13 @@ public partial class UpgradeHolderUI : Control
         upgradeTitle = GetNode<Label>("HBoxContainer/VBoxContainer/HBoxContainer/UpTitle");
         upgradeImage = GetNode<TextureRect>("HBoxContainer/VBoxContainer/HBoxContainer/Icon");
         upgradeDescription = GetNode<Label>("HBoxContainer/VBoxContainer/UpDesc");
+        upgradeAddDescription = GetNode<Label>("HBoxContainer/VBoxContainer/UpDescAdd");
 
         genericUpgrade = upgrade;
         Name = genericUpgrade.GetInfo().GetName();
+
+        //set bg color
+        this.AddThemeStyleboxOverride("panel", upgrade.GetBgStyle());
         
         UpdateAllInfo();
         
@@ -38,7 +43,7 @@ public partial class UpgradeHolderUI : Control
         {
             FreeMe();
         }
-        else
+        else if(upgrade.GetUpgradeTab() != UIManager.UpgradeTab.Artifact)
         {
             genericUpgrade.SetOnMaxedUpgrade(FreeMe);
             freeOnMaxPlugged = true;
@@ -95,7 +100,18 @@ public partial class UpgradeHolderUI : Control
         if (upgradeImage != null && info.GetImagePath() != "") upgradeImage.Texture = info.GetImage();
         if (upgradeTitle != null) upgradeTitle.Text = Tr(info.GetName()) +" "+ effect;
         if (upgradeDescription != null) upgradeDescription.Text = info.GetDescription();
+        if (upgradeAddDescription != null) upgradeAddDescription.Text = TranslateEntireString(info.GetAdditionalDescription());
         UpdateCostText(cost,info.GetCostImagePath());
+    }
+
+    private string TranslateEntireString(string toTranslate)
+    {
+        string result = "";
+        foreach (string s in toTranslate.Split(' '))
+        {
+            result += Tr(s) + " ";
+        }
+        return result;
     }
 
     private void UpdateCostText(long newCost, string imagePath)

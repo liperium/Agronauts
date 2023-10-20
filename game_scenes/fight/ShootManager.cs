@@ -51,6 +51,6 @@ public partial class ShootManager : Node2D
     {
         long nbPotats = GameState.instance.numbers.cookedPotatoCount.GetValue();
 
-        return (float)(Math.Sqrt(Math.Max(nbPotats, 1)) * 0.5f);
+        return Math.Clamp((float)(Math.Log10(nbPotats+1) * 0.5f),0.5f, 4f);
     }
 }
