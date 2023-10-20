@@ -6,7 +6,14 @@ public partial class AutoCookLevel4Upgrade : BuyableUpgrade<MultiplierModifier>
     
     public override void UpdateModifier()
     {
-        modifier.multiplier = 3f;
+        if (acquired)
+        {
+            modifier.multiplier = 3f;
+        }
+        else
+        {
+            modifier.multiplier = 1f;
+        }
     }
 
     public override void UpdateCost()
@@ -49,7 +56,6 @@ public partial class AutoCookLevel4Upgrade : BuyableUpgrade<MultiplierModifier>
         {
             Unlock();
             GameState.instance.numbers.furnaceTotalAutoCookedPotato.ResetOnValueChanged(CheckUnlock);
-
         }
     }
     public override UIManager.UpgradeTab GetUpgradeTab()

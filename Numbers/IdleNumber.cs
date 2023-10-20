@@ -162,6 +162,7 @@ public partial class IdleNumber : ISaveable
     public void OnLoad()
     {
 	    modifiers = new List<IdleModifier>();
+	    UpdateValue();
     }
 
 	public string GetImagePath()
