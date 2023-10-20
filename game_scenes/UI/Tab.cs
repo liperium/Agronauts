@@ -5,12 +5,14 @@ public partial class Tab : Control
 {
     [Export] public int tabIndex;
     [Export] public TabContainer tabContainer;
+    [Export] public Flash flash;
 
     private BaseButton button;
     public override void _Ready()
     {
         base._Ready();
         button = GetNode<BaseButton>("Button");
+        flash = GetNode<Flash>("Flash");
 
         button.Pressed += TabButtonPressed;
         //FlashTab();
@@ -20,12 +22,8 @@ public partial class Tab : Control
     {
         if (tabContainer != null)
         {
-            GetNode<Flash>("Flash").Stop();
+            flash.Stop();
             tabContainer.CurrentTab = tabIndex;
-        }
-        else
-        {
-            GD.PrintErr("TabContainer empty on tab button");
         }
     }
 
@@ -33,11 +31,7 @@ public partial class Tab : Control
     {
         if (tabContainer != null && (tabContainer.CurrentTab != tabIndex || !ShowHideMenu.instance.IsOpened()))
         {
-            GetNode<Flash>("Flash").Start();
-        }
-        else
-        {
-            GD.PrintErr("TabContainer empty on tab button");
+            flash.Start();
         }
     }
 }
