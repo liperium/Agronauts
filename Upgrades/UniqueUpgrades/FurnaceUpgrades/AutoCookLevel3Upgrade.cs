@@ -5,7 +5,14 @@ public partial class AutoCookLevel3Upgrade : BuyableUpgrade<MultiplierModifier>
 {
     public override void UpdateModifier()
     {
-        modifier.multiplier = 3f;
+        if (acquired)
+        {
+            modifier.multiplier = 3f;
+        }
+        else
+        {
+            modifier.multiplier = 1f;
+        }
     }
 
     public override void UpdateCost()
