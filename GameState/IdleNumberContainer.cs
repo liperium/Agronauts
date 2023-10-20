@@ -102,7 +102,7 @@ public class IdleNumberContainer
         fightWave.SetValue(1, false);
 
         invasionTime = new IdleNumber();
-        invasionTime.SetValue(5, false);
+        invasionTime.SetValue(300, false);
         critChance = new IdleNumber();
     }
 
