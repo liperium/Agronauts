@@ -20,6 +20,7 @@ public partial class ZoomBlock : Control
 	private static void GiveZoomBlock(Control node)
 	{
 		//GD.Print($"Gave :{nbOfBlockers++}");
+		if (node == null) return;
 		node.Connect("mouse_entered", new Callable(instance,"OnMouseEntered"));
 		node.Connect("mouse_exited", new Callable(instance,"OnMouseExit"));
 		//blockers.Add(node,false);
