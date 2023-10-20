@@ -67,6 +67,9 @@ public partial class ArtifactUpgrade<TModifier> : TieredUpgrade<TModifier>, IArt
             case ArtifactRarity.Uncommon:
                 style = ResourceLoader.Load<StyleBoxFlat>("res://Upgrades/UpgradeStyles/UncommonArtifactStyle.tres");
                 break;
+            case ArtifactRarity.Legendary:
+                style = ResourceLoader.Load<StyleBoxFlat>("res://Upgrades/UpgradeStyles/LegendaryArtifactStyle.tres");
+                break;
         }
 
         if (style == null)
