@@ -27,7 +27,7 @@ public interface IBuyable
 	public void ResetOnMaxedUpgrade(Action action);
 	public bool IsAcquired();
 	public bool IsMaxed();
-	public StyleBoxFlat GetBgStyle();
+	public string GetBgStyle();
 	public void InitInfo();
 
 }

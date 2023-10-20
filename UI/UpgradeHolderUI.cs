@@ -31,8 +31,7 @@ public partial class UpgradeHolderUI : Control
         Name = genericUpgrade.GetInfo().GetName();
 
         //set bg color
-        this.AddThemeStyleboxOverride("panel", upgrade.GetBgStyle());
-        
+        this.ThemeTypeVariation = upgrade.GetBgStyle();
         UpdateAllInfo();
         
         //events
@@ -60,7 +59,7 @@ public partial class UpgradeHolderUI : Control
     {
         base._Ready();
         
-        if (genericUpgrade.IsMaxed())
+        if (genericUpgrade.IsMaxed() && genericUpgrade.GetUpgradeTab() != UIManager.UpgradeTab.Artifact)
         {
             ToggleShow(UIManager.AreAcquiredUpgradesShown());
             return;

@@ -50,25 +50,25 @@ public partial class ArtifactUpgrade<TModifier> : TieredUpgrade<TModifier>, IArt
     /// Returns background style depending on artifact rarity
     /// </summary>
     /// <returns>Background style</returns>
-    public override StyleBoxFlat GetBgStyle()
+    public override string GetBgStyle()
     {
-        StyleBoxFlat style = null;
+        string style = "";
         switch (GetRarity())
         {
             case ArtifactRarity.Common:
-                style = ResourceLoader.Load<StyleBoxFlat>("res://Upgrades/UpgradeStyles/CommonArtifactStyle.tres");
+                style = "CommonArtifact";
                 break;
             case ArtifactRarity.Uncommon:
-                style = ResourceLoader.Load<StyleBoxFlat>("res://Upgrades/UpgradeStyles/UncommonArtifactStyle.tres");
+                style = "UncommonArtifact";
                 break;
             case ArtifactRarity.Legendary:
-                style = ResourceLoader.Load<StyleBoxFlat>("res://Upgrades/UpgradeStyles/LegendaryArtifactStyle.tres");
+                style = "LegendaryArtifact";
                 break;
         }
 
-        if (style == null)
+        if (style == "")
         {
-            GD.PrintErr("ARTIFACT RARITY NULL ON GETBGSTYLE");
+            GD.PrintErr("ARTIFACT RARITY NOT SET ON GETBGSTYLE");
         }
 
         return style;

@@ -1,23 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1xtsfl7y7few"]
+[gd_scene load_steps=3 format=3 uid="uid://c1xtsfl7y7few"]
 
 [ext_resource type="Script" path="res://UI/UpgradeHolderUI.cs" id="1_f3sbs"]
 [ext_resource type="Texture2D" uid="uid://b3gb7mp507g7h" path="res://Upgrades/UpgradeImages/fourTemp.png" id="2_1ro6e"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3574p"]
-content_margin_left = 10.0
-content_margin_top = 10.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
-bg_color = Color(0, 0, 0, 0.235294)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
 [node name="Panel" type="PanelContainer"]
 offset_right = 417.0
 offset_bottom = 173.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_3574p")
+theme_type_variation = &"DefaultUpgrade"
 script = ExtResource("1_f3sbs")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

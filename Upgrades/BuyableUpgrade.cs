@@ -174,9 +174,8 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
     /// returns Style of the background of the upgrade can be overriden for unique styles for certain upgrades.
     /// </summary>
     /// <returns>Style of the background</returns>
-    public virtual StyleBoxFlat GetBgStyle()
+    public virtual string GetBgStyle()
     {
-	    //TODO possiblement mettre en variable pour que ce soit loadé juste une fois quand on start le jeu
-	    return ResourceLoader.Load<StyleBoxFlat>("res://Upgrades/UpgradeStyles/DefaultUpgradeStyle.tres");
+	    return "DefaultUpgrade";
     }
 }
