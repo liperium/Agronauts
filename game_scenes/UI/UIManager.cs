@@ -28,6 +28,10 @@ public partial class UIManager : CanvasLayer
 		{
 			InstantiateUpgradeUI(up);
 		}
+		if (ZoomBlock.instance != null)
+		{
+			ZoomBlock.Spread(this);
+		}
 	}
 
 	public void InstantiateUpgradeUI(IBuyable upgrade)
