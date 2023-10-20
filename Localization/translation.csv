@@ -81,3 +81,5 @@ KUNCOMMON,Uncommon,Peu commun
 KLEGENDARY,Legendary,Légendaire
 KTRUCKSPEEDARTIFACT,Extraterrestrial engine,Moteur extraterrestre
 KTRUCKSPEEDARTIFACTDESC,Speeds up tractors by 50%,Augmente la vitesse des tracteurs de 50%
+KCRITCHANCEARTIFACT,Lazer scope,Lunette laser
+KCRITCHANCEARTIFACTDESC,You have an easier time hitting the aliens' weak spots. +1% crit chance,Vous avez plus de facilité à toucher les points faible des aliens. +1% chance de coup critique

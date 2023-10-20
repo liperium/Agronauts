@@ -17,6 +17,9 @@ public class CritChanceArtifact : CappedArtifactUpgrade<AdditiveModifier>
     public override void InitInfo()
     {
         base.InitInfo();
+        info.SetName("KCRITCHANCEARTIFACT");
+        info.SetDescription("KCRITCHANCEARTIFACTDESC");
+        info.SetImagePath(InfoUpgrade.defaultImagePath);
     }
 
     public override int GetWeight()
