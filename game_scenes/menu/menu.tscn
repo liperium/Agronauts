@@ -414,33 +414,33 @@ position = Vector2(905, -3.5)
 scale = Vector2(1.5, 1.5)
 
 [node name="BigRight" type="Sprite2D" parent="Control/AllShips"]
-position = Vector2(196.774, 39.5883)
+position = Vector2(214.921, 39.5883)
 scale = Vector2(0.334, 0.334)
 texture = ExtResource("6_krmyu")
 flip_h = true
 
 [node name="BigLeft" type="Sprite2D" parent="Control/AllShips"]
-position = Vector2(-81.4665, 2.58994)
+position = Vector2(-122.079, 3.58836)
 scale = Vector2(0.334, 0.334)
 texture = ExtResource("6_krmyu")
 
 [node name="Small3" type="Sprite2D" parent="Control/AllShips"]
-position = Vector2(-24.4413, 91.4307)
+position = Vector2(-35.0789, 100.588)
 scale = Vector2(0.361444, 0.361444)
 texture = ExtResource("7_wqfvf")
 
 [node name="Small2" type="Sprite2D" parent="Control/AllShips"]
-position = Vector2(38.0612, 61.1519)
+position = Vector2(38.9211, 63.5884)
 scale = Vector2(0.361444, 0.361444)
 texture = ExtResource("7_wqfvf")
 
 [node name="Small1" type="Sprite2D" parent="Control/AllShips"]
-position = Vector2(75.3745, 32.3452)
+position = Vector2(75.9211, 25.5883)
 scale = Vector2(0.361444, 0.361444)
 texture = ExtResource("7_wqfvf")
 
 [node name="Small0" type="Sprite2D" parent="Control/AllShips"]
-position = Vector2(31.0161, -17.552)
+position = Vector2(26.9211, -19.4117)
 scale = Vector2(0.361444, 0.361444)
 texture = ExtResource("7_wqfvf")
 
