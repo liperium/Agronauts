@@ -30,7 +30,7 @@ public partial class Alien : Area2D
         audioStreamPlayer.TreeExiting += () => audioStreamPlayer = null;
 
         GetNode<AnimationTree>("AnimationTree").AnimationFinished += OnAnimationFinished;
-
+        UpdateText();
     }
 
     private void TimerOnTimeout()
@@ -92,9 +92,12 @@ public partial class Alien : Area2D
         {
             healthBar.SetHealth(HP);
         }
-     
-        
-        
+        UpdateText();
+    }
+
+    private void UpdateText()
+    {
+        healthBar.text.Text = $"[center]{healthBar.CurrentHealth.FormattedNumber()}";
     }
 
     private void KillThis()
