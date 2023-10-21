@@ -5,14 +5,14 @@ using System.Collections.Generic;
 public partial class NumberPerSecTooltip : Timer
 {
 	private IdleNumber number;
-	private LerpValue label;
+	[Export] private RichTextLabel tooltip;
+	[Export] private string text;
 	private long numberPerSec;
 	private long nextNumberPerSec;
 
 	private const float INTERVAL_TIME = 5f;
 	public override void _Ready()
 	{
-		label = GetParent<IdleNumberLabel>().GetParent<LerpValue>();
 		number = GetParent<IdleNumberLabel>().GetIdleNumber();
 		numberPerSec = 0;
 		nextNumberPerSec = 0;
@@ -32,7 +32,7 @@ public partial class NumberPerSecTooltip : Timer
 	{
 		numberPerSec = nextNumberPerSec;
 		nextNumberPerSec = 0;
-		label.TooltipText = numberPerSec.FormattedNumber() + "/s";
+		tooltip.TooltipText = $"{numberPerSec.FormattedNumber()}/s - {Tr(text)}";
 		Start();
 	}
 
