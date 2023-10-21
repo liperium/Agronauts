@@ -41,7 +41,7 @@ public partial class FightManager : Node
             return;
         }
 
-        enemyDamage = 1; //TODO FIGURE SOMETHING OUT
+        enemyDamage = (long)(Math.Pow(GameState.instance.numbers.fightWave.GetValue() * 15, 2) / 4f);  //Scaling v1
         
         GameState.instance.numbers.cookedPotatoCount.SetOnValueChanged(OnCookedPotatoChanged);
 
@@ -82,16 +82,7 @@ public partial class FightManager : Node
     private void CalculateLoot()
     {
         //+1 à fightwave ce fait avant le calcul de loot
-        if (GameState.instance.numbers.fightWave.GetValue() == 2)
-        {
-            GameState.instance.artifacts.GetRandomArtifact().Buy();
-            return;
-        }
-        
-        if (rd.Next() % 3 < 2)
-        {
-            GameState.instance.artifacts.GetRandomArtifact().Buy();
-        }
+        GameState.instance.artifacts.GetRandomArtifact().Buy();
     }
 
     private float GetSpawnTime()
@@ -101,7 +92,7 @@ public partial class FightManager : Node
             return 1f;
         }
         
-        return 10f / GameState.instance.numbers.fightWave.GetValue();
+        return Math.Max(10f / (GameState.instance.numbers.fightWave.GetValue()+1), 1f); //scaling v1
     }
 
     private void StartNextSpawnTimer()
@@ -112,7 +103,7 @@ public partial class FightManager : Node
     private long GetNbEnemiesToKill()
     {
         long wave = GameState.instance.numbers.fightWave.GetValue();
-        return wave * 2; //TODO proper scaling
+        return Math.Min(wave + 3, 10); //scaling v1
     }
 
     public void OnKillEnemy(int index)

@@ -57,7 +57,7 @@ public partial class Alien : Area2D
     public long GetHP()
     {
         long wave = GameState.instance.numbers.fightWave.GetValue();
-        return wave * 15; //TODO proper scaling
+        return (long)Math.Pow(wave * 15, 2); //scaling v1
     }
 
     public void TakeDamage(long dmg)

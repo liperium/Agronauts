@@ -139,7 +139,8 @@ public partial class UpgradeHolderUI : Control
     }
     public void FreeMe()
     {
-        genericUpgrade.ResetOnBuyUpgrade(FreeMe);
+        genericUpgrade.ResetOnMaxedUpgrade(FreeMe);
+        freeOnMaxPlugged = false;
         NoButton();
         toggleShowPlugged = true;
         UIManager.SetOnShowAcquired(ToggleShow);
