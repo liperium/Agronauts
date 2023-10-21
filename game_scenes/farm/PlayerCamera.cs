@@ -17,10 +17,10 @@ public partial class PlayerCamera : Camera2D
 	public override void _Input(InputEvent @event)
 	{
 		base._Input(@event);
-		if (@event.IsAction("zoom_in") && targetZoom.X < MAX_ZOOM_IN && ZoomBlocker.CanZoom())
+		if (@event.IsAction("zoom_in") && targetZoom.X < MAX_ZOOM_IN && !ZoomBlock.IsBlocking())
 		{
 			targetZoom += Vector2.One * zoomSens * targetZoom;
-		}else if (@event.IsAction("zoom_out") && targetZoom.X > MAX_ZOOM_OUT && ZoomBlocker.CanZoom())
+		}else if (@event.IsAction("zoom_out") && targetZoom.X > MAX_ZOOM_OUT && !ZoomBlock.IsBlocking())
 		{
 			targetZoom -= Vector2.One * zoomSens * targetZoom;
 		}

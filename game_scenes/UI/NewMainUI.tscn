@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bgxvkolxvu33k"]
+[gd_scene load_steps=43 format=3 uid="uid://bgxvkolxvu33k"]
 
 [ext_resource type="Script" path="res://game_scenes/UI/UIManager.cs" id="1_1o6vr"]
 [ext_resource type="PackedScene" uid="uid://c7vdiidjnc4py" path="res://UI/unlock_pop_up.tscn" id="1_1tles"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://UI/Labels/CookedPotatoCountLabel.cs" id="6_6ave8"]
 [ext_resource type="Texture2D" uid="uid://c38udnmhrwqc6" path="res://UI/sprites/FERME_fond.png" id="7_cpijt"]
 [ext_resource type="Script" path="res://UI/Labels/TemperatureLabel.cs" id="7_d3vh4"]
+[ext_resource type="Script" path="res://game_scenes/UI/ZoomBlock.cs" id="9_7dbn7"]
 [ext_resource type="PackedScene" uid="uid://b7uldwnmxuawf" path="res://UI/menu_tab_button.tscn" id="9_7m5yc"]
 [ext_resource type="Script" path="res://game_scenes/UI/Tab.cs" id="10_syuad"]
 [ext_resource type="Texture2D" uid="uid://balns1cnkjntf" path="res://UI/sprites/four_nobg.png" id="11_jr12r"]
@@ -21,7 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://2hdxwrsf3nu0" path="res://UI/all_settings.tscn" id="18_khtjg"]
 [ext_resource type="Script" path="res://game_scenes/UI/ShowHideMenu.cs" id="21_qbfmq"]
 [ext_resource type="PackedScene" uid="uid://cxd0aegcrow64" path="res://UI/flash.tscn" id="22_4isgy"]
-[ext_resource type="Script" path="res://game_scenes/UI/ZoomUnlocker.cs" id="24_4jb7i"]
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="39_hs3fy"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n48gx"]
@@ -36,9 +36,6 @@ texture = ExtResource("7_cpijt")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_601yh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjefs"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbqdq"]
-size = Vector2(562, 1080)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5m61w"]
 animation = &"menu_close"
@@ -242,6 +239,7 @@ anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = -562.0
 grow_vertical = 2
+script = ExtResource("9_7dbn7")
 
 [node name="TextureRect2" type="Panel" parent="LeftMenu"]
 layout_mode = 1
@@ -413,13 +411,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_rjefs")
 [node name="Flash" parent="LeftMenu/ShowHideMenu" instance=ExtResource("22_4isgy")]
 visible = false
 layout_mode = 1
-
-[node name="ZoomBlocker" type="Area2D" parent="LeftMenu"]
-script = ExtResource("24_4jb7i")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftMenu/ZoomBlocker"]
-position = Vector2(281, 540)
-shape = SubResource("RectangleShape2D_xbqdq")
 
 [node name="AnimationTree" type="AnimationTree" parent="LeftMenu"]
 tree_root = SubResource("AnimationNodeStateMachine_es2qs")
