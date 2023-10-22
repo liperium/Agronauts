@@ -30,7 +30,7 @@ public partial class Alien : Area2D
         audioStreamPlayer.TreeExiting += () => audioStreamPlayer = null;
 
         GetNode<AnimationTree>("AnimationTree").AnimationFinished += OnAnimationFinished;
-
+        UpdateText();
     }
 
     private void TimerOnTimeout()
@@ -57,7 +57,7 @@ public partial class Alien : Area2D
     public long GetHP()
     {
         long wave = GameState.instance.numbers.fightWave.GetValue();
-        return wave * 15; //TODO proper scaling
+        return (long)Math.Pow(wave * 15, 2); //scaling v1
     }
 
     public void TakeDamage(long dmg)
@@ -68,6 +68,7 @@ public partial class Alien : Area2D
 
         if (HP <= 0 && audioStreamPlayer.Stream != dieSound)
         {
+            healthBar.SetHealth(0);
             Action<int> onEnemyKill = FightManager.OnEnemyKill;
             if (onEnemyKill != null) onEnemyKill(spawnIndex);
             /*if (audioStreamPlayer != null)
@@ -91,8 +92,12 @@ public partial class Alien : Area2D
         {
             healthBar.SetHealth(HP);
         }
-        
-        
+        UpdateText();
+    }
+
+    private void UpdateText()
+    {
+        healthBar.text.Text = $"[center]{healthBar.CurrentHealth.FormattedNumber()}";
     }
 
     private void KillThis()

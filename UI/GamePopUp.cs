@@ -64,12 +64,7 @@ public partial class GamePopUp : Control
 		{
 			GamePopUpInfo toShow = queue.Dequeue();
 			ChangeToInfo(toShow);
-			GD.Print($"Showing : {toShow}");
 		}
-		/*else if(queue.Count == 0)
-		{
-			AddToQueue(new GamePopUpInfo("dsadsa", "dsadsadsadsa"));
-		}*/
 	}
 
 	public void AddToQueue(GamePopUpInfo info)

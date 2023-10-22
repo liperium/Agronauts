@@ -4,44 +4,64 @@ using System.Collections.Generic;
 
 public partial class ZoomBlock : Control
 {
-	private static Dictionary<int, bool> blockers = new Dictionary<int, bool>();
-	public static bool blocking = false;
-	private static int idCount = 0;
+	private static int nbOfBlockers = 0;
+	private static int blockingRn = 0;
+	public static ZoomBlock instance = null;
 
-	private int id;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		id = idCount++;
-		Connect("mouse_entered", new Callable(this,"OnMouseEntered"));
-		Connect("mouse_exited", new Callable(this,"OnMouseExit"));
-		blockers.Add(id,false);
+		instance = this;
+		Spread(this);
+		GD.Print($"Connected {nbOfBlockers} controls for zoom block");
+		// TODO change how this works, idk for now a better way
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	private static void GiveZoomBlock(Control node)
 	{
+		//GD.Print($"Gave :{nbOfBlockers++}");
+		if (node == null) return;
+		node.Connect("mouse_entered", new Callable(instance,"OnMouseEntered"));
+		node.Connect("mouse_exited", new Callable(instance,"OnMouseExit"));
+		//blockers.Add(node,false);
+	}
+
+	public static void Spread(Node parentNode)
+	{
+		if (parentNode is Control isControl)
+		{
+			GiveZoomBlock(isControl);
+		}
+
+		foreach (Node child in parentNode.GetChildren())
+		{
+			Spread(child);
+		}
+	}
+
+	public override void _PhysicsProcess(double delta)
+	{
+		if (!DisplayServer.WindowIsFocused())
+		{
+			blockingRn = 0;
+		}
 	}
 
 	public void OnMouseEntered()
 	{
-		blockers[id] = true;
+		blockingRn++;
 	}
 
 	public void OnMouseExit()
 	{
-		blockers[id] = false;
+		if (blockingRn > 0)
+		{
+			blockingRn--;
+		}
 	}
 
 	public static bool IsBlocking()
 	{
-		foreach (var block in blockers.Values)
-		{
-			if (block)
-			{
-				return true;
-			}
-		}
-		return false;
+		return blockingRn != 0;
 	}
 }

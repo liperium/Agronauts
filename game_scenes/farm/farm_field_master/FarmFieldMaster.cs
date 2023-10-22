@@ -23,14 +23,17 @@ public partial class FarmFieldMaster : Node2D
 		FarmField  =
 		ResourceLoader.Load<PackedScene>("res://game_scenes/farm/farm_field/farm_field.tscn");
 		SpawnField(centerPos, centerPos, true);
-		
-		GameState.instance.numbers.potatoGrowSpeed.SetOnValueChanged((newValue) =>
-		{
-			farmTime = 3.0f / newValue;
-			if (OnFarmTimeChange != null) OnFarmTimeChange();
-		});
+
+		UpdateFarmTime(GameState.instance.numbers.potatoGrowSpeed.GetValue());
+		GameState.instance.numbers.potatoGrowSpeed.SetOnValueChanged(UpdateFarmTime);
 
 		ProcessHistory();
+	}
+
+	private void UpdateFarmTime(long speed)
+	{
+		farmTime = 3.0f / speed;
+		if (OnFarmTimeChange != null) OnFarmTimeChange();
 	}
 
 	public void SpawnField(int x, int y, bool origin = false)

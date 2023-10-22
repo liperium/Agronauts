@@ -78,14 +78,15 @@ public partial class PotatoBullet : Area2D
         }
         else
         {
-            Scale -= new Vector2((float)delta, (float)delta) * Mathf.Max(ogScale.X / 10f, 1f);
+            Scale -= new Vector2((float)delta, (float)delta) * Mathf.Max(ogScale.X * 1.5f, 1f);
         }
     }
 
-    public long GetBulletDamage()
+    public static long GetBulletDamage()
     {
         long nbPotats = GameState.instance.numbers.cookedPotatoCount.GetValue();
-        long damage = (long)Math.Max((float)Math.Sqrt(nbPotats + 1), 1f);
+        long temperature = GameState.instance.numbers.potatoTemperature.GetValue();
+        long damage = (long)Math.Max((float)Math.Sqrt(nbPotats + 1) * Math.Sqrt(temperature + 1), 1f);
         Random rd = new Random();
         if ((rd.Next() % 100) + 1 <= GameState.instance.numbers.critChance.GetValue())
         {

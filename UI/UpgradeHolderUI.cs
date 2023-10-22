@@ -14,6 +14,7 @@ public partial class UpgradeHolderUI : Control
 
     private bool onUnlockPlugged;
     private bool freeOnMaxPlugged;
+    private bool toggleShowPlugged;
 
     public void Init(IBuyable upgrade)
     {
@@ -30,8 +31,7 @@ public partial class UpgradeHolderUI : Control
         Name = genericUpgrade.GetInfo().GetName();
 
         //set bg color
-        this.AddThemeStyleboxOverride("panel", upgrade.GetBgStyle());
-        
+        this.ThemeTypeVariation = upgrade.GetBgStyle();
         UpdateAllInfo();
         
         //events
@@ -39,22 +39,33 @@ public partial class UpgradeHolderUI : Control
         genericUpgrade.SetOnInfoChanged(UpdateAllInfo);
         
         genericUpgrade.SetOnUnlock(ShowHideMenu.instance.UnlockedUpgrade);
-        if (genericUpgrade.IsMaxed())
+
+        if (genericUpgrade.GetUpgradeTab() != UIManager.UpgradeTab.Artifact)
         {
-            FreeMe();
+            if (genericUpgrade.IsMaxed())
+            {
+                FreeMe();
+            }
+            else 
+            {
+                genericUpgrade.SetOnMaxedUpgrade(FreeMe);
+                freeOnMaxPlugged = true;
+            }
         }
-        else if(upgrade.GetUpgradeTab() != UIManager.UpgradeTab.Artifact)
-        {
-            genericUpgrade.SetOnMaxedUpgrade(FreeMe);
-            freeOnMaxPlugged = true;
-        }
+
     }
 
     public override void _Ready()
     {
         base._Ready();
+        
+        if (genericUpgrade.IsMaxed() && genericUpgrade.GetUpgradeTab() != UIManager.UpgradeTab.Artifact)
+        {
+            ToggleShow(UIManager.AreAcquiredUpgradesShown());
+            return;
+        }
+        
         bool unlocked = genericUpgrade.IsUnlocked();
-                
         if (unlocked == false)
         {
             Hide();
@@ -128,8 +139,10 @@ public partial class UpgradeHolderUI : Control
     }
     public void FreeMe()
     {
-        genericUpgrade.ResetOnBuyUpgrade(FreeMe);
+        genericUpgrade.ResetOnMaxedUpgrade(FreeMe);
+        freeOnMaxPlugged = false;
         NoButton();
+        toggleShowPlugged = true;
         UIManager.SetOnShowAcquired(ToggleShow);
         ToggleShow(UIManager.AreAcquiredUpgradesShown());
     }
@@ -148,6 +161,7 @@ public partial class UpgradeHolderUI : Control
         if (onUnlockPlugged)
         {
             genericUpgrade.ResetOnUnlock(OnUnlock);
+            onUnlockPlugged = false;
         }
         
         genericUpgrade.ResetOnInfoChanged(UpdateAllInfo);
@@ -156,6 +170,13 @@ public partial class UpgradeHolderUI : Control
         if (freeOnMaxPlugged)
         {
             genericUpgrade.ResetOnMaxedUpgrade(FreeMe);
+            freeOnMaxPlugged = false;
+        }
+
+        if (toggleShowPlugged)
+        {
+            UIManager.ResetOnShowAcquired(ToggleShow);
+            toggleShowPlugged = false;
         }
 
         if (tab != null)

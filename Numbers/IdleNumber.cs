@@ -159,9 +159,10 @@ public partial class IdleNumber : ISaveable
         OnValueIncreased -= action;
     }
 
-    public void OnLoad()
+    public virtual void OnLoad()
     {
 	    modifiers = new List<IdleModifier>();
+	    UpdateValue();
     }
 
 	public string GetImagePath()

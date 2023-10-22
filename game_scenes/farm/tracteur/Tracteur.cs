@@ -27,6 +27,7 @@ public partial class Tracteur : CharacterBody2D
 	private bool locked = true;
 
 	private AudioStreamPlayer2D streamPlayer2D;
+	
 
 	public enum AutoState
 	{
@@ -40,7 +41,9 @@ public partial class Tracteur : CharacterBody2D
 	{
 		RotationDegrees = 0;
 		UpdateSpeed(GameState.instance.numbers.truckSpeed.GetValue());
+		
 		GameState.instance.numbers.truckSpeed.SetOnValueChanged(UpdateSpeed);
+		
 		epandeuse = GetNode<Epandeuse>("Epandeuse");
 		if (automatic)
 		{
@@ -228,5 +231,7 @@ public partial class Tracteur : CharacterBody2D
 	public override void _ExitTree()
 	{
 		HideManualTractor.ResetOnHideCheck(HideTractor);
+		GameState.instance.upgrades.tractorSpreadSeedsUpgrade.SetOnBuyUpgrade(UpgradeEpandeur);
+		GameState.instance.numbers.truckSpeed.SetOnValueChanged(UpdateSpeed);
 	}
 }
