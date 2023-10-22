@@ -26,12 +26,10 @@ public partial class ZoomBlocker : Area2D
 
     private void OnMouseEntered()
     {
-        GD.Print($"{id} blocking");
         blockers[id] = true;
     }
     private void OnMouseExit()
     {
-        GD.Print($"{id} un-blocking");
         blockers[id] = false;
     }
 
