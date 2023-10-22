@@ -1,14 +1,19 @@
 using Godot;
 using System;
 
-public partial class FurnaceTempUpgrade : TieredUpgrade<MultiplierModifier>
+public partial class FurnaceTempUpgrade : CappedTieredUpgrade<MultiplierModifier>
 {
     public override void OnBuy()
     {
         modifier.multiplier *= 1.2f;
         base.OnBuy();
     }
-    
+
+    public override long GetTierCap()
+    {
+        return 20;
+    }
+
     public override void UpdateModifier()
     {
         modifier.multiplier = Mathf.Pow(1.2f,tier);
@@ -16,7 +21,7 @@ public partial class FurnaceTempUpgrade : TieredUpgrade<MultiplierModifier>
 
     public override void UpdateCost()
     {
-        cost = (long)(Mathf.Pow(10,tier+2));
+        cost = 1000 + (long)(Mathf.Pow(5,(tier+1) / 2f));
     }
 
     public override IdleNumber GetAffectedNumber()

@@ -47,31 +47,12 @@ public partial class ArtifactUpgrade<TModifier> : TieredUpgrade<TModifier>, IArt
     }
     
     /// <summary>
-    /// Returns background style depending on artifact rarity
+    /// Returns background style variation name depending on artifact rarity
     /// </summary>
-    /// <returns>Background style</returns>
+    /// <returns>Background style variation name</returns>
     public override string GetBgStyle()
     {
-        string style = "";
-        switch (GetRarity())
-        {
-            case ArtifactRarity.Common:
-                style = "CommonArtifact";
-                break;
-            case ArtifactRarity.Uncommon:
-                style = "UncommonArtifact";
-                break;
-            case ArtifactRarity.Legendary:
-                style = "LegendaryArtifact";
-                break;
-        }
-
-        if (style == "")
-        {
-            GD.PrintErr("ARTIFACT RARITY NOT SET ON GETBGSTYLE");
-        }
-
-        return style;
+        return $"{GetRarity().ToString()}Artifact";
     }
 
     /// <summary>
