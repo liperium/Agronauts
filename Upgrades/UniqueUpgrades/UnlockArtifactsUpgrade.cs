@@ -13,6 +13,8 @@ public class UnlockArtifactsUpgrade : BuyableUpgrade<IdleModifier>
         {
             Unlock();
             Buy();
+            
+            GameState.instance.numbers.fightWave.ResetOnValueChanged(OnFightWaveChange);
         }
     }
     

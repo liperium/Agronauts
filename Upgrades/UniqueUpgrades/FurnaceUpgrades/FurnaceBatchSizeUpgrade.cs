@@ -3,7 +3,6 @@ using System;
 
 public partial class FurnaceBatchSizeUpgrade : CappedTieredUpgrade<MultiplierModifier>
 {
-    
     public override void UpdateModifier()
     {
         modifier.multiplier = 1 + tier;

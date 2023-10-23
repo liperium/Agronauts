@@ -48,7 +48,6 @@ public partial class AutoFurnaceUpgrade : BuyableUpgrade<MultiplierModifier>
         {
             Unlock();
             GameState.instance.numbers.cookedPotatoCount.ResetOnValueChanged(CheckUnlock);
-
         }
     }
     public override UIManager.UpgradeTab GetUpgradeTab()
