@@ -13,7 +13,7 @@ public class IdleAction
             return a;
         }
 
-        a.AddManual(b);
+        a.action += b;
         
         if (b.Target is Node n)
         {
@@ -30,7 +30,10 @@ public class IdleAction
 
     public void RemoveManual(Action actionToRemove)
     {
-        action -= actionToRemove;
+        if (Contains(actionToRemove))
+        {
+            action -= actionToRemove;
+        }
     }
 
     private void OnNodeTreeExited(Action currentAction)
@@ -87,7 +90,10 @@ public class IdleAction<T>
 
     public void RemoveManual(Action<T> actionToRemove)
     {
-        action -= actionToRemove;
+        if (Contains(actionToRemove))
+        {
+            action -= actionToRemove;
+        }
     }
 
     private void OnNodeTreeExited(Action<T> currentAction)
@@ -100,7 +106,7 @@ public class IdleAction<T>
         action?.Invoke(param);
     }
 
-    public bool Contains(Action actionToCheck)
+    public bool Contains(Action<T> actionToCheck)
     {
         if (action == null) return false;
         foreach (Delegate a in action.GetInvocationList())

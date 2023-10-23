@@ -36,7 +36,7 @@ public partial class GameState
 	private const string settingsPath = "Settings.json";
 	public int randomSeed = 0xBADF00D;
 	public bool won;
-	private Action OnWin;
+	private IdleAction OnWin;
 	
 	//Save file
 	public IdleNumberContainer numbers;
@@ -50,6 +50,11 @@ public partial class GameState
 	public static GameSettings settings; // TODO GameState on menu load??
 
 	[NonSerialized] public static Dictionary<int, IdleModifier> allModifiers = new Dictionary<int, IdleModifier>();
+
+	public GameState()
+	{
+		OnWin = new IdleAction();
+	}
 
 	public void SetOnWin(Action onWin)
 	{
@@ -159,9 +164,8 @@ public partial class GameState
 	public void Win()
 	{
 		won = true;
-		if (OnWin != null) OnWin();
+		OnWin.Invoke();
 	}
-
 	public static void LoadSettings()
 	{
 		try

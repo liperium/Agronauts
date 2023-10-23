@@ -11,7 +11,12 @@ public partial class FightManager : Node
 
     [Export] public PackedScene alienPrefab;
 
-    public static Action<int> OnEnemyKill;
+    public static IdleAction<int> OnEnemyKill;
+
+    public FightManager()
+    {
+        OnEnemyKill = new IdleAction<int>();
+    }
 
     private int enemiesKilled = 0;
 

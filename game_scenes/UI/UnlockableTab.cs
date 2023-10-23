@@ -2,8 +2,6 @@
 
 public partial class UnlockableTab : Tab
 {
-    private bool onUnlockPlugged;
-
     private BaseIdleUpgrade upgrade;
 
     [Export] public string popupTitle;
@@ -28,9 +26,7 @@ public partial class UnlockableTab : Tab
         else
         {
             Hide();
-            
             upgrade.SetOnUnlock(UnlockTab);
-            onUnlockPlugged = true;
         }
     }
 
@@ -42,19 +38,8 @@ public partial class UnlockableTab : Tab
     private void UnlockTab()
     {
         upgrade.ResetOnUnlock(UnlockTab);
-        onUnlockPlugged = false;
         
         Show();
         GamePopUp.instance.AddToQueue(new GamePopUpInfo(popupTitle,popupDescription));
-    }
-
-    public override void _ExitTree()
-    {
-        base._ExitTree();
-        if (onUnlockPlugged)
-        {
-            upgrade.ResetOnUnlock(UnlockTab);
-            onUnlockPlugged = false;
-        }
     }
 }

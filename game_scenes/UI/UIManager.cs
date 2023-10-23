@@ -10,7 +10,7 @@ public partial class UIManager : CanvasLayer
 
 	private static bool showAcquired;
 
-	private static Action<bool> OnShowAcquired;
+	private static IdleAction<bool> OnShowAcquired;
 
 	public enum UpgradeTab
 	{
@@ -19,9 +19,19 @@ public partial class UIManager : CanvasLayer
 		Artifact,
 		None,
 	}
+
+	public UIManager()
+	{
+		if (OnShowAcquired == null)
+		{
+			OnShowAcquired = new IdleAction<bool>();
+		}
+	}
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+
 		upgradeTemplate = ResourceLoader.Load<PackedScene>("res://game_scenes/UI/UpgradeTemplate.tscn");
 
 		foreach (var up in all_upgrades)
@@ -111,14 +121,14 @@ public partial class UIManager : CanvasLayer
 		}
 		else
 		{
-			OnShowAcquired -= action;
+			OnShowAcquired.RemoveManual(action);
 		}
 	}
 
 	public static void ShowAcquiredUpgrades(bool show)
 	{
 		showAcquired = show;
-		if(OnShowAcquired != null)OnShowAcquired(show);
+		OnShowAcquired.Invoke(show);
 	}
 
 	public static bool AreAcquiredUpgradesShown()
