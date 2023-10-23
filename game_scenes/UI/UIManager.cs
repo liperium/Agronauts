@@ -10,7 +10,7 @@ public partial class UIManager : CanvasLayer
 
 	private static bool showAcquired;
 
-	private static IdleAction<bool> OnShowAcquired;
+	private static IdleAction<bool> OnShowAcquired = new IdleAction<bool>();
 
 	public enum UpgradeTab
 	{
@@ -18,14 +18,6 @@ public partial class UIManager : CanvasLayer
 		Furnace,
 		Artifact,
 		None,
-	}
-
-	public UIManager()
-	{
-		if (OnShowAcquired == null)
-		{
-			OnShowAcquired = new IdleAction<bool>();
-		}
 	}
 
 	// Called when the node enters the scene tree for the first time.
