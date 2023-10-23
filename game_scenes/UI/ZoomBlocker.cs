@@ -29,7 +29,6 @@ public partial class ZoomBlocker : Area2D
     }
     public void ParentSizeChanged()
     {
-        GD.Print("Shape changed");
         var collShape = GetChild<CollisionShape2D>(0);
         var rect2 = collShape.Shape;
         rect2.Set("size",parent.Size);

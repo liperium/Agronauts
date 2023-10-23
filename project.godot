@@ -20,6 +20,7 @@ config/icon="res://UI/sprites/pain_a_lail.png"
 
 [autoload]
 
+SceneTransition="*res://game_scenes/UI/SceneTransition.tscn"
 SaveManager="*res://GameState/SaveManager.cs"
 ObjectSpawner="*res://GameState/object_spawner.tscn"
 MusicManager="*res://game_scenes/music_manager.tscn"

@@ -17,6 +17,6 @@ public partial class StartGame : Button
 	public override void _Pressed()
 	{
 		base._Pressed();
-		GetTree().ChangeSceneToPacked(farmScene);
+		SceneTransition.GoToScene(farmScene);
 	}
 }
