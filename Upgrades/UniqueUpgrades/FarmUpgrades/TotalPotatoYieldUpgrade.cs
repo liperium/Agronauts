@@ -1,7 +1,7 @@
 using Godot;
 using System;
 [Serializable]
-public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier>
+public partial class TotalPotatoYieldUpgrade : CappedTieredUpgrade<MultiplierModifier>
 {
 	public override void UpdateModifier()
 	{
@@ -12,7 +12,6 @@ public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier
 	{
 		cost = (long)(5 + Mathf.Pow(tier, 2) + tier);
 	}
-
 	
 	public override IdleNumber GetAffectedNumber()
 	{
@@ -38,6 +37,12 @@ public partial class TotalPotatoYieldUpgrade : TieredUpgrade <MultiplierModifier
     {
         return  + ((int)(modifier.multiplier * 100)) + "%";
     }
+
+    public override long GetTierCap()
+    {
+	    return 1000;
+    }
+
     public override UIManager.UpgradeTab GetUpgradeTab()
     {
 	    return UIManager.UpgradeTab.Farm;
