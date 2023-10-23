@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class FurnaceBatchSizeUpgrade : TieredUpgrade<MultiplierModifier>
+public partial class FurnaceBatchSizeUpgrade : CappedTieredUpgrade<MultiplierModifier>
 {
     
     public override void UpdateModifier()
@@ -48,6 +48,12 @@ public partial class FurnaceBatchSizeUpgrade : TieredUpgrade<MultiplierModifier>
     {
         return +((int)(modifier.multiplier*100))+"%";
     }
+
+    public override long GetTierCap()
+    {
+        return 500;
+    }
+
     public override UIManager.UpgradeTab GetUpgradeTab()
     {
         return UIManager.UpgradeTab.Furnace;
