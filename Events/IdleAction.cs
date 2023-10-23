@@ -1,119 +1,59 @@
 ﻿using System;
-using System.Collections.Generic;
-
-public class IdleAction
-{
-    private List<Delegate> invocationList;
-
-    public IdleAction()
-    {
-        invocationList = new List<Delegate>();
-    }
-    
-    private static void CheckInit(IdleAction a)
-    {
-        if (a.invocationList == null)
-        {
-            a.invocationList = new List<Delegate>();
-        }
-    }
-
-    public static IdleAction operator+(IdleAction a, Action b)
-    {
-        CheckInit(a);
-        a.invocationList.Add(b);
-        return a;
-    }
-    
-    public static IdleAction operator-(IdleAction a, Action b)
-    {
-        CheckInit(a);
-        a.invocationList.Remove(b);
-        return a;
-    }
-
-    public void Invoke()
-    {
-        CheckInit(this);
-        
-        if (invocationList == null)
-        {
-            invocationList = new List<Delegate>();
-        }
-        
-        //invoke valid delegates
-        foreach (Delegate del in invocationList.ToArray())
-        {
-            try
-            {
-                del.DynamicInvoke();
-            }
-            catch (ObjectDisposedException ex)
-            {
-                invocationList.Remove(del);
-            }
-        }
-    }
-
-    public bool Contains(Action action)
-    {
-        if (invocationList == null) return false;
-        return invocationList.Contains(action);
-    }
-}
+using Godot;
 
 public class IdleAction<T>
 {
-    private List<Delegate> invocationList;
-
-    public IdleAction()
-    {
-        invocationList = new List<Delegate>();
-    }
-    
-    private static void CheckInit(IdleAction<T> a)
-    {
-        if (a.invocationList == null)
-        {
-            a.invocationList = new List<Delegate>();
-        }
-    }
+    private Action<T> action;
 
     public static IdleAction<T> operator+(IdleAction<T> a, Action<T> b)
     {
-        CheckInit(a);
-        a.invocationList.Add(b);
-        return a;
-    }
-    
-    public static IdleAction<T> operator-(IdleAction<T> a, Action<T> b)
-    {
-        CheckInit(a);
-        a.invocationList.Remove(b);
-        return a;
-    }
-    
-    public void Invoke(T param1)
-    {
-        CheckInit(this);
-        
-        //invoke valid delegates
-        foreach (Delegate del in invocationList.ToArray())
+        if (b.Target == null)
         {
-            try
-            {
-                del.DynamicInvoke(param1);
-            }
-            catch (ObjectDisposedException ex)
-            {
-                invocationList.Remove(del);
-            }
+            GD.PrintErr("Target is null on action!! This should not happen");
+            return a;
         }
+
+        a.action += b;
+        
+        if (b.Target is Node n)
+        {
+            n.TreeExited += () => a.OnNodeTreeExited(b);
+        }
+        
+        return a;
     }
 
-    public bool Contains(Action<T> action)
+    public void AddManual(Action<T> actionToAdd)
     {
-        if (invocationList == null) return false;
-        return invocationList.Contains(action);
+        action += actionToAdd;
+    }
+
+    public void RemoveManual(Action<T> actionToRemove)
+    {
+        action -= actionToRemove;
+    }
+
+    private void OnNodeTreeExited(Action<T> currentAction)
+    {
+        action -= currentAction;
+    }
+
+    public void Invoke(T param)
+    {
+        action?.Invoke(param);
+    }
+
+    public bool Contains(Action actionToCheck)
+    {
+        if (action == null) return false;
+        foreach (Delegate a in action.GetInvocationList())
+        {
+            if (a == (Delegate)actionToCheck)
+            {
+                return true;
+            }
+        }
+        
+        return false;
     }
 }
