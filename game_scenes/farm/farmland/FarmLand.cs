@@ -58,7 +58,7 @@ public partial class FarmLand : Area2D
 	{
 		button = GetNode<TextureButton>("TextureButton");
 		button.Pressed += Clicked;
-		button.TextureNormal = GetRandomTexture(WildTextures);
+		button.TextureNormal = GetRandomTexture(BoughtTextures);
 
 		growthTimer = GetNode<Timer>("Timer");
 		growthTimer.OneShot = true;
@@ -122,7 +122,7 @@ public partial class FarmLand : Area2D
 				if (CanBuy())
 				{
 					Bought();
-					Laboure();	
+					Laboure();
 				}
 				break;
 			case LandState.Base:
@@ -171,8 +171,6 @@ public partial class FarmLand : Area2D
 		button.TextureNormal = GetRandomTexture(BoughtTextures);
 		currState = LandState.Base;
 		priceLabel.QueueFree();
-		//MouseEntered -= Hovered;
-		//MouseExited -= UnHovered;
 
 		// Check if it can expand
 		GetParent<FarmField>().LandBought(new Pos2D(position.X,position.Y), addToHistory);
