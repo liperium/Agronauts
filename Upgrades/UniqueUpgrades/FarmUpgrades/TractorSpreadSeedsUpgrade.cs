@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 public partial class TractorSpreadSeedsUpgrade : BuyableUpgrade<IdleModifier>
 {
     public override void UpdateCost()

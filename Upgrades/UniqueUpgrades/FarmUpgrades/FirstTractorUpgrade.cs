@@ -1,14 +1,14 @@
 using Godot;
-using System;
-[Serializable]
+
 public partial class FirstTractorUpgrade : BuyableUpgrade<MultiplierModifier>
 {
     public override void OnBuy()
     {
+        base.OnBuy();
+        
         SpawnTractor();
         GameState.instance.numbers.truckAmount.IncreaseValue(1);
         GamePopUp.instance.AddToQueue(new GamePopUpInfo("KCONGRATULATIONS","KCONTROLTRACTOR"));
-        base.OnBuy();
     }
 
     public void SpawnTractor()

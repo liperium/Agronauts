@@ -69,8 +69,7 @@ public partial class Alien : Area2D
         if (HP <= 0 && audioStreamPlayer.Stream != dieSound)
         {
             healthBar.SetHealth(0);
-            Action<int> onEnemyKill = FightManager.OnEnemyKill;
-            if (onEnemyKill != null) onEnemyKill(spawnIndex);
+            FightManager.OnEnemyKill.Invoke(spawnIndex);
             /*if (audioStreamPlayer != null)
             {
                 audioStreamPlayer.Stream = dieSound;

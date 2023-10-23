@@ -11,8 +11,6 @@ public partial class Four : Control
 
 	private bool automatic = false;
 
-	private bool onUnlockAutoPlugged;
-
 	private const float PROGRESS_START_TIME = 6.0f;
 	private const float TIME_BEFORE_AUTO_COOK = 800f;
 	// Called when the node enters the scene tree for the first time.
@@ -39,7 +37,6 @@ public partial class Four : Control
 		else
 		{
 			GameState.instance.upgrades.autoFurnaceUpgrade.SetOnBuyUpgrade(UnlockAutomatic);
-			onUnlockAutoPlugged = true;
 		}
 		
 	}
@@ -47,7 +44,6 @@ public partial class Four : Control
 	public void UnlockAutomatic()
 	{
 		GameState.instance.upgrades.autoFurnaceUpgrade.ResetOnBuyUpgrade(UnlockAutomatic);
-		onUnlockAutoPlugged = false;
 		automatic = true;
         chefTimer.WaitTime = TIME_BEFORE_AUTO_COOK / GameState.instance.numbers.furnaceAutoBakeSpeed.GetValue();
         chefTimer.Start();
@@ -119,16 +115,5 @@ public partial class Four : Control
             chefTimer.WaitTime = TIME_BEFORE_AUTO_COOK / GameState.instance.numbers.furnaceAutoBakeSpeed.GetValue();
             chefTimer.Start();
         }
-	}
-
-	public override void _ExitTree()
-	{
-		base._ExitTree();
-		GameState.instance.numbers.furnaceSpeed.ResetOnValueChanged(UpdateProgressBarStats);
-
-		if (onUnlockAutoPlugged)
-		{
-			GameState.instance.upgrades.autoFurnaceUpgrade.ResetOnBuyUpgrade(UnlockAutomatic);
-		}
 	}
 }
