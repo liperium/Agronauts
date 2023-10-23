@@ -16,7 +16,7 @@ public partial class HideManualTractor : CheckBox
 	{
 		if (action == null)
 		{
-			GD.Print("ERROR ACTION IS NULL WTF");
+			GD.PrintErr("ERROR ACTION IS NULL WTF");
 		}
 		else
 		{

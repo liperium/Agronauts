@@ -116,7 +116,6 @@ public partial class FarmLand : Area2D
 
 	public void Clicked()
 	{
-		//GD.Print("State "+currState);
 		switch (currState)
 		{
 			case LandState.Wild:
