@@ -1,6 +1,5 @@
 using Godot;
-using System;
-[Serializable]
+
 public partial class TotalPotatoYieldUpgrade : CappedTieredUpgrade<MultiplierModifier>
 {
 	public override void UpdateModifier()
@@ -47,5 +46,4 @@ public partial class TotalPotatoYieldUpgrade : CappedTieredUpgrade<MultiplierMod
     {
 	    return UIManager.UpgradeTab.Farm;
     }
-
 }

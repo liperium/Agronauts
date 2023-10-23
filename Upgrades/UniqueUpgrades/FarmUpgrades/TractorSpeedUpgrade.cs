@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class TractorSpeedUpgrade : CappedTieredUpgrade<MultiplierModifier>
 {
@@ -35,7 +34,10 @@ public partial class TractorSpeedUpgrade : CappedTieredUpgrade<MultiplierModifie
     public override void OnLoad()
     {
         base.OnLoad();
-        GameState.instance.numbers.truckAmount.SetOnValueChanged(CheckUnlock);
+        if (IsUnlocked() == false)
+        {
+            GameState.instance.numbers.truckAmount.SetOnValueChanged(CheckUnlock);
+        }
     }
 
     public void CheckUnlock(long tiles)
