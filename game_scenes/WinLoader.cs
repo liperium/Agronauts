@@ -14,7 +14,7 @@ public partial class WinLoader : Node2D
     {
         if (winScene != null)
         {
-            GetTree().ChangeSceneToPacked(winScene);
+            SceneTransition.GoToScene(winScene);
         }
     }
 }

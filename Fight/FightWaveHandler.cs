@@ -98,7 +98,7 @@ public partial class FightWaveHandler : Node2D
     private void StartWave()
     {
         GD.Print("START WAVE");
-        GetTree().ChangeSceneToPacked(fightScene);
+        SceneTransition.GoToScene(fightScene);
     }
 
     public long GetWaveTime()

@@ -28,8 +28,6 @@ public partial class WindowModeSelector : MenuButton
 				lastNonFullscreenMode = newMode;
 			}
 		}
-
-		GD.Print($"Changed window mode - {newMode}");
 		if (DisplayServer.WindowGetMode() != newMode)
 		{
 			DisplayServer.WindowSetMode(newMode);

@@ -72,11 +72,9 @@ public partial class FightManager : Node
     {
         CalculateLoot();
         OnEnemyKill = null;
-        
-        //TODO load back to farm scene
-        GetTree().ChangeSceneToPacked(farmScene);
+
+        SceneTransition.GoToScene(farmScene);
         GD.Print("FIGHT END!");
-        
     }
 
     private void CalculateLoot()
