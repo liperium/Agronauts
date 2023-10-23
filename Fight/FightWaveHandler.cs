@@ -7,10 +7,6 @@ public partial class FightWaveHandler : Node2D
     [Export] public BaseButton startWaveBtn;
     [Export] public RichTextLabel waveComingText;
     [Export] public CanvasLayer waveUICanvas;
-    //TODO Idle number pour save le temp courant avant que la wave arrive / 0 == arrivé
-
-    private bool unlockSubscribed;
-
     private WaveState state;
 
     [Export] public PackedScene fightScene;
@@ -31,6 +27,8 @@ public partial class FightWaveHandler : Node2D
         waveTimer.Timeout += OnTimerEnd;
         startWaveBtn.Pressed += StartWave;
         
+        GameState.instance.numbers.currInvasionTimeLeft.SetOnValueChanged(UpdateTimer);
+        
         UnlockFurnaceUpgrade unlockFurnaceUpgrade = GameState.instance.upgrades.unlockFurnaceUpgrade;
         if (unlockFurnaceUpgrade.IsUnlocked())
         {
@@ -39,31 +37,33 @@ public partial class FightWaveHandler : Node2D
         else
         {
             unlockFurnaceUpgrade.SetOnUnlock(OnFurnaceUnlocked);
-            unlockSubscribed = true;
         }
+    }
+
+    private void UpdateTimer(long timeleft)
+    {
+        waveTimer.Start(timeleft);
     }
     
     private void OnFurnaceUnlocked()
     {
         state = WaveState.InvasionComing;
-        waveTimer.Start(GetWaveTime());
+        waveTimer.Start(GameState.instance.numbers.currInvasionTimeLeft.GetValue());
         
         //hide btn
         startWaveBtn.Modulate = new Color(1,1,1,0);
         startWaveBtn.Disabled = true;
         
-        if (unlockSubscribed)
-        {
-            GameState.instance.upgrades.unlockFurnaceUpgrade.ResetOnUnlock(OnFurnaceUnlocked);
-            unlockSubscribed = false;
-        }
+        GameState.instance.upgrades.unlockFurnaceUpgrade.ResetOnUnlock(OnFurnaceUnlocked);
     }
 
     public override void _Process(double delta)
     {
         base._Process(delta);
-
-        if (waveTimer.TimeLeft != 0 && waveTimer.TimeLeft <= 60 && state == WaveState.InvasionComing)
+        
+        if (waveTimer.TimeLeft == 0) return;
+        
+        if (waveTimer.TimeLeft <= 60 && state == WaveState.InvasionComing)
         {
             waveComingText.Text = Tr("KWAVECOMING") + " : " + Mathf.RoundToInt(waveTimer.TimeLeft) + " " +Tr("KSECONDS") + "!";
 
@@ -72,6 +72,8 @@ public partial class FightWaveHandler : Node2D
                 waveUICanvas.Visible = true;
             }
         }
+        
+        GameState.instance.numbers.currInvasionTimeLeft.SetValue((long)waveTimer.TimeLeft, false);
     }
 
     private void OnTimerEnd()
@@ -88,6 +90,12 @@ public partial class FightWaveHandler : Node2D
 
     private void StartWave()
     {
+        if (GameState.instance.numbers.cookedPotatoCount.GetValue() == 0)
+        {
+            GamePopUp.instance.AddToQueue(new GamePopUpInfo("KIMPOSSIBLE","KNEEDCOOKEDPOTATOS"));
+            return;
+        }
+        GameState.instance.numbers.currInvasionTimeLeft.SetValue(GameState.instance.numbers.invasionTime.GetValue());
         SceneTransition.GoToScene(fightScene);
     }
 

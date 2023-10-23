@@ -25,7 +25,8 @@ public class IdleNumberContainer
     public IdleNumber truckPotatosFarmed;
 
     public IdleNumber fightWave;
-    public IdleNumber invasionTime;
+    public IdleNumberBaseValue invasionTime;
+    public IdleNumber currInvasionTimeLeft;
     public IdleNumber critChance;
 
     public void OnLoad()
@@ -52,6 +53,8 @@ public class IdleNumberContainer
 
         fightWave.OnLoad();
         critChance.OnLoad();
+        invasionTime.OnLoad();
+        currInvasionTimeLeft.OnLoad();
         
         //win condition
         potatoCount.SetOnValueChanged(CheckWin);
@@ -101,8 +104,12 @@ public class IdleNumberContainer
         fightWave = new IdleNumber();
         fightWave.SetValue(1, false);
 
-        invasionTime = new IdleNumber();
-        invasionTime.SetValue(300, false);
+        invasionTime = new IdleNumberBaseValue();
+        invasionTime.SetBaseValue(300);
+        
+        currInvasionTimeLeft = new IdleNumber();
+        currInvasionTimeLeft.SetValue(invasionTime.GetBaseValue());
+        
         critChance = new IdleNumber();
     }
 

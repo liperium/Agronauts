@@ -12,6 +12,7 @@ public class GameSettings
     //Gameplay settings
 
     public bool buyLandOnHold;
+    public bool saveOnQuit;
 
     // Window settings
     public long windowMode;

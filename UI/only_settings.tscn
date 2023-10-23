@@ -1,12 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6eyx2i5qt26b"]
+[gd_scene load_steps=7 format=3 uid="uid://b6eyx2i5qt26b"]
 
 [ext_resource type="Script" path="res://game_scenes/UI/SoundSlider.cs" id="1_r2i8o"]
 [ext_resource type="Script" path="res://game_scenes/UI/BuyOnHoldSetting.cs" id="2_q8qgc"]
 [ext_resource type="Script" path="res://UI/ShowAcquiredUpgradesSetting.cs" id="3_o8y84"]
 [ext_resource type="Script" path="res://UI/HideManualTractor.cs" id="4_lht08"]
 [ext_resource type="Script" path="res://UI/WindowModeSelector.cs" id="5_ahn3f"]
+[ext_resource type="Script" path="res://UI/SaveOnQuitToggle.cs" id="6_revdo"]
 
 [node name="VBoxContainer" type="VBoxContainer"]
+
+[node name="MenuButton" type="MenuButton" parent="."]
+layout_mode = 2
+text = "KWINDOWMODE"
+script = ExtResource("5_ahn3f")
+
+[node name="HSeparator3" type="HSeparator" parent="."]
+layout_mode = 2
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
@@ -120,10 +129,14 @@ layout_mode = 2
 size_flags_horizontal = 10
 script = ExtResource("4_lht08")
 
-[node name="HSeparator3" type="HSeparator" parent="."]
+[node name="HBoxContainer8" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="MenuButton" type="MenuButton" parent="."]
+[node name="Label" type="Label" parent="HBoxContainer8"]
 layout_mode = 2
-text = "KWINDOWMODE"
-script = ExtResource("5_ahn3f")
+text = "KSAVEONQUIT"
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 10
+script = ExtResource("6_revdo")

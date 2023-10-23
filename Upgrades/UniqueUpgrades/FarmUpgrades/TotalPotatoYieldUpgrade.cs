@@ -34,7 +34,7 @@ public partial class TotalPotatoYieldUpgrade : CappedTieredUpgrade<MultiplierMod
 
     public override string GetEffectText()
     {
-        return  + ((int)(modifier.multiplier * 100)) + "%";
+        return $"{base.GetEffectText()}{((int)(modifier.multiplier * 100))}%";
     }
 
     public override long GetTierCap()

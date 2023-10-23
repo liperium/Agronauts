@@ -24,5 +24,10 @@ public partial class Cheats : Node2D
 		{
 			GameState.instance.artifacts.GetRandomArtifact().Buy();
 		}
+
+		if (Input.IsActionJustReleased("spawn_invasion"))
+		{
+			GameState.instance.numbers.currInvasionTimeLeft.SetValue(3);
+		}
 	}
 }
