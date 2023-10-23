@@ -41,7 +41,6 @@ public partial class Alien : Area2D
             audioStreamPlayer.Play();
         }
         GetNode<AnimationTree>("AnimationTree").Set("parameters/conditions/shoot",true);
-        //TODO SFX shoot
         GameState.instance.numbers.cookedPotatoCount.DecreaseValue(FightManager.enemyDamage);
         timer.Start();
     }

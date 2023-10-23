@@ -93,12 +93,6 @@ public partial class GamePopUp : Control
 		stateLocal = State.Ready;
 	}
 
-	public void ChangeText(string title, string description)//TODO remove
-	{
-		techTitle.Text = title;
-		techDescription.Text = description;
-	}
-
 	public void ChangeToInfo(GamePopUpInfo info)
 	{
 		techTitle.Text = info.Title;

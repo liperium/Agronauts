@@ -47,7 +47,7 @@ public partial class GameState
 	[NonSerialized] public ArtifactContainer artifacts;
 	
 	//Settings
-	public static GameSettings settings; // TODO GameState on menu load??
+	public static GameSettings settings;
 
 	[NonSerialized] public static Dictionary<int, IdleModifier> allModifiers = new Dictionary<int, IdleModifier>();
 

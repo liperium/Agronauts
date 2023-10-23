@@ -55,7 +55,6 @@ public partial class FightManager : Node
         spawnTimer.Timeout += SpawnEnemy;
         StartNextSpawnTimer();
 
-        //TODO fight layer for music
     }
 
     public void OnCookedPotatoChanged(long value)

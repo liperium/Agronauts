@@ -7,6 +7,7 @@ public partial class FightWaveHandler : Node2D
     [Export] public BaseButton startWaveBtn;
     [Export] public RichTextLabel waveComingText;
     [Export] public CanvasLayer waveUICanvas;
+    //TODO Idle number pour save le temp courant avant que la wave arrive / 0 == arrivé
 
     private bool unlockSubscribed;
 
@@ -64,7 +65,6 @@ public partial class FightWaveHandler : Node2D
 
         if (waveTimer.TimeLeft != 0 && waveTimer.TimeLeft <= 60 && state == WaveState.InvasionComing)
         {
-            //TODO time remaining UI
             waveComingText.Text = Tr("KWAVECOMING") + " : " + Mathf.RoundToInt(waveTimer.TimeLeft) + " " +Tr("KSECONDS") + "!";
 
             if (waveUICanvas.Visible == false)
@@ -83,17 +83,8 @@ public partial class FightWaveHandler : Node2D
         //show btn
         startWaveBtn.Modulate = new Color(1,1,1);
         startWaveBtn.Disabled = false;
-        
-        waveTimer.Timeout += WaveStayEnd;
-        waveTimer.Start(GetInvasionStayTime());
     }
-
-    private void WaveStayEnd()
-    {
-        //TODO Wave s'en va
-        waveTimer.Timeout -= WaveStayEnd;
-        waveTimer.Start(GetWaveTime());
-    }
+    
 
     private void StartWave()
     {
@@ -104,9 +95,5 @@ public partial class FightWaveHandler : Node2D
     {
         return GameState.instance.numbers.invasionTime.GetValue();
     }
-
-    public float GetInvasionStayTime()
-    {
-        return 120f;
-    }
+    
 }

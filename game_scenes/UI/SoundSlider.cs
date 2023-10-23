@@ -19,7 +19,6 @@ public partial class SoundSlider : HSlider
 	[Export] public SoundCategory category;
 	
 	private int busID = 0;
-	//TODO save volume settings in another file
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

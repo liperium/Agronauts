@@ -7,7 +7,7 @@ public partial class QuitButton : Button
     {
         base._Pressed();
         
-        //TODO REENABLE FOR PUBLIC BUILD save before quit
+        //TODO Ajouter setting pour enable save on quit
         //if (GameState.SAVE_ENABLED) GameState.instance.SaveToFile();
         GetTree().Quit();
     }
