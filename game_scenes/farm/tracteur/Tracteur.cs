@@ -211,7 +211,6 @@ public partial class Tracteur : CharacterBody2D
 		epandeuse.Show();
 		epandeuse.SetCollision(true);
 		GameState.instance.upgrades.tractorSpreadSeedsUpgrade.ResetOnBuyUpgrade(UpgradeEpandeur);
-
 	}
 
 	public void HideTractor(bool hide)
@@ -226,12 +225,5 @@ public partial class Tracteur : CharacterBody2D
 			Show();
 			enabled = true;
 		}
-	}
-
-	public override void _ExitTree()
-	{
-		HideManualTractor.ResetOnHideCheck(HideTractor);
-		GameState.instance.upgrades.tractorSpreadSeedsUpgrade.SetOnBuyUpgrade(UpgradeEpandeur);
-		GameState.instance.numbers.truckSpeed.SetOnValueChanged(UpdateSpeed);
 	}
 }

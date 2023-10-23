@@ -15,11 +15,4 @@ public partial class DamageLabel : Node2D
 	{
 		GetParent<LerpValue>().SetNewValue(PotatoBullet.GetBulletDamage());
 	}
-
-	public override void _ExitTree()
-	{
-		base._ExitTree();
-		GameState.instance.numbers.cookedPotatoCount.ResetOnValueChanged(UpdateDamage);
-		GameState.instance.numbers.potatoTemperature.ResetOnValueChanged(UpdateDamage);
-	}
 }

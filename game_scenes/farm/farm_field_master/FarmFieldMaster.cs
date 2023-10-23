@@ -15,9 +15,14 @@ public partial class FarmFieldMaster : Node2D
     private bool[,] isTaken = new bool[MAX_SIZE,MAX_SIZE];
 
     public static float farmTime = 3.0f;
-    public static Action OnFarmTimeChange;
+    public static IdleAction OnFarmTimeChange;
 
 	// Called when the node enters the scene tree for the first time.
+	public FarmFieldMaster()
+	{
+		OnFarmTimeChange = new IdleAction();
+	}
+
 	public override void _Ready()
 	{
 		FarmField  =
@@ -33,7 +38,7 @@ public partial class FarmFieldMaster : Node2D
 	private void UpdateFarmTime(long speed)
 	{
 		farmTime = 3.0f / speed;
-		if (OnFarmTimeChange != null) OnFarmTimeChange();
+		OnFarmTimeChange.Invoke();
 	}
 
 	public void SpawnField(int x, int y, bool origin = false)

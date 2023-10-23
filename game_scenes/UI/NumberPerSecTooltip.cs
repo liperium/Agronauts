@@ -35,11 +35,6 @@ public partial class NumberPerSecTooltip : Timer
 		tooltip.TooltipText = $"{numberPerSec.FormattedNumber()}/s - {Tr(text)}";
 		Start();
 	}
-
-	public override void _ExitTree()
-	{
-		number.ResetOnValueIncreased(AddAmount);
-	}
 }
 
 

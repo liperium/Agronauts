@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+
 [Serializable]
 public partial class IdleNumber : ISaveable
 {
@@ -12,10 +13,20 @@ public partial class IdleNumber : ISaveable
 
 	private List<IdleModifier> modifiers;
 
-	private Action<long> OnValueChanged;
-	private Action<long> OnValueIncreased;
+	private IdleAction<long> OnValueChanged;
+	private IdleAction<long> OnValueIncreased;
 
+	public IdleNumber()
+	{
+		OnValueChanged = new IdleAction<long>();
+		OnValueIncreased = new IdleAction<long>();
+	}
 	
+	public virtual void OnLoad()
+	{
+		modifiers = new List<IdleModifier>();
+		UpdateValue();
+	}
 	
 	public void AddModifier(IdleModifier modifier)
 	{
@@ -36,8 +47,6 @@ public partial class IdleNumber : ISaveable
 		modifiers.Remove(modifier);
 	}
 	
-	
-
 	public bool HasModifier(IdleModifier modifier)
 	{
 		if (modifiers == null)
@@ -62,7 +71,7 @@ public partial class IdleNumber : ISaveable
 		
 		CalculateValue();
 		
-		if (OnValueChanged != null && callValueChanged) OnValueChanged(GetValue());
+		if (callValueChanged) OnValueChanged.Invoke(GetValue());
 	}
 
 	private void CalculateValue()
@@ -115,21 +124,21 @@ public partial class IdleNumber : ISaveable
 		{
 			SetValue(this.value - value);
 		}
-		if (value < 0) GD.Print("ON EST DANS LE NEGATIF DEFCON 5");
+		if (value < 0) GD.PrintErr("ON EST DANS LE NEGATIF DEFCON 5");
 	}
 
     public void IncreaseValue(long value)
     {
         SetValue(this.value + value);
-		if(OnValueIncreased != null) { OnValueIncreased(value); }
-        if (value < 0) GD.Print("ON EST DANS LE NEGATIF DEFCON 5");
+		OnValueIncreased.Invoke(value);
+        if (value < 0) GD.PrintErr("ON EST DANS LE NEGATIF DEFCON 5");
     }
 
     public void SetOnValueChanged(Action<long> action)
 	{
 		if (action == null)
 		{
-			GD.Print("ERROR ACTION IS NULL WTF");
+			GD.PrintErr("ERROR ACTION IS NULL WTF");
 		}
 		else
 		{
@@ -139,7 +148,7 @@ public partial class IdleNumber : ISaveable
 
     public void ResetOnValueChanged(Action<long> action)
     {
-	    OnValueChanged -= action;
+	    //OnValueChanged -= action;
     }
 
     public void SetOnValueIncreased(Action<long> action)
@@ -156,16 +165,10 @@ public partial class IdleNumber : ISaveable
 
     public void ResetOnValueIncreased(Action<long> action)
     {
-        OnValueIncreased -= action;
+        //OnValueIncreased -= action;
     }
 
-    public virtual void OnLoad()
-    {
-	    modifiers = new List<IdleModifier>();
-	    UpdateValue();
-    }
-
-	public string GetImagePath()
+    public string GetImagePath()
 	{
 		return imagePath;
 	}
@@ -174,5 +177,4 @@ public partial class IdleNumber : ISaveable
 	{
 		this.imagePath = path;
 	}
-
 }

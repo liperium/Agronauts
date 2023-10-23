@@ -12,10 +12,6 @@ public partial class UpgradeHolderUI : Control
 
     private Tab tab;
 
-    private bool onUnlockPlugged;
-    private bool freeOnMaxPlugged;
-    private bool toggleShowPlugged;
-
     public void Init(IBuyable upgrade)
     {
         buyButton = GetNode<Button>("HBoxContainer/AspectRatioContainer/Button");
@@ -49,7 +45,6 @@ public partial class UpgradeHolderUI : Control
             else 
             {
                 genericUpgrade.SetOnMaxedUpgrade(FreeMe);
-                freeOnMaxPlugged = true;
             }
         }
 
@@ -65,12 +60,10 @@ public partial class UpgradeHolderUI : Control
             return;
         }
         
-        bool unlocked = genericUpgrade.IsUnlocked();
-        if (unlocked == false)
+        if (genericUpgrade.IsUnlocked() == false)
         {
             Hide();
             genericUpgrade.SetOnUnlock(OnUnlock);
-            onUnlockPlugged = true;
         }
         else
         {
@@ -93,7 +86,6 @@ public partial class UpgradeHolderUI : Control
     {
         Show();
         genericUpgrade.ResetOnUnlock(OnUnlock);
-        onUnlockPlugged = false;
     }
     
     private void OnUpgradeCostChanged(long cost)
@@ -140,9 +132,7 @@ public partial class UpgradeHolderUI : Control
     public void FreeMe()
     {
         genericUpgrade.ResetOnMaxedUpgrade(FreeMe);
-        freeOnMaxPlugged = false;
         NoButton();
-        toggleShowPlugged = true;
         UIManager.SetOnShowAcquired(ToggleShow);
         ToggleShow(UIManager.AreAcquiredUpgradesShown());
     }
@@ -151,37 +141,5 @@ public partial class UpgradeHolderUI : Control
     {
         if (show) Show();
         else Hide();
-    }
-
-    public override void _ExitTree()
-    {
-        base._ExitTree();
-        genericUpgrade.ResetOnCostChanged(OnUpgradeCostChanged);
-        
-        if (onUnlockPlugged)
-        {
-            genericUpgrade.ResetOnUnlock(OnUnlock);
-            onUnlockPlugged = false;
-        }
-        
-        genericUpgrade.ResetOnInfoChanged(UpdateAllInfo);
-        genericUpgrade.ResetOnUnlock(ShowHideMenu.instance.UnlockedUpgrade);
-
-        if (freeOnMaxPlugged)
-        {
-            genericUpgrade.ResetOnMaxedUpgrade(FreeMe);
-            freeOnMaxPlugged = false;
-        }
-
-        if (toggleShowPlugged)
-        {
-            UIManager.ResetOnShowAcquired(ToggleShow);
-            toggleShowPlugged = false;
-        }
-
-        if (tab != null)
-        {
-            genericUpgrade.ResetOnUnlock(tab.FlashTab);
-        }
     }
 }

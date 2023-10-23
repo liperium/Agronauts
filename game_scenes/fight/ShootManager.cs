@@ -12,7 +12,6 @@ public partial class ShootManager : Node2D
         {
             if (((InputEventMouseButton)@event).ButtonIndex == MouseButton.Left && @event.IsPressed())
             {
-                GD.Print("SHOOT!");
                 TryShoot();
             }
         }
@@ -27,9 +26,7 @@ public partial class ShootManager : Node2D
     {
         if (CanShoot())
         {
-            //TODO Spawn bullet and set scale on nb potatoes
             Shoot();
-            GD.Print("SPAWN BULLEt");
         }
     }
 

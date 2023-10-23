@@ -1,11 +1,9 @@
 using Godot;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
 public partial class ZoomBlocker : Area2D
 {
-
     private static Dictionary<int,bool> blockers = new Dictionary<int, bool>();
     private Control parent = null;
     private int id = 0;
@@ -52,6 +50,4 @@ public partial class ZoomBlocker : Area2D
         }
         return true;
     }
-
-
 }

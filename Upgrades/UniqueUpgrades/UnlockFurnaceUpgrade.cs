@@ -13,6 +13,8 @@ public class UnlockFurnaceUpgrade : BuyableUpgrade<IdleModifier>
         {
             Unlock();
             Buy();
+
+            GameState.instance.upgrades.totalPotatoYieldUpgrade.ResetOnBuyUpgrade(OnBuyPotatoYieldUpgrade);
         }   
     }
 
