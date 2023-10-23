@@ -124,21 +124,21 @@ public partial class IdleNumber : ISaveable
 		{
 			SetValue(this.value - value);
 		}
-		if (value < 0) GD.Print("ON EST DANS LE NEGATIF DEFCON 5");
+		if (value < 0) GD.PrintErr("ON EST DANS LE NEGATIF DEFCON 5");
 	}
 
     public void IncreaseValue(long value)
     {
         SetValue(this.value + value);
 		OnValueIncreased.Invoke(value);
-        if (value < 0) GD.Print("ON EST DANS LE NEGATIF DEFCON 5");
+        if (value < 0) GD.PrintErr("ON EST DANS LE NEGATIF DEFCON 5");
     }
 
     public void SetOnValueChanged(Action<long> action)
 	{
 		if (action == null)
 		{
-			GD.Print("ERROR ACTION IS NULL WTF");
+			GD.PrintErr("ERROR ACTION IS NULL WTF");
 		}
 		else
 		{

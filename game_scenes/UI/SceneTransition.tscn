@@ -1,7 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyu7xpcbxj6jl"]
+[gd_scene load_steps=9 format=3 uid="uid://cyu7xpcbxj6jl"]
 
 [ext_resource type="StyleBox" uid="uid://c2ug7gqx5pccl" path="res://game_scenes/UI/styleboxwood.tres" id="1_q0f3r"]
 [ext_resource type="Script" path="res://game_scenes/UI/SceneTransition.cs" id="1_qot78"]
+
+[sub_resource type="Animation" id="Animation_n38i5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Loading..."]
+}
+
+[sub_resource type="Animation" id="Animation_sbvu1"]
+resource_name = "loop"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["Loading.", "Loading..", "Loading..."]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5by0t"]
+_data = {
+"RESET": SubResource("Animation_n38i5"),
+"loop": SubResource("Animation_sbvu1")
+}
 
 [sub_resource type="Animation" id="Animation_vfd42"]
 resource_name = "RESET"
@@ -80,9 +118,16 @@ theme_override_styles/panel = ExtResource("1_q0f3r")
 
 [node name="Label" type="Label" parent="PanelContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
+size_flags_vertical = 8
 theme_override_font_sizes/font_size = 150
 text = "Loading..."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PanelContainer"]
+autoplay = "loop"
+libraries = {
+"": SubResource("AnimationLibrary_5by0t")
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"

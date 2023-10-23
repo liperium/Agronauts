@@ -105,7 +105,7 @@ public partial class UIManager : CanvasLayer
 	{
 		if (action == null)
 		{
-			GD.Print("ERROR ACTION IS NULL WTF");
+			GD.PrintErr("ERROR ACTION IS NULL WTF");
 		}
 		else
 		{
@@ -117,7 +117,7 @@ public partial class UIManager : CanvasLayer
 	{
 		if (action == null)
 		{
-			GD.Print("ERROR ACTION IS NULL WTF");
+			GD.PrintErr("ERROR ACTION IS NULL WTF");
 		}
 		else
 		{
