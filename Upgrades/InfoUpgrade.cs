@@ -47,8 +47,7 @@ public partial class InfoUpgrade
 		this.imagePath = imagePath;
 		SetImage(imagePath);
 	}
-
-    //TODO rework the imgs
+    
     public void SetImage(string imagePath)
     {
 	    image = ResourceLoader.Load<CompressedTexture2D>(imagePath);

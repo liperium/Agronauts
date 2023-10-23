@@ -14,7 +14,6 @@ public class ArtifactContainer
         artifacts.Add(artifact);
         if (artifact.IsMaxed() == false)
         {
-            //TODO essayer de figure out une way de clean up
             artifact.SetOnMaxedUpgrade(UpdateArtifactsInfo);
         }
     }
@@ -24,6 +23,10 @@ public class ArtifactContainer
         foreach (IArtifact a in artifacts)
         {
             a.InitInfo();
+            if (a.IsMaxed())
+            {
+                a.ResetOnMaxedUpgrade(UpdateArtifactsInfo);
+            }
         }
     }
 

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public partial class FarmFieldMaster : Node2D
 {
-	//TODO Spawn temp fields when edge of a field is ateined
 	private PackedScene FarmField;
 
     public static int TILE_SIZE = 32;
@@ -88,7 +87,6 @@ public partial class FarmFieldMaster : Node2D
 
 	private void ProcessHistory()
 	{
-		//TODO Clean up this mess when refactoring tiles
 		GameState.instance.upgrades.addAutomaticTractorUpgrade.ResetFarmFieldList();
 		
 		GameState.instance.numbers.numberOfTilesUnlocked.SetValue(0);

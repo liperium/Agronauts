@@ -65,13 +65,8 @@ public partial class FarmLand : Area2D
 
 		priceLabel = GetNode<RichTextLabel>("CenterContainer/PriceLabel");
 		priceLabel.Show();
-
-
-		//TODO link with global timer
-
+		
 		growthTimer.Timeout += Grown;
-		//MouseEntered += Hovered;
-		//MouseExited += UnHovered;
 
 		progressBar = GetNode<ProgressBar>("ProgressBar");
 		
@@ -126,7 +121,7 @@ public partial class FarmLand : Area2D
 				}
 				break;
 			case LandState.Base:
-				Laboure();//TODO What to do with base?
+				Laboure();
 				break;
 			case LandState.Laboure:
 				Plant();
