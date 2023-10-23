@@ -8,8 +8,13 @@ public class BaseIdleUpgrade : ISaveable
     public bool acquired;
     
     public bool unlocked;
-    private Action OnUnlock;
-    
+    private IdleAction OnUnlock;
+
+    public BaseIdleUpgrade()
+    {
+        OnUnlock = new IdleAction();
+    }
+
     public void SetOnUnlock(Action action)
     {
         OnUnlock += action;
@@ -17,7 +22,7 @@ public class BaseIdleUpgrade : ISaveable
 	
     public void ResetOnUnlock(Action action)
     {
-        OnUnlock -= action;
+        OnUnlock.RemoveManual(action);
     }
     
     public void Unlock()
@@ -25,7 +30,7 @@ public class BaseIdleUpgrade : ISaveable
         if (unlocked == false)
         {
             unlocked = true;
-            if (OnUnlock != null) OnUnlock();
+            OnUnlock.Invoke();
         }
     }
     

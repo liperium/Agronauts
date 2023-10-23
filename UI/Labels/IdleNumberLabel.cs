@@ -31,10 +31,4 @@ public partial class IdleNumberLabel : Node
     {
         GetParent<LerpValue>().SetNewValue(newValue);
     }
-    
-    public override void _ExitTree()
-    {
-        base._ExitTree();
-        number.ResetOnValueChanged(ValueChanged);
-    }
 }

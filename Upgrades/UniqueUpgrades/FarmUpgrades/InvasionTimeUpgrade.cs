@@ -1,5 +1,4 @@
 ﻿using System;
-using Godot;
 
 public class InvasionTimeUpgrade : CappedTieredUpgrade<MultiplierModifier>
 {
@@ -35,7 +34,7 @@ public class InvasionTimeUpgrade : CappedTieredUpgrade<MultiplierModifier>
     public override void OnLoad()
     {
         base.OnLoad();
-        if (acquired == false)
+        if (IsUnlocked() == false)
         {
             GameState.instance.numbers.fightWave.SetOnValueChanged(CheckUnlock);
         }

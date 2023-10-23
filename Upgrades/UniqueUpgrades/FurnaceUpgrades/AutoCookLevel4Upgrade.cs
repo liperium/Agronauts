@@ -1,18 +1,10 @@
-using Godot;
-using System;
-
 public partial class AutoCookLevel4Upgrade : BuyableUpgrade<MultiplierModifier>
 {
-    
     public override void UpdateModifier()
     {
         if (acquired)
         {
             modifier.multiplier = 3f;
-        }
-        else
-        {
-            modifier.multiplier = 1f;
         }
     }
 

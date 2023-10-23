@@ -3,14 +3,12 @@ using System;
 
 public partial class FurnacePotatoRecyclerUpgrade : TieredUpgrade<MultiplierModifier>
 {
-
     public override void OnBuy()
     {
         base.OnBuy();
-        if(!acquired) GameState.instance.numbers.cookedPotatoCount.SetOnValueIncreased(Recycle);
+        GameState.instance.numbers.cookedPotatoCount.SetOnValueIncreased(Recycle);
     }
-
-
+    
     public override void UpdateCost()
     {
         cost = (long)(100 + Mathf.Pow(tier*4, 3f) + tier);
@@ -32,6 +30,7 @@ public partial class FurnacePotatoRecyclerUpgrade : TieredUpgrade<MultiplierModi
 
     public override void Apply()
     {
+        //block apply
         return;
     }
 
@@ -62,9 +61,8 @@ public partial class FurnacePotatoRecyclerUpgrade : TieredUpgrade<MultiplierModi
         return UIManager.UpgradeTab.Furnace;
     }
 
-    public void Recycle(long number)
+    private void Recycle(long number)
     {
         GameState.instance.numbers.potatoCount.IncreaseValue((long)(number * tier * 0.1f));
     }
-
 }

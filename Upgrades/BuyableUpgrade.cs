@@ -5,14 +5,21 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 {
 	protected long cost;
 	
-    
-	private Action<long> OnCostChanged;
-	private Action OnInfoChanged;
-	private Action OnMaxedUpgrade;
-	private Action OnBuyUpgrade;
+	private IdleAction<long> OnCostChanged;
+	private IdleAction OnInfoChanged;
+	private IdleAction OnMaxedUpgrade;
+	private IdleAction OnBuyUpgrade;
 
 	protected IdleNumber costNumber;
-	
+
+	public BuyableUpgrade()
+	{
+		OnCostChanged = new();
+		OnInfoChanged = new();
+		OnMaxedUpgrade = new();
+		OnBuyUpgrade = new();
+	}
+
 	#region Action Setters
 	public void SetOnCostChanged(Action<long> action)
 	{
@@ -21,7 +28,7 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 	
 	public void ResetOnCostChanged(Action<long> action)
 	{
-		OnCostChanged -= action;
+		OnCostChanged.RemoveManual(action);
 	}
 
 	public void SetOnBuyUpgrade(Action action)
@@ -31,7 +38,7 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 	
 	public void ResetOnBuyUpgrade(Action action)
 	{
-		OnBuyUpgrade -= action;
+		OnBuyUpgrade.RemoveManual(action);
 	}
 	public void SetOnInfoChanged(Action action)
 	{
@@ -40,7 +47,7 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 	
 	public void ResetOnInfoChanged(Action action)
 	{
-		OnInfoChanged -= action;
+		OnInfoChanged.RemoveManual(action);
 	}
 	
 	public void SetOnMaxedUpgrade(Action action)
@@ -50,7 +57,7 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 	
 	public void ResetOnMaxedUpgrade(Action action)
 	{
-		OnMaxedUpgrade -= action;
+		OnMaxedUpgrade.RemoveManual(action);
 	}
 	
 
@@ -100,9 +107,9 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 			CheckMaxed();
 			UpdateCost();
 			OnUpdateInfo();
-			if (cost != tempCost && OnCostChanged != null)
+			if (cost != tempCost)
 			{
-				OnCostChanged(cost);
+				OnCostChanged.Invoke(cost);
 			}
 		}
 	}
@@ -111,17 +118,17 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
     {
 	    if (IsMaxed())
 	    {
-		    if(OnMaxedUpgrade != null)OnMaxedUpgrade();
+		    OnMaxedUpgrade.Invoke();
 	    }
     }
     
     public void OnUpdateInfo()
     {
-	    if (OnInfoChanged != null) OnInfoChanged();
+	    OnInfoChanged.Invoke();
     }
     public virtual void OnBuy() {
 	    affectedNumber.UpdateValue();
-	    if (OnBuyUpgrade != null) OnBuyUpgrade();
+	    OnBuyUpgrade.Invoke();
     }
     public virtual void Pay()
     {

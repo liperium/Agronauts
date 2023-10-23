@@ -1,11 +1,10 @@
-﻿
-using Godot;
+﻿using Godot;
 
 public class PotatoSpeedUpgrade : CappedTieredUpgrade<MultiplierModifier>
 {
     public override void UpdateModifier()
     {
-        modifier.multiplier = 1 + 0.3f*tier;
+        modifier.multiplier = 1 + 0.3f * tier;
     }
 
     public override void UpdateCost()

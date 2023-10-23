@@ -11,7 +11,12 @@ public partial class FightManager : Node
 
     [Export] public PackedScene alienPrefab;
 
-    public static Action<int> OnEnemyKill;
+    public static IdleAction<int> OnEnemyKill;
+
+    public FightManager()
+    {
+        OnEnemyKill = new IdleAction<int>();
+    }
 
     private int enemiesKilled = 0;
 
@@ -64,7 +69,6 @@ public partial class FightManager : Node
 
     private void LoseFight()
     {
-        GD.Print("FIGHT LOSE!");
         EndFight();
     }
 
@@ -74,7 +78,6 @@ public partial class FightManager : Node
         OnEnemyKill = null;
 
         SceneTransition.GoToScene(farmScene);
-        GD.Print("FIGHT END!");
     }
 
     private void CalculateLoot()
@@ -111,7 +114,6 @@ public partial class FightManager : Node
         {
             //TODO Play fight end SFX
             GameState.instance.numbers.fightWave.IncreaseValue(1);
-            GD.Print("FIGHT WIN!");
             EndFight();
         }
         else

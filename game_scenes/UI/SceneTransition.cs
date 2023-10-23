@@ -23,12 +23,11 @@ public partial class SceneTransition : CanvasLayer
 	{
 		if (animname.Equals(AnimName) && active)
 		{
-			GD.Print("Changing to scene");
 			GetTree().ChangeSceneToPacked(goToScene);
 			animationPlayer.PlayBackwards(AnimName);
 			active = false;
 		}
-		else
+		else if(animname != "RESET")
 		{
 			animationPlayer.Play("RESET");
 		}

@@ -22,10 +22,4 @@ public partial class PlayerHealthController : Control
 		healthBar.Value = potatos;
 		healthBar.text.Text = $"{potatos.FormattedNumber()}[img=50xz50]res://UI/sprites/PotatoeFumante.png[/img]";
 	}
-	
-	public override void _ExitTree()
-	{
-		base._ExitTree();
-		GameState.instance.numbers.cookedPotatoCount.ResetOnValueChanged(OnCookedPotatoChanged);
-	}
 }

@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using System.Collections.Generic;
 
 public partial class AddAutomaticTractorUpgrade : TieredUpgrade<MultiplierModifier>
@@ -52,7 +51,11 @@ public partial class AddAutomaticTractorUpgrade : TieredUpgrade<MultiplierModifi
     {
         base.OnLoad();
         farmFieldsUnlocked = new List<FarmField>();
-        GameState.instance.numbers.truckAmount.SetOnValueChanged(CheckUnlock);
+
+        if (IsUnlocked() == false)
+        {
+            GameState.instance.numbers.truckAmount.SetOnValueChanged(CheckUnlock);
+        }
     }
 
     public void SpawnAllTractors()
