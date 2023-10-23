@@ -11,6 +11,7 @@ public partial class Alien : Area2D
     [Export] public AudioStreamWav spawnSound;
     [Export] public AudioStreamWav dieSound;
     public int spawnIndex = -1;
+    private bool isDead;
     
     private long HP;
     public FightManager manager;
@@ -63,8 +64,9 @@ public partial class Alien : Area2D
     {
         HP -= dmg;
         
-        if (HP <= 0 && audioStreamPlayer.Stream != dieSound)
+        if (HP <= 0 && audioStreamPlayer.Stream != dieSound && isDead == false)
         {
+            isDead = true;
             healthBar.SetHealth(0);
             FightManager.OnEnemyKill.Invoke(spawnIndex);
             /*if (audioStreamPlayer != null)
@@ -82,6 +84,7 @@ public partial class Alien : Area2D
                 };
             }*/ 
             //Hide();
+            
             QueueFree();
         }
         else

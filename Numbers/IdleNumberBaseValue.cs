@@ -1,16 +1,24 @@
-﻿public class IdleNumberBaseValue : IdleNumber
+﻿using System;
+
+[Serializable]
+public class IdleNumberBaseValue : IdleNumber
 {
-    private long baseValue;
+    public long baseValue;
 
     public void SetBaseValue(long value)
     {
         baseValue = value;
     }
 
+    public long GetBaseValue()
+    {
+        return baseValue;
+    }
+
     public override void OnLoad()
     {
         base.OnLoad();
-        value = baseValue;
+        SetValue(baseValue, false);
         UpdateValue();
     }
     
