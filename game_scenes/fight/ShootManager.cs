@@ -19,7 +19,7 @@ public partial class ShootManager : Node2D
 
     private bool CanShoot()
     {
-        return true; //GameState.instance.numbers.cookedPotatoCount.GetValue() > 0;
+        return FightManager.instance.IsPaused() == false; //GameState.instance.numbers.cookedPotatoCount.GetValue() > 0;
     }
     
     private void TryShoot()

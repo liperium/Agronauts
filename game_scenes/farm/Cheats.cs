@@ -35,7 +35,7 @@ public partial class Cheats : Node2D
 			if (FightManager.instance != null)
 			{
 				FightManager.instance.SetPaused(!FightManager.instance.IsPaused());
-				GD.PrintErr(FightManager.instance.IsPaused() ? "PAUSED" : "UNPAUSED");
+				GD.Print(FightManager.instance.IsPaused() ? "PAUSED" : "UNPAUSED");
 			}
 		}
 	}
