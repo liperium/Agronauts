@@ -1,5 +1,4 @@
-﻿
-public class UnlockArtifactsUpgrade : BuyableUpgrade<IdleModifier>
+﻿public class UnlockArtifactsUpgrade : BuyableUpgrade<IdleModifier>
 {
     public override void OnLoad()
     {

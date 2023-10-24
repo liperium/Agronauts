@@ -1,19 +1,14 @@
-using Godot;
 using System;
+using Newtonsoft.Json;
+
 [Serializable]
+[JsonObject(MemberSerialization.OptIn)]
 public partial class TieredUpgrade<TModifier> : BuyableUpgrade<TModifier> where TModifier : IdleModifier , new()
 {
-	public int tier;
+	[JsonProperty]
+	protected int tier;
 
-	public override void Buy()
-	{
-		base.Buy();
-	}
-
-	public override bool CanBuy()
-	{
-		return base.CanBuy();
-	}
+	public int GetTier() => tier;
 
 	public override void OnBuy()
 	{

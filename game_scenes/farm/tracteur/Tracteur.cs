@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Data;
 
 public partial class Tracteur : CharacterBody2D
 {
@@ -55,7 +54,7 @@ public partial class Tracteur : CharacterBody2D
 			HideTractor(HideManualTractor.IsHidden());
 			HideManualTractor.SetOnHideCheck(HideTractor);
 		}
-		if (GameState.instance.upgrades.tractorSpreadSeedsUpgrade.acquired)
+		if (GameState.instance.upgrades.tractorSpreadSeedsUpgrade.IsAcquired())
 		{
 			UpgradeEpandeur();
 		}
