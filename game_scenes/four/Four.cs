@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Four : Control
 {
@@ -30,7 +29,7 @@ public partial class Four : Control
 		chefTimer.Timeout += ButtonClickedAuto;
 
 
-		if (GameState.instance.upgrades.autoFurnaceUpgrade.acquired)
+		if (GameState.instance.upgrades.autoFurnaceUpgrade.IsAcquired())
 		{
 			UnlockAutomatic();
 		}

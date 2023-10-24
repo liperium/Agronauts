@@ -10,8 +10,7 @@ public partial class InfoUpgrade
 	private string costImagePath;
 	private string additionalInfo;
 	public const string defaultImagePath = "res://Icons/Potato.png";
-
-
+	
     public void SetName(string name)
 	{
 		this.name = name;
@@ -72,6 +71,4 @@ public partial class InfoUpgrade
     {
         return this.costImagePath;
     }
-
-
 }

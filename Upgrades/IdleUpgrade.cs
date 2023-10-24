@@ -1,4 +1,5 @@
 using System;
+using Newtonsoft.Json;
 
 [Serializable]
 public partial class IdleUpgrade <TModifier> : BaseIdleUpgrade where TModifier : IdleModifier, new()

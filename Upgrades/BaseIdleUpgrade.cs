@@ -1,13 +1,17 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 [Serializable]
+[JsonObject(MemberSerialization.OptIn)]
 public class BaseIdleUpgrade : ISaveable
 {
     protected InfoUpgrade info;
 
-    public bool acquired;
+    [JsonProperty]
+    protected bool acquired;
+    [JsonProperty]
+    protected bool unlocked;
     
-    public bool unlocked;
     private IdleAction OnUnlock;
 
     public BaseIdleUpgrade()

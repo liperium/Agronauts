@@ -1,15 +1,23 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 [Serializable]
+[JsonObject(MemberSerialization.OptIn)]
 public partial class IdleNumber : ISaveable
 {
-	public long value;
-	private long calculatedValue;
+	[JsonProperty]
+	private long value;
+	[JsonProperty]
 	private long added;
+	[JsonProperty]
 	private float multiplier;
-	public string imagePath;
+	
+	//valeur finale affichée
+	private long calculatedValue;
+
+	private string imagePath = InfoUpgrade.defaultImagePath;
 
 	private List<IdleModifier> modifiers;
 

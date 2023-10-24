@@ -9,7 +9,7 @@ public class UnlockFurnaceUpgrade : BuyableUpgrade<IdleModifier>
 
     private void OnBuyPotatoYieldUpgrade()
     {
-        if (GameState.instance.upgrades.totalPotatoYieldUpgrade.tier >= 5)
+        if (GameState.instance.upgrades.totalPotatoYieldUpgrade.GetTier() >= 5)
         {
             Unlock();
             Buy();

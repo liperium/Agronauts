@@ -1,5 +1,3 @@
-using Godot;
-using System;
 using WJA23Godot.Upgrades;
 
 public partial class CappedArtifactUpgrade<TModifier> : ArtifactUpgrade<TModifier>, ICappedUpgrade
