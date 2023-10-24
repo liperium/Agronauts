@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="WJ-A23-Godot"
-run/main_scene="res://game_scenes/menu/menu.tscn"
+run/main_scene="res://game_scenes/start_game.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 boot_splash/bg_color=Color(0.14902, 0.101961, 0.0392157, 1)
 boot_splash/image="res://UI/sprites/pain_a_lail.png"
@@ -21,7 +21,6 @@ config/icon="res://UI/sprites/pain_a_lail.png"
 [autoload]
 
 SceneTransition="*res://game_scenes/UI/SceneTransition.tscn"
-SaveManager="*res://GameState/SaveManager.cs"
 ObjectSpawner="*res://GameState/object_spawner.tscn"
 MusicManager="*res://game_scenes/music_manager.tscn"
 WinLoader="*res://game_scenes/WinLoader.tscn"
