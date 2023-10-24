@@ -16,6 +16,8 @@ public class GameSettings
 
     // Window settings
     public long windowMode;
+    public Pos2D lastWindowedSize;
+    public Pos2D lastWindowedPos;
 
     //setup default settings
     public void Init()
