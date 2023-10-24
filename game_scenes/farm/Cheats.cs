@@ -29,5 +29,14 @@ public partial class Cheats : Node2D
 		{
 			GameState.instance.numbers.currInvasionTimeLeft.SetValue(3);
 		}
+
+		if (Input.IsActionJustReleased("pause_fight"))
+		{
+			if (FightManager.instance != null)
+			{
+				FightManager.instance.SetPaused(!FightManager.instance.IsPaused());
+				GD.Print(FightManager.instance.IsPaused() ? "PAUSED" : "UNPAUSED");
+			}
+		}
 	}
 }
