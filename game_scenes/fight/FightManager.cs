@@ -4,32 +4,38 @@ using Godot;
 
 public partial class FightManager : Node
 {
+    public static FightManager instance;
+    
     private PackedScene farmScene;
     [Export] public Node2D[] spawnPositions;
-    private bool[] spawnAvaible;
     [Export] public Timer spawnTimer;
-
     [Export] public PackedScene alienPrefab;
+    
+    private bool[] spawnAvaible;
+    private bool paused;
 
-    public static IdleAction<int> OnEnemyKill;
+    public IdleAction<bool> OnSetPaused;
+    public IdleAction<int> OnEnemyKill;
 
     public FightManager()
     {
         OnEnemyKill = new IdleAction<int>();
+        OnSetPaused = new IdleAction<bool>();
+        instance = this;
     }
 
     private int enemiesKilled = 0;
 
     private int enemiesSpawned = 0;
 
-    public static long enemyDamage;
+    public long enemyDamage;
 
     private Random rd;
 
     public override void _Ready()
     {
         base._Ready();
-
+        
         spawnAvaible = new bool[spawnPositions.Length];
         for (int i = 0; i < spawnAvaible.Length; i++)
         {
@@ -52,9 +58,18 @@ public partial class FightManager : Node
 
         OnEnemyKill += OnKillEnemy;
 
+        OnSetPaused += OnPausedChanged;
+
         spawnTimer.Timeout += SpawnEnemy;
         StartNextSpawnTimer();
 
+    }
+    
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+
+        instance = null;
     }
 
     public void OnCookedPotatoChanged(long value)
@@ -65,6 +80,22 @@ public partial class FightManager : Node
             LoseFight();
         }
     }
+
+    public void SetPaused(bool isPaused)
+    {
+        if (paused != isPaused)
+        {
+            paused = isPaused;
+            OnSetPaused.Invoke(isPaused);
+        }
+    }
+
+    public void OnPausedChanged(bool isPaused)
+    {
+        spawnTimer.Paused = isPaused;
+    }
+
+    public bool IsPaused() => paused;
 
     private void LoseFight()
     {
@@ -167,7 +198,6 @@ public partial class FightManager : Node
             Alien alienInstance = alienPrefab.Instantiate() as Alien;
             if (alienInstance != null)
             {
-                alienInstance.manager = this;
                 alienInstance.spawnIndex = spawnIndex;
                 spawnAvaible[spawnIndex] = false;
                 spawnPoint.AddChild(alienInstance);
