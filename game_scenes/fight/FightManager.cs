@@ -132,7 +132,7 @@ public partial class FightManager : Node
         List<IArtifact> lootedArtifacts = new();
         
         IArtifact newArtifact = GameState.instance.artifacts.GetRandomArtifact();
-        GameState.instance.artifacts.GetRandomArtifact().Buy();
+        newArtifact.Buy();
         lootedArtifacts.Add(newArtifact);
 
         return lootedArtifacts;

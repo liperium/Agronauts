@@ -155,7 +155,7 @@ offset_bottom = 40.0
 script = ExtResource("16_ljifs")
 healthBar = NodePath("..")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="FightPauseDebug" type="RichTextLabel" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -170,6 +170,8 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 120
 bbcode_enabled = true
+scroll_active = false
+autowrap_mode = 0
 script = ExtResource("17_003qq")
 
 [node name="Cheats" type="Node2D" parent="."]
