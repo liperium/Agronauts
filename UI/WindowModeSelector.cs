@@ -17,20 +17,17 @@ public partial class WindowModeSelector : MenuButton
 	}
 	public void ChangeWindowMode(DisplayServer.WindowMode newMode)
 	{
-		if (newMode != DisplayServer.WindowMode.Fullscreen && newMode != DisplayServer.WindowMode.ExclusiveFullscreen)
+
+		if (!isFullscreen(newMode))
 		{
-			if (lastNonFullscreenMode != DisplayServer.WindowGetMode())
-			{
-				lastNonFullscreenMode = DisplayServer.WindowGetMode();
-			}
-			else
-			{
-				lastNonFullscreenMode = newMode;
-			}
+			lastNonFullscreenMode = DisplayServer.WindowGetMode();
 		}
+
 		if (DisplayServer.WindowGetMode() != newMode)
 		{
+			CheckSaveWindowSize(); // If we change from window, we save the size of it's last time
 			DisplayServer.WindowSetMode(newMode);
+			if (newMode == DisplayServer.WindowMode.Windowed) SetToLastSavedSize();
 		}
 		SaveAll((long)newMode);
 	}
@@ -40,12 +37,22 @@ public partial class WindowModeSelector : MenuButton
 		ChangeWindowMode((DisplayServer.WindowMode)newModeLong);
 	}
 
+	private static bool isFullscreen(DisplayServer.WindowMode windowMode)
+	{
+		if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen ||
+		    DisplayServer.WindowGetMode() == DisplayServer.WindowMode.ExclusiveFullscreen)
+		{
+			return true;
+		}
+		return false;
+	}
+
 	public override void _Input(InputEvent @event)
 	{
 		base._Input(@event);
 		if(@event.IsActionPressed("toggle_fullscreen"))
 		{
-			if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen || DisplayServer.WindowGetMode() == DisplayServer.WindowMode.ExclusiveFullscreen)
+			if (isFullscreen(DisplayServer.WindowGetMode()))
 			{
 				ChangeWindowMode(lastNonFullscreenMode);
 			}
@@ -59,7 +66,7 @@ public partial class WindowModeSelector : MenuButton
 	public override void _ExitTree()
 	{
 		base._ExitTree();
-
+		CheckSaveWindowSize();
 		SaveAll((long)DisplayServer.WindowGetMode()); // If window was changed externally it needs to save the last.
 	}
 
@@ -70,5 +77,23 @@ public partial class WindowModeSelector : MenuButton
 
 		GameState.SaveSettings();
 	}
-	//TODO window size
+
+	private void CheckSaveWindowSize(bool saveSetting = false)
+	{
+		if (DisplayServer.WindowMode.Windowed == DisplayServer.WindowGetMode())
+		{
+			Pos2D size = new Pos2D(DisplayServer.WindowGetSize().X, DisplayServer.WindowGetSize().Y);
+			GameState.settings.lastWindowedSize = size;
+
+			Pos2D position = new Pos2D(DisplayServer.WindowGetPosition().X, DisplayServer.WindowGetPosition().Y);
+			GameState.settings.lastWindowedPos = position;
+			if (saveSetting)GameState.SaveSettings();
+		}
+	}
+
+	private void SetToLastSavedSize()
+	{
+		DisplayServer.WindowSetSize(new Vector2I(GameState.settings.lastWindowedSize.X, GameState.settings.lastWindowedSize.Y));
+		DisplayServer.WindowSetPosition(new Vector2I(GameState.settings.lastWindowedPos.X, GameState.settings.lastWindowedPos.Y));
+	}
 }

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="WJ-A23-Godot"
-run/main_scene="res://game_scenes/menu/menu.tscn"
+run/main_scene="res://game_scenes/start_game.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 boot_splash/bg_color=Color(0.14902, 0.101961, 0.0392157, 1)
 boot_splash/image="res://UI/sprites/pain_a_lail.png"
@@ -21,7 +21,6 @@ config/icon="res://UI/sprites/pain_a_lail.png"
 [autoload]
 
 SceneTransition="*res://game_scenes/UI/SceneTransition.tscn"
-SaveManager="*res://GameState/SaveManager.cs"
 ObjectSpawner="*res://GameState/object_spawner.tscn"
 MusicManager="*res://game_scenes/music_manager.tscn"
 WinLoader="*res://game_scenes/WinLoader.tscn"
@@ -149,6 +148,11 @@ toggle_fullscreen={
 spawn_invasion={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194335,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+pause_fight={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":true,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 

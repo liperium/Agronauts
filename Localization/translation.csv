@@ -55,7 +55,7 @@ KENFOURNER,Cook,Enfourner
 KTEMPSPEEDTRUCK,Hot tractor,Tracteur chaud
 KTEMPSPEEDTRUCKDESC,The temperature of your tractors preheats your potatos increasing the yield of your furnace proportionally. It increases up to +100% at a temperature of 200,La température de vos tracteurs préchauffe vos patates augmentant proportionnellement le rendement de votre four. Il augmente jusqu'à +100% à une température de 200
 KCOOKEDRECYCLER,Recycler,Recycleur
-KCOOKEDRECYCLERDESC,You use the crumbs at the bottom of the furnace to generate +10% fresh potatos from each batch,Vous utilisez les miettes au fond du four pour générer +10% de patates fraîches 
+KCOOKEDRECYCLERDESC,You use the crumbs at the bottom of the furnace to generate +10% fresh potatos from each batch,Vous utilisez les miettes au fond du four pour générer +10% de patates fraîches
 KVOLUME,Volume,Volume
 KMASTER,Master,Global
 KMUSIC,Music,Musique
@@ -87,3 +87,7 @@ KPOTATODAMAGETOOLTIP,The damage your potatos deal to aliens.\n It is affected ma
 KCOOKEDPOTATOS,Cooked potatos,Patates cuites
 KPOTATOS,Potatos,Patates
 KNEEDCOOKEDPOTATOS,You need at least one cooked potato to face the aliens!,Vous avez besoin d'au moins une patate cuite pour affronter les aliens!
+KSAVEONQUIT,Savegame on quit,Sauvegarder en même temps que Quitter
+KWIN,[center]Victory![/center],[center]Victoire![/center]
+KARTIFACTLOOT,[center]The aliens dropped:[/center],[center]Les aliens ont laissé:[/center]
+KRETURNTOFARM,Return to farm,Retourner à la ferme

@@ -22,8 +22,15 @@ public partial class PotatoBullet : Area2D
             delegateSet = true;
         }
 
+        FightManager.instance.OnSetPaused += OnPausedChanged;
+
         AreaEntered += OnEnter;
         AreaExited += OnExit;
+    }
+
+    private void OnPausedChanged(bool isPaused)
+    {
+        despawnTimer.Paused = isPaused;
     }
 
     private void OnEnter(Area2D area)
@@ -66,7 +73,11 @@ public partial class PotatoBullet : Area2D
     {
         base._Process(delta);
 
-
+        if (FightManager.instance.IsPaused())
+        {
+            return;
+        }
+        
         if (Scale <= minScale)
         {
             if (delegateSet)

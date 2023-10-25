@@ -8,9 +8,10 @@ public partial class SceneTransition : CanvasLayer
 	private const string AnimName = "dissolve";
 	private static SceneTransition instance = null;
 
-	private PackedScene goToScene = null;
+	private PackedScene goToScene = null; // What scene is it going to
+	private bool active = false; // Is it transitioning
+	private bool loadSettings = false; // Does it load the settings
 
-	private bool active = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -23,9 +24,7 @@ public partial class SceneTransition : CanvasLayer
 	{
 		if (animname.Equals(AnimName) && active)
 		{
-			GetTree().ChangeSceneToPacked(goToScene);
-			animationPlayer.PlayBackwards(AnimName);
-			active = false;
+			LoadAndAnimatoToScene();
 		}
 		else if(animname != "RESET")
 		{
@@ -33,9 +32,17 @@ public partial class SceneTransition : CanvasLayer
 		}
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	private void LoadAndAnimatoToScene()
 	{
+		if (loadSettings)
+		{
+			GameState state = GameState.instance; // Loads the save
+			GameState.LoadSettings();
+			loadSettings = false;
+		}
+		GetTree().ChangeSceneToPacked(goToScene);
+		animationPlayer.PlayBackwards(AnimName);
+		active = false;
 	}
 
 	public void StartChangeScene(PackedScene scene)
@@ -43,6 +50,14 @@ public partial class SceneTransition : CanvasLayer
 		goToScene = scene;
 		animationPlayer.Play(AnimName);
 		active = true;
+	}
+
+	public static void MainMenuAndLoadSettings()
+	{
+		PackedScene mainMenu = ResourceLoader.Load<PackedScene>("res://game_scenes/menu/menu.tscn");
+		instance.loadSettings = true;
+		instance.goToScene = mainMenu;
+		instance.LoadAndAnimatoToScene();
 	}
 
 	public static void GoToScene(PackedScene scene)

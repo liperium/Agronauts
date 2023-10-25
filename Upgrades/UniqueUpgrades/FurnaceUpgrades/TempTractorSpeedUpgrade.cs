@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 public partial class TempTractorSpeedUpgrade : BuyableUpgrade<MultiplierModifier>
 {
     public override void OnBuy()
@@ -9,9 +6,7 @@ public partial class TempTractorSpeedUpgrade : BuyableUpgrade<MultiplierModifier
         UpdateMultiplier(0);
         base.OnBuy();
     }
-
-
-
+    
     public override void UpdateCost()
     {
         cost = 100000;

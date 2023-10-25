@@ -27,6 +27,13 @@ public partial class AddAutomaticTractorUpgrade : TieredUpgrade<MultiplierModifi
         FarmField farmField = farmFieldsUnlocked[0];
         farmFieldsUnlocked.RemoveAt(0);
         Tracteur tractor = ResourceLoader.Load<PackedScene>("res://game_scenes/farm/tracteur/tracteur.tscn").Instantiate() as Tracteur;
+
+        if (tractor == null)
+        {
+            GD.PrintErr("TRACTOR IS NULL WHEN LOADING!!?? WTF");
+            return;
+        }
+        
         ObjectSpawner.Spawn(tractor, new Vector2(farmField.GlobalPosition.X, farmField.GlobalPosition.Y));
         tractor.automatic = true;
         tractor.topLeftBound = tractor.Position;

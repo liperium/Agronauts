@@ -12,9 +12,12 @@ public class GameSettings
     //Gameplay settings
 
     public bool buyLandOnHold;
+    public bool saveOnQuit;
 
     // Window settings
     public long windowMode;
+    public Pos2D lastWindowedSize;
+    public Pos2D lastWindowedPos;
 
     //setup default settings
     public void Init()

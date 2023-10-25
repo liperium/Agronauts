@@ -1,5 +1,4 @@
-﻿using Godot;
-using WJA23Godot.Modifiers;
+﻿using WJA23Godot.Modifiers;
 using WJA23Godot.Upgrades;
 
 public class CritChanceArtifact : CappedArtifactUpgrade<AdditiveModifier>

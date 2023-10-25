@@ -1,42 +1,48 @@
 using System;
 using System.Collections.Generic;
 using Godot;
+using WJA23Godot.Upgrades;
 
 public partial class FightManager : Node
 {
-    private PackedScene farmScene;
+    public static FightManager instance;
+    
     [Export] public Node2D[] spawnPositions;
-    private bool[] spawnAvaible;
     [Export] public Timer spawnTimer;
-
     [Export] public PackedScene alienPrefab;
 
-    public static IdleAction<int> OnEnemyKill;
+    [Export] public PackedScene winScreen;
+    
+    private bool[] spawnAvaible;
+    private bool paused;
+
+    public IdleAction<bool> OnSetPaused;
+    public IdleAction<int> OnEnemyKill;
 
     public FightManager()
     {
         OnEnemyKill = new IdleAction<int>();
+        OnSetPaused = new IdleAction<bool>();
+        instance = this;
     }
 
     private int enemiesKilled = 0;
 
     private int enemiesSpawned = 0;
 
-    public static long enemyDamage;
+    public long enemyDamage;
 
     private Random rd;
 
     public override void _Ready()
     {
         base._Ready();
-
+        
         spawnAvaible = new bool[spawnPositions.Length];
         for (int i = 0; i < spawnAvaible.Length; i++)
         {
             spawnAvaible[i] = true;
         }
-
-        farmScene = ResourceLoader.Load<PackedScene>("res://game_scenes/farm/farm.tscn");
 
         rd = new Random();
 
@@ -52,9 +58,18 @@ public partial class FightManager : Node
 
         OnEnemyKill += OnKillEnemy;
 
+        OnSetPaused += OnPausedChanged;
+
         spawnTimer.Timeout += SpawnEnemy;
         StartNextSpawnTimer();
 
+    }
+    
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+
+        instance = null;
     }
 
     public void OnCookedPotatoChanged(long value)
@@ -66,23 +81,61 @@ public partial class FightManager : Node
         }
     }
 
+    public void SetPaused(bool isPaused)
+    {
+        if (paused != isPaused)
+        {
+            paused = isPaused;
+            OnSetPaused.Invoke(isPaused);
+        }
+    }
+
+    public void OnPausedChanged(bool isPaused)
+    {
+        spawnTimer.Paused = isPaused;
+    }
+
+    public bool IsPaused() => paused;
+
     private void LoseFight()
     {
-        EndFight();
+        //TODO spawn lose screen
+        SetPaused(true);
+        
+        SceneTransition.GoToScene(ResourceLoader.Load<PackedScene>("res://game_scenes/farm/farm.tscn"));
     }
 
-    private void EndFight()
+    private void WinFight()
     {
-        CalculateLoot();
+        List<IArtifact> lootedArtifacts = CalculateLoot();
+        GameState.instance.numbers.fightWave.IncreaseValue(1);
         OnEnemyKill = null;
+        
+        SetPaused(true);
 
-        SceneTransition.GoToScene(farmScene);
+        if (winScreen != null)
+        {
+            FightWinScreen winScreenInstance = winScreen.Instantiate<FightWinScreen>();
+
+            foreach (IArtifact artifact in lootedArtifacts)
+            {
+                winScreenInstance.AddDroppedArtifact(artifact);
+            }
+            
+            GetTree().CurrentScene.AddChild(winScreenInstance);
+        }
     }
 
-    private void CalculateLoot()
+    private List<IArtifact> CalculateLoot()
     {
-        //+1 à fightwave ce fait avant le calcul de loot
-        GameState.instance.artifacts.GetRandomArtifact().Buy();
+        //+1 à fightwave se fait avant le calcul de loot
+        List<IArtifact> lootedArtifacts = new();
+        
+        IArtifact newArtifact = GameState.instance.artifacts.GetRandomArtifact();
+        newArtifact.Buy();
+        lootedArtifacts.Add(newArtifact);
+
+        return lootedArtifacts;
     }
 
     private float GetSpawnTime()
@@ -112,8 +165,7 @@ public partial class FightManager : Node
         if (enemiesKilled >= GetNbEnemiesToKill())
         {
             //TODO Play fight end SFX
-            GameState.instance.numbers.fightWave.IncreaseValue(1);
-            EndFight();
+            WinFight();
         }
         else
         {
@@ -167,7 +219,6 @@ public partial class FightManager : Node
             Alien alienInstance = alienPrefab.Instantiate() as Alien;
             if (alienInstance != null)
             {
-                alienInstance.manager = this;
                 alienInstance.spawnIndex = spawnIndex;
                 spawnAvaible[spawnIndex] = false;
                 spawnPoint.AddChild(alienInstance);

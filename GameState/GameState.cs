@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using WJA23Godot.GameState;
 
 [Serializable]
+[JsonObject(MemberSerialization.OptIn)]
 public partial class GameState
 {
 	public const bool SAVE_ENABLED = true;
@@ -34,22 +35,29 @@ public partial class GameState
 
 	private const string saveFilePath = "Save.sav";
 	private const string settingsPath = "Settings.json";
-	public int randomSeed = 0xBADF00D;
-	public bool won;
 	private IdleAction OnWin;
-	
+
 	//Save file
+	[JsonProperty]
+	public int randomSeed = 0xBADF00D;
+	
+	[JsonProperty]
 	public IdleNumberContainer numbers;
+	[JsonProperty]
 	public IdleUpgradeContainer upgrades;
+	[JsonProperty]
 	public SavedFieldContainer savedFields;
+
+	[JsonProperty]
+	public bool won;
 	
 	//Artifacts
-	[NonSerialized] public ArtifactContainer artifacts;
+	public ArtifactContainer artifacts;
+	
+	public static Dictionary<int, IdleModifier> allModifiers = new Dictionary<int, IdleModifier>();
 	
 	//Settings
 	public static GameSettings settings;
-
-	[NonSerialized] public static Dictionary<int, IdleModifier> allModifiers = new Dictionary<int, IdleModifier>();
 
 	public GameState()
 	{

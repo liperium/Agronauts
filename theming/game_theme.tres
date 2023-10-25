@@ -1,8 +1,9 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://b12tm55josuhd"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://b12tm55josuhd"]
 
 [ext_resource type="FontFile" uid="uid://cxo6jnr3l6e4q" path="res://font/James Stroker.ttf" id="1_80ium"]
 [ext_resource type="StyleBox" uid="uid://bmrrerv32h7x3" path="res://Upgrades/UpgradeStyles/UncommonArtifactStyle.tres" id="1_skgo0"]
 [ext_resource type="StyleBox" uid="uid://cm8hq0mmit5c0" path="res://Upgrades/UpgradeStyles/CommonArtifactStyle.tres" id="2_3dgog"]
+[ext_resource type="StyleBox" uid="uid://c2ug7gqx5pccl" path="res://game_scenes/UI/styleboxwood.tres" id="2_efxt1"]
 [ext_resource type="StyleBox" uid="uid://bqgr81ha2ww8f" path="res://Upgrades/UpgradeStyles/LegendaryArtifactStyle.tres" id="3_2tco0"]
 [ext_resource type="StyleBox" uid="uid://cvivgq0gtde32" path="res://Upgrades/UpgradeStyles/DefaultUpgradeStyle.tres" id="4_hjjvc"]
 
@@ -14,6 +15,12 @@ bg_color = Color(0, 0.823529, 0.105882, 1)
 [resource]
 default_font = ExtResource("1_80ium")
 default_font_size = 30
+BaseMenuButton/base_type = &"Button"
+BaseMenuButton/fonts/font = ExtResource("1_80ium")
+BaseMenuButton/styles/focus = ExtResource("2_efxt1")
+BaseMenuButton/styles/hover = ExtResource("2_efxt1")
+BaseMenuButton/styles/normal = ExtResource("2_efxt1")
+BaseMenuButton/styles/pressed = ExtResource("2_efxt1")
 CommonArtifact/base_type = &"PanelContainer"
 CommonArtifact/styles/panel = ExtResource("2_3dgog")
 DefaultUpgrade/base_type = &"PanelContainer"
