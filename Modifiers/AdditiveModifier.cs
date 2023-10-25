@@ -7,7 +7,7 @@ public class AdditiveModifier : IdleModifier
     public override void Apply()
     {
         base.Apply();
-        owner.SetAdded(owner.GetAdded() + addition);
+        owner.AddAdded(addition);
     }
     
 }
