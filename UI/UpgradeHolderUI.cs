@@ -11,6 +11,7 @@ public partial class UpgradeHolderUI : Control
     private Label upgradeAddDescription;
 
     private Tab tab;
+    private bool noEffectText;
 
     public void Init(IBuyable upgrade)
     {
@@ -33,8 +34,11 @@ public partial class UpgradeHolderUI : Control
         //events
         genericUpgrade.SetOnCostChanged(OnUpgradeCostChanged);
         genericUpgrade.SetOnInfoChanged(UpdateAllInfo);
-        
-        genericUpgrade.SetOnUnlock(ShowHideMenu.instance.UnlockedUpgrade);
+
+        if (ShowHideMenu.instance != null)
+        {
+            genericUpgrade.SetOnUnlock(ShowHideMenu.instance.UnlockedUpgrade);
+        }
 
         if (genericUpgrade.GetUpgradeTab() != UIManager.UpgradeTab.Artifact)
         {
@@ -100,8 +104,10 @@ public partial class UpgradeHolderUI : Control
 
     private void SetUpgrade(InfoUpgrade info, long cost, string effect)
     {
+        string effectText = noEffectText ? "" : $" {effect}";
+        
         if (upgradeImage != null && info.GetImagePath() != "") upgradeImage.Texture = info.GetImage();
-        if (upgradeTitle != null) upgradeTitle.Text = Tr(info.GetName()) +" "+ effect;
+        if (upgradeTitle != null) upgradeTitle.Text = Tr(info.GetName()) + effectText;
         if (upgradeDescription != null) upgradeDescription.Text = info.GetDescription();
         if (upgradeAddDescription != null) upgradeAddDescription.Text = TranslateEntireString(info.GetAdditionalDescription());
         UpdateCostText(cost,info.GetCostImagePath());
@@ -128,6 +134,11 @@ public partial class UpgradeHolderUI : Control
     public void NoButton()
     {
         GetNode<Control>("HBoxContainer/AspectRatioContainer").Hide();
+    }
+
+    public void NoEffectText()
+    {
+        noEffectText = true;
     }
     public void FreeMe()
     {
