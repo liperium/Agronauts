@@ -13,6 +13,8 @@ public partial class IdleNumber : ISaveable
 	private long added;
 	[JsonProperty]
 	private float multiplier;
+	[JsonProperty]
+	private float exposant;
 	
 	//valeur finale affichée
 	private long calculatedValue;
@@ -69,6 +71,7 @@ public partial class IdleNumber : ISaveable
 	{
 		multiplier = 1.0f;
 		added = 0;
+		exposant = 1.0f;
 		if (modifiers != null)
 		{
 			foreach(IdleModifier im in modifiers)
@@ -84,7 +87,7 @@ public partial class IdleNumber : ISaveable
 
 	private void CalculateValue()
 	{
-		calculatedValue = (long)((value + added) * multiplier);
+		calculatedValue = (long)Math.Pow((value + added) * multiplier, exposant);
 	}
 
 	public long GetValue()
@@ -107,9 +110,9 @@ public partial class IdleNumber : ISaveable
 		return multiplier;
 	}
 
-	public void SetMultiplier(float value)
+	public void AddMultiplier(float value)
 	{
-		multiplier = value;
+		multiplier *= value;
 	}
 
 	public long GetAdded()
@@ -117,9 +120,19 @@ public partial class IdleNumber : ISaveable
 		return added;
 	}
 
-	public void SetAdded(long value)
+	public void AddAdded(long value)
 	{
-		added = value;
+		added += value;
+	}
+	
+	public float GetExposant()
+	{
+		return exposant;
+	}
+
+	public void AddExposant(long value)
+	{
+		exposant *= value; //(x^n)^n = x^(n*n)
 	}
 
 	public void DecreaseValue(long value)
