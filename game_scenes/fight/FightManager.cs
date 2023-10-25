@@ -1,15 +1,17 @@
 using System;
 using System.Collections.Generic;
 using Godot;
+using WJA23Godot.Upgrades;
 
 public partial class FightManager : Node
 {
     public static FightManager instance;
     
-    private PackedScene farmScene;
     [Export] public Node2D[] spawnPositions;
     [Export] public Timer spawnTimer;
     [Export] public PackedScene alienPrefab;
+
+    [Export] public PackedScene winScreen;
     
     private bool[] spawnAvaible;
     private bool paused;
@@ -41,8 +43,6 @@ public partial class FightManager : Node
         {
             spawnAvaible[i] = true;
         }
-
-        farmScene = ResourceLoader.Load<PackedScene>("res://game_scenes/farm/farm.tscn");
 
         rd = new Random();
 
@@ -99,21 +99,43 @@ public partial class FightManager : Node
 
     private void LoseFight()
     {
-        EndFight();
+        //TODO spawn lose screen
+        SetPaused(true);
+        
+        SceneTransition.GoToScene(ResourceLoader.Load<PackedScene>("res://game_scenes/farm/farm.tscn"));
     }
 
-    private void EndFight()
+    private void WinFight()
     {
-        CalculateLoot();
+        List<IArtifact> lootedArtifacts = CalculateLoot();
+        GameState.instance.numbers.fightWave.IncreaseValue(1);
         OnEnemyKill = null;
+        
+        SetPaused(true);
 
-        SceneTransition.GoToScene(farmScene);
+        if (winScreen != null)
+        {
+            FightWinScreen winScreenInstance = winScreen.Instantiate<FightWinScreen>();
+
+            foreach (IArtifact artifact in lootedArtifacts)
+            {
+                winScreenInstance.AddDroppedArtifact(artifact);
+            }
+            
+            GetTree().CurrentScene.AddChild(winScreenInstance);
+        }
     }
 
-    private void CalculateLoot()
+    private List<IArtifact> CalculateLoot()
     {
-        //+1 à fightwave ce fait avant le calcul de loot
+        //+1 à fightwave se fait avant le calcul de loot
+        List<IArtifact> lootedArtifacts = new();
+        
+        IArtifact newArtifact = GameState.instance.artifacts.GetRandomArtifact();
         GameState.instance.artifacts.GetRandomArtifact().Buy();
+        lootedArtifacts.Add(newArtifact);
+
+        return lootedArtifacts;
     }
 
     private float GetSpawnTime()
@@ -143,8 +165,7 @@ public partial class FightManager : Node
         if (enemiesKilled >= GetNbEnemiesToKill())
         {
             //TODO Play fight end SFX
-            GameState.instance.numbers.fightWave.IncreaseValue(1);
-            EndFight();
+            WinFight();
         }
         else
         {
