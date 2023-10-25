@@ -14,7 +14,7 @@ public partial class Alien : Area2D
     private bool isDead;
     
     private long HP;
-    public FightManager manager;
+    private FightManager manager;
     
     public override void _Ready()
     {
@@ -30,19 +30,27 @@ public partial class Alien : Area2D
         audioStreamPlayer.Play();
         audioStreamPlayer.TreeExiting += () => audioStreamPlayer = null;
 
+        manager = FightManager.instance;
+        manager.OnSetPaused += OnPausedChanged;
+
         GetNode<AnimationTree>("AnimationTree").AnimationFinished += OnAnimationFinished;
         UpdateText();
     }
 
     private void TimerOnTimeout()
     {
+        if (manager.IsPaused())
+        {
+            return;
+        }
+        
         if (audioStreamPlayer != null)
         {
             audioStreamPlayer.Stream = shootSound;
             audioStreamPlayer.Play();
         }
         GetNode<AnimationTree>("AnimationTree").Set("parameters/conditions/shoot",true);
-        GameState.instance.numbers.cookedPotatoCount.DecreaseValue(FightManager.enemyDamage);
+        GameState.instance.numbers.cookedPotatoCount.DecreaseValue(manager.enemyDamage);
         timer.Start();
     }
 
@@ -52,6 +60,11 @@ public partial class Alien : Area2D
         {
             GetNode<AnimationTree>("AnimationTree").Set("parameters/conditions/shoot",false);
         }
+    }
+
+    private void OnPausedChanged(bool isPaused)
+    {
+        timer.Paused = manager.IsPaused();
     }
 
     public long GetHP()
@@ -68,7 +81,7 @@ public partial class Alien : Area2D
         {
             isDead = true;
             healthBar.SetHealth(0);
-            FightManager.OnEnemyKill.Invoke(spawnIndex);
+            manager.OnEnemyKill.Invoke(spawnIndex);
             if (audioStreamPlayer != null)
             {
                 AudioStreamPlayer2D newPlayer = new AudioStreamPlayer2D();

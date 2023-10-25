@@ -56,6 +56,12 @@ public partial class ShowHideMenu : TextureRect
         }
     }
 
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        instance = null;
+    }
+
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
