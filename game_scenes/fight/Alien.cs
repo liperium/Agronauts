@@ -82,15 +82,15 @@ public partial class Alien : Area2D
             isDead = true;
             healthBar.SetHealth(0);
             manager.OnEnemyKill.Invoke(spawnIndex);
-            if (audioStreamPlayer != null)
-            {
-                AudioStreamPlayer2D newPlayer = new AudioStreamPlayer2D();
-                newPlayer.Stream = dieSound;
-                newPlayer.GlobalPosition = GlobalPosition;
-                newPlayer.Finished += () => newPlayer.QueueFree();
-                GetTree().CurrentScene.AddChild(newPlayer);
-                newPlayer.Play();
-            }
+
+            AudioStreamPlayer2D newPlayer = new AudioStreamPlayer2D();
+            newPlayer.Stream = dieSound;
+            newPlayer.GlobalPosition = GlobalPosition;
+            newPlayer.Bus = "SFX";
+            newPlayer.Finished += () => newPlayer.QueueFree();
+            GetTree().CurrentScene.AddChild(newPlayer);
+            newPlayer.Play();
+
             QueueFree();
         }
         else
