@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using WJA23Godot.GameState;
 
 public partial class SceneTransition : CanvasLayer
 {
@@ -60,13 +61,15 @@ public partial class SceneTransition : CanvasLayer
 		instance.LoadAndAnimatoToScene();
 	}
 
-	public static void GoToScene(PackedScene scene)
+	public static void GoToScene(PackedScene scene, GameScene gameScene)
 	{
 		if (instance == null)
 		{
 			GD.PrintErr("No SceneTransition instance");
 			return;
 		}
+
+		GameState.gameScene = gameScene;
 		instance.StartChangeScene(scene);
 	}
 }

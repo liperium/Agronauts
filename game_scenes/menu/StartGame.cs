@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using WJA23Godot.GameState;
 
 public partial class StartGame : Button
 {
@@ -17,6 +18,6 @@ public partial class StartGame : Button
 	public override void _Pressed()
 	{
 		base._Pressed();
-		SceneTransition.GoToScene(farmScene);
+		SceneTransition.GoToScene(farmScene, GameScene.Farm);
 	}
 }

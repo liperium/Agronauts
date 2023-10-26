@@ -92,6 +92,7 @@ states/idle/position = Vector2(375, 36)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_qp7ra"), "idle", "flash", SubResource("AnimationNodeStateMachineTransition_gfk6m"), "flash", "idle", SubResource("AnimationNodeStateMachineTransition_3mhb6")]
 
 [node name="Flash" type="ColorRect"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

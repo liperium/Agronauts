@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Godot;
+using WJA23Godot.GameState;
 using WJA23Godot.Upgrades;
 
 public partial class FightManager : Node
@@ -102,7 +103,7 @@ public partial class FightManager : Node
         //TODO spawn lose screen
         SetPaused(true);
         
-        SceneTransition.GoToScene(ResourceLoader.Load<PackedScene>("res://game_scenes/farm/farm.tscn"));
+        SceneTransition.GoToScene(ResourceLoader.Load<PackedScene>("res://game_scenes/farm/farm.tscn"), GameScene.Farm);
     }
 
     private void WinFight()

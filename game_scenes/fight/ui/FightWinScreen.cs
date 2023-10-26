@@ -1,4 +1,5 @@
 using Godot;
+using WJA23Godot.GameState;
 using WJA23Godot.Upgrades;
 
 public partial class FightWinScreen : Control
@@ -19,7 +20,7 @@ public partial class FightWinScreen : Control
     private void OnExitButtonPressed()
     {
         farmScene = ResourceLoader.Load<PackedScene>("res://game_scenes/farm/farm.tscn");
-        SceneTransition.GoToScene(farmScene);
+        SceneTransition.GoToScene(farmScene, GameScene.Farm);
     }
 
     public void AddDroppedArtifact(IArtifact artifact)
