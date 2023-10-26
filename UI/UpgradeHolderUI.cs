@@ -9,6 +9,7 @@ public partial class UpgradeHolderUI : Control
     private Label upgradeTitle;
     private Label upgradeDescription;
     private Label upgradeAddDescription;
+    [Export] private Flash flash;
 
     private Tab tab;
     private bool noEffectText;
@@ -79,6 +80,12 @@ public partial class UpgradeHolderUI : Control
     {
         tab = holderTab;
         genericUpgrade.SetOnUnlock(tab.FlashTab);
+        genericUpgrade.SetOnUnlock(FlashUpgrade);
+    }
+
+    public void FlashUpgrade()
+    {
+      //  flash.Start(); //TODO j'arrive pas a faire désactiver le flash de manière propre genre on hover + rendre le rec de flash plus clean
     }
 
     private void PressBuy()
@@ -153,4 +160,5 @@ public partial class UpgradeHolderUI : Control
         if (show) Show();
         else Hide();
     }
+    
 }

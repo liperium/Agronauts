@@ -50,6 +50,8 @@ public partial class GameState
 
 	[JsonProperty]
 	public bool won;
+
+	public static GameScene gameScene;
 	
 	//Artifacts
 	public ArtifactContainer artifacts;
