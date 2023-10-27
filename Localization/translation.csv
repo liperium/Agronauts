@@ -94,3 +94,6 @@ KRETURNTOFARM,Return to farm,Retourner à la ferme
 KSETTINGS,Settings,Options
 KTRACTOR,Tractor,Tracteur
 KWINDOWMODE,Window mode,Mode fenêtre
+KNEEDPOTATOS,You don't have enough potatos to start a batch.,Vous n'avez pas assez de patates pour commencer un lot.
+KCOOKEDYIELDARTIFACT,Alien oven,Four alien
+KCOOKEDYIELDARTIFACTDESC,This alien technology allows you to get more cooked potatos from a single batch. +5% cooked potato yield,Cette technologie alien vous permet d'obtenir plus de patate à partir d'un lot. +5% de rendement sur les patates cuites
