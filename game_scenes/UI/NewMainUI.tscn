@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bgxvkolxvu33k"]
+[gd_scene load_steps=47 format=3 uid="uid://bgxvkolxvu33k"]
 
 [ext_resource type="Script" path="res://game_scenes/UI/UIManager.cs" id="1_1o6vr"]
 [ext_resource type="PackedScene" uid="uid://c7vdiidjnc4py" path="res://UI/unlock_pop_up.tscn" id="1_1tles"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://2hdxwrsf3nu0" path="res://UI/all_settings.tscn" id="18_khtjg"]
 [ext_resource type="Script" path="res://game_scenes/UI/ShowHideMenu.cs" id="21_qbfmq"]
 [ext_resource type="PackedScene" uid="uid://cxd0aegcrow64" path="res://UI/flash.tscn" id="22_4isgy"]
+[ext_resource type="Material" uid="uid://c11h3n4qwvxfk" path="res://game_scenes/UI/flash_shader.tres" id="22_nx5o6"]
 [ext_resource type="Script" path="res://LerpLabel/LerpValue.cs" id="39_hs3fy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c8pei"]
@@ -428,6 +429,7 @@ position = Vector2(281, 540)
 shape = SubResource("RectangleShape2D_55eov")
 
 [node name="ShowHideMenu" type="TextureRect" parent="LeftMenu" node_paths=PackedStringArray("animTree")]
+material = ExtResource("22_nx5o6")
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -460,8 +462,6 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_601yh")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rjefs")
 
 [node name="Flash" parent="LeftMenu/ShowHideMenu" instance=ExtResource("22_4isgy")]
-visible = false
-layout_mode = 1
 
 [node name="AnimationTree" type="AnimationTree" parent="LeftMenu"]
 tree_root = SubResource("AnimationNodeStateMachine_es2qs")
