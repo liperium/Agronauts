@@ -67,8 +67,14 @@ public partial class Four : Control
 
 	public void ButtonClicked()
 	{
-		if (timer.IsStopped() && CanBuy())
+		
+		if (timer.IsStopped())
 		{
+			if (CanBuy() == false)
+			{
+				GamePopUp.instance.AddToQueue(new GamePopUpInfo("KIMPOSSIBLE","KNEEDPOTATOS"));
+				return;
+			}
 			manualButton.Disabled = true;
 			Buy();
 			timer.Start();
