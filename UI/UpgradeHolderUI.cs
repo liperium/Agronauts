@@ -74,6 +74,8 @@ public partial class UpgradeHolderUI : Control
         {
             Show();
         }
+
+        MouseEntered += StopFlash;
     }
 
     public void SetTab(Tab holderTab)
@@ -83,9 +85,19 @@ public partial class UpgradeHolderUI : Control
         genericUpgrade.SetOnUnlock(FlashUpgrade);
     }
 
-    public void FlashUpgrade()
+    private void StopFlash()
     {
-      //  flash.Start(); //TODO j'arrive pas a faire désactiver le flash de manière propre genre on hover + rendre le rec de flash plus clean
+        flash.Stop();
+    }
+
+    private void FlashUpgrade()
+    {
+        flash.Start();
+    }
+    
+    public void FlashOnReady()
+    {
+        flash.FlashOnReady();
     }
 
     private void PressBuy()
@@ -129,6 +141,7 @@ public partial class UpgradeHolderUI : Control
         }
         return result;
     }
+    
 
     private void UpdateCostText(long newCost, string imagePath)
     {

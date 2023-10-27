@@ -75,7 +75,7 @@ public partial class UIManager : CanvasLayer
 			if (newUnlocksToFlash.Contains(upgrade))
 			{
 				tabButton.FlashTab();
-				newUpgradeHolderUi.FlashUpgrade();
+				newUpgradeHolderUi.FlashOnReady();
 				newUnlocksToFlash.Remove(upgrade);
 			}
 		}
