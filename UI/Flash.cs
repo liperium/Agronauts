@@ -1,21 +1,17 @@
 using Godot;
 using System;
 
-public partial class Flash : ColorRect
+public partial class Flash : Node
 {
-	private AnimationTree animationTree;
+	private ShaderMaterial flashShader;
 
-	private bool flashOnStart;
+	private bool flashOnStart = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		animationTree = GetNode<AnimationTree>("AnimationTree");
-		if(flashOnStart) Start();
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+		flashShader = GetParent<CanvasItem>().Material as ShaderMaterial;
+		if (flashOnStart) Start();
+		else Stop();
 	}
 
 	public void FlashOnReady()
@@ -24,13 +20,13 @@ public partial class Flash : ColorRect
 	}
 	public void Start()
 	{
-		animationTree.Set("parameters/conditions/flash", true);
-		animationTree.Set("parameters/conditions/idle", false);
+		GD.Print("Starting "+GetParent().Name);
+		flashShader.Set("shader_parameter/mode",1);
 	}
 
 	public void Stop()
 	{
-		animationTree.Set("parameters/conditions/idle", true);
-		animationTree.Set("parameters/conditions/flash", false);
+		GD.Print("Stopping "+GetParent().Name);
+		flashShader.Set("shader_parameter/mode",0);
 	}
 }

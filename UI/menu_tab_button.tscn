@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7uldwnmxuawf"]
+[gd_scene load_steps=7 format=3 uid="uid://b7uldwnmxuawf"]
 
 [ext_resource type="Material" uid="uid://c11h3n4qwvxfk" path="res://game_scenes/UI/flash_shader.tres" id="1_hr7nc"]
 [ext_resource type="Script" path="res://game_scenes/UI/UnlockableTab.cs" id="2_8iqsm"]
 [ext_resource type="Texture2D" uid="uid://uu6tex3dyyqi" path="res://UI/sprites/fourche_nobg.png" id="2_cvn67"]
 [ext_resource type="PackedScene" uid="uid://cxd0aegcrow64" path="res://UI/flash.tscn" id="3_y4ohj"]
+[ext_resource type="StyleBox" uid="uid://cvivgq0gtde32" path="res://Upgrades/UpgradeStyles/DefaultUpgradeStyle.tres" id="4_gb2w1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o01nd"]
 
@@ -25,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("4_gb2w1")
 
 [node name="Flash" parent="Panel" instance=ExtResource("3_y4ohj")]
 

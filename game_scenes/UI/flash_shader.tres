@@ -40,9 +40,9 @@ void fragment()
 [resource]
 resource_local_to_scene = true
 shader = SubResource("Shader_jqltn")
-shader_parameter/shine_color = Color(1, 0.917647, 0, 0.12549)
+shader_parameter/shine_color = Color(1, 0.968627, 0, 1)
 shader_parameter/alpha_limit = 0.0
-shader_parameter/cycle_speed = 2.7
+shader_parameter/cycle_speed = 1.5
 shader_parameter/full_pulse_cycle = true
 shader_parameter/mode = 1
 shader_parameter/wait_time_percentage = 1.0
