@@ -97,3 +97,5 @@ KWINDOWMODE,Window mode,Mode fenêtre
 KNEEDPOTATOS,You don't have enough potatos to start a batch.,Vous n'avez pas assez de patates pour commencer un lot.
 KCOOKEDYIELDARTIFACT,Alien oven,Four alien
 KCOOKEDYIELDARTIFACTDESC,This alien technology allows you to get more cooked potatos from a single batch. +5% cooked potato yield,Cette technologie alien vous permet d'obtenir plus de patate à partir d'un lot. +5% de rendement sur les patates cuites
+KDAMAGEARTIFACT,Alien blaster,Blaster extraterrestre
+KDAMAGEARTIFACTDESC,Use their own weapons against them. +10% damage,Utilisez leurs propres armes contre eux. +10% dommage
