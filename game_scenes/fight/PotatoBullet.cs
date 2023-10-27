@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using WJA23Godot.Numbers;
 
 public partial class PotatoBullet : Area2D
 {
@@ -52,7 +53,7 @@ public partial class PotatoBullet : Area2D
     private void Despawn()
     {
         //damage aliens
-        long damage = GetBulletDamage();
+        long damage = ((IdleDamageNumber)GameState.instance.numbers.damage).GetValueWithCrit();
         foreach (Alien alien in aliensInside)
         {
             alien.TakeDamage(damage);
@@ -93,7 +94,7 @@ public partial class PotatoBullet : Area2D
         }
     }
 
-    public static long GetBulletDamage()
+    /*public static long GetBulletDamage()
     {
         long nbPotats = GameState.instance.numbers.cookedPotatoCount.GetValue();
         long temperature = GameState.instance.numbers.potatoTemperature.GetValue();
@@ -104,5 +105,5 @@ public partial class PotatoBullet : Area2D
             damage *= 2;
         }
         return damage; 
-    }
+    }*/
 }

@@ -1,4 +1,5 @@
 using System;
+using WJA23Godot.Numbers;
 
 [Serializable]
 public class IdleNumberContainer
@@ -28,6 +29,7 @@ public class IdleNumberContainer
     public IdleNumberBaseValue invasionTime;
     public IdleNumber currInvasionTimeLeft;
     public IdleNumber critChance;
+    public IdleNumber damage;
 
     public void OnLoad()
     {
@@ -56,6 +58,7 @@ public class IdleNumberContainer
         critChance.OnLoad();
         invasionTime.OnLoad();
         currInvasionTimeLeft.OnLoad();
+        damage.OnLoad();
         
         //win condition
         potatoCount.SetOnValueChanged(CheckWin);
@@ -110,6 +113,7 @@ public class IdleNumberContainer
         currInvasionTimeLeft.SetValue(invasionTime.GetBaseValue());
         
         critChance = new IdleNumber();
+        damage = new IdleDamageNumber();
     }
 
   

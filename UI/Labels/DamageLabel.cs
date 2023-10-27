@@ -20,14 +20,13 @@ public partial class DamageLabel : Node2D
 
 	private void UpdateDamage(long value)
 	{
-		GetParent<LerpValue>().SetNewValue(PotatoBullet.GetBulletDamage());
+		GetParent<LerpValue>().SetNewValue(value);
 	}
 
 	private void Init()
 	{
 		GetParent().GetParent().GetParent<BoxContainer>().Show();
-		GameState.instance.numbers.cookedPotatoCount.SetOnValueChanged(UpdateDamage);
-		GameState.instance.numbers.potatoTemperature.SetOnValueChanged(UpdateDamage);
+		GameState.instance.numbers.damage.SetOnValueChanged(UpdateDamage);
 		
 		if (GameState.instance.numbers.cookedPotatoCount.GetValue() == 0)
 		{
@@ -35,7 +34,7 @@ public partial class DamageLabel : Node2D
 		}
 		else
 		{
-			GetParent<LerpValue>().Init(PotatoBullet.GetBulletDamage());
+			GetParent<LerpValue>().Init(GameState.instance.numbers.damage.GetValue());
 		}
 	}
 }

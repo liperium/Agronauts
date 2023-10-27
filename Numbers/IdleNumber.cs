@@ -90,7 +90,7 @@ public partial class IdleNumber : ISaveable
 		calculatedValue = (long)Math.Pow((value + added) * multiplier, exposant);
 	}
 
-	public long GetValue()
+	public virtual long GetValue()
 	{
 		return calculatedValue;
 	}
