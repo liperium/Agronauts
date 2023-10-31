@@ -46,7 +46,7 @@ KFURNACESPEEDARTIFACTDESC,Speeds the cooking process by +10%,Accélère le proce
 KFURNACETEMP,Temperature,Température
 KFURNACETEMPDESC,Hotter means more damage. The current potato temperature gets 20% hotter, Plus chaud signifie plus de dommages. La température des patates devient 20% plus chaude.
 KPLANTER,Planter,Épandeur
-KPLANTERDESC,Your tractors now also plant potatos!,Vos tracteurs plantent maintenant aussi des patates!
+KPLANTERDESC,Your automatic tractors now also plant potatos!,Vos tracteurs plantent maintenant aussi des patates!
 KUNLOCKFURNACE,Furnace unlocked!,Four débloqué!
 KUNLOCKFURNACEDESC,The furnace allows you to cook your potatos,Le four vous permet de faire cuire vos patates
 KUNLOCKARTIFACTS,Artifacts unlocked!,Artéfacts débloqué!
@@ -101,3 +101,5 @@ KDAMAGEARTIFACT,Alien blaster,Blaster extraterrestre
 KDAMAGEARTIFACTDESC,Use their own weapons against them. +10% damage,Utilisez leurs propres armes contre eux. +10% dommage
 KLOSE,[center]Defeat...[/center],[center]Défaite...[/center]
 KLOSEDESC,[center]You lost {0} cooked potatoes :([/center],[center]Vous avez perdu {0} patates cuites :([/center]
+KCOOKEDPOTATOBATCHARTIFACTDESC,Alien trays allow you to have +5% more potatos in the furnace,Plateaux aliens vous permettant d'avoir +5% de patates dans le four
+KCOOKEDPOTATOBATCHARTIFACT,Alien trays,Plateaux aliens
