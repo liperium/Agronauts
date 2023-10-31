@@ -87,6 +87,7 @@ layout_mode = 1
 offset_top = 1049.0
 offset_right = 108.0
 offset_bottom = 1080.0
+bbcode_enabled = true
 text = "InvalidNB"
 fit_content = true
 autowrap_mode = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bgxvkolxvu33k"]
+[gd_scene load_steps=48 format=3 uid="uid://bgxvkolxvu33k"]
 
 [ext_resource type="Script" path="res://game_scenes/UI/UIManager.cs" id="1_1o6vr"]
 [ext_resource type="PackedScene" uid="uid://c7vdiidjnc4py" path="res://UI/unlock_pop_up.tscn" id="1_1tles"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dc4wna03ta38b" path="res://game_scenes/four/four.tscn" id="16_nvoum"]
 [ext_resource type="Texture2D" uid="uid://c6voma67rfl5h" path="res://UI/sprites/FOUR_cosy.png" id="17_aeybh"]
 [ext_resource type="PackedScene" uid="uid://2hdxwrsf3nu0" path="res://UI/all_settings.tscn" id="18_khtjg"]
+[ext_resource type="PackedScene" uid="uid://ua4uobpr81ko" path="res://UI/Indicator/NumberIndicator.tscn" id="20_5cv3j"]
 [ext_resource type="Script" path="res://game_scenes/UI/ShowHideMenu.cs" id="21_qbfmq"]
 [ext_resource type="PackedScene" uid="uid://cxd0aegcrow64" path="res://UI/flash.tscn" id="22_4isgy"]
 [ext_resource type="Material" uid="uid://c11h3n4qwvxfk" path="res://game_scenes/UI/flash_shader.tres" id="22_nx5o6"]
@@ -379,6 +380,7 @@ size_flags_vertical = 3
 [node name="Four" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace2" instance=ExtResource("16_nvoum")]
 custom_minimum_size = Vector2(0, 275)
 layout_mode = 2
+numberIndicator = ExtResource("20_5cv3j")
 
 [node name="Furnace" type="ScrollContainer" parent="LeftMenu/TextureRect2/MarginContainer/Control/Control/Furnace2"]
 layout_mode = 2
