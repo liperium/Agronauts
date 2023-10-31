@@ -12,7 +12,7 @@ public partial class Tab : Control
     {
         base._Ready();
         button = GetNode<BaseButton>("Button");
-        flash = GetNode<Flash>("Flash");
+        flash = GetNode<Panel>("Panel").GetNode<Flash>("Flash");
 
         button.Pressed += TabButtonPressed;
         //FlashTab();

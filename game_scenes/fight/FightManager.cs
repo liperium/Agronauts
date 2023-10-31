@@ -13,6 +13,7 @@ public partial class FightManager : Node
     [Export] public PackedScene alienPrefab;
 
     [Export] public PackedScene winScreen;
+    [Export] public PackedScene loseScreen;
     
     private bool[] spawnAvaible;
     private bool paused;
@@ -35,6 +36,8 @@ public partial class FightManager : Node
 
     private Random rd;
 
+    public long cachedHP;
+
     public override void _Ready()
     {
         base._Ready();
@@ -53,6 +56,8 @@ public partial class FightManager : Node
             return;
         }
 
+        cachedHP = GameState.instance.numbers.cookedPotatoCount.GetValue();
+
         enemyDamage = (long)(Math.Pow(GameState.instance.numbers.fightWave.GetValue() * 15, 2) / 4f);  //Scaling v1
         
         GameState.instance.numbers.cookedPotatoCount.SetOnValueChanged(OnCookedPotatoChanged);
@@ -63,7 +68,6 @@ public partial class FightManager : Node
 
         spawnTimer.Timeout += SpawnEnemy;
         StartNextSpawnTimer();
-
     }
     
     public override void _ExitTree()
@@ -100,10 +104,13 @@ public partial class FightManager : Node
 
     private void LoseFight()
     {
-        //TODO spawn lose screen
         SetPaused(true);
         
-        SceneTransition.GoToScene(ResourceLoader.Load<PackedScene>("res://game_scenes/farm/farm.tscn"), GameScene.Farm);
+        if (loseScreen != null)
+        {
+            FightLoseScreen loseScreenInstance = loseScreen.Instantiate<FightLoseScreen>();
+            GetTree().CurrentScene.AddChild(loseScreenInstance);
+        }
     }
 
     private void WinFight()
