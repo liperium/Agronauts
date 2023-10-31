@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1xtsfl7y7few"]
+[gd_scene load_steps=5 format=3 uid="uid://c1xtsfl7y7few"]
 
 [ext_resource type="Script" path="res://UI/UpgradeHolderUI.cs" id="1_f3sbs"]
+[ext_resource type="Material" uid="uid://c11h3n4qwvxfk" path="res://game_scenes/UI/flash_shader.tres" id="1_nrhw7"]
 [ext_resource type="Texture2D" uid="uid://b3gb7mp507g7h" path="res://Upgrades/UpgradeImages/fourTemp.png" id="2_1ro6e"]
 [ext_resource type="PackedScene" uid="uid://cxd0aegcrow64" path="res://UI/flash.tscn" id="3_4aadi"]
 
 [node name="Panel" type="PanelContainer" node_paths=PackedStringArray("flash")]
-offset_right = 417.0
-offset_bottom = 173.0
+material = ExtResource("1_nrhw7")
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 367.0
+offset_bottom = 207.0
 theme_type_variation = &"DefaultUpgrade"
 script = ExtResource("1_f3sbs")
 flash = NodePath("Flash")
@@ -88,4 +92,3 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="Flash" parent="." instance=ExtResource("3_4aadi")]
-layout_mode = 2

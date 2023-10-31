@@ -1,112 +1,113 @@
-using Godot;
 using System;
 using System.Collections.Generic;
+using Godot;
+using static Godot.DisplayServer;
 
 public partial class WindowModeSelector : MenuButton
 {
-	private DisplayServer.WindowMode lastNonFullscreenMode = DisplayServer.WindowMode.Maximized;
+    private const WindowMode defaultMode = WindowMode.Maximized;
 
-	private Dictionary<int, DisplayServer.WindowMode> translater = new Dictionary<int, DisplayServer.WindowMode>();
+    private readonly List<WindowMode> excludedModes = new()
+    {
+        WindowMode.Fullscreen,
+        WindowMode.Minimized
+    };
 
-	private List<DisplayServer.WindowMode> excludedModes = new List<DisplayServer.WindowMode>()
-	{
-		DisplayServer.WindowMode.Fullscreen,
-		DisplayServer.WindowMode.Minimized,
-	};
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		long settingsWindowMode = GameState.settings.windowMode;
-		int i = 0;
-		foreach (DisplayServer.WindowMode windowMode in DisplayServer.WindowMode.GetValues(typeof(DisplayServer.WindowMode)))
-		{
-			if (excludedModes.Contains(windowMode)) continue;
-			translater.Add(i++, windowMode);
-			GetPopup().AddItem($"K{windowMode.ToString().ToUpper()}");
-		}
+    private WindowMode lastNonFullscreenMode = defaultMode;
 
-		ChangeWindowMode(settingsWindowMode);
-		GetPopup().IndexPressed += ChangeWindowMode;
-	}
-	public void ChangeWindowMode(DisplayServer.WindowMode newMode)
-	{
+    private readonly Dictionary<int, WindowMode> translateFromPopups = new();
 
-		if (!isFullscreen(newMode))
-		{
-			lastNonFullscreenMode = DisplayServer.WindowGetMode();
-		}
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        var settingsWindowMode = GameState.settings.windowMode;
+        var y = 0;
+        foreach (WindowMode windowMode in Enum.GetValues(typeof(WindowMode)))
+        {
+            if (excludedModes.Contains(windowMode))
+                continue;
+            translateFromPopups.Add(y, windowMode);
+            GetPopup().AddItem($"K{windowMode.ToString().ToUpper()}");
+            y++;
+        }
 
-		if (DisplayServer.WindowGetMode() != newMode)
-		{
-			CheckSaveWindowSize(); // If we change from window, we save the size of it's last time
-			DisplayServer.WindowSetMode(newMode);
-			if (newMode == DisplayServer.WindowMode.Windowed) SetToLastSavedSize();
-		}
-		SaveAll((long)newMode);
-	}
+        ChangeWindowMode((WindowMode)settingsWindowMode);
+        GetPopup().IndexPressed += ChangeWindowMode;
+    }
 
-	public void ChangeWindowMode(long newModeLong)
-	{
-		ChangeWindowMode(translater[(int)newModeLong]);
-	}
+    public void ChangeWindowMode(WindowMode newMode)
+    {
+        if (!IsFullscreen(newMode)) lastNonFullscreenMode = WindowGetMode();
 
-	private static bool isFullscreen(DisplayServer.WindowMode windowMode)
-	{
-		if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen ||
-		    DisplayServer.WindowGetMode() == DisplayServer.WindowMode.ExclusiveFullscreen)
-		{
-			return true;
-		}
-		return false;
-	}
+        if (WindowGetMode() != newMode)
+        {
+            CheckSaveWindowSize(); // If we change from window, we save the size of it's last time
+            WindowSetMode(newMode);
+            if (newMode == WindowMode.Windowed) SetToLastSavedSize();
+        }
 
-	public override void _Input(InputEvent @event)
-	{
-		base._Input(@event);
-		if(@event.IsActionPressed("toggle_fullscreen"))
-		{
-			if (isFullscreen(DisplayServer.WindowGetMode()))
-			{
-				ChangeWindowMode(lastNonFullscreenMode);
-			}
-			else
-			{
-				ChangeWindowMode(DisplayServer.WindowMode.Fullscreen);
-			}
-		}
-	}
+        SaveAll(newMode);
+    }
 
-	public override void _ExitTree()
-	{
-		base._ExitTree();
-		CheckSaveWindowSize();
-		SaveAll((long)DisplayServer.WindowGetMode()); // If window was changed externally it needs to save the last.
-	}
+    public void ChangeWindowMode(long modeFromPopup)
+    {
+        ChangeWindowMode(translateFromPopups[(int)modeFromPopup]);
+    }
 
-	public void SaveAll(long newMode)
-	{
-		ProjectSettings.SetSetting("display/window/size/mode",newMode);
-		GameState.settings.windowMode = newMode;
+    private static bool IsFullscreen(WindowMode windowMode)
+    {
+        if (WindowGetMode() == WindowMode.Fullscreen ||
+            WindowGetMode() == WindowMode.ExclusiveFullscreen)
+            return true;
+        return false;
+    }
 
-		GameState.SaveSettings();
-	}
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+        if (@event.IsActionPressed("toggle_fullscreen"))
+        {
+            if (IsFullscreen(WindowGetMode()))
+                ChangeWindowMode(lastNonFullscreenMode);
+            else
+                ChangeWindowMode(WindowMode.Fullscreen);
+        }
+    }
 
-	private void CheckSaveWindowSize(bool saveSetting = false)
-	{
-		if (DisplayServer.WindowMode.Windowed == DisplayServer.WindowGetMode())
-		{
-			Pos2D size = new Pos2D(DisplayServer.WindowGetSize().X, DisplayServer.WindowGetSize().Y);
-			GameState.settings.lastWindowedSize = size;
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        CheckSaveWindowSize();
+        //TODO save on quit with correct binding
+        SaveAll(WindowGetMode()); // If window was changed externally it needs to save the last.
+    }
 
-			Pos2D position = new Pos2D(DisplayServer.WindowGetPosition().X, DisplayServer.WindowGetPosition().Y);
-			GameState.settings.lastWindowedPos = position;
-			if (saveSetting)GameState.SaveSettings();
-		}
-	}
+    public void SaveAll(WindowMode newMode)
+    {
+        ProjectSettings.SetSetting("display/window/size/mode", (long)newMode);
+        GameState.settings.windowMode = (long)newMode;
 
-	private void SetToLastSavedSize()
-	{
-		DisplayServer.WindowSetSize(new Vector2I(GameState.settings.lastWindowedSize.X, GameState.settings.lastWindowedSize.Y));
-		DisplayServer.WindowSetPosition(new Vector2I(GameState.settings.lastWindowedPos.X, GameState.settings.lastWindowedPos.Y));
-	}
+        GameState.SaveSettings();
+    }
+
+    private void CheckSaveWindowSize(bool saveSetting = false)
+    {
+        if (WindowMode.Windowed == WindowGetMode())
+        {
+            var size = new Pos2D(WindowGetSize().X, WindowGetSize().Y);
+            GameState.settings.lastWindowedSize = size;
+
+            var position = new Pos2D(WindowGetPosition().X, WindowGetPosition().Y);
+            GameState.settings.lastWindowedPos = position;
+            if (saveSetting) GameState.SaveSettings();
+        }
+    }
+
+    private void SetToLastSavedSize()
+    {
+        WindowSetSize(new Vector2I(GameState.settings.lastWindowedSize.X,
+            GameState.settings.lastWindowedSize.Y));
+        WindowSetPosition(new Vector2I(GameState.settings.lastWindowedPos.X,
+            GameState.settings.lastWindowedPos.Y));
+    }
 }
