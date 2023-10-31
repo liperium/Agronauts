@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1xtsfl7y7few"]
 
 [ext_resource type="Script" path="res://UI/UpgradeHolderUI.cs" id="1_f3sbs"]
-[ext_resource type="Material" uid="uid://c11h3n4qwvxfk" path="res://game_scenes/UI/flash_shader.tres" id="1_nrhw7"]
+[ext_resource type="Material" uid="uid://sb3jof86ng4d" path="res://game_scenes/UI/flash_shader.tres" id="1_nrhw7"]
 [ext_resource type="Texture2D" uid="uid://b3gb7mp507g7h" path="res://Upgrades/UpgradeImages/fourTemp.png" id="2_1ro6e"]
 [ext_resource type="PackedScene" uid="uid://cxd0aegcrow64" path="res://UI/flash.tscn" id="3_4aadi"]
 
