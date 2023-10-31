@@ -10,6 +10,7 @@ public partial class Alien : Area2D
     [Export] public AudioStreamWav shootSound;
     [Export] public AudioStreamWav spawnSound;
     [Export] public AudioStreamWav dieSound;
+    [Export] public PackedScene damageIndicator;
     public int spawnIndex = -1;
     private bool isDead;
     
@@ -76,6 +77,8 @@ public partial class Alien : Area2D
     public void TakeDamage(long dmg)
     {
         HP -= dmg;
+
+        SpawnDmgIndicator(dmg);
         
         if (HP <= 0 && audioStreamPlayer.Stream != dieSound && isDead == false)
         {
@@ -98,6 +101,15 @@ public partial class Alien : Area2D
             healthBar.SetHealth(HP);
         }
         UpdateText();
+    }
+
+    private void SpawnDmgIndicator(long dmg)
+    {
+        NumberIndicator damageIndicatorInstance = damageIndicator.Instantiate<NumberIndicator>();
+        damageIndicatorInstance.SetNumber(dmg);
+        damageIndicatorInstance.GlobalPosition = GlobalPosition;
+        
+        GetTree().CurrentScene.AddChild(damageIndicatorInstance);
     }
 
     private void UpdateText()
