@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://do4brtumlcxqx"]
+[gd_scene load_steps=20 format=3 uid="uid://do4brtumlcxqx"]
 
 [ext_resource type="Script" path="res://game_scenes/fight/Alien.cs" id="1_7b474"]
 [ext_resource type="AudioStream" uid="uid://dfdtmykkg20lr" path="res://game_scenes/fight/alien/pew.wav" id="2_af8rg"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d1wodf4bswlpl" path="res://game_scenes/fight/sprites/alien-detente.png" id="2_nv1fa"]
 [ext_resource type="AudioStream" uid="uid://dv171gxjkt80q" path="res://game_scenes/fight/alien/ennemy_spawn.wav" id="3_kwsyt"]
 [ext_resource type="AudioStream" uid="uid://dc0chy1j4nisg" path="res://game_scenes/fight/alien/ennemy_dies.wav" id="4_rqijv"]
+[ext_resource type="PackedScene" uid="uid://ua4uobpr81ko" path="res://UI/Indicator/NumberIndicator.tscn" id="5_g04bw"]
 [ext_resource type="PackedScene" uid="uid://wvt81rxwssk7" path="res://UI/HealthBar/HealthBar.tscn" id="7_j8ign"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7nqd"]
@@ -96,6 +97,7 @@ healthBar = NodePath("HealthBar")
 shootSound = ExtResource("2_af8rg")
 spawnSound = ExtResource("3_kwsyt")
 dieSound = ExtResource("4_rqijv")
+damageIndicator = ExtResource("5_g04bw")
 
 [node name="AlienSprite" type="Sprite2D" parent="."]
 position = Vector2(0, 5.66667)

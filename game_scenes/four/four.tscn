@@ -35,6 +35,10 @@ grow_vertical = 0
 max_value = 1.0
 show_percentage = false
 
+[node name="IndicatorPos" type="Node2D" parent="VBoxContainer/TextureRect"]
+unique_name_in_owner = true
+position = Vector2(282, 223)
+
 [node name="PanelContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3

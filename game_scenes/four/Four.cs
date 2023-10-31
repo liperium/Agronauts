@@ -7,6 +7,7 @@ public partial class Four : Control
 	private Timer timer;
     private Timer chefTimer;
     private ProgressBar progressBar;
+    [Export] public PackedScene numberIndicator;
 
 	private bool automatic = false;
 
@@ -109,10 +110,11 @@ public partial class Four : Control
 	public void DoneBatch()
 	{
 		progressBar.Value = 0.0f;
+
+		long gained = GameState.instance.numbers.cookedPotatoYield.GetValue() * 
+		            GameState.instance.numbers.furnaceBatchCount.GetValue();
 		
-		GameState.instance.numbers.cookedPotatoCount.IncreaseValue(
-			GameState.instance.numbers.cookedPotatoYield.GetValue() * 
-			GameState.instance.numbers.furnaceBatchCount.GetValue());
+		GameState.instance.numbers.cookedPotatoCount.IncreaseValue(gained);
 		
 		manualButton.Disabled = false;
 		if (automatic)
@@ -120,5 +122,18 @@ public partial class Four : Control
             chefTimer.WaitTime = TIME_BEFORE_AUTO_COOK / GameState.instance.numbers.furnaceAutoBakeSpeed.GetValue();
             chefTimer.Start();
         }
+		
+		SpawnIndicator(gained);
+	}
+
+	public void SpawnIndicator(long value)
+	{
+		NumberIndicator indicatorInstance = numberIndicator.Instantiate<NumberIndicator>();
+		indicatorInstance.SetFormat($"{{0}}[img=30x30]{GameState.instance.numbers.cookedPotatoCount.GetImagePath()}[/img]");
+		indicatorInstance.SetNumber(value);
+
+		Node2D nodePos = GetNode<Node2D>("%IndicatorPos");
+        
+		nodePos.AddChild(indicatorInstance);
 	}
 }
