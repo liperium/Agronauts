@@ -166,5 +166,6 @@ limits/message_queue/max_size_mb=128
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
 textures/default_filters/use_nearest_mipmap_filter=true
 anti_aliasing/quality/use_taa=true
