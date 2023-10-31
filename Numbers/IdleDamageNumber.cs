@@ -1,6 +1,5 @@
 ﻿using System;
 using WJA23Godot.Modifiers;
-namespace WJA23Godot.Numbers;
 
 public class IdleDamageNumber : IdleNumber
 {
@@ -16,15 +15,15 @@ public class IdleDamageNumber : IdleNumber
     {
         base.OnLoad();
         modifier.AddModifier();
-        global::GameState.instance.numbers.cookedPotatoCount.SetOnValueChanged(UpdateModifier);
-        global::GameState.instance.numbers.potatoTemperature.SetOnValueChanged(UpdateModifier);
+        GameState.instance.numbers.cookedPotatoCount.SetOnValueChanged(UpdateModifier);
+        GameState.instance.numbers.potatoTemperature.SetOnValueChanged(UpdateModifier);
         UpdateModifier();
     }
 
     private void UpdateModifier(long value = 0)
     {
-        long nbPotats = global::GameState.instance.numbers.cookedPotatoCount.GetValue();
-        long temperature = global::GameState.instance.numbers.potatoTemperature.GetValue();
+        long nbPotats = GameState.instance.numbers.cookedPotatoCount.GetValue();
+        long temperature = GameState.instance.numbers.potatoTemperature.GetValue();
         modifier.addition = (long)Math.Max((float)Math.Sqrt(nbPotats + 1) * Math.Sqrt(temperature + 1), 1f);
         UpdateValue();
     }
@@ -33,7 +32,7 @@ public class IdleDamageNumber : IdleNumber
     public long GetValueWithCrit()
     {
         Random rd = new Random();
-        if ((rd.Next() % 100) + 1 <= global::GameState.instance.numbers.critChance.GetValue())
+        if ((rd.Next() % 100) + 1 <= GameState.instance.numbers.critChance.GetValue())
         {
             return base.GetValue() * 2;
         }
