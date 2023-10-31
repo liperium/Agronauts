@@ -1,10 +1,16 @@
 using Godot;
-using System;
 
 public partial class Cheats : Node2D
 {
-	public override void _Process(double delta)
+	public override void _Input(InputEvent @event)
 	{
+		base._Input(@event);
+		
+		if (!OS.IsDebugBuild())
+		{
+			return;
+		}
+		
 		if (Input.IsActionPressed("add_potatos"))
 		{
 			GameState.instance.numbers.potatoCount.IncreaseValue(1000000);
