@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx0ovjodxs7n0"]
+
+[ext_resource type="Script" path="res://game_scenes/fight/ui/FightLoseScreen.cs" id="1_2oiqh"]
+[ext_resource type="Script" path="res://game_scenes/fight/ui/GoToFarmButton.cs" id="3_gcc6c"]
+[ext_resource type="Theme" uid="uid://b12tm55josuhd" path="res://theming/game_theme.tres" id="3_nnqbn"]
+
+[node name="FightLoseScreen" type="Control" node_paths=PackedStringArray("fightResultDescLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2oiqh")
+fightResultDescLabel = NodePath("PanelContainer/VBoxContainer/Desc")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = -174.0
+offset_right = 330.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "KLOSE"
+fit_content = true
+
+[node name="Desc" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "KLOSEDESC"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="BtnOk" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("3_nnqbn")
+theme_type_variation = &"BaseMenuButton"
+text = "KRETURNTOFARM"
+script = ExtResource("3_gcc6c")

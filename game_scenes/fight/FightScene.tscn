@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://byj332cof46ix"]
+[gd_scene load_steps=23 format=3 uid="uid://byj332cof46ix"]
 
 [ext_resource type="Script" path="res://game_scenes/fight/FightManager.cs" id="1_7r1cq"]
 [ext_resource type="Texture2D" uid="uid://bdbudbddvjaqv" path="res://game_scenes/fight/sprites/BackGround.png" id="1_775qp"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://1q15a0ctdmja" path="res://game_scenes/fight/sprites/fenetre.png" id="8_3r3s2"]
 [ext_resource type="Texture2D" uid="uid://d2pjghq7v8nb5" path="res://game_scenes/fight/sprites/trousoldevant.png" id="9_ka1q8"]
 [ext_resource type="PackedScene" uid="uid://ccs5q2sr830cu" path="res://game_scenes/fight/ui/FightWinScreen.tscn" id="13_qlig8"]
+[ext_resource type="PackedScene" uid="uid://dx0ovjodxs7n0" path="res://game_scenes/fight/ui/FightLoseScreen.tscn" id="14_rdegn"]
 [ext_resource type="PackedScene" uid="uid://wvt81rxwssk7" path="res://UI/HealthBar/HealthBar.tscn" id="15_73aae"]
 [ext_resource type="Script" path="res://game_scenes/fight/PlayerHealthController.cs" id="16_ljifs"]
 [ext_resource type="Script" path="res://game_scenes/fight/FightPauseDebug.cs" id="17_003qq"]
@@ -131,6 +132,7 @@ spawnPositions = [NodePath("../Background/spawn0"), NodePath("../Background/spaw
 spawnTimer = NodePath("SpawnTimer")
 alienPrefab = ExtResource("2_qvy1s")
 winScreen = ExtResource("13_qlig8")
+loseScreen = ExtResource("14_rdegn")
 
 [node name="SpawnTimer" type="Timer" parent="AspectRatioContainer/FightManager"]
 
@@ -156,6 +158,7 @@ script = ExtResource("16_ljifs")
 healthBar = NodePath("..")
 
 [node name="FightPauseDebug" type="RichTextLabel" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

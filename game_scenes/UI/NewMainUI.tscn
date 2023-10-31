@@ -460,7 +460,6 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_601yh")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rjefs")
 
 [node name="Flash" parent="LeftMenu/ShowHideMenu" instance=ExtResource("22_4isgy")]
-visible = false
 layout_mode = 1
 
 [node name="AnimationTree" type="AnimationTree" parent="LeftMenu"]
