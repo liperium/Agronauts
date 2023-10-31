@@ -1,7 +1,6 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using WJA23Godot.Numbers;
 
 public partial class PotatoBullet : Area2D
 {

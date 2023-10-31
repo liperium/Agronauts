@@ -1,5 +1,4 @@
 using System;
-using WJA23Godot.Numbers;
 
 [Serializable]
 public class IdleNumberContainer
