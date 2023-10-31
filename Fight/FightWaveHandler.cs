@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using WJA23Godot.GameState;
 
 public partial class FightWaveHandler : Node2D
 {
@@ -96,7 +97,7 @@ public partial class FightWaveHandler : Node2D
             return;
         }
         GameState.instance.numbers.currInvasionTimeLeft.SetValue(GameState.instance.numbers.invasionTime.GetValue());
-        SceneTransition.GoToScene(fightScene);
+        SceneTransition.GoToScene(fightScene, GameScene.Fight);
     }
 
     public long GetWaveTime()

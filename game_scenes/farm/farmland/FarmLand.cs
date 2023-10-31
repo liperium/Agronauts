@@ -41,7 +41,6 @@ public partial class FarmLand : Area2D
 		ResourceLoader.Load<AudioStreamWav>("res://game_scenes/farm/farmland/sfx/potato_harvested.wav");
 	public static AudioStreamWav buySound =
 		ResourceLoader.Load<AudioStreamWav>("res://game_scenes/farm/farmland/sfx/buy_land.wav");
-	public static bool buyOnHeld;
 	private TextureButton button;
 	private Timer growthTimer;
 	private ProgressBar progressBar;
@@ -135,7 +134,7 @@ public partial class FarmLand : Area2D
 
     public void HeldClicked()
     {
-		if (currState == LandState.Wild && !buyOnHeld) return;
+		if (currState == LandState.Wild && !GameState.settings.buyLandOnHold) return;
 		Clicked();
     }
 

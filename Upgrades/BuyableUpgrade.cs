@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using WJA23Godot.GameState;
+
 [Serializable]
 public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyable where TModifier : IdleModifier, new()
 {
@@ -113,6 +115,15 @@ public partial class BuyableUpgrade<TModifier> : IdleUpgrade<TModifier>, IBuyabl
 			}
 		}
 	}
+
+    public override void Unlock()
+    {
+	    base.Unlock();
+	    if (GameState.gameScene != GameScene.Farm)
+	    {
+		    UIManager.AddNewUnlocksToFlash(this);
+	    }
+    }
 
     public void CheckMaxed()
     {

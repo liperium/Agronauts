@@ -9,6 +9,7 @@ public partial class UpgradeHolderUI : Control
     private Label upgradeTitle;
     private Label upgradeDescription;
     private Label upgradeAddDescription;
+    [Export] private Flash flash;
 
     private Tab tab;
     private bool noEffectText;
@@ -73,12 +74,30 @@ public partial class UpgradeHolderUI : Control
         {
             Show();
         }
+
+        MouseEntered += StopFlash;
     }
 
     public void SetTab(Tab holderTab)
     {
         tab = holderTab;
         genericUpgrade.SetOnUnlock(tab.FlashTab);
+        genericUpgrade.SetOnUnlock(FlashUpgrade);
+    }
+
+    private void StopFlash()
+    {
+        flash.Stop();
+    }
+
+    private void FlashUpgrade()
+    {
+        flash.Start();
+    }
+    
+    public void FlashOnReady()
+    {
+        flash.FlashOnReady();
     }
 
     private void PressBuy()
@@ -122,6 +141,7 @@ public partial class UpgradeHolderUI : Control
         }
         return result;
     }
+    
 
     private void UpdateCostText(long newCost, string imagePath)
     {
@@ -153,4 +173,5 @@ public partial class UpgradeHolderUI : Control
         if (show) Show();
         else Hide();
     }
+    
 }

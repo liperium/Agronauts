@@ -29,7 +29,7 @@ public class BaseIdleUpgrade : ISaveable
         OnUnlock.RemoveManual(action);
     }
     
-    public void Unlock()
+    public virtual void Unlock()
     {
         if (unlocked == false)
         {

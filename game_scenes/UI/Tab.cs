@@ -29,9 +29,14 @@ public partial class Tab : Control
 
     public void FlashTab()
     {
-        if (tabContainer != null && (tabContainer.CurrentTab != tabIndex || !ShowHideMenu.instance.IsOpened()))
+        if (CanFlash())
         {
             flash.Start();
         }
+    }
+
+    public bool CanFlash()
+    {
+        return (tabContainer != null && (tabContainer.CurrentTab != tabIndex || !ShowHideMenu.instance.IsOpened()));
     }
 }

@@ -4,15 +4,23 @@ using System;
 public partial class Flash : ColorRect
 {
 	private AnimationTree animationTree;
+
+	private bool flashOnStart;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		animationTree = GetNode<AnimationTree>("AnimationTree");
+		if(flashOnStart) Start();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+	}
+
+	public void FlashOnReady()
+	{
+		flashOnStart = true;
 	}
 	public void Start()
 	{

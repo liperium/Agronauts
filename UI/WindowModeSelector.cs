@@ -1,17 +1,30 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class WindowModeSelector : MenuButton
 {
 	private DisplayServer.WindowMode lastNonFullscreenMode = DisplayServer.WindowMode.Maximized;
+
+	private Dictionary<int, DisplayServer.WindowMode> translater = new Dictionary<int, DisplayServer.WindowMode>();
+
+	private List<DisplayServer.WindowMode> excludedModes = new List<DisplayServer.WindowMode>()
+	{
+		DisplayServer.WindowMode.Fullscreen,
+		DisplayServer.WindowMode.Minimized,
+	};
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		long settingsWindowMode = GameState.settings.windowMode;
-		foreach (var windowMode in DisplayServer.WindowMode.GetValues(typeof(DisplayServer.WindowMode)))
+		int i = 0;
+		foreach (DisplayServer.WindowMode windowMode in DisplayServer.WindowMode.GetValues(typeof(DisplayServer.WindowMode)))
 		{
+			if (excludedModes.Contains(windowMode)) continue;
+			translater.Add(i++, windowMode);
 			GetPopup().AddItem($"K{windowMode.ToString().ToUpper()}");
 		}
+
 		ChangeWindowMode(settingsWindowMode);
 		GetPopup().IndexPressed += ChangeWindowMode;
 	}
@@ -34,7 +47,7 @@ public partial class WindowModeSelector : MenuButton
 
 	public void ChangeWindowMode(long newModeLong)
 	{
-		ChangeWindowMode((DisplayServer.WindowMode)newModeLong);
+		ChangeWindowMode(translater[(int)newModeLong]);
 	}
 
 	private static bool isFullscreen(DisplayServer.WindowMode windowMode)

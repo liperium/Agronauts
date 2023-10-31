@@ -12,6 +12,8 @@ public partial class UIManager : CanvasLayer
 
 	private static IdleAction<bool> OnShowAcquired = new IdleAction<bool>();
 
+	private static List<IBuyable> newUnlocksToFlash = new List<IBuyable>();
+
 	public enum UpgradeTab
 	{
 		Farm,
@@ -69,6 +71,13 @@ public partial class UIManager : CanvasLayer
 		if (tabButton != null)
 		{
 			newUpgradeHolderUi.SetTab(tabButton);
+			
+			if (newUnlocksToFlash.Contains(upgrade))
+			{
+				tabButton.FlashTab();
+				newUpgradeHolderUi.FlashOnReady();
+				newUnlocksToFlash.Remove(upgrade);
+			}
 		}
 		else
 		{
@@ -126,5 +135,10 @@ public partial class UIManager : CanvasLayer
 	public static bool AreAcquiredUpgradesShown()
 	{
 		return showAcquired;
+	}
+
+	public static void AddNewUnlocksToFlash(IBuyable upgrade)
+	{
+		newUnlocksToFlash.Add(upgrade);
 	}
 }
