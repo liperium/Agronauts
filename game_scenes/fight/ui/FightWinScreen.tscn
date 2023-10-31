@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccs5q2sr830cu"]
+[gd_scene load_steps=5 format=3 uid="uid://ccs5q2sr830cu"]
 
 [ext_resource type="Script" path="res://game_scenes/fight/ui/FightWinScreen.cs" id="1_ncior"]
 [ext_resource type="Theme" uid="uid://b12tm55josuhd" path="res://theming/game_theme.tres" id="1_sla6f"]
 [ext_resource type="PackedScene" uid="uid://c1xtsfl7y7few" path="res://game_scenes/UI/UpgradeTemplate.tscn" id="2_y0r28"]
+[ext_resource type="Script" path="res://game_scenes/fight/ui/GoToFarmButton.cs" id="4_3hkt1"]
 
-[node name="FightWinScreen" type="Control" node_paths=PackedStringArray("artifactsContainer", "exitButton")]
+[node name="FightWinScreen" type="Control" node_paths=PackedStringArray("artifactsContainer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +14,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ncior")
 artifactsContainer = NodePath("PanelContainer/VBoxContainer/ScrollContainer/ArtifactsList")
-exitButton = NodePath("PanelContainer/VBoxContainer/HBoxContainer/BtnOk")
 artifactTemplate = ExtResource("2_y0r28")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -70,3 +70,4 @@ mouse_default_cursor_shape = 2
 theme = ExtResource("1_sla6f")
 theme_type_variation = &"BaseMenuButton"
 text = "KRETURNTOFARM"
+script = ExtResource("4_3hkt1")
