@@ -1,14 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnxvtxvntw2e1"]
+[gd_scene load_steps=7 format=3 uid="uid://cnxvtxvntw2e1"]
 
 [ext_resource type="Script" path="res://Fight/FightWaveHandler.cs" id="1_cxk1l"]
 [ext_resource type="PackedScene" uid="uid://byj332cof46ix" path="res://game_scenes/fight/FightScene.tscn" id="2_fyvfy"]
+[ext_resource type="StyleBox" uid="uid://c2ug7gqx5pccl" path="res://game_scenes/UI/styleboxwood.tres" id="4_x03kh"]
 
-[node name="FightWaveHandler" type="Node2D" node_paths=PackedStringArray("waveTimer", "startWaveBtn", "waveComingText", "waveUICanvas")]
+[sub_resource type="Animation" id="Animation_adrjo"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_4ju82"]
+resource_name = "SlideIn"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yjfgy"]
+_data = {
+"RESET": SubResource("Animation_adrjo"),
+"SlideIn": SubResource("Animation_4ju82")
+}
+
+[node name="FightWaveHandler" type="Node2D" node_paths=PackedStringArray("waveTimer", "startWaveBtn", "waveComingText", "waveUICanvas", "animPlayer")]
 script = ExtResource("1_cxk1l")
 waveTimer = NodePath("Timer")
-startWaveBtn = NodePath("WaveUI/PanelContainer/MarginContainer/VBoxContainer/StartFightButton")
-waveComingText = NodePath("WaveUI/PanelContainer/MarginContainer/VBoxContainer/WaveComingText")
+startWaveBtn = NodePath("WaveUI/WaveUI/PanelContainer/MarginContainer/VBoxContainer/StartFightButton")
+waveComingText = NodePath("WaveUI/WaveUI/PanelContainer/MarginContainer/VBoxContainer/WaveComingText")
 waveUICanvas = NodePath("WaveUI")
+animPlayer = NodePath("WaveUI/WaveUI/AnimationPlayer")
 fightScene = ExtResource("2_fyvfy")
 
 [node name="Timer" type="Timer" parent="."]
@@ -16,38 +30,55 @@ one_shot = true
 
 [node name="WaveUI" type="CanvasLayer" parent="."]
 
-[node name="PanelContainer" type="PanelContainer" parent="WaveUI"]
+[node name="WaveUI" type="Control" parent="WaveUI"]
+layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="WaveUI/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+[node name="PanelContainer" type="PanelContainer" parent="WaveUI/WaveUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.687
+offset_right = 120.687
+offset_bottom = 208.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("4_x03kh")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="WaveUI/PanelContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="WaveUI/WaveUI/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WaveUI/WaveUI/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="WaveComingText" type="RichTextLabel" parent="WaveUI/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="WaveComingText" type="RichTextLabel" parent="WaveUI/WaveUI/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/default_color = Color(0.564706, 0.054902, 0.760784, 1)
-theme_override_font_sizes/normal_font_size = 44
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "KWAVECOMING"
 fit_content = true
 autowrap_mode = 0
 
-[node name="StartFightButton" type="Button" parent="WaveUI/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="StartFightButton" type="Button" parent="WaveUI/WaveUI/PanelContainer/MarginContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+size_flags_vertical = 3
 disabled = true
 text = "KENTERFIGHT"
+clip_text = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WaveUI/WaveUI"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_yjfgy")
+}
