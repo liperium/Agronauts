@@ -20,13 +20,11 @@ public partial class Flash : Node
 	}
 	public void Start()
 	{
-		GD.Print("Starting "+GetParent().Name);
 		flashShader.Set("shader_parameter/mode",1);
 	}
 
 	public void Stop()
 	{
-		GD.Print("Stopping "+GetParent().Name);
 		flashShader.Set("shader_parameter/mode",0);
 	}
 }
