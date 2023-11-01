@@ -75,7 +75,6 @@ public partial class FightWaveHandler : Node2D
                 if (animPlayer != null)
                 {
                     animPlayer.Play("SlideIn");
-                    GD.Print("SLIDEIN");
                 }   
             }
         }

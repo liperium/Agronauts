@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgui53jtc0qch"]
+[gd_scene load_steps=9 format=3 uid="uid://dgui53jtc0qch"]
 
 [ext_resource type="Script" path="res://game_scenes/farm/farmland/FarmLand.cs" id="1_b6x40"]
+[ext_resource type="PackedScene" uid="uid://ua4uobpr81ko" path="res://UI/Indicator/NumberIndicator.tscn" id="2_i2s6n"]
 [ext_resource type="Texture2D" uid="uid://ca8xbjwp5xse3" path="res://game_scenes/farm/farmland/tiles/terre_laboure.png" id="2_sbsca"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfbp4"]
@@ -46,6 +47,7 @@ animation = &"FarmLandFadeIn"
 [node name="FarmLand" type="Area2D" node_paths=PackedStringArray("audioPlayer")]
 script = ExtResource("1_b6x40")
 audioPlayer = NodePath("AudioStreamPlayer2D")
+pickupIndicator = ExtResource("2_i2s6n")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.541

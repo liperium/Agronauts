@@ -21,6 +21,11 @@ public partial class NumberIndicator : Control
         }
     }
 
+    public void SetScale(float scale)
+    {
+        Scale = new Vector2(scale, scale);
+    }
+
     public void SetFormat(string format)
     {
         this.format = format;
