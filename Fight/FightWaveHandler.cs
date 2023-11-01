@@ -8,6 +8,7 @@ public partial class FightWaveHandler : Node2D
     [Export] public BaseButton startWaveBtn;
     [Export] public RichTextLabel waveComingText;
     [Export] public CanvasLayer waveUICanvas;
+    [Export] public AnimationPlayer animPlayer;
     private WaveState state;
 
     [Export] public PackedScene fightScene;
@@ -66,11 +67,16 @@ public partial class FightWaveHandler : Node2D
         
         if (waveTimer.TimeLeft <= 60 && state == WaveState.InvasionComing)
         {
-            waveComingText.Text = Tr("KWAVECOMING") + " : " + Mathf.RoundToInt(waveTimer.TimeLeft) + " " +Tr("KSECONDS") + "!";
+            waveComingText.Text = "[center]" + Tr("KWAVECOMING") + " : " + Mathf.RoundToInt(waveTimer.TimeLeft) + " " +Tr("KSECONDS") + "![/center]";
 
             if (waveUICanvas.Visible == false)
             {
                 waveUICanvas.Visible = true;
+                if (animPlayer != null)
+                {
+                    animPlayer.Play("SlideIn");
+                    GD.Print("SLIDEIN");
+                }   
             }
         }
         
@@ -80,7 +86,7 @@ public partial class FightWaveHandler : Node2D
     private void OnTimerEnd()
     {
         state = WaveState.InvasionStay;
-        waveComingText.Text = Tr("KINVASIONARRIVED");
+        waveComingText.Text = "[center]" + Tr("KINVASIONARRIVED") + "[/center]";
         waveTimer.Timeout -= OnTimerEnd;
         
         //show btn
