@@ -129,7 +129,7 @@ public partial class Four : Control
 	public void SpawnIndicator(long value)
 	{
 		NumberIndicator indicatorInstance = numberIndicator.Instantiate<NumberIndicator>();
-		indicatorInstance.SetFormat($"{{0}}[img=30x30]{GameState.instance.numbers.cookedPotatoCount.GetImagePath()}[/img]");
+		indicatorInstance.SetFormat($"+{{0}}[img=30x30]{GameState.instance.numbers.cookedPotatoCount.GetImagePath()}[/img]");
 		indicatorInstance.SetNumber(value);
 
 		Node2D nodePos = GetNode<Node2D>("%IndicatorPos");

@@ -47,6 +47,7 @@ public partial class FarmLand : Area2D
 	private LandState currState = LandState.Wild;
 	private RichTextLabel priceLabel;
 	[Export] public AudioStreamPlayer2D audioPlayer;
+	[Export] public PackedScene pickupIndicator;
 	public long cost = 0;
 	public LandState CurrState => currState;
 
@@ -127,7 +128,7 @@ public partial class FarmLand : Area2D
 				break;
 			case LandState.Planted: break;
 			case LandState.Ready:
-				Harvest();
+				Harvest(true);
 				break;
 		}
 	}
@@ -181,7 +182,7 @@ public partial class FarmLand : Area2D
 		growthTimer.Start();
 		progressBar.Show();
 	}
-	public void Harvest()
+	public void Harvest(bool manual = false)
 	{
 		button.TextureNormal = GetRandomTexture(LaboureTextures);
 		currState = LandState.Laboure;
@@ -189,7 +190,25 @@ public partial class FarmLand : Area2D
 
 		audioPlayer.Stream = harvestSound;
 		audioPlayer.Play();
-		GameState.instance.numbers.potatoCount.IncreaseValue(GameState.instance.numbers.potatoYield.GetValue());
+
+		long potatoYield = GameState.instance.numbers.potatoYield.GetValue();
+		GameState.instance.numbers.potatoCount.IncreaseValue(potatoYield);
+
+		if (manual)
+		{
+			SpawnIndicator(potatoYield);
+		}
+	}
+
+	private void SpawnIndicator(long value)
+	{
+		NumberIndicator indicatorInstance = pickupIndicator.Instantiate<NumberIndicator>();
+		indicatorInstance.SetFormat($"+{{0}}[img=30x30]{GameState.instance.numbers.potatoCount.GetImagePath()}[/img]");
+		indicatorInstance.SetNumber(value);
+		indicatorInstance.GlobalPosition = GlobalPosition;
+		indicatorInstance.SetScale(0.5f);
+		
+		GetTree().CurrentScene.AddChild(indicatorInstance);
 	}
 
 	public void Grown()

@@ -32,6 +32,7 @@ public class IdleUpgradeContainer
     public CritChanceArtifact critChanceArtifact;
     public TractorSpeedArtifact tractorSpeedArtifact;
     public CookedPotatoYieldArtifact cookedPotatoYieldArtifact;
+    public CookedPotatoBatchArtifact cookedPotatoBatchArtifact;
 
     public void Init()
     {
@@ -63,6 +64,7 @@ public class IdleUpgradeContainer
         critChanceArtifact = new CritChanceArtifact();
         tractorSpeedArtifact = new TractorSpeedArtifact();
         cookedPotatoYieldArtifact = new CookedPotatoYieldArtifact();
+        cookedPotatoBatchArtifact = new CookedPotatoBatchArtifact();
     }
 
     public void OnLoad()
@@ -74,6 +76,8 @@ public class IdleUpgradeContainer
         artifactContainer.AddArtifact(critChanceArtifact);
         artifactContainer.AddArtifact(tractorSpeedArtifact);
         artifactContainer.AddArtifact(cookedPotatoYieldArtifact);
+        artifactContainer.AddArtifact(cookedPotatoBatchArtifact);
+
 
         
         
@@ -104,6 +108,7 @@ public class IdleUpgradeContainer
         critChanceArtifact.OnLoad();
         tractorSpeedArtifact.OnLoad();
         cookedPotatoYieldArtifact.OnLoad();
+        cookedPotatoBatchArtifact.OnLoad();
 
     }
 }
